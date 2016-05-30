@@ -32,8 +32,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Analyze your GEDCOM file</h1>
-			<p>Upload your GEDCOM file and perform several analyses on your
-				data. Find inconsistencies, missing data to go look for, things to
+			<p>Find inconsistencies, missing data to go look for, things to
 				clean up, etc.</p>
 		</div>
 	</div>
@@ -41,7 +40,8 @@
 
 
 	<div class="container">
-		<form action="upload" method="post" enctype="multipart/form-data">
+		<form id="uploadform" action="upload" method="post" enctype="multipart/form-data">
+			<legend>Upload a GEDCOM file for analysis</legend>
 			<fieldset class="form-group">
 				<label for="gedcomfile">GEDCOM file to analyze</label> <input
 					name="gedcomfile" type="file" id="gedcomfile" class="filestyle"
@@ -50,15 +50,14 @@
 					files are supported.</small>
 			</fieldset>
 			<fieldset class="form-group">
-
 				<div class="checkbox">
-					<label> <input type="checkbox" name="touandprivacy">I
+					<label> <input type="checkbox" name="touandprivacy" id="touandprivacy">I
 						accept the <a href="termsofuse.jsp">terms of use</a> and <a
 						href="privacy.jsp">privacy statement</a>
 					</label>
 				</div>
 			</fieldset>
-			<button type="submit" class="btn btn-primary">Upload</button>
+			<button type="submit" id="submit" class="btn btn-primary" disabled="disabled"">Upload</button>
 		</form>
 	</div>
 
@@ -82,5 +81,6 @@
 		src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap-filestyle/1.1.2/bootstrap-filestyle.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

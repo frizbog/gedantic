@@ -28,11 +28,8 @@
 		</div>
 	</nav>
 
-
-	<div class="container">
-        <div id="result">
-            <h3>${requestScope["message"]}</h3>
-        </div>
+	<div class="jumbotron">
+		<h3>${requestScope["message"]}</h3>
 	</div>
 
 

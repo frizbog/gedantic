@@ -32,7 +32,6 @@
 			<artifactId>jquery</artifactId>
 			<version>2.1.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -44,6 +43,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap-filestyle</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -57,9 +62,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap-filestyle</artifactId>
-			<version>1.1.2</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.21</version>
 		</dependency>
 
 		<dependency>
