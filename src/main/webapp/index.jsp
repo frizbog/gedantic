@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,20 +14,13 @@
 
 
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
 				<a class="navbar-brand" href="#">G-Lint</a>
 			</div>
 		</div>
-	</nav>
+	</div>
 
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
@@ -40,7 +34,8 @@
 
 
 	<div class="container">
-		<form id="uploadform" action="upload" method="post" enctype="multipart/form-data">
+		<form id="uploadform" action="upload" method="post"
+			enctype="multipart/form-data">
 			<legend>Upload a GEDCOM file for analysis</legend>
 			<fieldset class="form-group">
 				<label for="gedcomfile">GEDCOM file to analyze</label> <input
@@ -51,13 +46,14 @@
 			</fieldset>
 			<fieldset class="form-group">
 				<div class="checkbox">
-					<label> <input type="checkbox" name="touandprivacy" id="touandprivacy">I
-						accept the <a href="termsofuse.jsp">terms of use</a> and <a
-						href="privacy.jsp">privacy statement</a>
+					<label> <input type="checkbox" name="touandprivacy"
+						id="touandprivacy">I accept the <a href="termsofuse.jsp">terms
+							of use</a> and <a href="privacy.jsp">privacy statement</a>
 					</label>
 				</div>
 			</fieldset>
-			<button type="submit" id="submit" class="btn btn-primary" disabled="disabled"">Upload</button>
+			<button type="submit" id="submit" class="btn btn-primary"
+				disabled="disabled"">Upload</button>
 		</form>
 	</div>
 

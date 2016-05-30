@@ -1,6 +1,8 @@
 package org.g_lint.io;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -12,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.gedcom4j.model.Gedcom;
+import org.gedcom4j.parser.GedcomParser;
+import org.gedcom4j.parser.GedcomParserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,25 +65,52 @@ public class FileUploadHandler extends HttpServlet {
                             item.write(file);
                             length = file.length();
                             LOG.info("Wrote " + fullPathAndName + " (" + length + " bytes)");
+
+                            parseAndLoadIntoSession(request, file);
                         }
                     }
-
-                    // File uploaded successfully
-                    request.setAttribute("message", "File uploaded successfully (" + length + " bytes)");
                 } else {
                     LOG.info("User did not accept terms of use and privacy statement");
                     request.setAttribute("message", "You must accept the terms of use and privacy statement to upload.");
+                    request.setAttribute("messageType", "alert alert-danger");
                 }
             } catch (Exception ex) {
                 LOG.error("Unable to upload file", ex);
                 request.setAttribute("message", "File upload failed - " + ex.getMessage());
+                request.setAttribute("messageType", "alert alert-danger");
             }
         } else {
             LOG.info("User attempted something other than file upload");
-            request.setAttribute("message", "Sorry this Servlet only handles file upload request");
+            request.setAttribute("message", "Sorry, this form only handles file upload requests");
+            request.setAttribute("messageType", "alert alert-danger");
         }
         request.getRequestDispatcher("/result.jsp").forward(request, response);
         LOG.debug("<doPost");
+    }
+
+    private void parseAndLoadIntoSession(HttpServletRequest request, File file) {
+        GedcomParser gp = new GedcomParser();
+        gp.strictCustomTags = false;
+        gp.strictLineBreaks = false;
+
+        try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file))) {
+            gp.load(stream);
+            if (gp.errors.isEmpty()) {
+                request.setAttribute("parseErrors", gp.warnings);
+            }
+            if (gp.warnings.isEmpty()) {
+                request.setAttribute("parseWarnings", gp.warnings);
+            }
+            Gedcom g = gp.gedcom;
+            request.getSession().setAttribute("gedcom", g);
+            StringBuilder parseResults = new StringBuilder("File uploaded. ");
+            parseResults.append(g.individuals.size() + " individuals in ");
+            parseResults.append(g.families.size() + " families loaded.");
+            request.setAttribute("parseResults", parseResults);
+
+        } catch (IOException | GedcomParserException e) {
+            LOG.error("Unable to load GEDCOM file " + file, e);
+        }
     }
 
 }
