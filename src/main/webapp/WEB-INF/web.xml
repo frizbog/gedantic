@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.3" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_3.xsd">
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
 
 	<servlet>
 		<servlet-name>FileUploadHandler</servlet-name>
@@ -9,14 +10,46 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FileUploadHandler</servlet-name>
-		<url-pattern>/upload</url-pattern>
+		<url-pattern>/uploadGedcom</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+
+
+	<filter>
+		<filter-name>NeedGedcomInSessionFilter</filter-name>
+		<filter-class>org.g_lint.filter.CheckIfGedcomInSessionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>NeedGedcomInSessionFilter</filter-name>
+		<url-pattern>*.tiles</url-pattern>
+	</filter-mapping>
+
+
+
+	<welcome-file-list>
+		<welcome-file>upload.tiles</welcome-file>
+	</welcome-file-list>
+
 
 
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
 
+	<listener>
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener
+		</listener-class>
+	</listener>
 
 	<display-name>G-Lint</display-name>
+
+
 </web-app>

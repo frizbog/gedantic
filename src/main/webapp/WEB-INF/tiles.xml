@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="common" template="/WEB-INF/layouts/common.jsp">
+		<put-attribute name="title" value="G-Lint" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="splash" value="/WEB-INF/tiles/blank.jsp" />
+		<put-attribute name="messages" value="/WEB-INF/tiles/messages.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+
+	<definition name="upload" extends="common">
+		<put-attribute name="splash" value="/WEB-INF/tiles/splash.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/uploadForm.jsp" />
+	</definition>
+
+	<definition name="analyzeMenu" extends="common">
+		<put-attribute name="body" value="/WEB-INF/tiles/analyzeMenu.jsp" />
+	</definition>
+
+
+</tiles-definitions>

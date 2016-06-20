@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.g_lint.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.parser.GedcomParser;
 import org.gedcom4j.parser.GedcomParserException;
@@ -66,25 +67,27 @@ public class FileUploadHandler extends HttpServlet {
                             length = file.length();
                             LOG.info("Wrote " + fullPathAndName + " (" + length + " bytes)");
 
-                            parseAndLoadIntoSession(request, file);
+                            parseAndLoadIntoSession(request, response, file);
                         }
                     }
                 } else {
                     LOG.info("User did not accept terms of use and privacy statement");
-                    request.setAttribute("message", "You must accept the terms of use and privacy statement to upload.");
-                    request.setAttribute("messageType", "alert alert-danger");
+                    request.setAttribute(Constants.ALERT_MESSAGE, "You must accept the terms of use and privacy statement to upload.");
+                    request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
                 }
             } catch (Exception ex) {
                 LOG.error("Unable to upload file", ex);
-                request.setAttribute("message", "File upload failed - " + ex.getMessage());
-                request.setAttribute("messageType", "alert alert-danger");
+                request.setAttribute(Constants.ALERT_MESSAGE, "File upload failed - " + ex.getMessage());
+                request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
             }
         } else {
             LOG.info("User attempted something other than file upload");
-            request.setAttribute("message", "Sorry, this form only handles file upload requests");
-            request.setAttribute("messageType", "alert alert-danger");
+            request.setAttribute(Constants.ALERT_MESSAGE, "Sorry, this form only handles file upload requests");
+            request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
         }
-        request.getRequestDispatcher("/analyzeMenu.jsp").forward(request, response);
+        if (!response.isCommitted()) {
+            request.getRequestDispatcher(Constants.URL_ANALYSIS_MENU).forward(request, response);
+        }
         LOG.debug("<doPost");
     }
 
@@ -94,10 +97,12 @@ public class FileUploadHandler extends HttpServlet {
      * 
      * @param request
      *            the HTTP request
+     * @param response
+     *            the HTTP response
      * @param file
      *            the uploaded GEDCOM file
      */
-    private void parseAndLoadIntoSession(HttpServletRequest request, File file) {
+    private void parseAndLoadIntoSession(HttpServletRequest request, HttpServletResponse response, File file) {
         GedcomParser gp = new GedcomParser();
         gp.strictCustomTags = false;
         gp.strictLineBreaks = false;
@@ -116,9 +121,15 @@ public class FileUploadHandler extends HttpServlet {
             parseResults.append(g.individuals.size() + " individuals in ");
             parseResults.append(g.families.size() + " families loaded.");
             request.setAttribute("parseResults", parseResults);
-
         } catch (IOException | GedcomParserException e) {
             LOG.error("Unable to load GEDCOM file " + file, e);
+            request.setAttribute(Constants.ALERT_MESSAGE, e.getMessage());
+            request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
+            try {
+                request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
+            } catch (ServletException | IOException e1) {
+                LOG.error("Unable to forward to the upload page", e1);
+            }
         } finally {
             try {
                 file.delete();
