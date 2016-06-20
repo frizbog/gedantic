@@ -25,4 +25,15 @@ public class Constants {
      * Request attribute name for the styles to use for the alert message type
      */
     public static final String ALERT_MESSAGE_TYPE = "messageType";
+
+    /**
+     * Request attribute name for the name of the loaded gedcom file
+     */
+    public static final String GEDCOM_NAME = "gedcomName";
+
+    /**
+     * Session attribute name for the loaded gedcom file
+     */
+    public static final String GEDCOM = "gedcom";
+
 }

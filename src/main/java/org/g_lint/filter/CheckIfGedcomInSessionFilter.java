@@ -33,7 +33,7 @@ public class CheckIfGedcomInSessionFilter implements Filter {
         LOG.debug(">" + this.getClass().getName() + ".doFilter() - requestURI = " + httpRequest.getRequestURI());
 
         try {
-            Gedcom g = (Gedcom) httpRequest.getSession().getAttribute("gedcom");
+            Gedcom g = (Gedcom) httpRequest.getSession().getAttribute(Constants.GEDCOM);
 
             // Check if requested resource is not in /test folder.
             if (g == null && !httpRequest.getRequestURI().endsWith(Constants.URL_UPLOAD_PAGE)) {

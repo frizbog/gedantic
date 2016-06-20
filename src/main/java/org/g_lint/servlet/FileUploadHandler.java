@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -106,6 +107,9 @@ public class FileUploadHandler extends HttpServlet {
         GedcomParser gp = new GedcomParser();
         gp.strictCustomTags = false;
         gp.strictLineBreaks = false;
+        HttpSession session = request.getSession();
+        session.removeAttribute(Constants.GEDCOM);
+        session.removeAttribute(Constants.GEDCOM_NAME);
 
         try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file))) {
             gp.load(stream);
@@ -116,7 +120,8 @@ public class FileUploadHandler extends HttpServlet {
                 request.setAttribute("warnings", gp.warnings);
             }
             Gedcom g = gp.gedcom;
-            request.getSession().setAttribute("gedcom", g);
+            session.setAttribute(Constants.GEDCOM, g);
+            session.setAttribute(Constants.GEDCOM_NAME, file.getName());
             StringBuilder parseResults = new StringBuilder("File uploaded. ");
             parseResults.append(g.individuals.size() + " individuals in ");
             parseResults.append(g.families.size() + " families loaded.");
