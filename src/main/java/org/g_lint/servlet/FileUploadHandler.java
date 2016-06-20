@@ -1,4 +1,4 @@
-package org.g_lint.io;
+package org.g_lint.servlet;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -88,6 +88,15 @@ public class FileUploadHandler extends HttpServlet {
         LOG.debug("<doPost");
     }
 
+    /**
+     * Parses the uploaded GEDCOM file, loads the {@link Gedcom} parse result object into the HTTP session, and deletes
+     * the temp file.
+     * 
+     * @param request
+     *            the HTTP request
+     * @param file
+     *            the uploaded GEDCOM file
+     */
     private void parseAndLoadIntoSession(HttpServletRequest request, File file) {
         GedcomParser gp = new GedcomParser();
         gp.strictCustomTags = false;
@@ -110,6 +119,13 @@ public class FileUploadHandler extends HttpServlet {
 
         } catch (IOException | GedcomParserException e) {
             LOG.error("Unable to load GEDCOM file " + file, e);
+        } finally {
+            try {
+                file.delete();
+                LOG.info("Deleted temp GEDCOM file " + file.getName());
+            } catch (Exception e) {
+                LOG.error("Unable to delete temp GEDCOM file " + UPLOAD_DIRECTORY + File.separator + file.getName());
+            }
         }
     }
 

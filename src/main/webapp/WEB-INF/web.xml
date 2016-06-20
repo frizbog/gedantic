@@ -5,7 +5,7 @@
 
 	<servlet>
 		<servlet-name>FileUploadHandler</servlet-name>
-		<servlet-class>org.g_lint.io.FileUploadHandler</servlet-class>
+		<servlet-class>org.g_lint.servlet.FileUploadHandler</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FileUploadHandler</servlet-name>
