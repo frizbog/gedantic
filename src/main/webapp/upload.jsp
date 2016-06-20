@@ -17,7 +17,7 @@
 	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">G-Lint</a>
+				<a class="navbar-brand" href="upload.jsp">G-Lint</a>
 			</div>
 		</div>
 	</div>

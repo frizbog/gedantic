@@ -1,5 +1,5 @@
 /**
- * Javascript that goes with index.jsp 
+ * Javascript that goes with upload.jsp 
  */
 $(document).ready(
     function(){

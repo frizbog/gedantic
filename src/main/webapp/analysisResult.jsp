@@ -30,7 +30,7 @@
 	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">G-Lint</a>
+				<a class="navbar-brand" href="upload.jsp">G-Lint</a>
 			</div>
 		</div>
 	</div>
@@ -39,51 +39,50 @@
 		<c:if test="${not empty message}">
 			<p class="${messageType}">${message}</p>
 		</c:if>
-		<c:if test="${not empty parseErrors}">
-			<div id="parseErrorsPanel" class="panel panel-danger">
+		<c:if test="${not empty errors}">
+			<div id="errorsPanel" class="panel panel-danger">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<button type="button" data-toggle="collapse" data-target="#parseErrors"
+						<button type="button" data-toggle="collapse" data-target="#errors"
 							class="btn btn-danger collapsed btn-collapse">
-							${fn:length(parseErrors)} error(s) found.
+							${fn:length(errors)} error(s) found.
 						</button>
 					</h4>
 				</div>
-				<div id="parseErrors" class="panel-collapse collapse">
+				<div id="errors" class="panel-collapse collapse">
 					<ul>
-						<c:forEach var="parseError" items="${parseErrors}">
-							<li>${parseError}</li>
+						<c:forEach var="error" items="${errors}">
+							<li>${error}</li>
 						</c:forEach>
 					</ul>
 				</div>
 			</div>
 		</c:if>
-		<c:if test="${not empty parseWarnings}">
-			<div id="parseWarningsPanel" class="panel panel-warning">
+		<c:if test="${not empty warnings}">
+			<div id="warningsPanel" class="panel panel-warning">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<button type="button" data-toggle="collapse" data-target="#parseWarnings"
+						<button type="button" data-toggle="collapse" data-target="#warnings"
 							class="btn btn-warning collapsed btn-collapse">
-							${fn:length(parseWarnings)} Warning(s) found.
+							${fn:length(warnings)} Warning(s) found.
 						</button>
 					</h4>
 				</div>
-				<div id="parseWarnings" class="panel-collapse collapse">
+				<div id="warnings" class="panel-collapse collapse">
 					<ul>
-						<c:forEach var="parseWarning" items="${parseWarnings}">
-							<li>${parseWarning}</li>
+						<c:forEach var="warning" items="${warnings}">
+							<li>${warning}</li>
 						</c:forEach>
 					</ul>
 				</div>
 			</div>
 		</c:if>
-		<p class="alert alert-success">${parseResults}</p>
 	</div>
 
 
 	<div class="container">
-		<a href="index.jsp"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Back</button></a>
-		<a href="analyze.jsp"><button class="btn btn-primary">Continue<span class="glyphicon glyphicon-chevron-right"></span></button></a>
+		<a href="upload.jsp"><button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Upload another file</button></a>
+		<a href="analyze.jsp"><button class="btn btn-primary">Pick another analysis<span class="glyphicon glyphicon-chevron-right"></span></button></a>
 	</div>
 
 	<div class="container">

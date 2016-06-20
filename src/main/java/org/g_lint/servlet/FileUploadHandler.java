@@ -84,7 +84,7 @@ public class FileUploadHandler extends HttpServlet {
             request.setAttribute("message", "Sorry, this form only handles file upload requests");
             request.setAttribute("messageType", "alert alert-danger");
         }
-        request.getRequestDispatcher("/result.jsp").forward(request, response);
+        request.getRequestDispatcher("/analyzeMenu.jsp").forward(request, response);
         LOG.debug("<doPost");
     }
 
@@ -105,10 +105,10 @@ public class FileUploadHandler extends HttpServlet {
         try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file))) {
             gp.load(stream);
             if (gp.errors.isEmpty()) {
-                request.setAttribute("parseErrors", gp.warnings);
+                request.setAttribute("errors", gp.warnings);
             }
             if (gp.warnings.isEmpty()) {
-                request.setAttribute("parseWarnings", gp.warnings);
+                request.setAttribute("warnings", gp.warnings);
             }
             Gedcom g = gp.gedcom;
             request.getSession().setAttribute("gedcom", g);
