@@ -1,4 +1,4 @@
-package org.g_lint.servlet;
+package org.g_lint.web.servlet;
 
 import java.io.BufferedInputStream;
 import java.io.File;

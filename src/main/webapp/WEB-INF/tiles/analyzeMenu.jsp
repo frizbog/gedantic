@@ -1,15 +1,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="analyses" value="<%= org.g_lint.analyzer.AnalyzerList.instance %>" />
 <div class="container">
 	<form name="analysis" action="analyze">
 		<legend>Select an analysis to perform on the loaded GEDCOM
 			file</legend>
 
-		<c:forEach items="analyses" var="analysis" varStatus="counter">
+		<c:forEach items="${analyzers}" var="analyzer" varStatus="counter">
 			<div class="radio">
-				<label> <input type="radio" name="analysisRadios"
-					id="optionsRadios${counter}" value="analysis.class.name" />${analysis.name}
-					- ${analysis.description}
+				<label> 
+					<c:if test="${counter.index == 0}">
+						<input type="radio" name="analysisRadios" checked="checked"
+							id="optionsRadios${counter.index}" value="${analyzer.value.id}" /><strong>${analyzer.value.name}</strong> - ${analyzer.value.description}
+					</c:if>
+					<c:if test="${counter.index != 0}">
+						<input type="radio" name="analysisRadios"
+							id="optionsRadios${counter.index}" value="${analyzer.value.id}" /><strong>${analyzer.value.name}</strong> - ${analyzer.value.description}
+					</c:if>
 				</label>
 			</div>
 		</c:forEach>

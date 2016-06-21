@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.g_lint.analyzer.AResult;
-import org.g_lint.analyzer.IAnalyzer;
 import org.g_lint.analyzer.IndividualRelatedResult;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -12,10 +11,11 @@ import org.gedcom4j.model.IndividualEvent;
 import org.gedcom4j.model.PersonalName;
 
 /**
+ * Analyzer that finds facts without any source citations
+ * 
  * @author frizbog
- *
  */
-public class FactsWithoutSourcesAnalyzer implements IAnalyzer {
+public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}

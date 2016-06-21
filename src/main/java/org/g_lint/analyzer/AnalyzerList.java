@@ -1,5 +1,6 @@
 package org.g_lint.analyzer;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -19,20 +20,6 @@ public final class AnalyzerList {
     private static final AnalyzerList INSTANCE = new AnalyzerList();
 
     /**
-     * A map of all available analyzers
-     */
-    private static final Map<String, IAnalyzer> ANALYZERS = new TreeMap<>();
-
-    /**
-     * Get a map of all available analyzers
-     * 
-     * @return a map of all available analyzers
-     */
-    public static Map<String, IAnalyzer> getAnalyzers() {
-        return ANALYZERS;
-    }
-
-    /**
      * Get the singleton instance
      * 
      * @return the singleton instance
@@ -40,6 +27,11 @@ public final class AnalyzerList {
     public static AnalyzerList getInstance() {
         return INSTANCE;
     }
+
+    /**
+     * A map of all available analyzers
+     */
+    private final Map<String, IAnalyzer> analyzers = new TreeMap<>();
 
     /**
      * Constructor
@@ -53,13 +45,22 @@ public final class AnalyzerList {
     }
 
     /**
+     * Get a map of all available analyzers
+     * 
+     * @return a map of all available analyzers
+     */
+    public Map<String, IAnalyzer> getAnalyzers() {
+        return Collections.unmodifiableMap(analyzers);
+    }
+
+    /**
      * Add an analyzer to the Analyzers map
      * 
      * @param a
      *            the analyzer to add
      */
     private void addAnalyzer(IAnalyzer a) {
-        getAnalyzers().put(a.getName(), a);
+        analyzers.put(a.getName(), a);
     }
 
 }

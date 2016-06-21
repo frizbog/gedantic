@@ -1,4 +1,4 @@
-package org.g_lint.filter;
+package org.g_lint.web.filter;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * A servlet filter that ensures theres a {@link Gedcom} loaded in session, and if not, redirect to the upload page
+ * A servlet filter that ensures theres a {@link Gedcom} loaded in session, and if not, redirect to the upload page.
  * 
  * @author frizbog
  */
@@ -35,7 +35,8 @@ public class CheckIfGedcomInSessionFilter implements Filter {
         LOG.debug(">" + this.getClass().getName() + ".doFilter() - requestURI = " + httpRequest.getRequestURI());
 
         try {
-            if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE)) {
+            if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE)
+                    || httpRequest.getRequestURI().equals(httpRequest.getServletContext().getContextPath() + "/")) {
                 LOG.info("Wiping out session because we're on the uplaod page");
                 session.invalidate();
             } else {

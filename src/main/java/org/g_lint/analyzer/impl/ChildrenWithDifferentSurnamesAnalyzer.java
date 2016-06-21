@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.g_lint.analyzer.AResult;
-import org.g_lint.analyzer.IAnalyzer;
 import org.gedcom4j.model.Gedcom;
 
 /**
  * @author frizbog
- *
  */
-public class ChildrenWithDifferentSurnamesAnalyzer implements IAnalyzer {
+public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}

@@ -28,7 +28,14 @@ public interface IAnalyzer {
     public String getDescription();
 
     /**
-     * Get the name for this analyzer
+     * Get the ID (i.e., className) for this analyzer
+     * 
+     * @return the name of this analyzer
+     */
+    public String getId();
+
+    /**
+     * Get the short name for this analyzer
      * 
      * @return the name of this analyzer
      */

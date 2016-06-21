@@ -6,7 +6,7 @@
 
 	<servlet>
 		<servlet-name>FileUploadHandler</servlet-name>
-		<servlet-class>org.g_lint.servlet.FileUploadHandler</servlet-class>
+		<servlet-class>org.g_lint.web.servlet.FileUploadHandler</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FileUploadHandler</servlet-name>
@@ -25,7 +25,7 @@
 
 	<filter>
 		<filter-name>NeedGedcomInSessionFilter</filter-name>
-		<filter-class>org.g_lint.filter.CheckIfGedcomInSessionFilter</filter-class>
+		<filter-class>org.g_lint.web.filter.CheckIfGedcomInSessionFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>NeedGedcomInSessionFilter</filter-name>
@@ -45,8 +45,8 @@
 	</session-config>
 
 	<listener>
-		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener
-		</listener-class>
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+		<listener-class>org.g_lint.web.listener.ApplicationSetupListener</listener-class>
 	</listener>
 
 	<display-name>G-Lint</display-name>
