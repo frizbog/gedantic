@@ -3,18 +3,34 @@ package org.g_lint.analyzer;
 import org.gedcom4j.model.Individual;
 
 public class IndividualRelatedResult extends AResult {
-    public Individual individual;
+    private final Individual individual;
 
-    public String factType;
+    private final String factType;
 
-    public String value;
+    private final String value;
 
-    public String problem;
+    private final String problem;
 
     public IndividualRelatedResult(Individual individual, String factType, String value, String problem) {
         this.individual = individual;
         this.factType = factType;
         this.value = value;
         this.problem = problem;
+    }
+
+    public String getFactType() {
+        return factType;
+    }
+
+    public Individual getIndividual() {
+        return individual;
+    }
+
+    public String getProblem() {
+        return problem;
+    }
+
+    public String getValue() {
+        return value;
     }
 }

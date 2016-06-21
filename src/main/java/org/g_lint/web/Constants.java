@@ -17,6 +17,11 @@ public class Constants {
     public static final String URL_ANALYSIS_MENU = "/analyzeMenu.tiles";
 
     /**
+     * The page for displaying analysis results
+     */
+    public static final String URL_ANALYSIS_RESULTS = "/results.tiles";
+
+    /**
      * Request attribute name for alerts
      */
     public static final String ALERT_MESSAGE = "message";
@@ -45,5 +50,10 @@ public class Constants {
      * Session attribute name for the number of families in the GEDCOM file
      */
     public static final String NUM_FAMILIES = "numFamilies";
+
+    /**
+     * Request attribute name for the name of the analysis results
+     */
+    public static final String RESULTS = "results";
 
 }

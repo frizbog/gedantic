@@ -21,7 +21,14 @@
 		<servlet-name>Tiles Dispatch Servlet</servlet-name>
 		<url-pattern>*.tiles</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+		<servlet-name>AnalysisServlet</servlet-name>
+		<servlet-class>org.g_lint.web.servlet.AnalyzerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AnalysisServlet</servlet-name>
+		<url-pattern>/analyze</url-pattern>
+	</servlet-mapping>
 
 	<filter>
 		<filter-name>NeedGedcomInSessionFilter</filter-name>

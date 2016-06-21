@@ -30,5 +30,9 @@
 		<put-attribute name="body" value="/WEB-INF/tiles/analyzeMenu.jsp" />
 	</definition>
 
+	<definition name="results" extends="common">
+		<put-attribute name="body" value="/WEB-INF/tiles/results.jsp" />
+	</definition>
+
 
 </tiles-definitions>
