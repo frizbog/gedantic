@@ -122,6 +122,8 @@ public class FileUploadHandler extends HttpServlet {
             Gedcom g = gp.gedcom;
             session.setAttribute(Constants.GEDCOM, g);
             session.setAttribute(Constants.GEDCOM_NAME, file.getName());
+            session.setAttribute(Constants.NUM_INDIVIDUALS, g.individuals.size());
+            session.setAttribute(Constants.NUM_FAMILIES, g.families.size());
             StringBuilder parseResults = new StringBuilder("File uploaded. ");
             parseResults.append(g.individuals.size() + " individuals in ");
             parseResults.append(g.families.size() + " families loaded.");

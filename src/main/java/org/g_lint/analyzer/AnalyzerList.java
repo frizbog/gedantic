@@ -3,6 +3,7 @@ package org.g_lint.analyzer;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.g_lint.analyzer.impl.ChildrenWithDifferentSurnamesAnalyzer;
 import org.g_lint.analyzer.impl.FactsWithoutSourcesAnalyzer;
 
 /**
@@ -44,7 +45,20 @@ public final class AnalyzerList {
      * Constructor
      */
     public AnalyzerList() {
-        FactsWithoutSourcesAnalyzer a = new FactsWithoutSourcesAnalyzer();
+        IAnalyzer a;
+        a = new FactsWithoutSourcesAnalyzer();
+        addAnalyzer(a);
+        a = new ChildrenWithDifferentSurnamesAnalyzer();
+        addAnalyzer(a);
+    }
+
+    /**
+     * Add an analyzer to the Analyzers map
+     * 
+     * @param a
+     *            the analyzer to add
+     */
+    private void addAnalyzer(IAnalyzer a) {
         getAnalyzers().put(a.getName(), a);
     }
 

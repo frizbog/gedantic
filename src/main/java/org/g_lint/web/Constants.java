@@ -36,4 +36,14 @@ public class Constants {
      */
     public static final String GEDCOM = "gedcom";
 
+    /**
+     * Session attribute name for the number of individuals in the GEDCOM file
+     */
+    public static final String NUM_INDIVIDUALS = "numIndividuals";
+
+    /**
+     * Session attribute name for the number of families in the GEDCOM file
+     */
+    public static final String NUM_FAMILIES = "numFamilies";
+
 }

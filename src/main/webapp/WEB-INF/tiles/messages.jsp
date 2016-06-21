@@ -13,7 +13,7 @@
 				<h4 class="panel-title">
 					<button type="button" data-toggle="collapse" data-target="#errors"
 						class="btn btn-danger collapsed btn-collapse">
-						${fn:length(errors)} error(s) found.</button>
+						${fn:length(errors)} error(s) found in uploaded file.</button>
 				</h4>
 			</div>
 			<div id="errors" class="panel-collapse collapse">
@@ -32,7 +32,7 @@
 					<button type="button" data-toggle="collapse"
 						data-target="#warnings"
 						class="btn btn-warning collapsed btn-collapse">
-						${fn:length(warnings)} Warning(s) found.</button>
+						${fn:length(warnings)} warning(s) found in uploaded file.</button>
 				</h4>
 			</div>
 			<div id="warnings" class="panel-collapse collapse">

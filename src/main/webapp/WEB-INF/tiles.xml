@@ -9,11 +9,21 @@
 		<put-attribute name="splash" value="/WEB-INF/tiles/blank.jsp" />
 		<put-attribute name="messages" value="/WEB-INF/tiles/messages.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+		<put-list-attribute name="javascripts">
+			<add-attribute value="webjars/jquery/2.1.1/jquery.min.js" />
+			<add-attribute value="webjars/bootstrap/3.2.0/js/bootstrap.min.js" />
+			<add-attribute
+				value="webjars/bootstrap-filestyle/1.1.2/bootstrap-filestyle.js" />
+			<add-attribute value="js/global.js" />
+		</put-list-attribute>
 	</definition>
 
 	<definition name="upload" extends="common">
 		<put-attribute name="splash" value="/WEB-INF/tiles/splash.jsp" />
 		<put-attribute name="body" value="/WEB-INF/tiles/uploadForm.jsp" />
+		<put-list-attribute name="javascripts" inherit="true">
+			<add-attribute value="js/uploadForm.js" />
+		</put-list-attribute>
 	</definition>
 
 	<definition name="analyzeMenu" extends="common">

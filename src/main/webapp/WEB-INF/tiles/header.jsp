@@ -5,9 +5,14 @@
 			<a class="navbar-brand" href="upload.tiles">G-Lint</a>
 		</div>
 		<p class="navbar-text navbar-right">
-			<c:if test="${empty gedcomName}">No GEDCOM loaded</c:if>
-			<c:if test="${not empty gedcomName}">${gedcomName} <span
-					class="glyphicon glyphicon-info-sign" />
+			<c:if test="${empty gedcomName || empty gedcom}">No GEDCOM loaded</c:if>
+			<c:if test="${not empty gedcomName && not empty gedcom}">
+				<a href="#" title="${gedcomName}" data-toggle="popover"
+					data-placement="left"
+					data-content="${numIndividuals} individuals, ${numFamilies} famil(ies)">
+					<span class="glyphicon glyphicon-info-sign" />
+				</a>
+			${gedcomName} 
 			</c:if>
 		</p>
 	</div>
