@@ -3,6 +3,7 @@ package org.g_lint.analyzer.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.g_lint.analyzer.AAnalyzer;
 import org.g_lint.analyzer.AResult;
 import org.g_lint.analyzer.IndividualRelatedResult;
 import org.gedcom4j.model.Gedcom;

@@ -6,5 +6,4 @@ package org.g_lint.analyzer;
  * @author frizbog
  */
 public abstract class AResult {
-
 }

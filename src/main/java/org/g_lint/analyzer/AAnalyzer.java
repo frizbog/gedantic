@@ -1,6 +1,4 @@
-package org.g_lint.analyzer.impl;
-
-import org.g_lint.analyzer.IAnalyzer;
+package org.g_lint.analyzer;
 
 /**
  * Base class for all {@link IAnalyzer} implementations
