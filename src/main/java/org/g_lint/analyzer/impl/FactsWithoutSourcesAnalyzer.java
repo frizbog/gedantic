@@ -48,7 +48,7 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "Facts (events, names, etc.) without source citations.";
+        return "Facts (events, names, etc.) without source citations";
     }
 
     /**
