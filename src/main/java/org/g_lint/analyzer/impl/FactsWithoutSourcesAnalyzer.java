@@ -6,6 +6,7 @@ import java.util.List;
 import org.g_lint.analyzer.AAnalyzer;
 import org.g_lint.analyzer.AResult;
 import org.g_lint.analyzer.IndividualRelatedResult;
+import org.g_lint.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualEvent;
@@ -53,6 +54,14 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Facts without sources";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getResultsTileName() {
+        return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
     }
 
 }

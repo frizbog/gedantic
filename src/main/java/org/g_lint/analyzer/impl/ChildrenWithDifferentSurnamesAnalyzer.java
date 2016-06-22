@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import org.g_lint.analyzer.AAnalyzer;
 import org.g_lint.analyzer.AResult;
 import org.g_lint.analyzer.IndividualRelatedResult;
+import org.g_lint.web.Constants;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -77,6 +78,14 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Children with different surnames";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getResultsTileName() {
+        return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
     }
 
     /**

@@ -41,4 +41,11 @@ public interface IAnalyzer {
      */
     public String getName();
 
+    /**
+     * Get the name of the tile to use for displaying the results
+     * 
+     * @return the name of the tile to use for displaying the results
+     */
+    public String getResultsTileName();
+
 }

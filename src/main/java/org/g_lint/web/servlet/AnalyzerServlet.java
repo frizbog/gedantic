@@ -56,6 +56,6 @@ public class AnalyzerServlet extends HttpServlet {
         req.setAttribute(Constants.ANALYSIS_NAME, a.getName());
         req.setAttribute(Constants.ANALYSIS_DESCRIPTION, a.getDescription());
         req.setAttribute(Constants.RESULTS, results);
-        req.getRequestDispatcher(Constants.URL_ANALYSIS_RESULTS).forward(req, resp);
+        req.getRequestDispatcher(a.getResultsTileName()).forward(req, resp);
     }
 }

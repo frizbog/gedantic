@@ -19,7 +19,7 @@ public class Constants {
     /**
      * The page for displaying analysis results
      */
-    public static final String URL_ANALYSIS_RESULTS = "/results.tiles";
+    public static final String URL_ANALYSIS_INDIVIDUAL_RESULTS = "/individualResults.tiles";
 
     /**
      * Request attribute name for alerts
