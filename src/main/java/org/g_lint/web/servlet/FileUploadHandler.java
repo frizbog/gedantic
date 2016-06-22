@@ -29,9 +29,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class FileUploadHandler extends HttpServlet {
-    /**
-     * Serial Version UID
-     */
+    /** Serial Version UID */
     private static final long serialVersionUID = 6317204513997696239L;
 
     /** Logger */

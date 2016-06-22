@@ -60,7 +60,7 @@ public final class AnalyzerList {
      *            the analyzer to add
      */
     private void addAnalyzer(IAnalyzer a) {
-        analyzers.put(a.getName(), a);
+        analyzers.put(a.getId(), a);
     }
 
 }

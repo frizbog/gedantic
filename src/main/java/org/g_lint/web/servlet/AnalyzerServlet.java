@@ -14,6 +14,8 @@ import org.g_lint.analyzer.AnalyzerList;
 import org.g_lint.analyzer.IAnalyzer;
 import org.g_lint.web.Constants;
 import org.gedcom4j.model.Gedcom;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Servlet that does analysis and displays results
@@ -21,6 +23,9 @@ import org.gedcom4j.model.Gedcom;
  * @author frizbog
  */
 public class AnalyzerServlet extends HttpServlet {
+
+    /** Logger */
+    private static final Logger LOG = LoggerFactory.getLogger(AnalyzerServlet.class.getName());
 
     /**
      * Serial Version UID
@@ -32,8 +37,14 @@ public class AnalyzerServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Gedcom g = (Gedcom) session.getAttribute(Constants.GEDCOM);
 
-        IAnalyzer a = AnalyzerList.getInstance().getAnalyzers().get(req.getParameter("analyzerId"));
+        String analyzerId = req.getParameter("analyzerId");
+        LOG.debug("Requested analysis: " + analyzerId);
+        IAnalyzer a = AnalyzerList.getInstance().getAnalyzers().get(analyzerId);
+        LOG.debug("Analyzer " + a + " found");
+
         List<AResult> results = a.analyze(g);
+
+        LOG.debug("Analysis complete. " + results.size() + " findings.");
 
         req.setAttribute(Constants.RESULTS, results);
         req.getRequestDispatcher(Constants.URL_ANALYSIS_RESULTS).forward(req, resp);

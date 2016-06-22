@@ -13,6 +13,8 @@
 	content="initial-scale=1, maximum-scale=1, width=device-width">
 <link rel='stylesheet'
 	href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+<link rel='stylesheet'
+	href='css/sticky-footer.css'>
 <title><tiles:getAsString name="title" /></title>
 <style>
 /* Icon when the collapsible content is shown */
