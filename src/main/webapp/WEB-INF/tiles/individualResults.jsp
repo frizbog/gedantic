@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container">
-
+	<h1>${analysisName}</h1>
+	<h1><small>${analysisDescription}</small></h1>
 	<c:if test="${empty results}">
 		<div id="resultsPanel" class="panel panel-success">No problems
 			found.</div>
@@ -23,12 +24,18 @@
 						<dt>${result.individual}</dt>
 						<dd>
 							<dl class="dl-horizontal">
-								<dt>Fact type</dt>
-								<dd>${result.factType}</dd>
-								<dt>Value</dt>
-								<dd>${result.value}</dd>
-								<dt>Problem</dt>
-								<dd>${result.problem}</dd>
+								<c:if test="${not empty result.factType}">
+									<dt>Fact type</dt>
+									<dd>${result.factType}</dd>
+								</c:if>
+								<c:if test="${not empty result.value}">
+									<dt>Value</dt>
+									<dd>${result.value}</dd>
+								</c:if>
+								<c:if test="${not empty result.problem}">
+									<dt>Problem</dt>
+									<dd>${result.problem}</dd>
+								</c:if>
 							</dl>
 						</dd>
 					</dl>

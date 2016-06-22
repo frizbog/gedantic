@@ -37,6 +37,13 @@ public class AnalyzerServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Gedcom g = (Gedcom) session.getAttribute(Constants.GEDCOM);
 
+        if (g == null) {
+            LOG.info("Redirecting from " + req.getRequestURI() + " to upload page because there is no gedcom in session");
+            req.setAttribute(Constants.ALERT_MESSAGE, "Please upload a GEDCOM to analyze");
+            req.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-warning");
+            req.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(req, resp);
+        }
+
         String analyzerId = req.getParameter("analyzerId");
         LOG.debug("Requested analysis: " + analyzerId);
         IAnalyzer a = AnalyzerList.getInstance().getAnalyzers().get(analyzerId);
@@ -46,6 +53,8 @@ public class AnalyzerServlet extends HttpServlet {
 
         LOG.debug("Analysis complete. " + results.size() + " findings.");
 
+        req.setAttribute(Constants.ANALYSIS_NAME, a.getName());
+        req.setAttribute(Constants.ANALYSIS_DESCRIPTION, a.getDescription());
         req.setAttribute(Constants.RESULTS, results);
         req.getRequestDispatcher(Constants.URL_ANALYSIS_RESULTS).forward(req, resp);
     }

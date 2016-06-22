@@ -31,7 +31,7 @@
 	</definition>
 
 	<definition name="results" extends="common">
-		<put-attribute name="body" value="/WEB-INF/tiles/results.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/individualResults.jsp" />
 	</definition>
 
 

@@ -56,4 +56,13 @@ public class Constants {
      */
     public static final String RESULTS = "results";
 
+    /**
+     * Request attribute name for the name of the analysis name
+     */
+    public static final String ANALYSIS_NAME = "analysisName";
+
+    /**
+     * Request attribute name for the name of the analysis description
+     */
+    public static final String ANALYSIS_DESCRIPTION = "analysisDescription";
 }

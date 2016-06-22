@@ -27,12 +27,12 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
         for (Individual i : g.individuals.values()) {
             for (PersonalName n : i.names) {
                 if (n.citations.isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, "Name", n.toString(), "No source citations"));
+                    result.add(new IndividualRelatedResult(i, "Name", n.toString(), null));
                 }
             }
             for (IndividualEvent e : i.events) {
                 if (e.citations.isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, e.type.display, e.toString(), "No source citations"));
+                    result.add(new IndividualRelatedResult(i, e.type.display, e.toString(), null));
                 }
             }
         }
@@ -44,7 +44,7 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "Find facts (events, names, etc.) without source citations.";
+        return "Facts (events, names, etc.) without source citations.";
     }
 
     /**
