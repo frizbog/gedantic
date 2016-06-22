@@ -6,7 +6,9 @@
 		</div>
 
 		<div class="navbar-text navbar-right">
-			<c:if test="${empty gedcomName || empty gedcom}">No GEDCOM loaded</c:if>
+			<c:if test="${empty gedcomName || empty gedcom}">
+			<p class="well">No GEDCOM loaded</p>
+			</c:if>
 			<c:if test="${not empty gedcomName && not empty gedcom}">
 				<p>
 					<a href="#" data-toggle="popover" data-placement="left"

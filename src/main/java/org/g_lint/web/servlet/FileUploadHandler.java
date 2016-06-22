@@ -59,6 +59,13 @@ public class FileUploadHandler extends HttpServlet {
                     long length = 0;
                     for (FileItem item : multiparts) {
                         if (!item.isFormField()) {
+                            if (item.getSize() > 5 * 1024 * 1024) {
+                                LOG.info("Upload file exceeds 5MB limit - was " + item.getSize());
+                                request.setAttribute(Constants.ALERT_MESSAGE, "Upload file exceeds 5MB limit");
+                                request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
+                                request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
+                                break;
+                            }
                             String name = new File(item.getName()).getName();
                             String fullPathAndName = UPLOAD_DIRECTORY + File.separator + name;
                             File file = new File(fullPathAndName);
@@ -73,16 +80,19 @@ public class FileUploadHandler extends HttpServlet {
                     LOG.info("User did not accept terms of use and privacy statement");
                     request.setAttribute(Constants.ALERT_MESSAGE, "You must accept the terms of use and privacy statement to upload.");
                     request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
+                    request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
                 }
             } catch (Exception ex) {
                 LOG.error("Unable to upload file", ex);
                 request.setAttribute(Constants.ALERT_MESSAGE, "File upload failed - " + ex.getMessage());
                 request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
+                request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
             }
         } else {
             LOG.info("User attempted something other than file upload");
             request.setAttribute(Constants.ALERT_MESSAGE, "Sorry, this form only handles file upload requests");
             request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
+            request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
         }
         if (!response.isCommitted()) {
             request.getRequestDispatcher(Constants.URL_ANALYSIS_MENU).forward(request, response);
