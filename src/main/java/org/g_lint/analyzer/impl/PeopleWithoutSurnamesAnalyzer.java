@@ -9,7 +9,6 @@ import org.g_lint.analyzer.AResult;
 import org.g_lint.analyzer.IndividualRelatedResult;
 import org.g_lint.analyzer.comparator.IndividualResultSortComparator;
 import org.g_lint.web.Constants;
-import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.PersonalName;
@@ -17,7 +16,7 @@ import org.gedcom4j.model.PersonalName;
 /**
  * @author frizbog
  */
-public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
+public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}
@@ -28,29 +27,13 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
         List<AResult> result = new ArrayList<>();
 
         for (Individual i : g.individuals.values()) {
-            if (i.familiesWhereChild == null || i.familiesWhereChild.isEmpty()) {
+            if (i.names == null || i.names.isEmpty()) {
                 continue;
             }
             Set<String> personSurnames = getSurnamesFromIndividual(i);
-            Set<String> allParentSurnames = new TreeSet<String>();
-            for (FamilyChild fc : i.familiesWhereChild) {
-                if (fc.family.husband != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.family.husband));
-                }
-                if (fc.family.wife != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.family.wife));
-                }
-            }
-            if (allParentSurnames.isEmpty()) {
-                continue;
-            }
-
-            Set<String> commonSurnames = new TreeSet<>(allParentSurnames);
-            commonSurnames.retainAll(personSurnames);
-            if (commonSurnames.isEmpty()) {
+            if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains(""))) {
                 // Found a problem
-                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null,
-                        "Individual has surnames " + personSurnames + " and parents have surnames " + allParentSurnames);
+                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null, "Individual has no surnames");
                 result.add(r);
             }
         }
@@ -64,7 +47,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "Children who have no matching surnames with their parents";
+        return "People who have names but no surnames";
     }
 
     /**
@@ -72,7 +55,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getName() {
-        return "Children with different surnames";
+        return "People without surnames";
     }
 
     /**

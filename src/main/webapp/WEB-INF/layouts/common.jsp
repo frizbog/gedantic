@@ -14,7 +14,7 @@
 <link rel='stylesheet'
 	href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
 <link rel='stylesheet'
-	href='css/sticky-footer.css'>
+	href='css/g-lint.custom.css'>
 <title><tiles:getAsString name="title" /></title>
 <style>
 /* Icon when the collapsible content is shown */

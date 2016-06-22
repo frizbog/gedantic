@@ -20,3 +20,8 @@ body {
 .footer .container {
   margin-top: 1em;
 }
+
+.navbar-brand {
+	padding-top: 30px;
+	font-size: 36px;
+}

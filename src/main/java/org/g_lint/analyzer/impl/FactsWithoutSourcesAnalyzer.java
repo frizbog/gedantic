@@ -1,11 +1,13 @@
 package org.g_lint.analyzer.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.g_lint.analyzer.AAnalyzer;
 import org.g_lint.analyzer.AResult;
 import org.g_lint.analyzer.IndividualRelatedResult;
+import org.g_lint.analyzer.comparator.IndividualResultSortComparator;
 import org.g_lint.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -37,6 +39,7 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
                 }
             }
         }
+        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

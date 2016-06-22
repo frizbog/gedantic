@@ -18,11 +18,6 @@
 				</label>
 			</div>
 		</c:forEach>
-
-		<a href="upload.tiles"><button class="btn btn-default">
-				<span class="glyphicon glyphicon-chevron-left"></span>Upload
-				another file
-			</button></a>
 			
 		<button type="submit" id="submit" class="btn btn-primary">
 			Analyze<span class="glyphicon glyphicon-chevron-right"></span>

@@ -4,8 +4,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.g_lint.analyzer.impl.ChildrenWithDifferentSurnamesAnalyzer;
-import org.g_lint.analyzer.impl.FactsWithoutSourcesAnalyzer;
+import org.g_lint.analyzer.impl.*;
 
 /**
  * List of available Analyzers.
@@ -37,11 +36,11 @@ public final class AnalyzerList {
      * Constructor
      */
     public AnalyzerList() {
-        IAnalyzer a;
-        a = new FactsWithoutSourcesAnalyzer();
-        addAnalyzer(a);
-        a = new ChildrenWithDifferentSurnamesAnalyzer();
-        addAnalyzer(a);
+        addAnalyzer(new FactsWithoutSourcesAnalyzer());
+        addAnalyzer(new ChildrenWithDifferentSurnamesAnalyzer());
+        addAnalyzer(new PeopleWithoutParentsAnalyzer());
+        addAnalyzer(new OnlyChildrenAnalyzer());
+        addAnalyzer(new PeopleWithoutSurnamesAnalyzer());
     }
 
     /**
