@@ -1,4 +1,4 @@
-package org.g_lint.analyzer;
+package org.gedantic.analyzer;
 
 import org.gedcom4j.model.Individual;
 

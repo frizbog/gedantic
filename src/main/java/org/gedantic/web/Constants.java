@@ -1,4 +1,4 @@
-package org.g_lint.web;
+package org.gedantic.web;
 
 /**
  * A bunch of constants used by the web classes for redirects and stuff

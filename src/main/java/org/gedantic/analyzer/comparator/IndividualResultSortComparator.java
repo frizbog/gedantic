@@ -19,13 +19,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package org.g_lint.analyzer.comparator;
+package org.gedantic.analyzer.comparator;
 
 import java.io.Serializable;
 import java.util.Comparator;
 
-import org.g_lint.analyzer.AResult;
-import org.g_lint.analyzer.IndividualRelatedResult;
+import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.IndividualRelatedResult;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.PersonalName;
 

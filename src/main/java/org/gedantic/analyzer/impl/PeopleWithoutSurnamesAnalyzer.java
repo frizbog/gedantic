@@ -1,15 +1,14 @@
-package org.g_lint.analyzer.impl;
+package org.gedantic.analyzer.impl;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.g_lint.analyzer.AAnalyzer;
-import org.g_lint.analyzer.AResult;
-import org.g_lint.analyzer.IndividualRelatedResult;
-import org.g_lint.analyzer.comparator.IndividualResultSortComparator;
-import org.g_lint.web.Constants;
-import org.gedcom4j.model.FamilyChild;
+import org.gedantic.analyzer.AAnalyzer;
+import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.IndividualRelatedResult;
+import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.PersonalName;
@@ -17,26 +16,25 @@ import org.gedcom4j.model.PersonalName;
 /**
  * @author frizbog
  */
-public class PeopleWithoutParentsAnalyzer extends AAnalyzer {
+public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public List<AResult> analyze(Gedcom g) {
+
         List<AResult> result = new ArrayList<>();
 
         for (Individual i : g.individuals.values()) {
-            if (i.familiesWhereChild == null || i.familiesWhereChild.isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, null, "No family where individual is a child"));
-            } else {
-                boolean foundParent = false;
-                for (FamilyChild fc : i.familiesWhereChild) {
-                    foundParent = fc.family.wife != null || fc.family.husband != null;
-                }
-                if (!foundParent) {
-                    result.add(new IndividualRelatedResult(i, null, null, "Child of at least one family, but no such family has any parents"));
-                }
+            if (i.names == null || i.names.isEmpty()) {
+                continue;
+            }
+            Set<String> personSurnames = getSurnamesFromIndividual(i);
+            if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains(""))) {
+                // Found a problem
+                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null, "Individual has no surnames");
+                result.add(r);
             }
         }
 
@@ -49,7 +47,7 @@ public class PeopleWithoutParentsAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "People who have no parents recorded";
+        return "People who have names but no surnames";
     }
 
     /**
@@ -57,7 +55,7 @@ public class PeopleWithoutParentsAnalyzer extends AAnalyzer {
      */
     @Override
     public String getName() {
-        return "People without parents";
+        return "People without surnames";
     }
 
     /**

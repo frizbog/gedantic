@@ -1,14 +1,14 @@
-package org.g_lint.analyzer.impl;
+package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.g_lint.analyzer.AAnalyzer;
-import org.g_lint.analyzer.AResult;
-import org.g_lint.analyzer.IndividualRelatedResult;
-import org.g_lint.analyzer.comparator.IndividualResultSortComparator;
-import org.g_lint.web.Constants;
+import org.gedantic.analyzer.AAnalyzer;
+import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.IndividualRelatedResult;
+import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualEvent;

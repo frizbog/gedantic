@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="common" template="/WEB-INF/layouts/common.jsp">
-		<put-attribute name="title" value="G-Lint" />
+		<put-attribute name="title" value="gedantic" />
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="splash" value="/WEB-INF/tiles/blank.jsp" />
 		<put-attribute name="messages" value="/WEB-INF/tiles/messages.jsp" />

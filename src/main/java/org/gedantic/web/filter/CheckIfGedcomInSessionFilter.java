@@ -1,4 +1,4 @@
-package org.g_lint.web.filter;
+package org.gedantic.web.filter;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.g_lint.web.Constants;
+import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

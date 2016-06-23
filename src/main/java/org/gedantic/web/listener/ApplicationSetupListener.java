@@ -1,9 +1,9 @@
-package org.g_lint.web.listener;
+package org.gedantic.web.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.g_lint.analyzer.AnalyzerList;
+import org.gedantic.analyzer.AnalyzerList;
 
 /**
  * A listener that ensures application scope items are set up

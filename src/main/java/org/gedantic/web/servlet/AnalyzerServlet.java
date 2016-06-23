@@ -1,4 +1,4 @@
-package org.g_lint.web.servlet;
+package org.gedantic.web.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.g_lint.analyzer.AResult;
-import org.g_lint.analyzer.AnalyzerList;
-import org.g_lint.analyzer.IAnalyzer;
-import org.g_lint.web.Constants;
+import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalyzerList;
+import org.gedantic.analyzer.IAnalyzer;
+import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

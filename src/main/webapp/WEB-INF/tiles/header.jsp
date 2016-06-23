@@ -2,7 +2,7 @@
 <nav id="header" class="navbar navbar-default navbar-static-top">
 	<div class="container">
 		<div class="navbar-brand">
-			<a href="analyzeMenu.tiles">G-Lint</a>
+			<a href="analyzeMenu.tiles">gedantic</a>
 		</div>
 
 		<div class="navbar-text navbar-right">

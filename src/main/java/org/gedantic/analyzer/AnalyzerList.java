@@ -1,10 +1,10 @@
-package org.g_lint.analyzer;
+package org.gedantic.analyzer;
 
 import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.g_lint.analyzer.impl.*;
+import org.gedantic.analyzer.impl.*;
 
 /**
  * List of available Analyzers.

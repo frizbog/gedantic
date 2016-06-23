@@ -6,7 +6,7 @@
 
 	<servlet>
 		<servlet-name>FileUploadHandler</servlet-name>
-		<servlet-class>org.g_lint.web.servlet.FileUploadHandler</servlet-class>
+		<servlet-class>org.gedantic.web.servlet.FileUploadHandler</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FileUploadHandler</servlet-name>
@@ -23,7 +23,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>AnalysisServlet</servlet-name>
-		<servlet-class>org.g_lint.web.servlet.AnalyzerServlet</servlet-class>
+		<servlet-class>org.gedantic.web.servlet.AnalyzerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AnalysisServlet</servlet-name>
@@ -32,7 +32,7 @@
 
 	<filter>
 		<filter-name>NeedGedcomInSessionFilter</filter-name>
-		<filter-class>org.g_lint.web.filter.CheckIfGedcomInSessionFilter</filter-class>
+		<filter-class>org.gedantic.web.filter.CheckIfGedcomInSessionFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>NeedGedcomInSessionFilter</filter-name>
@@ -53,10 +53,10 @@
 
 	<listener>
 		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
-		<listener-class>org.g_lint.web.listener.ApplicationSetupListener</listener-class>
+		<listener-class>org.gedantic.web.listener.ApplicationSetupListener</listener-class>
 	</listener>
 
-	<display-name>G-Lint</display-name>
+	<display-name>gedantic</display-name>
 
 
 </web-app>

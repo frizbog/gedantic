@@ -1,14 +1,14 @@
-package org.g_lint.analyzer.impl;
+package org.gedantic.analyzer.impl;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.g_lint.analyzer.AAnalyzer;
-import org.g_lint.analyzer.AResult;
-import org.g_lint.analyzer.IndividualRelatedResult;
-import org.g_lint.analyzer.comparator.IndividualResultSortComparator;
-import org.g_lint.web.Constants;
+import org.gedantic.analyzer.AAnalyzer;
+import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.IndividualRelatedResult;
+import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.web.Constants;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
