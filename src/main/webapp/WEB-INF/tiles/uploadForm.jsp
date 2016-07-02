@@ -8,7 +8,7 @@
 			<fieldset class="form-group">
 				<label for="gedcomfile">GEDCOM file to analyze</label> <input
 					name="gedcomfile" type="file" id="gedcomfile" class="filestyle"
-					data-buttonName="btn-primary"> 5MB size limit. <small class="text-muted">We'll
+					data-buttonName="btn-primary"> 8MB size limit. <small class="text-muted">We'll
 					never share your GEDCOM file with anyone else. GEDCOM 5.5 and 5.5.1
 					files are supported.</small>
 			</fieldset>

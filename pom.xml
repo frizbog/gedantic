@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>org.gedcom4j</groupId>
 			<artifactId>gedcom4j</artifactId>
-			<version>RELEASE</version>
+			<version>LATEST</version>
 		</dependency>
 
 

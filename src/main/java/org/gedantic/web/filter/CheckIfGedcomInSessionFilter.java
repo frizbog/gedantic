@@ -48,7 +48,7 @@ public class CheckIfGedcomInSessionFilter implements Filter {
                 }
             }
         } catch (ClassCastException e) {
-            LOG.error("Found gedcom session attribute but it was not a " + Gedcom.class.getCanonicalName());
+            LOG.error("Found gedcom session attribute but it was not a " + Gedcom.class.getCanonicalName(), e);
             httpResponse.sendRedirect(httpRequest.getContextPath() + Constants.URL_UPLOAD_PAGE);
         }
         LOG.debug("<" + this.getClass().getName() + ".doFilter()");

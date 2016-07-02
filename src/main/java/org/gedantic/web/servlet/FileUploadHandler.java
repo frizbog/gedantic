@@ -16,9 +16,9 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.gedantic.web.Constants;
+import org.gedcom4j.exception.GedcomParserException;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.parser.GedcomParser;
-import org.gedcom4j.parser.GedcomParserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +29,11 @@ import org.slf4j.LoggerFactory;
  */
 
 public class FileUploadHandler extends HttpServlet {
+    /**
+     * The maximum number of MB allowed to be uploaded
+     */
+    private static final int MAX_MB = 8;
+
     /** Serial Version UID */
     private static final long serialVersionUID = 6317204513997696239L;
 
@@ -59,9 +64,9 @@ public class FileUploadHandler extends HttpServlet {
                     long length = 0;
                     for (FileItem item : multiparts) {
                         if (!item.isFormField()) {
-                            if (item.getSize() > 5 * 1024 * 1024) {
-                                LOG.info("Upload file exceeds 5MB limit - was " + item.getSize());
-                                request.setAttribute(Constants.ALERT_MESSAGE, "Upload file exceeds 5MB limit");
+                            if (item.getSize() > MAX_MB * 1024 * 1024) {
+                                LOG.info("Upload file exceeds " + MAX_MB + "MB limit - was " + item.getSize());
+                                request.setAttribute(Constants.ALERT_MESSAGE, "Upload file exceeds " + MAX_MB + "MB limit");
                                 request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
                                 request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
                                 break;
@@ -150,7 +155,7 @@ public class FileUploadHandler extends HttpServlet {
                 file.delete();
                 LOG.info("Deleted temp GEDCOM file " + file.getName());
             } catch (Exception e) {
-                LOG.error("Unable to delete temp GEDCOM file " + UPLOAD_DIRECTORY + File.separator + file.getName());
+                LOG.error("Unable to delete temp GEDCOM file " + UPLOAD_DIRECTORY + File.separator + file.getName(), e);
             }
         }
     }
