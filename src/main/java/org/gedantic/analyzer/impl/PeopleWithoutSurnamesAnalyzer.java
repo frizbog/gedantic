@@ -26,8 +26,8 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
 
         List<AResult> result = new ArrayList<>();
 
-        for (Individual i : g.individuals.values()) {
-            if (i.names == null || i.names.isEmpty()) {
+        for (Individual i : g.getIndividuals().values()) {
+            if (i.getNames() == null || i.getNames().isEmpty()) {
                 continue;
             }
             Set<String> personSurnames = getSurnamesFromIndividual(i);
@@ -76,12 +76,12 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
     private Set<String> getSurnamesFromIndividual(Individual i) {
         TreeSet<String> result = new TreeSet<String>();
         Pattern pattern = Pattern.compile(".*\\/(.*)\\/.*");
-        for (PersonalName pn : i.names) {
-            if (pn.surname != null) {
-                result.add(pn.surname.value);
+        for (PersonalName pn : i.getNames()) {
+            if (pn.getSurname() != null) {
+                result.add(pn.getSurname().getValue());
             }
-            if (pn.basic != null) {
-                Matcher matcher = pattern.matcher(pn.basic);
+            if (pn.getBasic() != null) {
+                Matcher matcher = pattern.matcher(pn.getBasic());
                 while (matcher.find()) {
                     result.add(matcher.group(1));
                 }

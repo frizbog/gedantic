@@ -16,9 +16,14 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.gedantic.web.Constants;
+import org.gedcom4j.Options;
 import org.gedcom4j.exception.GedcomParserException;
+import org.gedcom4j.io.event.FileProgressEvent;
+import org.gedcom4j.io.event.FileProgressListener;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.parser.GedcomParser;
+import org.gedcom4j.parser.event.ParseProgressEvent;
+import org.gedcom4j.parser.event.ParseProgressListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +33,7 @@ import org.slf4j.LoggerFactory;
  * @author Javin Paul
  */
 
-public class FileUploadHandler extends HttpServlet {
+public class FileUploadHandler extends HttpServlet implements FileProgressListener, ParseProgressListener {
     /**
      * The maximum number of MB allowed to be uploaded
      */
@@ -44,6 +49,17 @@ public class FileUploadHandler extends HttpServlet {
      * Where the files get uploaded
      */
     private final String UPLOAD_DIRECTORY = System.getProperty("java.io.tmpdir");
+
+    @Override
+    public void progressNotification(FileProgressEvent e) {
+        LOG.debug(e.toString());
+
+    }
+
+    @Override
+    public void progressNotification(ParseProgressEvent e) {
+        LOG.debug(e.toString());
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -117,29 +133,34 @@ public class FileUploadHandler extends HttpServlet {
      *            the uploaded GEDCOM file
      */
     private void parseAndLoadIntoSession(HttpServletRequest request, HttpServletResponse response, File file) {
+        System.gc();
+        long before = Runtime.getRuntime().freeMemory();
+        Options.setCollectionInitializationEnabled(true);
         GedcomParser gp = new GedcomParser();
-        gp.strictCustomTags = false;
-        gp.strictLineBreaks = false;
+        gp.registerParseObserver(this);
+        gp.registerFileObserver(this);
+        gp.setStrictCustomTags(false);
+        gp.setStrictLineBreaks(false);
         HttpSession session = request.getSession();
         session.removeAttribute(Constants.GEDCOM);
         session.removeAttribute(Constants.GEDCOM_NAME);
 
         try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(file))) {
             gp.load(stream);
-            if (gp.errors.isEmpty()) {
-                request.setAttribute("errors", gp.warnings);
+            if (gp.getErrors().isEmpty()) {
+                request.setAttribute("errors", gp.getWarnings());
             }
-            if (gp.warnings.isEmpty()) {
-                request.setAttribute("warnings", gp.warnings);
+            if (gp.getWarnings().isEmpty()) {
+                request.setAttribute("warnings", gp.getWarnings());
             }
-            Gedcom g = gp.gedcom;
+            Gedcom g = gp.getGedcom();
             session.setAttribute(Constants.GEDCOM, g);
             session.setAttribute(Constants.GEDCOM_NAME, file.getName());
-            session.setAttribute(Constants.NUM_INDIVIDUALS, g.individuals.size());
-            session.setAttribute(Constants.NUM_FAMILIES, g.families.size());
+            session.setAttribute(Constants.NUM_INDIVIDUALS, g.getIndividuals().size());
+            session.setAttribute(Constants.NUM_FAMILIES, g.getFamilies().size());
             StringBuilder parseResults = new StringBuilder("File uploaded. ");
-            parseResults.append(g.individuals.size() + " individuals in ");
-            parseResults.append(g.families.size() + " families loaded.");
+            parseResults.append(g.getIndividuals().size() + " individuals in ");
+            parseResults.append(g.getFamilies().size() + " families loaded.");
             request.setAttribute("parseResults", parseResults);
         } catch (IOException | GedcomParserException e) {
             LOG.error("Unable to load GEDCOM file " + file, e);
@@ -158,6 +179,12 @@ public class FileUploadHandler extends HttpServlet {
                 LOG.error("Unable to delete temp GEDCOM file " + UPLOAD_DIRECTORY + File.separator + file.getName(), e);
             }
         }
+        gp = null;
+        System.gc();
+        long after = Runtime.getRuntime().freeMemory();
+
+        long diff = before - after;
+        LOG.error("Before: " + before + ", After: " + after + ", Diff: " + diff);
     }
 
 }

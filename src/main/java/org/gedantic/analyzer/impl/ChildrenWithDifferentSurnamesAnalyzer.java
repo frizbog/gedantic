@@ -27,18 +27,18 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
 
         List<AResult> result = new ArrayList<>();
 
-        for (Individual i : g.individuals.values()) {
-            if (i.familiesWhereChild == null || i.familiesWhereChild.isEmpty()) {
+        for (Individual i : g.getIndividuals().values()) {
+            if (i.getFamiliesWhereChild() == null || i.getFamiliesWhereChild().isEmpty()) {
                 continue;
             }
             Set<String> personSurnames = getSurnamesFromIndividual(i);
             Set<String> allParentSurnames = new TreeSet<String>();
-            for (FamilyChild fc : i.familiesWhereChild) {
-                if (fc.family.husband != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.family.husband));
+            for (FamilyChild fc : i.getFamiliesWhereChild()) {
+                if (fc.getFamily().getHusband() != null) {
+                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.getFamily().getHusband()));
                 }
-                if (fc.family.wife != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.family.wife));
+                if (fc.getFamily().getWife() != null) {
+                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.getFamily().getWife()));
                 }
             }
             if (allParentSurnames.isEmpty()) {
@@ -49,8 +49,8 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
             commonSurnames.retainAll(personSurnames);
             if (commonSurnames.isEmpty()) {
                 // Found a problem
-                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null,
-                        "Individual has surnames " + personSurnames + " and parents have surnames " + allParentSurnames);
+                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null, "Individual has surnames " + personSurnames
+                        + " and parents have surnames " + allParentSurnames);
                 result.add(r);
             }
         }
@@ -93,12 +93,12 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
     private Set<String> getSurnamesFromIndividual(Individual i) {
         TreeSet<String> result = new TreeSet<String>();
         Pattern pattern = Pattern.compile(".*\\/(.*)\\/.*");
-        for (PersonalName pn : i.names) {
-            if (pn.surname != null) {
-                result.add(pn.surname.value);
+        for (PersonalName pn : i.getNames()) {
+            if (pn.getSurname() != null) {
+                result.add(pn.getSurname().getValue());
             }
-            if (pn.basic != null) {
-                Matcher matcher = pattern.matcher(pn.basic);
+            if (pn.getBasic() != null) {
+                Matcher matcher = pattern.matcher(pn.getBasic());
                 while (matcher.find()) {
                     result.add(matcher.group(1));
                 }

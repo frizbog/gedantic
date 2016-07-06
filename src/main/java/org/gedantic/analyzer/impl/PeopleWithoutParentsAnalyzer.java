@@ -25,13 +25,13 @@ public class PeopleWithoutParentsAnalyzer extends AAnalyzer {
     public List<AResult> analyze(Gedcom g) {
         List<AResult> result = new ArrayList<>();
 
-        for (Individual i : g.individuals.values()) {
-            if (i.familiesWhereChild == null || i.familiesWhereChild.isEmpty()) {
+        for (Individual i : g.getIndividuals().values()) {
+            if (i.getFamiliesWhereChild() == null || i.getFamiliesWhereChild().isEmpty()) {
                 result.add(new IndividualRelatedResult(i, null, null, null));
             } else {
                 boolean foundParent = false;
-                for (FamilyChild fc : i.familiesWhereChild) {
-                    foundParent = fc.family.wife != null || fc.family.husband != null;
+                for (FamilyChild fc : i.getFamiliesWhereChild()) {
+                    foundParent = fc.getFamily().getWife() != null || fc.getFamily().getHusband() != null;
                 }
                 if (!foundParent) {
                     result.add(new IndividualRelatedResult(i, null, null, "Child of at least one family record, but no family with designated parents"));

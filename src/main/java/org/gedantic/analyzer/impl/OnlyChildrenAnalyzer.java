@@ -23,13 +23,13 @@ public class OnlyChildrenAnalyzer extends AAnalyzer {
     public List<AResult> analyze(Gedcom g) {
         List<AResult> result = new ArrayList<>();
 
-        for (Individual i : g.individuals.values()) {
-            if (i.familiesWhereChild == null || i.familiesWhereChild.isEmpty()) {
+        for (Individual i : g.getIndividuals().values()) {
+            if (i.getFamiliesWhereChild() == null || i.getFamiliesWhereChild().isEmpty()) {
                 continue;
             }
             Set<Individual> kids = new HashSet<>();
-            for (FamilyChild fc : i.familiesWhereChild) {
-                kids.addAll(fc.family.children);
+            for (FamilyChild fc : i.getFamiliesWhereChild()) {
+                kids.addAll(fc.getFamily().getChildren());
             }
             if (kids.size() == 1) {
                 result.add(new IndividualRelatedResult(i, null, null, null));
