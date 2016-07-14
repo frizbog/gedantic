@@ -10,7 +10,7 @@
 				<li>File will <strong>upload immediately</strong> upon selection
 				</li>
 				<li>By uploading a file, <strong>you agree</strong> to our <a href="#" data-toggle="popover" data-trigger="focus"  title="Terms of Use" data-content="You are welcome to use the results from this service in anyway you see fit. Software is provided under the terms of the MIT license: 'as is', no warranty, and no author liability.">terms of use</a> and <a
-					href="#" data-toggle="popover" title="Privacy Statement" data-trigger="focus"  data-content="We don't share your data with anyone. We delete your uploaded file immediately after loading it into memory. That said, please think carefully about uploading private data about living individuals and protect their privacy.">privacy statement</a>.
+					href="#" data-toggle="popover" title="Privacy Statement" data-trigger="focus"  data-content="We don't share your data with anyone. We delete your uploaded file immediately after loading it into memory. That said, note that this is not an HTTPS server so data transmitted is not encrypted. Please think carefully about uploading private data about living individuals and protect their privacy.">privacy statement</a>.
 				<li>The maximum file size for uploads in this demo is <strong>8 MB</strong>.
 				</li>
 				<li>Only GEDCOM files (<strong>GED, GEDCOM</strong>) are allowed.
