@@ -40,7 +40,7 @@ public class ApplicationSetupListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        ; // Nothing
+        // Nothing
     }
 
     @Override

@@ -51,7 +51,7 @@ public class CheckIfGedcomInSessionFilter implements Filter {
 
     @Override
     public void destroy() {
-        ; // Nothing
+        // Nothing
     }
 
     @Override
@@ -61,19 +61,15 @@ public class CheckIfGedcomInSessionFilter implements Filter {
         HttpSession session = httpRequest.getSession();
 
         try {
-            if (httpRequest.getRequestURI().contains(Constants.URL_ABOUT_PAGE)) {
-                // Do nothing special
-            } else if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE) || httpRequest.getRequestURI().equals(httpRequest.getServletContext()
+            if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE) || httpRequest.getRequestURI().equals(httpRequest.getServletContext()
                     .getContextPath() + "/")) {
                 LOG.info("Wiping out session because we're on the uplaod page");
                 session.invalidate();
-            } else {
-                if ((Gedcom) session.getAttribute(Constants.GEDCOM) == null) {
-                    LOG.info("Redirecting from " + httpRequest.getRequestURI() + " to upload page because there is no gedcom in session");
-                    httpRequest.setAttribute(Constants.ALERT_MESSAGE, "Please upload a GEDCOM to analyze");
-                    request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-warning");
-                    request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
-                }
+            } else if ((Gedcom) session.getAttribute(Constants.GEDCOM) == null && !httpRequest.getRequestURI().contains(Constants.URL_ABOUT_PAGE)) {
+                LOG.info("Redirecting from " + httpRequest.getRequestURI() + " to upload page because there is no gedcom in session");
+                httpRequest.setAttribute(Constants.ALERT_MESSAGE, "Please upload a GEDCOM to analyze");
+                request.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-warning");
+                request.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(request, response);
             }
         } catch (ClassCastException e) {
             LOG.error("Found gedcom session attribute but it was not a " + Gedcom.class.getCanonicalName(), e);

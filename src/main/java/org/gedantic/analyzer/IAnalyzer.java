@@ -44,34 +44,34 @@ public interface IAnalyzer {
      *            the {@link Gedcom} to analyze
      * @return a {@link List} of results
      */
-    public List<AResult> analyze(Gedcom g);
+    List<AResult> analyze(Gedcom g);
 
     /**
      * Get a description for this analyzer.
      * 
      * @return the description of this analyzer.
      */
-    public String getDescription();
+    String getDescription();
 
     /**
      * Get the ID (i.e., className) for this analyzer
      * 
      * @return the name of this analyzer
      */
-    public String getId();
+    String getId();
 
     /**
      * Get the short name for this analyzer
      * 
      * @return the name of this analyzer
      */
-    public String getName();
+    String getName();
 
     /**
      * Get the name of the tile to use for displaying the results
      * 
      * @return the name of the tile to use for displaying the results
      */
-    public String getResultsTileName();
+    String getResultsTileName();
 
 }
