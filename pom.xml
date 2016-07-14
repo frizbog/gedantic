@@ -4,7 +4,7 @@
 	<groupId>org.gedantic</groupId>
 	<artifactId>org.gedantic-web</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>Gedantic Web App</name>
 	<description>A web-based demonstration of gedcom4j, that allows users to upload GEDCOM files and perform analyses on their data for possible problems, anomalies, areas to work on, etc.</description>
 	<url>http://gedantic.org</url>

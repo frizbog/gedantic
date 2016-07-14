@@ -25,3 +25,16 @@ body {
 	padding-top: 30px;
 	font-size: 36px;
 }
+
+.list-group {
+    list-style: decimal inside;
+}
+
+.list-group-item {
+    display: list-item;
+    font-weight: bolder;
+}
+
+dl {
+	font-weight: normal;
+}

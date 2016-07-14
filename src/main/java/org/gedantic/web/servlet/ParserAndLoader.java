@@ -59,7 +59,6 @@ class ParserAndLoader implements FileProgressListener {
 
     @Override
     public void progressNotification(FileProgressEvent e) {
-        LOG.debug(e.toString());
         session.setAttribute(Constants.FILE_PROGRESS, e);
     }
 
@@ -73,8 +72,6 @@ class ParserAndLoader implements FileProgressListener {
         session.removeAttribute(Constants.FILE_PROGRESS);
         session.removeAttribute(Constants.PARSE_PROGRESS);
         session.removeAttribute(Constants.UPLOAD_FILE_SIZE);
-        System.gc();
-        long before = Runtime.getRuntime().freeMemory();
         Options.setCollectionInitializationEnabled(true);
         session.setAttribute(Constants.UPLOAD_FILE_SIZE, Long.valueOf(file.length()));
         GedcomParser gp = new GedcomParser();
@@ -117,11 +114,6 @@ class ParserAndLoader implements FileProgressListener {
             }
         }
         gp = null;
-        System.gc();
-        long after = Runtime.getRuntime().freeMemory();
-
-        long diff = before - after;
-        LOG.error("Before: " + before + ", After: " + after + ", Diff: " + diff);
     }
 
 }

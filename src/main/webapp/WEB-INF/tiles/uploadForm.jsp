@@ -7,7 +7,8 @@
 		</div>
 		<div class="panel-body">
 			<ul>
-				<li>File will <strong>upload immediately</strong> upon selection</li>
+				<li>File will <strong>upload immediately</strong> upon selection
+				</li>
 				<li>By uploading a file, <strong>you agree</strong> to our <a href="termsofuse.tiles">terms of use</a> and <a
 					href="privacy.tiles">privacy statement</a>.
 				<li>The maximum file size for uploads in this demo is <strong>8 MB</strong>.
@@ -22,17 +23,26 @@
 		</div>
 	</div>
 	<div id="fileselection">
-		<div class="btn btn-primary fileinput-button"> 
-			<i class="glyphicon glyphicon-plus"></i> <span>Select file</span> <!-- The file input field used as target for the file upload widget -->
+		<button class="btn btn-primary fileinput-button">
+			<i class="glyphicon glyphicon-plus"></i> <span>Select file</span>
+			<!-- The file input field used as target for the file upload widget -->
 			<input id="fileupload" type="file" name="gedcomfile" data-url="uploadGedcom">
+		</button>
+	</div>
+	<div id="progressection" class="container hidden">
+		<!-- The global progress bar -->
+		Upload:
+		<div id="progress" class="progress  ">
+			<div class="progress-bar progress-normal" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+				style="min-width: 2em;">0%</div>
 		</div>
+		Parse:
+		<div id="parseprogress" class="progress  ">
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+				style="min-width: 2em;">0%</div>
+		</div>
+		<!-- The container for the uploaded files -->
 	</div>
-	<!-- The global progress bar -->
-	<div id="progress" class="progress">
-		<div class="progress-bar progress-bar-success"></div>
-	</div>
-	<!-- The container for the uploaded files -->
-	<div id="files" class="files"></div>
 	<br>
 
 </div>
