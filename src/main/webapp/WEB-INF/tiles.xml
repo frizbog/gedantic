@@ -46,6 +46,14 @@
 	<definition name="individualResults" extends="common">
 		<put-attribute name="body" value="/WEB-INF/tiles/individualResults.jsp" />
 	</definition>
+	
+	<definition name="termsofuse" extends="common">
+		<put-attribute name="body" value="/WEB-INF/tiles/termsOfUse.jsp" />
+	</definition>
+
+	<definition name="privacy" extends="common">
+		<put-attribute name="body" value="/WEB-INF/tiles/privacy.jsp" />
+	</definition>
 
 
 </tiles-definitions>

@@ -30,13 +30,11 @@ public class FileProgressServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOG.debug("Getting status...");
         HttpSession session = req.getSession();
         FileProgressEvent fileProgress = (FileProgressEvent) session.getAttribute(Constants.FILE_PROGRESS);
         Long fileSize = (Long) session.getAttribute(Constants.UPLOAD_FILE_SIZE);
         if (fileProgress != null && fileSize != null && fileSize.longValue() != 0) {
             String pctComplete = "" + ((100 * fileProgress.getBytesProcessed()) / fileSize.longValue());
-            LOG.debug(pctComplete + "% complete");
             resp.getWriter().write(pctComplete);
         }
     }

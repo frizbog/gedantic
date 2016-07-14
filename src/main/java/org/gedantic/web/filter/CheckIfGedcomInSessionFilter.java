@@ -32,11 +32,10 @@ public class CheckIfGedcomInSessionFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession();
-        LOG.debug(">" + this.getClass().getName() + ".doFilter() - requestURI = " + httpRequest.getRequestURI());
 
         try {
-            if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE)
-                    || httpRequest.getRequestURI().equals(httpRequest.getServletContext().getContextPath() + "/")) {
+            if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE) || httpRequest.getRequestURI().equals(httpRequest.getServletContext()
+                    .getContextPath() + "/")) {
                 LOG.info("Wiping out session because we're on the uplaod page");
                 session.invalidate();
             } else {
@@ -51,7 +50,6 @@ public class CheckIfGedcomInSessionFilter implements Filter {
             LOG.error("Found gedcom session attribute but it was not a " + Gedcom.class.getCanonicalName(), e);
             httpResponse.sendRedirect(httpRequest.getContextPath() + Constants.URL_UPLOAD_PAGE);
         }
-        LOG.debug("<" + this.getClass().getName() + ".doFilter()");
         chain.doFilter(request, response);
     }
 

@@ -45,13 +45,9 @@ public class AnalyzerServlet extends HttpServlet {
         }
 
         String analyzerId = req.getParameter("analyzerId");
-        LOG.debug("Requested analysis: " + analyzerId);
         IAnalyzer a = AnalyzerList.getInstance().getAnalyzers().get(analyzerId);
-        LOG.debug("Analyzer " + a + " found");
 
         List<AResult> results = a.analyze(g);
-
-        LOG.debug("Analysis complete. " + results.size() + " findings.");
 
         req.setAttribute(Constants.ANALYSIS_NAME, a.getName());
         req.setAttribute(Constants.ANALYSIS_DESCRIPTION, a.getDescription());

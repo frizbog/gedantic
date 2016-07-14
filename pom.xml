@@ -68,14 +68,6 @@
 			<version>9.10.1</version>
 		</dependency>
 
-		<!-- Bower stuff -->
-		<!-- https://mvnrepository.com/artifact/org.webjars.bower/blueimp-tmpl -->
-		<dependency>
-			<groupId>org.webjars.bower</groupId>
-			<artifactId>blueimp-tmpl</artifactId>
-			<version>2.5.4</version>
-		</dependency>
-
 		<!-- Bootstrap 3 -->
 		<dependency>
 			<groupId>org.webjars</groupId>
