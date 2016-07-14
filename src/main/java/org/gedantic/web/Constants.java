@@ -65,4 +65,19 @@ public class Constants {
      * Request attribute name for the name of the analysis description
      */
     public static final String ANALYSIS_DESCRIPTION = "analysisDescription";
+
+    /**
+     * Session attribute name for file load progress
+     */
+    public static final String FILE_PROGRESS = "fileProgress";
+
+    /**
+     * Session attribute name for file parse progress
+     */
+    public static final String PARSE_PROGRESS = "parseProgress";
+
+    /**
+     * Session attribute name for upload file size
+     */
+    public static final String UPLOAD_FILE_SIZE = "uploadFileSize";
 }

@@ -29,6 +29,14 @@
 		<servlet-name>AnalysisServlet</servlet-name>
 		<url-pattern>/analyze</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>FileProgressServlet</servlet-name>
+		<servlet-class>org.gedantic.web.servlet.FileProgressServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FileProgressServlet</servlet-name>
+		<url-pattern>/update-progress</url-pattern>
+	</servlet-mapping>
 
 	<filter>
 		<filter-name>NeedGedcomInSessionFilter</filter-name>

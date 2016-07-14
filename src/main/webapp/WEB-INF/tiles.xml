@@ -9,11 +9,14 @@
 		<put-attribute name="splash" value="/WEB-INF/tiles/blank.jsp" />
 		<put-attribute name="messages" value="/WEB-INF/tiles/messages.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+		<put-list-attribute name="cssfiles">
+			<add-attribute value="webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
+			<add-attribute value="css/gedantic.custom.css" />
+		</put-list-attribute>
 		<put-list-attribute name="javascripts">
-			<add-attribute value="webjars/jquery/2.1.1/jquery.min.js" />
-			<add-attribute value="webjars/bootstrap/3.2.0/js/bootstrap.min.js" />
-			<add-attribute
-				value="webjars/bootstrap-filestyle/1.1.2/bootstrap-filestyle.js" />
+			<add-attribute value="webjars/jquery/2.2.4/jquery.min.js" />
+			<add-attribute value="webjars/bootstrap/3.3.6/js/bootstrap.min.js" />
+			<add-attribute value="webjars/bootstrap-filestyle/1.1.2/bootstrap-filestyle.js" />
 			<add-attribute value="js/global.js" />
 		</put-list-attribute>
 	</definition>
@@ -21,7 +24,17 @@
 	<definition name="upload" extends="common">
 		<put-attribute name="splash" value="/WEB-INF/tiles/splash.jsp" />
 		<put-attribute name="body" value="/WEB-INF/tiles/uploadForm.jsp" />
+		<put-list-attribute name="cssfiles" inherit="true">
+			<add-attribute value="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload.css" />
+			<add-attribute value="webjars/jquery-file-upload/9.10.1/css/jquery.fileupload-ui.css" />
+		</put-list-attribute>
 		<put-list-attribute name="javascripts" inherit="true">
+			<add-attribute value="webjars/jquery-ui/1.11.4/jquery-ui.min.js" />
+			<add-attribute value="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload.js" />
+			<add-attribute value="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload-process.js" />
+			<add-attribute value="webjars/jquery-file-upload/9.10.1/js/jquery.fileupload-ui.js" />
+			<add-attribute value="webjars/jquery-file-upload/9.10.1/js/jquery.iframe-transport.js" />
+			<add-attribute value="webjars/blueimp-tmpl/2.5.4/js/tmpl.min.js" />
 			<add-attribute value="js/uploadForm.js" />
 		</put-list-attribute>
 	</definition>
