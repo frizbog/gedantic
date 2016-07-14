@@ -33,21 +33,6 @@ package org.gedantic.web;
  */
 public class Constants {
     /**
-     * The page for doing an upload of a GEDCOM file
-     */
-    public static final String URL_UPLOAD_PAGE = "/upload.tiles";
-
-    /**
-     * The page for picking an analysis to perform on the loaded file
-     */
-    public static final String URL_ANALYSIS_MENU = "/analyzeMenu.tiles";
-
-    /**
-     * The page for displaying analysis results
-     */
-    public static final String URL_ANALYSIS_INDIVIDUAL_RESULTS = "/individualResults.tiles";
-
-    /**
      * Request attribute name for alerts
      */
     public static final String ALERT_MESSAGE = "message";
@@ -58,29 +43,9 @@ public class Constants {
     public static final String ALERT_MESSAGE_TYPE = "messageType";
 
     /**
-     * Request attribute name for the name of the loaded gedcom file
+     * Request attribute name for the name of the analysis description
      */
-    public static final String GEDCOM_NAME = "gedcomName";
-
-    /**
-     * Session attribute name for the loaded gedcom file
-     */
-    public static final String GEDCOM = "gedcom";
-
-    /**
-     * Session attribute name for the number of individuals in the GEDCOM file
-     */
-    public static final String NUM_INDIVIDUALS = "numIndividuals";
-
-    /**
-     * Session attribute name for the number of families in the GEDCOM file
-     */
-    public static final String NUM_FAMILIES = "numFamilies";
-
-    /**
-     * Request attribute name for the name of the analysis results
-     */
-    public static final String RESULTS = "results";
+    public static final String ANALYSIS_DESCRIPTION = "analysisDescription";
 
     /**
      * Request attribute name for the name of the analysis name
@@ -88,14 +53,29 @@ public class Constants {
     public static final String ANALYSIS_NAME = "analysisName";
 
     /**
-     * Request attribute name for the name of the analysis description
-     */
-    public static final String ANALYSIS_DESCRIPTION = "analysisDescription";
-
-    /**
      * Session attribute name for file load progress
      */
     public static final String FILE_PROGRESS = "fileProgress";
+
+    /**
+     * Session attribute name for the loaded gedcom file
+     */
+    public static final String GEDCOM = "gedcom";
+
+    /**
+     * Request attribute name for the name of the loaded gedcom file
+     */
+    public static final String GEDCOM_NAME = "gedcomName";
+
+    /**
+     * Session attribute name for the number of families in the GEDCOM file
+     */
+    public static final String NUM_FAMILIES = "numFamilies";
+
+    /**
+     * Session attribute name for the number of individuals in the GEDCOM file
+     */
+    public static final String NUM_INDIVIDUALS = "numIndividuals";
 
     /**
      * Session attribute name for file parse progress
@@ -103,7 +83,32 @@ public class Constants {
     public static final String PARSE_PROGRESS = "parseProgress";
 
     /**
+     * Request attribute name for the name of the analysis results
+     */
+    public static final String RESULTS = "results";
+
+    /**
      * Session attribute name for upload file size
      */
     public static final String UPLOAD_FILE_SIZE = "uploadFileSize";
+
+    /**
+     * Portion of URL for the "about" page
+     */
+    public static final CharSequence URL_ABOUT_PAGE = "/about.tiles";
+
+    /**
+     * The page for displaying analysis results
+     */
+    public static final String URL_ANALYSIS_INDIVIDUAL_RESULTS = "/individualResults.tiles";
+
+    /**
+     * The page for picking an analysis to perform on the loaded file
+     */
+    public static final String URL_ANALYSIS_MENU = "/analyzeMenu.tiles";
+
+    /**
+     * The page for doing an upload of a GEDCOM file
+     */
+    public static final String URL_UPLOAD_PAGE = "/upload.tiles";
 }

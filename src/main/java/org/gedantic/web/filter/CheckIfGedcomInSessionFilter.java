@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A servlet filter that ensures theres a {@link Gedcom} loaded in session, and if not, redirect to the upload page.
+ * Except for certain pages, of course.
  * 
  * @author frizbog
  */
@@ -60,7 +61,9 @@ public class CheckIfGedcomInSessionFilter implements Filter {
         HttpSession session = httpRequest.getSession();
 
         try {
-            if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE) || httpRequest.getRequestURI().equals(httpRequest.getServletContext()
+            if (httpRequest.getRequestURI().contains(Constants.URL_ABOUT_PAGE)) {
+                // Do nothing special
+            } else if (httpRequest.getRequestURI().contains(Constants.URL_UPLOAD_PAGE) || httpRequest.getRequestURI().equals(httpRequest.getServletContext()
                     .getContextPath() + "/")) {
                 LOG.info("Wiping out session because we're on the uplaod page");
                 session.invalidate();
