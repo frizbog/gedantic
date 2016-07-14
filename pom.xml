@@ -131,6 +131,36 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>3.0.rc1</version>
+				<configuration>
+					<header>LICENSE-gedantic.txt</header>
+					<includes>
+						<include>src/test/java/**</include>
+						<include>src/main/java/**</include>
+						<include>src/main/webapp/**</include>
+					</includes>
+					<excludes>
+						<exclude>src/main/webapp/licenses.html</exclude>
+						<exclude>src/main/webapp/WEB-INF/web.xml</exclude>
+					</excludes>
+					<mapping>
+						<java>SLASHSTAR_STYLE</java>
+						<js>SLASHSTAR_STYLE</js>
+						<css>SLASHSTAR_STYLE</css>
+						<jsp>DYNASCRIPT_STYLE</jsp>
+					</mapping>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
