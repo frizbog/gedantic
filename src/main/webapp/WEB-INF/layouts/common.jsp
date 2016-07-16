@@ -38,6 +38,10 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width" />
+<meta name="description" content="Analyze your GEDCOM file. Find inconsistencies, missing data to go look for, things to clean up, etc." />
+<meta name="keywords" content="gedcom, genealogy, analysis, analyze, gedcom4j" />
+<meta name="author" content="Matthew R. Harrah">
+<meta name="robots" content="index, follow">
 <c:forEach var="css" items="${cssfiles}">
 	<link rel='stylesheet'
 		href='<c:url value="${css}"/>'/>
