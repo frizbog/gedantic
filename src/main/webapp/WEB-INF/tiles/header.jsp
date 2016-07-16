@@ -41,9 +41,9 @@
 			<c:if test="${not empty gedcomName && not empty gedcom}">
 				<p>
 					<a href="#" data-toggle="popover" data-placement="left"
-						data-content="${numIndividuals} individuals, ${numFamilies} famil(ies)">
+						data-content="${numIndividuals} individuals, ${numFamilies} family/families">
 						<button class="btn btn-default btn-lg"
-							title="Click for information about the uplaoded file">
+							title="Click for information about the uploaded file">
 							<span class="glyphicon glyphicon-info-sign"></span>
 							${gedcomName}
 						</button>

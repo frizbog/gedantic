@@ -145,6 +145,7 @@
 					<excludes>
 						<exclude>src/main/webapp/licenses.html</exclude>
 						<exclude>src/main/webapp/WEB-INF/web.xml</exclude>
+						<exclude>src/main/webapp/sitemap.xml</exclude>
 					</excludes>
 					<mapping>
 						<java>SLASHSTAR_STYLE</java>
