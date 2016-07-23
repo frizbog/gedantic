@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>org.gedcom4j</groupId>
 			<artifactId>gedcom4j</artifactId>
-			<version>3.0.0-SNAPSHOT</version>
+			<version>3.0.1</version>
 		</dependency>
 
 
@@ -146,6 +146,7 @@
 						<exclude>src/main/webapp/licenses.html</exclude>
 						<exclude>src/main/webapp/WEB-INF/web.xml</exclude>
 						<exclude>src/main/webapp/sitemap.xml</exclude>
+						<exclude>src/main/webapp/BingSiteAuth.xml</exclude>
 					</excludes>
 					<mapping>
 						<java>SLASHSTAR_STYLE</java>
