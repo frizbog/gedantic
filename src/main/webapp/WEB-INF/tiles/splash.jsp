@@ -41,7 +41,7 @@
 			<dt>7/22/2016</dt>
 			<dd>
 				New!
-				<string>Couples without Children</string>
+				<strong>Couples without Children</strong>
 				analysis available
 			</dd>
 		</dl>
