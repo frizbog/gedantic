@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2016 Matthew R. Harrah
+ * Copyright (c) 2016 Matthew R. Harrah
  *
  * MIT License
  *
