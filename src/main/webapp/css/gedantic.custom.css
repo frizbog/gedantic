@@ -33,6 +33,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 4em;
+  padding-top: 65px;
 }
 .footer {
   position: absolute;
@@ -48,7 +49,6 @@ body {
 }
 
 .navbar-brand {
-	padding-top: 30px;
 	font-size: 36px;
 }
 
@@ -70,6 +70,7 @@ body {
 .jumbotron {
 	background-color: #337ab7;
 	color:white;
+	margin-bottom: 0px;
 }
 
 

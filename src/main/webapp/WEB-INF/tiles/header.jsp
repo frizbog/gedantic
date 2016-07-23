@@ -28,34 +28,36 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<nav id="header" class="navbar navbar-default navbar-static-top">
-	<div class="container">
-		<div class="navbar-brand">
-			<a href="analyzeMenu.tiles">gedantic</a>
-		</div>
 
-		<div class="navbar-text navbar-right">
-			<c:if test="${empty gedcomName || empty gedcom}">
-			<p class="well">No GEDCOM loaded</p>
-			</c:if>
-			<c:if test="${not empty gedcomName && not empty gedcom}">
-				<p>
-					<a href="#" data-toggle="popover" data-placement="left"
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="analyzeMenu.tiles">gedantic</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+			<c:choose>
+			<c:when test="${empty gedcomName || empty gedcom}">
+			<li class="active"><a href="uploadGedcom.tiles">No GEDCOM loaded</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="analyzeMenu.tiles">Select Analysis</a></li>
+				<li><a href="#" data-toggle="popover" data-placement="bottom" tabindex="0" role="button" data-trigger="focus" 
 						data-content="${numIndividuals} individuals, ${numFamilies} family/families">
-						<button class="btn btn-info btn-lg"
-							title="Click for information about the uploaded file">
-							<span class="glyphicon glyphicon-info-sign"></span>
-							${gedcomName}
-						</button>
-					</a> <a href="upload.tiles">
-						<button class="btn btn-primary btn-lg"
-							title="Click to load a different GEDCOM file for analysis">
-							<span class="glyphicon glyphicon-upload"></span> Upload another
-							file
-						</button>
-					</a>
-				</p>
-			</c:if>
+							<span class="glyphicon glyphicon-info-sign"></span> ${gedcomName}
+					</a></li>
+				<li class="active"><a href="upload.tiles">
+							<span class="glyphicon glyphicon-upload"></span> Upload another file
+					</a></li>
+			</c:otherwise>
+			</c:choose>
+			</ul>
 		</div>
 	</div>
 </nav>
+

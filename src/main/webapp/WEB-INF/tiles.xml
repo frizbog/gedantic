@@ -46,6 +46,7 @@
 			<add-attribute value="webjars/bootstrap/3.3.6/js/bootstrap.min.js" />
 			<add-attribute value="webjars/bootstrap-filestyle/1.1.2/bootstrap-filestyle.js" />
 			<add-attribute value="webjars/bootstrap/3.3.6/js/tooltip.js"/>
+			<add-attribute value="webjars/bootstrap/3.3.6/js/collapse.js"/>
 			<add-attribute value="js/global.js" />
 		</put-list-attribute>
 	</definition>
