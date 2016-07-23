@@ -66,6 +66,14 @@ body {
 	color:white;
 }
 
+
+.jumbotron {
+	background-color: #337ab7;
+	color:white;
+}
+
+
+
 dl {
 	font-weight: normal;
 }

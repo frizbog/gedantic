@@ -27,22 +27,11 @@
 
 --%>
 <div class="container">
-	<div class="bs-callout bs-callout-primary">
-		<h4>News</h4>
-		<dl class="dl-horizontal">
-			<dt>7/22/2016</dt>
-			<dd>
-				New!
-				<string>Couples without Children</string>
-				analysis available
-			</dd>
-		</dl>
-	</div>
 	<legend>Upload a GEDCOM file for analysis</legend>
 	<!-- The upload button -->
 	<div id="terms" class="panel panel-warning">
 		<div class="panel-heading">
-			<h3 class="panel-title">Please read</h3>
+			<h3 class="panel-title">Instructions and Information</h3>
 		</div>
 		<div class="panel-body">
 			<ul>

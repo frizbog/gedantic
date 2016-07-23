@@ -27,11 +27,23 @@
 
 --%>
 
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Analyze your GEDCOM file</h1>
-			<p>Find inconsistencies, missing data to go look for, things to
-				clean up, etc.</p>
-		</div>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+	<div class="container">
+		<h1>Analyze your GEDCOM file</h1>
+		<p>Find inconsistencies, missing data to go look for, things to clean up, etc.</p>
 	</div>
+</div>
+<div class="container">
+	<div class="bs-callout bs-callout-success">
+		<h4>News</h4>
+		<dl class="dl-horizontal">
+			<dt>7/22/2016</dt>
+			<dd>
+				New!
+				<string>Couples without Children</string>
+				analysis available
+			</dd>
+		</dl>
+	</div>
+</div>
