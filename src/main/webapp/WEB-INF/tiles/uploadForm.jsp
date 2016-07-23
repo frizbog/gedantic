@@ -27,6 +27,17 @@
 
 --%>
 <div class="container">
+	<div class="bs-callout bs-callout-primary">
+		<h4>News</h4>
+		<dl class="dl-horizontal">
+			<dt>7/22/2016</dt>
+			<dd>
+				New!
+				<string>Couples without Children</string>
+				analysis available
+			</dd>
+		</dl>
+	</div>
 	<legend>Upload a GEDCOM file for analysis</legend>
 	<!-- The upload button -->
 	<div id="terms" class="panel panel-warning">
@@ -85,11 +96,13 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Upload Failed</h4>
 				</div>
-				<div class="modal-body">Your file upload failed.  Please double-check a few things before retrying:
-				<ul>
-				<li><strong>Only GEDCOM files are allowed.</strong> They need to have a .ged or .gedcom extension.</li>
-				<li><strong>Files must be 8MB or smaller.</strong> You will need to reduce the size of your GEDCOM file (remove individuals, families, notes, multimedia, etc.) in order to submit it.</li> 
-				</ul>
+				<div class="modal-body">
+					Your file upload failed. Please double-check a few things before retrying:
+					<ul>
+						<li><strong>Only GEDCOM files are allowed.</strong> They need to have a .ged or .gedcom extension.</li>
+						<li><strong>Files must be 8MB or smaller.</strong> You will need to reduce the size of your GEDCOM file (remove
+							individuals, families, notes, multimedia, etc.) in order to submit it.</li>
+					</ul>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
