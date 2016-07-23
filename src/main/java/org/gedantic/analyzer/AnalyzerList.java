@@ -73,6 +73,8 @@ public final class AnalyzerList {
 
         addAnalyzer(new CouplesWithoutChildrenAnalyzer());
         addAnalyzer(new MarriagesWithoutDatesAnalyzer());
+        addAnalyzer(new DatesButNoPlacesAnalyzer());
+        addAnalyzer(new PlacesButNoDatesAnalyzer());
     }
 
     /**

@@ -47,7 +47,8 @@
 			<div class="panel-body">
 				<ol class="list-group">
 					<c:forEach items="${results}" var="result">
-						<li class="list-group-item"><span class="list-group-item-heading">${result.individual}</span>
+						<li class="list-group-item"><span class="list-group-item-heading">${result.individual.formattedName}
+						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.individual}"></span>
 							<dl class="dl-horizontal">
 								<c:if test="${not empty result.factType}">
 									<dt>Fact type</dt>

@@ -44,13 +44,14 @@
 		</nav>
 
 		<div id="resultsPanel" class="panel panel-primary">
-			<div class="panel-heading">${fn:length(results)}finding(s).</div>
+			<div class="panel-heading">${fn:length(results)} finding(s).</div>
 			<div class="panel-body">
 				<ol class="list-group">
 					<c:forEach items="${results}" var="result">
 						<c:if test="${class:hasProperty(result, 'individual')}">
 							<%-- individual result --%>
-							<li class="list-group-item"><span class="list-group-item-heading">Individual: ${result.individual}</span>
+							<li class="list-group-item"><span class="list-group-item-heading">Individual: ${result.individual.formattedName}
+							<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.individual}"></span></span>
 								<dl class="dl-horizontal">
 									<c:if test="${not empty result.factType}">
 										<dt>Fact type</dt>
@@ -70,13 +71,13 @@
 							<%-- family result --%>
 							<li class="list-group-item"><span class="list-group-item-heading">Family: 
 								<c:choose>
-									<c:when test="${not empty result.family.husband}">${result.family.husband} and
+									<c:when test="${not empty result.family.husband}">${result.family.husband.formattedName} <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.husband}"></span> and
 										<c:choose>
-											<c:when test="${not empty result.family.wife}">${result.family.wife}</c:when>
+											<c:when test="${not empty result.family.wife}">${result.family.wife.formattedName} <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.wife}"></span> </c:when>
 											<c:otherwise>unknown wife</c:otherwise>
 										</c:choose>
 									</c:when>
-									<c:otherwise>${result.family.wife} and unknown husband</c:otherwise>
+									<c:otherwise>${result.family.wife.formattedName} <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.wife}"></span> and unknown husband</c:otherwise>
 								</c:choose>
 							</span>
 								<dl class="dl-horizontal">

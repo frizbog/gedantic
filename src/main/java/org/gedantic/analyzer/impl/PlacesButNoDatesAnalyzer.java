@@ -39,11 +39,11 @@ import org.gedantic.web.Constants;
 import org.gedcom4j.model.*;
 
 /**
- * Analyzer that finds facts without any source citations
+ * Analyzer that finds Events with places, but no dates
  * 
  * @author frizbog
  */
-public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
+public class PlacesButNoDatesAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}
@@ -52,21 +52,20 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
     public List<AResult> analyze(Gedcom g) {
         List<AResult> result = new ArrayList<>();
         for (Individual i : g.getIndividuals().values()) {
-            for (PersonalName n : i.getNames()) {
-                if (n.getCitations().isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, "Name", n.toString(), null));
-                }
-            }
             for (IndividualEvent e : i.getEvents()) {
-                if (e.getCitations().isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, e.getType().getDisplay(), getEventShortDescription(e), null));
+                boolean hasDate = e.getDate() != null && e.getDate().getValue() != null;
+                boolean hasPlace = e.getPlace() != null;
+                if (!hasDate & hasPlace) {
+                    result.add(new IndividualRelatedResult(i, e.getType().getDisplay(), e.getPlace().toString(), null));
                 }
             }
         }
         for (Family f : g.getFamilies().values()) {
             for (FamilyEvent e : f.getEvents()) {
-                if (e.getCitations().isEmpty()) {
-                    result.add(new FamilyRelatedResult(f, e.getType().getDisplay(), getEventShortDescription(e), null));
+                boolean hasDate = e.getDate() != null && e.getDate().getValue() != null;
+                boolean hasPlace = e.getPlace() != null;
+                if (!hasDate & hasPlace) {
+                    result.add(new FamilyRelatedResult(f, e.getType().getDisplay(), e.getPlace().toString(), null));
                 }
             }
         }
@@ -79,7 +78,7 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "Facts (events, names, etc.) without source citations";
+        return "Events that have places, but no date information";
     }
 
     /**
@@ -87,7 +86,7 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getName() {
-        return "Facts without sources";
+        return "Places but no dates";
     }
 
     /**
@@ -96,29 +95,6 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
     @Override
     public String getResultsTileName() {
         return Constants.URL_ANALYSIS_MIXED_RESULTS;
-    }
-
-    /**
-     * Get a short description of an event, consisting of date and place name.
-     * 
-     * @param e
-     *            the event
-     * @return a short description of an event, consisting of date and place name.
-     */
-    private String getEventShortDescription(AbstractEvent e) {
-        StringBuilder sb = new StringBuilder("Date: ");
-        if (e.getDate() != null) {
-            sb.append(e.getDate());
-        } else {
-            sb.append("(no value)");
-        }
-        sb.append(", Place: ");
-        if (e.getPlace() == null || e.getPlace().getPlaceName() == null || e.getPlace().getPlaceName().trim().isEmpty()) {
-            sb.append("(no value)");
-        } else {
-            sb.append(e.getPlace().getPlaceName());
-        }
-        return sb.toString();
     }
 
 }
