@@ -73,6 +73,10 @@
 	<definition name="individualResults" extends="common">
 		<put-attribute name="body" value="/WEB-INF/tiles/individualResults.jsp" />
 	</definition>
+
+	<definition name="coupleResults" extends="common">
+		<put-attribute name="body" value="/WEB-INF/tiles/coupleResults.jsp" />
+	</definition>
 	
 	<definition name="about" extends="common">
 		<put-attribute name="body" value="/WEB-INF/tiles/about.jsp" />

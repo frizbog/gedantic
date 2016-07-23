@@ -98,7 +98,12 @@ public class Constants {
     public static final CharSequence URL_ABOUT_PAGE = "/about.tiles";
 
     /**
-     * The page for displaying analysis results
+     * The page for displaying analysis results about couples
+     */
+    public static final String URL_ANALYSIS_COUPLE_RESULTS = "/coupleResults.tiles";
+
+    /**
+     * The page for displaying analysis results about individuals
      */
     public static final String URL_ANALYSIS_INDIVIDUAL_RESULTS = "/individualResults.tiles";
 

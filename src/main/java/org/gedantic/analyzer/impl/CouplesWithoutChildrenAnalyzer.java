@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Matthew R. Harrah
+ * Copyright (c) 2009-2016 Matthew R. Harrah
  *
  * MIT License
  *
@@ -27,75 +27,46 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
-import org.gedantic.analyzer.IndividualRelatedResult;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.analyzer.FamilyRelatedResult;
 import org.gedantic.web.Constants;
+import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
-import org.gedcom4j.model.Individual;
-import org.gedcom4j.model.IndividualEvent;
-import org.gedcom4j.model.IndividualEventType;
 
 /**
+ * An analyzer that finds couples without children.
+ * 
  * @author frizbog
  */
-public class PeopleWithoutBirthDatesAnalyzer extends AAnalyzer {
+public class CouplesWithoutChildrenAnalyzer extends AAnalyzer {
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<AResult> analyze(Gedcom g) {
-
         List<AResult> result = new ArrayList<>();
-
-        for (Individual i : g.getIndividuals().values()) {
-            if (i.getNames() == null || i.getNames().isEmpty()) {
-                continue;
-            }
-            List<IndividualEvent> births = i.getEventsOfType(IndividualEventType.BIRTH);
-            if (births.isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, null, "No birth events."));
-            } else {
-                for (IndividualEvent b : births) {
-                    if (b.getDate() == null || b.getDate().getValue() == null || b.getDate().getValue().isEmpty() || "UNKNOWN"
-                            .equalsIgnoreCase(b.getDate().getValue())) {
-                        result.add(new IndividualRelatedResult(i, null, null, "Birth event with no date."));
-                    }
-                }
+        for (Family f : g.getFamilies().values()) {
+            if (f.getWife() != null && f.getHusband() != null && (f.getChildren() == null || f.getChildren().isEmpty())) {
+                result.add(new FamilyRelatedResult(f, null, null, null));
             }
         }
-
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getDescription() {
-        return "People who have no birth dates";
+        return "Families where there are spouses but no children";
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getName() {
-        return "People without birth dates";
+        return "Couples without children";
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
+        return Constants.URL_ANALYSIS_COUPLE_RESULTS;
     }
 
 }

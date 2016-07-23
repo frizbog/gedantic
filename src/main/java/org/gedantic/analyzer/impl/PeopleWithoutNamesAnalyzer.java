@@ -26,9 +26,9 @@
  */
 package org.gedantic.analyzer.impl;
 
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -59,9 +59,11 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
                 result.add(r);
             } else {
                 for (PersonalName pn : i.getNames()) {
-                    if ("//".equals(pn.getBasic()) && (notSpecified(pn.getPrefix()) && notSpecified(pn.getGivenName()) && notSpecified(pn.getNickname())
-                            && notSpecified(pn.getSurnamePrefix()) && notSpecified(pn.getSurname()) && notSpecified(pn.getSuffix()))) {
-                        IndividualRelatedResult r = new IndividualRelatedResult(i, null, null, "One of this individual's names is blank");
+                    if ("//".equals(pn.getBasic()) && (notSpecified(pn.getPrefix()) && notSpecified(pn.getGivenName())
+                            && notSpecified(pn.getNickname()) && notSpecified(pn.getSurnamePrefix()) && notSpecified(pn
+                                    .getSurname()) && notSpecified(pn.getSuffix()))) {
+                        IndividualRelatedResult r = new IndividualRelatedResult(i, null, null,
+                                "One of this individual's names is blank");
                         result.add(r);
                     }
                 }
@@ -94,30 +96,6 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
     @Override
     public String getResultsTileName() {
         return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
-    }
-
-    /**
-     * Get all the surnames for an individual
-     * 
-     * @param i
-     *            the individual
-     * @return a Set of all the surnames (as Strings)
-     */
-    private Set<String> getSurnamesFromIndividual(Individual i) {
-        TreeSet<String> result = new TreeSet<String>();
-        Pattern pattern = Pattern.compile(".*\\/(.*)\\/.*");
-        for (PersonalName pn : i.getNames()) {
-            if (pn.getSurname() != null) {
-                result.add(pn.getSurname().getValue());
-            }
-            if (pn.getBasic() != null) {
-                Matcher matcher = pattern.matcher(pn.getBasic());
-                while (matcher.find()) {
-                    result.add(matcher.group(1));
-                }
-            }
-        }
-        return result;
     }
 
     /**

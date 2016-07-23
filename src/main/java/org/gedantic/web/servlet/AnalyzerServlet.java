@@ -73,7 +73,7 @@ public class AnalyzerServlet extends HttpServlet {
         String analyzerId = req.getParameter("analyzerId");
         IAnalyzer a = AnalyzerList.getInstance().getAnalyzers().get(analyzerId);
 
-        List<AResult> results = a.analyze(g);
+        List<? extends AResult> results = a.analyze(g);
 
         req.setAttribute(Constants.ANALYSIS_NAME, a.getName());
         req.setAttribute(Constants.ANALYSIS_DESCRIPTION, a.getDescription());
