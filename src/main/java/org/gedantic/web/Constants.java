@@ -113,6 +113,11 @@ public class Constants {
     public static final String URL_ANALYSIS_MENU = "/analyzeMenu.tiles";
 
     /**
+     * The page for displaying analysis results about individuals and families mixed together
+     */
+    public static final String URL_ANALYSIS_MIXED_RESULTS = "/mixedResults.tiles";
+
+    /**
      * The page for doing an upload of a GEDCOM file
      */
     public static final String URL_UPLOAD_PAGE = "/upload.tiles";

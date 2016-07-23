@@ -32,16 +32,14 @@ import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.FamilyRelatedResult;
 import org.gedantic.analyzer.IndividualRelatedResult;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.analyzer.comparator.MixedResultSortComparator;
 import org.gedantic.web.Constants;
-import org.gedcom4j.model.Gedcom;
-import org.gedcom4j.model.Individual;
-import org.gedcom4j.model.IndividualEvent;
-import org.gedcom4j.model.PersonalName;
+import org.gedcom4j.model.*;
 
 /**
- * Analyzer that finds facts without any source citations
+ * Analyzer that finds Individual facts without any source citations
  * 
  * @author frizbog
  */
@@ -61,11 +59,18 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
             }
             for (IndividualEvent e : i.getEvents()) {
                 if (e.getCitations().isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, e.getType().getDisplay(), e.toString(), null));
+                    result.add(new IndividualRelatedResult(i, e.getType().getDisplay(), getEventShortDescription(e), null));
                 }
             }
         }
-        Collections.sort(result, new IndividualResultSortComparator());
+        for (Family f : g.getFamilies().values()) {
+            for (FamilyEvent e : f.getEvents()) {
+                if (e.getCitations().isEmpty()) {
+                    result.add(new FamilyRelatedResult(f, e.getType().getDisplay(), getEventShortDescription(e), null));
+                }
+            }
+        }
+        Collections.sort(result, new MixedResultSortComparator());
         return result;
     }
 
@@ -90,7 +95,30 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
+        return Constants.URL_ANALYSIS_MIXED_RESULTS;
+    }
+
+    /**
+     * Get a short description of an event, consisting of date and place name.
+     * 
+     * @param e
+     *            the event
+     * @return a short description of an event, consisting of date and place name.
+     */
+    private String getEventShortDescription(AbstractEvent e) {
+        StringBuilder sb = new StringBuilder("Date: ");
+        if (e.getDate() != null) {
+            sb.append(e.getDate());
+        } else {
+            sb.append("(no value)");
+        }
+        sb.append(", Place: ");
+        if (e.getPlace() == null || e.getPlace().getPlaceName() == null || e.getPlace().getPlaceName().trim().isEmpty()) {
+            sb.append("(no value)");
+        } else {
+            sb.append(e.getPlace().getPlaceName());
+        }
+        return sb.toString();
     }
 
 }

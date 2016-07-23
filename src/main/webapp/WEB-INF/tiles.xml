@@ -74,6 +74,10 @@
 		<put-attribute name="body" value="/WEB-INF/tiles/individualResults.jsp" />
 	</definition>
 
+	<definition name="mixedResults" extends="common">
+		<put-attribute name="body" value="/WEB-INF/tiles/mixedResults.jsp" />
+	</definition>
+
 	<definition name="coupleResults" extends="common">
 		<put-attribute name="body" value="/WEB-INF/tiles/coupleResults.jsp" />
 	</definition>
