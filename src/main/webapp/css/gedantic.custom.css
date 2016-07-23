@@ -78,6 +78,10 @@ dl {
 	font-weight: normal;
 }
 
+.dl-horizontal {
+	margin-bottom: 0px;
+}
+
 .bs-callout {
     padding: 20px;
     margin: 20px 0;

@@ -44,6 +44,15 @@
 				<strong>Couples without Children</strong>
 				analysis available
 			</dd>
+			<dt>7/23/2016</dt>
+			<dd>
+			<div>
+				New!
+				<strong>Dates but no Places</strong>, <strong>Places but no Dates</strong>, and <strong>Marriages without Dates</strong>
+				analyses available.
+			</div>
+			<div>Improved! <strong>Facts without Sources</strong> analysis now includes family events</div>
+			</dd>
 		</dl>
 	</div>
 </div>
