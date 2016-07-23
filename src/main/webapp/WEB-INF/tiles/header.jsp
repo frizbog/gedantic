@@ -42,13 +42,13 @@
 				<p>
 					<a href="#" data-toggle="popover" data-placement="left"
 						data-content="${numIndividuals} individuals, ${numFamilies} family/families">
-						<button class="btn btn-default btn-lg"
+						<button class="btn btn-info btn-lg"
 							title="Click for information about the uploaded file">
 							<span class="glyphicon glyphicon-info-sign"></span>
 							${gedcomName}
 						</button>
 					</a> <a href="upload.tiles">
-						<button class="btn btn-default btn-lg"
+						<button class="btn btn-primary btn-lg"
 							title="Click to load a different GEDCOM file for analysis">
 							<span class="glyphicon glyphicon-upload"></span> Upload another
 							file

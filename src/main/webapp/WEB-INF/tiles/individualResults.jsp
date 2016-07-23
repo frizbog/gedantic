@@ -37,7 +37,7 @@
 	</c:if>
 	<c:if test="${not empty results}">
 		<nav class="navbar">
-			<a href="analyzeMenu.tiles"><button class="btn btn-default">
+			<a href="analyzeMenu.tiles"><button class="btn btn-primary">
 					<span class="glyphicon glyphicon-chevron-left"></span>Perform another analysis
 				</button></a>
 		</nav>
@@ -69,7 +69,7 @@
 	</c:if>
 
 	<nav class="navbar">
-		<a href="analyzeMenu.tiles"><button class="btn btn-default">
+		<a href="analyzeMenu.tiles"><button class="btn btn-primary">
 				<span class="glyphicon glyphicon-chevron-left"></span>Perform another analysis
 			</button></a>
 	</nav>

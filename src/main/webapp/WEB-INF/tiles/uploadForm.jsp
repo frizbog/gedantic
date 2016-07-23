@@ -27,11 +27,9 @@
 
 --%>
 <div class="container">
-	<legend>Upload a GEDCOM file for analysis</legend>
-	<!-- The upload button -->
-	<div id="terms" class="panel panel-warning">
+	<div id="terms" class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">Instructions and Information</h3>
+			<h3 class="panel-title">Upload a GEDCOM file for analysis</h3>
 		</div>
 		<div class="panel-body">
 			<ul>
@@ -53,13 +51,16 @@
 				</li>
 			</ul>
 		</div>
-	</div>
-	<div id="fileselection">
-		<button class="btn btn-primary fileinput-button">
-			<i class="glyphicon glyphicon-plus"></i> <span>Select file</span>
-			<!-- The file input field used as target for the file upload widget -->
-			<input id="fileupload" type="file" name="gedcomfile" data-url="uploadGedcom">
-		</button>
+		<div class="container">
+			<div id="fileselection">
+				<button class="btn btn-primary fileinput-button">
+					<i class="glyphicon glyphicon-plus"></i> <span>Select file</span>
+					<!-- The file input field used as target for the file upload widget -->
+					<input id="fileupload" type="file" name="gedcomfile" data-url="uploadGedcom">
+				</button>
+			</div>
+			<p/>
+		</div>
 	</div>
 	<div id="progressection" class="container hidden">
 		<!-- The global progress bar -->
