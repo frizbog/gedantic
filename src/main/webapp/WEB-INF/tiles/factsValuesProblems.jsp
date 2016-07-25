@@ -26,13 +26,19 @@
     OTHER DEALINGS IN THE SOFTWARE.
 
 --%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<li class="list-group-item"><span class="list-group-item-heading">${result.individual.formattedName} 
-	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.individual}" ></span> 
-	
-	<tiles:insertAttribute name="factsValuesProblems" />
-	
-</li>
+<dl class="dl-horizontal">
+	<c:if test="${not empty result.factType}">
+		<dt>Fact type</dt>
+		<dd>${result.factType}</dd>
+	</c:if>
+	<c:if test="${not empty result.value}">
+		<dt>Value</dt>
+		<dd>${result.value}</dd>
+	</c:if>
+	<c:if test="${not empty result.problem}">
+		<dt>Problem</dt>
+		<dd>${result.problem}</dd>
+	</c:if>
+</dl>

@@ -28,53 +28,13 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<div class="container">
-	<h1>${analysisName}<br /> <small>${analysisDescription}</small>
-	</h1>
-	<c:if test="${empty results}">
-		<div id="resultsPanel" class="panel panel-success">No sources match the analysis criteria.</div>
-	</c:if>
-	<c:if test="${not empty results}">
-		<nav class="navbar">
-			<a href="analyzeMenu.tiles"><button class="btn btn-primary">
-					<span class="glyphicon glyphicon-chevron-left"></span>Perform another analysis
-				</button></a>
-		</nav>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<li class="list-group-item"><span class="list-group-item-heading">
+	<c:choose>
+		<c:when test="${not empty result.source.title}">${result.source.title[0]}</c:when>
+		<c:otherwise>Untitled</c:otherwise>
+	</c:choose>
 
-		<div id="resultsPanel" class="panel panel-primary">
-			<div class="panel-heading">${fn:length(results)} finding(s).</div>
-			<div class="panel-body">
-				<ol class="list-group">
-					<c:forEach items="${results}" var="result">
-						<li class="list-group-item"><span class="list-group-item-heading">
-						<c:choose>
-							<c:when test="${not empty result.source.title}">${result.source.title[0]}</c:when>
-							<c:otherwise>Untitled</c:otherwise>
-						</c:choose>
-							<dl class="dl-horizontal">
-								<c:if test="${not empty result.factType}">
-									<dt>Fact type</dt>
-									<dd>${result.factType}</dd>
-								</c:if>
-								<c:if test="${not empty result.value}">
-									<dt>Value</dt>
-									<dd>${result.value}</dd>
-								</c:if>
-								<c:if test="${not empty result.problem}">
-									<dt>Problem</dt>
-									<dd>${result.problem}</dd>
-								</c:if>
-							</dl></li>
-					</c:forEach>
-				</ol>
-			</div>
-		</div>
-	</c:if>
+	<tiles:insertAttribute name="factsValuesProblems" />
 
-	<nav class="navbar">
-		<a href="analyzeMenu.tiles"><button class="btn btn-primary">
-				<span class="glyphicon glyphicon-chevron-left"></span>Perform another analysis
-			</button></a>
-	</nav>
-</div>
+</li>

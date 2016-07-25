@@ -28,11 +28,38 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<li class="list-group-item"><span class="list-group-item-heading">${result.individual.formattedName} 
-	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.individual}" ></span> 
-	
-	<tiles:insertAttribute name="factsValuesProblems" />
-	
-</li>
+<div class="container">
+	<h1>${analysisName}<br /> <small>${analysisDescription}</small>
+	</h1>
+	<c:if test="${empty results}">
+		<div id="resultsPanel" class="panel panel-success">No <tiles:getAsString name="whatsInResults" /> match the analysis criteria.</div>
+	</c:if>
+	<c:if test="${not empty results}">
+		<nav class="navbar">
+			<a href="analyzeMenu.tiles"><button class="btn btn-primary">
+					<span class="glyphicon glyphicon-chevron-left"></span>Perform another analysis
+				</button></a>
+		</nav>
+
+		<div id="resultsPanel" class="panel panel-primary">
+			<div class="panel-heading">${fn:length(results)} finding(s).</div>
+			<div class="panel-body">
+				<ol class="list-group">
+					<c:forEach items="${results}" var="r">
+						<c:set var="result" value="${r}" scope="request" />
+						<tiles:insertAttribute name="resultListItem" />
+					</c:forEach>
+				</ol>
+			</div>
+		</div>
+	</c:if>
+
+	<nav class="navbar">
+		<a href="analyzeMenu.tiles"><button class="btn btn-primary">
+				<span class="glyphicon glyphicon-chevron-left"></span>Perform another analysis
+			</button></a>
+	</nav>
+</div>

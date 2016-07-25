@@ -58,7 +58,19 @@ public class OnlyChildrenAnalyzer extends AAnalyzer {
                 kids.addAll(fc.getFamily().getChildren());
             }
             if (kids.size() == 1) {
-                result.add(new IndividualRelatedResult(i, null, null, null));
+                for (FamilyChild fc : i.getFamiliesWhereChild()) {
+                    StringBuilder parents = new StringBuilder("Child of ");
+                    if (fc.getFamily().getWife() != null) {
+                        parents.append(fc.getFamily().getWife().getFormattedName());
+                        parents.append(" and ");
+                    }
+                    if (fc.getFamily().getHusband() == null) {
+                        parents.append("unknown");
+                    } else {
+                        parents.append(fc.getFamily().getHusband().getFormattedName());
+                    }
+                    result.add(new IndividualRelatedResult(i, "Parents", parents.toString(), null));
+                }
             }
         }
 

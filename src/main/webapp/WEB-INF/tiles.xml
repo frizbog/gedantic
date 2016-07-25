@@ -45,8 +45,8 @@
 			<add-attribute value="webjars/jquery/2.2.4/jquery.min.js" />
 			<add-attribute value="webjars/bootstrap/3.3.6/js/bootstrap.min.js" />
 			<add-attribute value="webjars/bootstrap-filestyle/1.1.2/bootstrap-filestyle.js" />
-			<add-attribute value="webjars/bootstrap/3.3.6/js/tooltip.js"/>
-			<add-attribute value="webjars/bootstrap/3.3.6/js/collapse.js"/>
+			<add-attribute value="webjars/bootstrap/3.3.6/js/tooltip.js" />
+			<add-attribute value="webjars/bootstrap/3.3.6/js/collapse.js" />
 			<add-attribute value="js/global.js" />
 		</put-list-attribute>
 	</definition>
@@ -72,25 +72,35 @@
 		<put-attribute name="body" value="/WEB-INF/tiles/analyzeMenu.jsp" />
 	</definition>
 
-	<definition name="individualResults" extends="common">
-		<put-attribute name="body" value="/WEB-INF/tiles/individualResults.jsp" />
+	<definition name="results" extends="common">
+		<put-attribute name="body" value="/WEB-INF/tiles/results.jsp" cascade="true" />
+		<put-attribute name="factsValuesProblems" value="/WEB-INF/tiles/factsValuesProblems.jsp" cascade="true" />
 	</definition>
 
-	<definition name="mixedResults" extends="common">
-		<put-attribute name="body" value="/WEB-INF/tiles/mixedResults.jsp" />
-	</definition>
-
-	<definition name="coupleResults" extends="common">
-		<put-attribute name="body" value="/WEB-INF/tiles/coupleResults.jsp" />
-	</definition>
-
-	<definition name="sourceResults" extends="common">
-		<put-attribute name="body" value="/WEB-INF/tiles/sourceResults.jsp" />
-	</definition>
-	
 	<definition name="about" extends="common">
 		<put-attribute name="body" value="/WEB-INF/tiles/about.jsp" />
 	</definition>
+
+	<definition name="individualResults" extends="results">
+		<put-attribute name="resultListItem" value="/WEB-INF/tiles/individualResults.jsp" cascade="true" />
+		<put-attribute name="whatsInResults" value="individuals" cascade="true" />
+	</definition>
+
+	<definition name="mixedResults" extends="results">
+		<put-attribute name="resultListItem" value="/WEB-INF/tiles/mixedResults.jsp" cascade="true" />
+		<put-attribute name="whatsInResults" value="individuals or families" cascade="true" />
+	</definition>
+
+	<definition name="coupleResults" extends="results">
+		<put-attribute name="resultListItem" value="/WEB-INF/tiles/coupleResults.jsp" cascade="true" />
+		<put-attribute name="whatsInResults" value="couples" cascade="true" />
+	</definition>
+
+	<definition name="sourceResults" extends="results">
+		<put-attribute name="resultListItem" value="/WEB-INF/tiles/sourceResults.jsp" cascade="true" />
+		<put-attribute name="whatsInResults" value="sources" cascade="true" />
+	</definition>
+
 
 
 </tiles-definitions>
