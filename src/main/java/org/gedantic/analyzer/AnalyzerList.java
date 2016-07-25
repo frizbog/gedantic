@@ -70,16 +70,14 @@ public final class AnalyzerList {
         addAnalyzer(new PeopleWithOneMissingParentAnalyzer());
         addAnalyzer(new PeopleWithoutBirthDatesAnalyzer());
         addAnalyzer(new PeopleWithoutNamesAnalyzer());
-
         addAnalyzer(new CouplesWithoutChildrenAnalyzer());
         addAnalyzer(new MarriagesWithoutDatesAnalyzer());
         addAnalyzer(new DatesButNoPlacesAnalyzer());
         addAnalyzer(new PlacesButNoDatesAnalyzer());
-
         addAnalyzer(new SourcesWithoutRepositoryCitationsOrMediaAnalyzer());
-
         addAnalyzer(new UnparsableDatesAnalyzer());
         addAnalyzer(new UnspecifiedSexAnalyzer());
+        addAnalyzer(new EventsWithoutDatesAnalyzer());
     }
 
     /**
