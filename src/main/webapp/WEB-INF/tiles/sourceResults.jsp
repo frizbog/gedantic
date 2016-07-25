@@ -33,7 +33,7 @@
 	<h1>${analysisName}<br /> <small>${analysisDescription}</small>
 	</h1>
 	<c:if test="${empty results}">
-		<div id="resultsPanel" class="panel panel-success">No couples match the analysis criteria.</div>
+		<div id="resultsPanel" class="panel panel-success">No sources match the analysis criteria.</div>
 	</c:if>
 	<c:if test="${not empty results}">
 		<nav class="navbar">
@@ -47,12 +47,11 @@
 			<div class="panel-body">
 				<ol class="list-group">
 					<c:forEach items="${results}" var="result">
-						<li class="list-group-item"><span class="list-group-item-heading">${result.family.husband.formattedName} 
-						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.husband}"></span>
-						and 
-						${result.family.wife.formattedName}
-						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.wife}"
-						</span>
+						<li class="list-group-item"><span class="list-group-item-heading">
+						<c:choose>
+							<c:when test="${not empty result.source.title}">${result.source.title[0]}</c:when>
+							<c:otherwise>Untitled</c:otherwise>
+						</c:choose>
 							<dl class="dl-horizontal">
 								<c:if test="${not empty result.factType}">
 									<dt>Fact type</dt>

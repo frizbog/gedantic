@@ -32,8 +32,8 @@ import java.util.regex.Pattern;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
-import org.gedantic.analyzer.IndividualRelatedResult;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -59,7 +59,7 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
             Set<String> personSurnames = getSurnamesFromIndividual(i);
             if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains(""))) {
                 // Found a problem
-                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null, "Individual has no surnames");
+                AResult r = new IndividualRelatedResult(i, null, null, "Individual has no surnames");
                 result.add(r);
             }
         }

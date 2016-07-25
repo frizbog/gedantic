@@ -32,8 +32,8 @@ import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
-import org.gedantic.analyzer.IndividualRelatedResult;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -55,14 +55,14 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
 
         for (Individual i : g.getIndividuals().values()) {
             if (i.getNames() == null || i.getNames().isEmpty()) {
-                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null, "Individual has no names");
+                AResult r = new IndividualRelatedResult(i, null, null, "Individual has no names");
                 result.add(r);
             } else {
                 for (PersonalName pn : i.getNames()) {
                     if ("//".equals(pn.getBasic()) && (notSpecified(pn.getPrefix()) && notSpecified(pn.getGivenName())
                             && notSpecified(pn.getNickname()) && notSpecified(pn.getSurnamePrefix()) && notSpecified(pn
                                     .getSurname()) && notSpecified(pn.getSuffix()))) {
-                        IndividualRelatedResult r = new IndividualRelatedResult(i, null, null,
+                        AResult r = new IndividualRelatedResult(i, null, null,
                                 "One of this individual's names is blank");
                         result.add(r);
                     }

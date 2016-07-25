@@ -38,20 +38,9 @@
 	<div class="bs-callout bs-callout-success">
 		<h4>News</h4>
 		<dl class="dl-horizontal">
-			<dt>7/22/2016</dt>
+			<dt>7/25/2016</dt>
 			<dd>
-				New!
-				<strong>Couples without Children</strong>
-				analysis available
-			</dd>
-			<dt>7/23/2016</dt>
-			<dd>
-			<div>
-				New!
-				<strong>Dates but no Places</strong>, <strong>Places but no Dates</strong>, and <strong>Marriages without Dates</strong>
-				analyses available.
-			</div>
-			<div>Improved! <strong>Facts without Sources</strong> analysis now includes family events</div>
+				Several new analyses avaliable
 			</dd>
 		</dl>
 	</div>

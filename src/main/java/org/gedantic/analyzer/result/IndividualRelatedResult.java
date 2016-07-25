@@ -24,41 +24,27 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.gedantic.analyzer;
+package org.gedantic.analyzer.result;
 
-import org.gedcom4j.model.Family;
+import org.gedantic.analyzer.AResult;
+import org.gedcom4j.model.Individual;
 
 /**
- * An analysis result about a specific family. Immutable.
+ * An analysis result about a specific individual. Immutable.
  * 
  * @author frizbog
  */
-public class FamilyRelatedResult extends AResult {
+public class IndividualRelatedResult extends AResult {
     /**
-     * The Family
+     * The individual
      */
-    private final Family family;
-
-    /**
-     * The type of fact having an issue
-     */
-    private final String factType;
-
-    /**
-     * The value that caused the problem
-     */
-    private final String value;
-
-    /**
-     * The description of the problem
-     */
-    private final String problem;
+    private final Individual individual;
 
     /**
      * Constructor
      * 
-     * @param family
-     *            the family with the finding
+     * @param individual
+     *            the individual with the finding
      * @param factType
      *            the fact that the finding relates to - optional
      * @param value
@@ -66,46 +52,17 @@ public class FamilyRelatedResult extends AResult {
      * @param problem
      *            a description of the problem - optional
      */
-    public FamilyRelatedResult(Family family, String factType, String value, String problem) {
-        this.family = family;
-        this.factType = factType;
-        this.value = value;
-        this.problem = problem;
+    public IndividualRelatedResult(Individual individual, String factType, String value, String problem) {
+        super(factType, value, problem);
+        this.individual = individual;
     }
 
     /**
-     * Get the fact type
+     * Get the individual
      * 
-     * @return the fact type
+     * @return the individual
      */
-    public String getFactType() {
-        return factType;
-    }
-
-    /**
-     * Get the family
-     * 
-     * @return the family
-     */
-    public Family getFamily() {
-        return family;
-    }
-
-    /**
-     * Get the problem description
-     * 
-     * @return the problem description
-     */
-    public String getProblem() {
-        return problem;
-    }
-
-    /**
-     * Get the problematic value
-     * 
-     * @return the value that cause the problem
-     */
-    public String getValue() {
-        return value;
+    public Individual getIndividual() {
+        return individual;
     }
 }

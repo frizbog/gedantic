@@ -75,6 +75,8 @@ public final class AnalyzerList {
         addAnalyzer(new MarriagesWithoutDatesAnalyzer());
         addAnalyzer(new DatesButNoPlacesAnalyzer());
         addAnalyzer(new PlacesButNoDatesAnalyzer());
+
+        addAnalyzer(new SourcesWithoutRepositoryCitationsOrMediaAnalyzer());
     }
 
     /**

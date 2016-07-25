@@ -32,8 +32,8 @@ import java.util.regex.Pattern;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
-import org.gedantic.analyzer.IndividualRelatedResult;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
@@ -75,7 +75,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
             commonSurnames.retainAll(personSurnames);
             if (commonSurnames.isEmpty()) {
                 // Found a problem
-                IndividualRelatedResult r = new IndividualRelatedResult(i, null, null, "Individual has surnames " + personSurnames
+                AResult r = new IndividualRelatedResult(i, null, null, "Individual has surnames " + personSurnames
                         + " and parents have surnames " + allParentSurnames);
                 result.add(r);
             }

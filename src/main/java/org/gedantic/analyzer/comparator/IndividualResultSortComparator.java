@@ -30,7 +30,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 import org.gedantic.analyzer.AResult;
-import org.gedantic.analyzer.IndividualRelatedResult;
+import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.PersonalName;
 

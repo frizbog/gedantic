@@ -24,35 +24,46 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.gedantic.analyzer;
+package org.gedantic.analyzer.result;
+
+import org.gedantic.analyzer.AResult;
+import org.gedcom4j.model.Source;
 
 /**
- * A simple string result
+ * An analysis result about a {@link Source}
  * 
  * @author frizbog
  */
-public class SimpleResult extends AResult {
+public class SourceRelatedResult extends AResult {
+
     /**
-     * The description of the finding
+     * The source this result is about
      */
-    private final String description;
+    private final Source source;
 
     /**
      * Constructor
      * 
-     * @param description
-     *            the description of the finding
+     * @param source
+     *            the source with the finding
+     * @param factType
+     *            the fact that the finding relates to - optional
+     * @param value
+     *            the value that was problematic - optional
+     * @param problem
+     *            a description of the problem - optional
      */
-    public SimpleResult(String description) {
-        this.description = description;
+    public SourceRelatedResult(Source source, String factType, String value, String problem) {
+        super(factType, value, problem);
+        this.source = source;
     }
 
     /**
-     * Get the description of the finding
-     * 
-     * @return the description of the finding
+     * Get the source
+     * @return the source
      */
-    public String getDescription() {
-        return description;
+    public Source getSource() {
+        return source;
     }
+
 }

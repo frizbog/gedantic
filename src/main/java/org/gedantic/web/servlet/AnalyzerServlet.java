@@ -59,6 +59,21 @@ public class AnalyzerServlet extends HttpServlet {
     private static final long serialVersionUID = -62757248978505969L;
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        Gedcom g = (Gedcom) session.getAttribute(Constants.GEDCOM);
+
+        if (g == null) {
+            LOG.info("Redirecting from " + req.getRequestURI() + " to upload page because there is no gedcom in session");
+            req.setAttribute(Constants.ALERT_MESSAGE, "Please upload a GEDCOM to analyze");
+            req.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-warning");
+            req.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(req, resp);
+        } else {
+            req.getRequestDispatcher(Constants.URL_ANALYSIS_MENU).forward(req, resp);
+        }
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Gedcom g = (Gedcom) session.getAttribute(Constants.GEDCOM);

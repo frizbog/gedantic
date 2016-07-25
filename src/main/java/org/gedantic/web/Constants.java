@@ -121,4 +121,9 @@ public class Constants {
      * The page for doing an upload of a GEDCOM file
      */
     public static final String URL_UPLOAD_PAGE = "/upload.tiles";
+
+    /**
+     * The page for displaying analysis results about sources.
+     */
+    public static final String URL_ANALYSIS_SOURCE_RESULTS = "/sourceResults.tiles";
 }

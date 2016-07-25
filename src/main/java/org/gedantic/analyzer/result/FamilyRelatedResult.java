@@ -24,41 +24,27 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.gedantic.analyzer;
+package org.gedantic.analyzer.result;
 
-import org.gedcom4j.model.Individual;
+import org.gedantic.analyzer.AResult;
+import org.gedcom4j.model.Family;
 
 /**
- * An analysis result about a specific individual. Immutable.
+ * An analysis result about a specific family. Immutable.
  * 
  * @author frizbog
  */
-public class IndividualRelatedResult extends AResult {
+public class FamilyRelatedResult extends AResult {
     /**
-     * The individual
+     * The Family
      */
-    private final Individual individual;
-
-    /**
-     * The type of fact having an issue
-     */
-    private final String factType;
-
-    /**
-     * The value that caused the problem
-     */
-    private final String value;
-
-    /**
-     * The description of the problem
-     */
-    private final String problem;
+    private final Family family;
 
     /**
      * Constructor
      * 
-     * @param individual
-     *            the individual with the finding
+     * @param family
+     *            the family with the finding
      * @param factType
      *            the fact that the finding relates to - optional
      * @param value
@@ -66,46 +52,17 @@ public class IndividualRelatedResult extends AResult {
      * @param problem
      *            a description of the problem - optional
      */
-    public IndividualRelatedResult(Individual individual, String factType, String value, String problem) {
-        this.individual = individual;
-        this.factType = factType;
-        this.value = value;
-        this.problem = problem;
+    public FamilyRelatedResult(Family family, String factType, String value, String problem) {
+        super(factType, value, problem);
+        this.family = family;
     }
 
     /**
-     * Get the fact type
+     * Get the family
      * 
-     * @return the fact type
+     * @return the family
      */
-    public String getFactType() {
-        return factType;
-    }
-
-    /**
-     * Get the individual
-     * 
-     * @return the individual
-     */
-    public Individual getIndividual() {
-        return individual;
-    }
-
-    /**
-     * Get the problem description
-     * 
-     * @return the problem description
-     */
-    public String getProblem() {
-        return problem;
-    }
-
-    /**
-     * Get the problematic value
-     * 
-     * @return the value that cause the problem
-     */
-    public String getValue() {
-        return value;
+    public Family getFamily() {
+        return family;
     }
 }

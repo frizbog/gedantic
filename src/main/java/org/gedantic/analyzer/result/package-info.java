@@ -24,65 +24,9 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.gedantic.analyzer;
-
 /**
- * Base class for an analysis result
+ * Result types from analyzers.
  * 
  * @author frizbog
  */
-public abstract class AResult {
-
-    /**
-     * The type of fact having an issue
-     */
-    protected final String factType;
-
-    /**
-     * The value that caused the problem
-     */
-    protected final String value;
-
-    /**
-     * The description of the problem
-     */
-    protected final String problem;
-
-    /**
-     * @param factType
-     * @param value
-     * @param problem
-     */
-    public AResult(String factType, String value, String problem) {
-        this.factType = factType;
-        this.value = value;
-        this.problem = problem;
-    }
-
-    /**
-     * Get the fact type
-     * 
-     * @return the fact type
-     */
-    public String getFactType() {
-        return factType;
-    }
-
-    /**
-     * Get the problem description
-     * 
-     * @return the problem description
-     */
-    public String getProblem() {
-        return problem;
-    }
-
-    /**
-     * Get the problematic value
-     * 
-     * @return the value that cause the problem
-     */
-    public String getValue() {
-        return value;
-    }
-}
+package org.gedantic.analyzer.result;

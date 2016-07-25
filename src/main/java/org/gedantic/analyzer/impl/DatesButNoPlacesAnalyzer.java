@@ -32,9 +32,9 @@ import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
-import org.gedantic.analyzer.FamilyRelatedResult;
-import org.gedantic.analyzer.IndividualRelatedResult;
 import org.gedantic.analyzer.comparator.MixedResultSortComparator;
+import org.gedantic.analyzer.result.FamilyRelatedResult;
+import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.*;
 
