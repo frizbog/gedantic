@@ -28,6 +28,7 @@ package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
@@ -37,36 +38,39 @@ import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.*;
+import org.gedcom4j.parser.DateParser;
 
 /**
- * Analyzer that finds facts without any source citations. Currently limited to names and events.
+ * Analyzer that finds Individual and Family events where the dates are specified but cannot be parsed
  * 
  * @author frizbog
  */
-public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
+public class UnparsableDatesAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public List<AResult> analyze(Gedcom g) {
+        DateParser dp = new DateParser();
         List<AResult> result = new ArrayList<>();
         for (Individual i : g.getIndividuals().values()) {
-            for (PersonalName n : i.getNames()) {
-                if (n.getCitations().isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, "Name", n.toString(), null));
-                }
-            }
             for (IndividualEvent e : i.getEvents()) {
-                if (e.getCitations().isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, e.getType().getDisplay(), getEventShortDescription(e), null));
+                if (e.getDate() != null && e.getDate().getValue() != null && !e.getDate().getValue().trim().isEmpty()) {
+                    Date d = dp.parse(e.getDate().getValue());
+                    if (d == null) {
+                        result.add(new IndividualRelatedResult(i, e.getType().getDisplay(), e.getDate().getValue(), null));
+                    }
                 }
             }
         }
         for (Family f : g.getFamilies().values()) {
             for (FamilyEvent e : f.getEvents()) {
-                if (e.getCitations().isEmpty()) {
-                    result.add(new FamilyRelatedResult(f, e.getType().getDisplay(), getEventShortDescription(e), null));
+                if (e.getDate() != null && e.getDate().getValue() != null && !e.getDate().getValue().trim().isEmpty()) {
+                    Date d = dp.parse(e.getDate().getValue());
+                    if (d == null) {
+                        result.add(new FamilyRelatedResult(f, e.getType().getDisplay(), e.getDate().getValue(), null));
+                    }
                 }
             }
         }
@@ -79,7 +83,7 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "Facts without source citations. Currently limited to names and events.";
+        return "Events that have dates specified but cannot be parsed";
     }
 
     /**
@@ -87,7 +91,7 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getName() {
-        return "Facts without sources";
+        return "Unparsable dates";
     }
 
     /**
@@ -96,29 +100,6 @@ public class FactsWithoutSourcesAnalyzer extends AAnalyzer {
     @Override
     public String getResultsTileName() {
         return Constants.URL_ANALYSIS_MIXED_RESULTS;
-    }
-
-    /**
-     * Get a short description of an event, consisting of date and place name.
-     * 
-     * @param e
-     *            the event
-     * @return a short description of an event, consisting of date and place name.
-     */
-    private String getEventShortDescription(AbstractEvent e) {
-        StringBuilder sb = new StringBuilder("Date: ");
-        if (e.getDate() != null) {
-            sb.append(e.getDate());
-        } else {
-            sb.append("(no value)");
-        }
-        sb.append(", Place: ");
-        if (e.getPlace() == null || e.getPlace().getPlaceName() == null || e.getPlace().getPlaceName().trim().isEmpty()) {
-            sb.append("(no value)");
-        } else {
-            sb.append(e.getPlace().getPlaceName());
-        }
-        return sb.toString();
     }
 
 }

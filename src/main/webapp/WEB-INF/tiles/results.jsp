@@ -35,7 +35,7 @@
 	<h1>${analysisName}<br /> <small>${analysisDescription}</small>
 	</h1>
 	<c:if test="${empty results}">
-		<div id="resultsPanel" class="panel panel-success">No <tiles:getAsString name="whatsInResults" /> match the analysis criteria.</div>
+		<div id="resultsPanel" class="alert alert-success">No <tiles:getAsString name="whatsInResults" /> match the analysis criteria.</div>
 	</c:if>
 	<c:if test="${not empty results}">
 		<nav class="navbar">

@@ -77,6 +77,9 @@ public final class AnalyzerList {
         addAnalyzer(new PlacesButNoDatesAnalyzer());
 
         addAnalyzer(new SourcesWithoutRepositoryCitationsOrMediaAnalyzer());
+
+        addAnalyzer(new UnparsableDatesAnalyzer());
+        addAnalyzer(new UnspecifiedSexAnalyzer());
     }
 
     /**

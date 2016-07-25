@@ -40,7 +40,7 @@
 		<dl class="dl-horizontal">
 			<dt>7/25/2016</dt>
 			<dd>
-				Several new analyses avaliable
+				Several new analyses available: Sources without media or repository citations, Unparsable dates, Unspecified sex 
 			</dd>
 		</dl>
 	</div>
