@@ -78,6 +78,7 @@ public final class AnalyzerList {
         addAnalyzer(new UnparsableDatesAnalyzer());
         addAnalyzer(new UnspecifiedSexAnalyzer());
         addAnalyzer(new EventsWithoutDatesAnalyzer());
+        addAnalyzer(new EventsWithoutPlacesOrDatesAnalyzer());
     }
 
     /**
