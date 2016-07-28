@@ -43,7 +43,7 @@
 			<ul class="nav navbar-nav navbar-right">
 			<c:choose>
 			<c:when test="${empty gedcomName || empty gedcom}">
-			<li class="active"><a href="uploadGedcom.tiles">No GEDCOM loaded</a></li>
+			<li class="active"><a href="upload.tiles">No GEDCOM loaded</a></li>
 			</c:when>
 			<c:otherwise>
 				<li><a href="analyzeMenu.tiles">Select Analysis</a></li>
