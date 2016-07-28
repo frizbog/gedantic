@@ -42,6 +42,10 @@
 			<dd>
 				Several new analyses available: Sources without media or repository citations, Unparsable dates, Unspecified sex 
 			</dd>
+			<dt>7/27/2016</dt>
+			<dd>
+				More new analyses available: Missing death events, Missing occupations. 
+			</dd>
 		</dl>
 	</div>
 </div>
