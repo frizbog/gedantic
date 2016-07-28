@@ -79,6 +79,7 @@ public final class AnalyzerList {
         addAnalyzer(new UnspecifiedSexAnalyzer());
         addAnalyzer(new EventsWithoutDatesAnalyzer());
         addAnalyzer(new EventsWithoutPlacesOrDatesAnalyzer());
+        addAnalyzer(new PeopleWithoutOccupationsAnalysis());
     }
 
     /**
