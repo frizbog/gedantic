@@ -69,6 +69,7 @@ public final class AnalyzerList {
         addAnalyzer(new PeopleWithoutSurnamesAnalyzer());
         addAnalyzer(new PeopleWithOneMissingParentAnalyzer());
         addAnalyzer(new PeopleWithoutBirthDatesAnalyzer());
+        addAnalyzer(new PeopleWithoutDeathEventsAnalyzer());
         addAnalyzer(new PeopleWithoutNamesAnalyzer());
         addAnalyzer(new CouplesWithoutChildrenAnalyzer());
         addAnalyzer(new MarriagesWithoutDatesAnalyzer());
