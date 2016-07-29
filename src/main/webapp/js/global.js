@@ -24,12 +24,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-    $('[data-toggle="tooltip"]').tooltip(); 
+$(document).ready(function() {
+	$('[data-toggle="popover"]').popover();
+	$('[data-toggle="tooltip"]').tooltip();
 });
-
-function updateAnalysisDescription() {
-	var sel = $('#analysisSelection');
-	window.alert(sel.selectedItem.value);
-}

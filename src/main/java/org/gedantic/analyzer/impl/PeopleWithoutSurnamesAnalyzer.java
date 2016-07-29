@@ -32,6 +32,7 @@ import java.util.regex.Pattern;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
@@ -40,6 +41,8 @@ import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.PersonalName;
 
 /**
+ * Analysis to find people with a name of some kind but no surname
+ * 
  * @author frizbog
  */
 public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
@@ -90,6 +93,11 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
     @Override
     public String getResultsTileName() {
         return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
+    }
+
+    @Override
+    public AnalysisTag[] getTags() {
+        return new AnalysisTag[] { AnalysisTag.MISSING_DATA, AnalysisTag.INDIVIDUALS };
     }
 
     /**

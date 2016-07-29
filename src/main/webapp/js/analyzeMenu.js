@@ -24,29 +24,35 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-package org.gedantic.web.listener;
+$(document).ready(function() {
+	// Default options
+	var options = {
+	  'filter' : 'all', // Initial filter
+	  'setupControls' : true
+	}
+	var filterizd = $('.filtr-container').filterizr(options);
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+	$('.nav-gallery li').click(function() {
+		var targetFilter = $(this).data('multifltr');
+		if (targetFilter === 'all') {
+			$('.nav-gallery li').removeClass('active');
+			$(this).addClass('active');
+			filterizd.filterizr('filter', 'all');
+			filterizd._fltr._toggledCategories = {};
+		} else {
+			$('.nav-gallery li[data-multifltr="all"]').removeClass('active');
+			$(this).toggleClass('active');
+			filterizd.filterizr('toggleFilter', targetFilter);
+		}
+		if (!filterizd._fltr._multifilterModeOn()) {
+			$('.nav-gallery li[data-multifltr="all"]').addClass('active');
+		}
+	});
 
-import org.gedantic.analyzer.AnalyzerList;
+	$('.filtr-item').click(function() {
+		var ak = $(this).data('analysiskey');
+		$('#analysisKey').attr('value', ak);
+		$('#analysisForm').submit();
+	});
 
-/**
- * A listener that ensures application scope items are set up
- * 
- * @author frizbog
- */
-public class ApplicationSetupListener implements ServletContextListener {
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        // Nothing
-    }
-
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        sce.getServletContext().setAttribute("analyzers", AnalyzerList.getInstance().getAnalyzers());
-        sce.getServletContext().setAttribute("analyzerTags", AnalyzerList.getInstance().getTags());
-    }
-
-}
+});

@@ -26,9 +26,7 @@
  */
 package org.gedantic.analyzer;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 import org.gedantic.analyzer.impl.*;
 
@@ -59,6 +57,11 @@ public final class AnalyzerList {
     private final Map<String, IAnalyzer> analyzers = new TreeMap<>();
 
     /**
+     * A List (yes a List) of unique analysis tags, for putting into the filter selector bar.
+     */
+    private final List<AnalysisTag> tags;
+
+    /**
      * Constructor
      */
     public AnalyzerList() {
@@ -82,6 +85,14 @@ public final class AnalyzerList {
         addAnalyzer(new EventsWithoutPlacesOrDatesAnalyzer());
         addAnalyzer(new PeopleWithoutOccupationsAnalysis());
         addAnalyzer(new FutureBirthDeathDatesAnalyzer());
+
+        Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
+        for (IAnalyzer a : analyzers.values()) {
+            for (AnalysisTag t : a.getTags()) {
+                unique.add(t);
+            }
+        }
+        tags = new ArrayList<AnalysisTag>(unique);
     }
 
     /**
@@ -101,6 +112,14 @@ public final class AnalyzerList {
      */
     private void addAnalyzer(IAnalyzer a) {
         analyzers.put(a.getId(), a);
+    }
+
+    /**
+     * Get the tags
+     * @return the tags
+     */
+    public List<AnalysisTag> getTags() {
+        return tags;
     }
 
 }

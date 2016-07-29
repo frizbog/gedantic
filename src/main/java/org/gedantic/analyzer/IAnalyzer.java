@@ -74,4 +74,10 @@ public interface IAnalyzer {
      */
     String getResultsTileName();
 
+    /**
+     * Get an array of tags/categories for this analyzer
+     * 
+     * @return an array of tags/categories for this analyzer
+     */
+    AnalysisTag[] getTags();
 }

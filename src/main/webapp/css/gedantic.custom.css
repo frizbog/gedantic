@@ -27,25 +27,27 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
+
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 4em;
-  padding-top: 65px;
+	/* Margin bottom by footer height */
+	margin-bottom: 4em;
+	padding-top: 65px;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 3em;
-  background-color: #f5f5f5;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 3em;
+	background-color: #f5f5f5;
 }
 
 .footer .container {
-  margin-top: 1em;
+	margin-top: 1em;
 }
 
 .navbar-brand {
@@ -53,27 +55,24 @@ body {
 }
 
 .list-group {
-    list-style: decimal inside;
+	list-style: decimal inside;
 }
 
 .list-group-item {
-    display: list-item;
-    font-weight: bolder;
+	display: list-item;
+	font-weight: bolder;
 }
 
 .popover-title {
 	background-color: #337ab7;
-	color:white;
+	color: white;
 }
-
 
 .jumbotron {
 	background-color: #337ab7;
-	color:white;
+	color: white;
 	margin-bottom: 0px;
 }
-
-
 
 dl {
 	font-weight: normal;
@@ -84,58 +83,129 @@ dl {
 }
 
 .bs-callout {
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #eee;
-    border-left-width: 5px;
-    border-radius: 3px;
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
 }
+
 .bs-callout h4 {
-    margin-top: 0;
-    margin-bottom: 5px;
+	margin-top: 0;
+	margin-bottom: 5px;
 }
+
 .bs-callout p:last-child {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
+
 .bs-callout code {
-    border-radius: 3px;
+	border-radius: 3px;
 }
+
 .bs-callout+.bs-callout {
-    margin-top: -5px;
+	margin-top: -5px;
 }
+
 .bs-callout-default {
-    border-left-color: #777;
+	border-left-color: #777;
 }
+
 .bs-callout-default h4 {
-    color: #777;
+	color: #777;
 }
+
 .bs-callout-primary {
-    border-left-color: #428bca;
+	border-left-color: #428bca;
 }
+
 .bs-callout-primary h4 {
-    color: #428bca;
+	color: #428bca;
 }
+
 .bs-callout-success {
-    border-left-color: #5cb85c;
+	border-left-color: #5cb85c;
 }
+
 .bs-callout-success h4 {
-    color: #5cb85c;
+	color: #5cb85c;
 }
+
 .bs-callout-danger {
-    border-left-color: #d9534f;
+	border-left-color: #d9534f;
 }
+
 .bs-callout-danger h4 {
-    color: #d9534f;
+	color: #d9534f;
 }
+
 .bs-callout-warning {
-    border-left-color: #f0ad4e;
+	border-left-color: #f0ad4e;
 }
+
 .bs-callout-warning h4 {
-    color: #f0ad4e;
+	color: #f0ad4e;
 }
+
 .bs-callout-info {
-    border-left-color: #5bc0de;
+	border-left-color: #5bc0de;
 }
+
 .bs-callout-info h4 {
-    color: #5bc0de;
+	color: #5bc0de;
+}
+
+.nav-gallery {
+	clear: both;
+	margin-left: 0px;
+}
+
+.nav-gallery li {
+	border: 1px solid #337ab7;
+	margin: -1px;
+	padding: 0.5em;
+	float: left;
+	cursor: pointer;
+}
+
+.nav-gallery li.active {
+	color: white;
+	background-color: #337ab7;
+}
+
+.nav-gallery li:first-of-type {
+	border-top-left-radius: 0.5rem !important;
+	border-bottom-left-radius: 0.5rem !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+.nav-gallery li:last-of-type {
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-top-right-radius: 0.5rem !important;
+	border-bottom-right-radius: 0.5rem !important;
+}
+
+.filtr-container {
+	margin-top: 1rem;
+	margin-right: 1rem;
+	padding: 2rem;
+}
+
+.filtr-container row {
+	
+}
+
+.filtr-item {
+	width: 30rem;
+	height: 10em;
+	cursor: pointer;
+}
+
+.filtr-container .panel-primary .panel-heading .panel-title {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 2rem;
 }

@@ -38,4 +38,20 @@ public abstract class AAnalyzer implements IAnalyzer {
         return this.getClass().getName();
     }
 
+    /**
+     * Get a comma-delimited string of tag ID's
+     * 
+     * @return a comma-delimited string of tag ID's
+     */
+    public String getTagIds() {
+        StringBuilder result = new StringBuilder();
+        AnalysisTag[] tags = getTags();
+        for (int i = 0; i < tags.length; i++) {
+            if (i > 0) {
+                result.append(", ");
+            }
+            result.append(tags[i].getId());
+        }
+        return result.toString();
+    }
 }
