@@ -38,13 +38,9 @@
 	<div class="bs-callout bs-callout-success">
 		<h4>News</h4>
 		<dl class="dl-horizontal">
-			<dt>7/25/2016</dt>
+			<dt>7/29/2016</dt>
 			<dd>
-				Several new analyses available: Sources without media or repository citations, Unparsable dates, Unspecified sex 
-			</dd>
-			<dt>7/27/2016</dt>
-			<dd>
-				More new analyses available: Missing death events, Missing occupations. 
+				Many new analyses added recently, and a filtering mechanism for helping find the one you want. 
 			</dd>
 		</dl>
 	</div>

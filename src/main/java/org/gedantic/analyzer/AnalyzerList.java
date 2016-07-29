@@ -85,6 +85,7 @@ public final class AnalyzerList {
         addAnalyzer(new EventsWithoutPlacesOrDatesAnalyzer());
         addAnalyzer(new PeopleWithoutOccupationsAnalysis());
         addAnalyzer(new FutureBirthDeathDatesAnalyzer());
+        addAnalyzer(new PeopleWhoLivedPast100Analyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {
@@ -105,6 +106,15 @@ public final class AnalyzerList {
     }
 
     /**
+     * Get the tags
+     * 
+     * @return the tags
+     */
+    public List<AnalysisTag> getTags() {
+        return tags;
+    }
+
+    /**
      * Add an analyzer to the Analyzers map
      * 
      * @param a
@@ -112,14 +122,6 @@ public final class AnalyzerList {
      */
     private void addAnalyzer(IAnalyzer a) {
         analyzers.put(a.getId(), a);
-    }
-
-    /**
-     * Get the tags
-     * @return the tags
-     */
-    public List<AnalysisTag> getTags() {
-        return tags;
     }
 
 }
