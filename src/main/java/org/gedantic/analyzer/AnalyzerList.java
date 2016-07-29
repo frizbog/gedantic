@@ -81,6 +81,7 @@ public final class AnalyzerList {
         addAnalyzer(new EventsWithoutDatesAnalyzer());
         addAnalyzer(new EventsWithoutPlacesOrDatesAnalyzer());
         addAnalyzer(new PeopleWithoutOccupationsAnalysis());
+        addAnalyzer(new FutureBirthDeathDatesAnalyzer());
     }
 
     /**
