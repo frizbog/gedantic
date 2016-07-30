@@ -53,11 +53,14 @@
 		</div>
 		<div class="container">
 			<div id="fileselection">
-				<button class="btn btn-primary fileinput-button">
-					<i class="glyphicon glyphicon-plus"></i> <span>Select file</span>
-					<!-- The file input field used as target for the file upload widget -->
-					<input id="fileupload" type="file" name="gedcomfile" data-url="uploadGedcom">
-				</button>
+				<form action="uploadGedcom" method="POST">
+					<button class="btn btn-primary fileinput-button">
+						<i class="glyphicon glyphicon-file"></i> <span>Select file</span>
+						<!-- The file input field used as target for the file upload widget -->
+						<input id="fileupload" type="file" name="gedcomfile" data-url="uploadGedcom">
+					</button>
+					<input type="submit" class="btn btn-default" name="useSample" value="Use our sample file"/>
+				</form>
 			</div>
 			<p/>
 		</div>

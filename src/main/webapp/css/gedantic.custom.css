@@ -63,6 +63,10 @@ body {
 	font-weight: bolder;
 }
 
+#navbar div.popover  {
+	min-width: 10em;	
+}
+
 .popover-title {
 	background-color: #337ab7;
 	color: white;

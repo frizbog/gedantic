@@ -45,10 +45,22 @@
 			<c:when test="${empty gedcomName || empty gedcom}">
 			<li class="active"><a href="upload.tiles">No GEDCOM loaded</a></li>
 			</c:when>
-			<c:otherwise>
+			<c:when test="${gedcomName == 'gedantic sample.ged' }">
 				<li><a href="analyzeMenu.tiles">Select Analysis</a></li>
 				<li><a href="#" data-toggle="popover" data-placement="bottom" tabindex="0" role="button" data-trigger="focus" 
-						data-content="${numIndividuals} individuals, ${numFamilies} family/families">
+						data-content="&lt;div&gt;Individuals: ${numIndividuals}&lt;/div&gt;&lt;div&gt;Families: ${numFamilies}&lt;/div&gt;
+						&lt;div&gt;&lt;a href=&quot;downloadSample&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-download&quot;&gt;
+						&lt;/span&gt;Download&lt;/a&gt;&lt;/div;&gt;" data-html="true">
+							<span class="glyphicon glyphicon-info-sign"></span> ${gedcomName}
+					</a></li>
+				<li class="active"><a href="upload.tiles">
+							<span class="glyphicon glyphicon-upload"></span> Upload another file
+					</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a href="analyzeMenu.tiles">Select Analysis</a></li>
+				<li><a href="#" data-toggle="popover" data-placement="bottom" tabindex="0" role="button"  
+						data-content="&lt;div&gt;Individuals: ${numIndividuals}&lt;/div&gt;&lt;div&gt;Families: ${numFamilies}&lt;/div&gt;" data-html="true">
 							<span class="glyphicon glyphicon-info-sign"></span> ${gedcomName}
 					</a></li>
 				<li class="active"><a href="upload.tiles">

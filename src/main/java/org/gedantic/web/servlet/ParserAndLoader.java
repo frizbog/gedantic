@@ -67,6 +67,11 @@ class ParserAndLoader implements FileProgressListener {
     private final HttpSession session;
 
     /**
+     * Is the file to be deleted after parsing?
+     */
+    private final boolean delete;
+
+    /**
      * Instantiates a new parser and loader.
      *
      * @param request
@@ -77,10 +82,27 @@ class ParserAndLoader implements FileProgressListener {
      *            the file
      */
     ParserAndLoader(HttpServletRequest request, HttpServletResponse response, File file) {
+        this(request, response, file, false);
+    }
+
+    /**
+     * Instantiates a new parser and loader.
+     *
+     * @param request
+     *            the request
+     * @param response
+     *            the response
+     * @param file
+     *            the file
+     * @param delete
+     *            delete the file after parsing it?
+     */
+    ParserAndLoader(HttpServletRequest request, HttpServletResponse response, File file, boolean delete) {
         this.request = request;
         this.response = response;
         this.file = file;
         session = request.getSession();
+        this.delete = delete;
     }
 
     @Override
@@ -89,8 +111,8 @@ class ParserAndLoader implements FileProgressListener {
     }
 
     /**
-     * Parses the uploaded GEDCOM file, loads the {@link Gedcom} parse result object into the HTTP session, and deletes
-     * the temp file.
+     * Parses the uploaded GEDCOM file, loads the {@link Gedcom} parse result object into the HTTP session, and deletes the temp
+     * file.
      */
     void parseAndLoadIntoSession() {
         session.removeAttribute(Constants.GEDCOM);
@@ -132,11 +154,14 @@ class ParserAndLoader implements FileProgressListener {
                 LOG.error("Unable to forward to the upload page", e1);
             }
         } finally {
-            try {
-                file.delete();
-                LOG.info("Deleted temp GEDCOM file " + file.getName());
-            } catch (Exception e) {
-                LOG.error("Unable to delete temp GEDCOM file " + FileUploadHandler.UPLOAD_DIRECTORY + File.separator + file.getName(), e);
+            if (delete) {
+                try {
+                    file.delete();
+                    LOG.info("Deleted temp GEDCOM file " + file.getName());
+                } catch (Exception e) {
+                    LOG.error("Unable to delete temp GEDCOM file " + FileUploadHandler.UPLOAD_DIRECTORY + File.separator + file
+                            .getName(), e);
+                }
             }
         }
         gp = null;

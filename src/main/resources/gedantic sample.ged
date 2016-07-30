@@ -1,0 +1,191 @@
+0 HEAD
+1 SOUR FTM
+2 VERS Family Tree Maker (22.2.5)
+2 NAME Family Tree Maker for Mac OS X
+2 CORP Ancestry.com
+3 ADDR 360 W 4800 N
+4 CONT Provo, UT 84604
+3 PHON (801) 705-7000
+1 DEST GED55
+1 DATE 29 JUL 2016
+1 CHAR UTF-8
+1 FILE /Users/frizbog/Downloads/gedantic.ged
+1 SUBM @SUBM@
+1 GEDC
+2 VERS 5.5
+2 FORM LINEAGE-LINKED
+0 @SUBM@ SUBM
+0 @I1@ INDI
+1 NAME William /Cannon/
+1 SEX M
+1 BIRT
+2 DATE 01 APR 2015
+1 FAMC @F1@
+0 @I19@ INDI
+1 NAME Harold /Fitzgibbon/
+1 SEX M
+1 FAMS @F8@
+0 @I17@ INDI
+1 NAME /Nancy/
+1 SEX F
+1 FAMS @F7@
+0 @I15@ INDI
+1 NAME Richard /Merriweather/
+1 SEX M
+1 FAMS @F6@
+0 @I13@ INDI
+1 NAME Methusela /Fitzgibbon/
+1 SEX M
+1 BIRT
+2 DATE 04 JUL 1878
+1 DEAT
+2 DATE 25 SEP 1980
+1 FAMS @F5@
+1 FAMC @F8@
+0 @I11@ INDI
+1 NAME Vincent /Douglas/
+1 SEX M
+1 DEAT
+2 DATE 28 FEB 2050
+1 FAMC @F1@
+0 @I9@ INDI
+1 NAME Kenneth /Douglas/
+1 SEX M
+1 ORDN
+1 BIRT
+1 FAMC @F1@
+0 @I7@ INDI
+1 NAME John /Taylor/
+1 DEAT
+2 DATE 29 DEC 1998
+1 FAMS @F3@
+0 @I5@ INDI
+1 NAME Janice /Merriweather/
+1 SEX F
+1 BIRT
+2 DATE 05 SEP 1942
+1 FAMS @F2@
+1 FAMC @F6@
+0 @I3@ INDI
+1 NAME Theresa /Fitzgibbon/
+1 SEX F
+1 FAMS @F1@
+1 FAMC @F4@
+0 @I18@ INDI
+1 NAME /Douglas/
+1 SEX M
+1 BIRT
+2 DATE 02 MAR
+1 DEAT
+2 DATE 19928
+1 FAMS @F7@
+0 @I16@ INDI
+1 NAME Linda //
+1 SEX F
+1 FAMS @F6@
+0 @I14@ INDI
+1 NAME <No /name>/
+1 SEX F
+1 FAMS @F5@
+0 @I12@ INDI
+1 NAME Daniel /Fitzgibbon/
+1 SEX M
+1 FAMS @F4@
+1 FAMC @F5@
+0 @I10@ INDI
+1 NAME Jennifer /Douglas/
+1 SEX F
+1 BIRT
+2 DATE 01 JAN 2042
+1 FAMC @F1@
+0 @I8@ INDI
+1 NAME Nora /Douglas/
+1 SEX F
+1 BAPM
+2 PLAC Richmond, Virginia, USA
+1 FAMC @F2@
+0 @I6@ INDI
+1 NAME Belinda /Douglas/
+1 SEX F
+1 BIRT
+2 DATE 15 OCT 1960
+1 FAMS @F3@
+1 FAMC @F2@
+0 @I4@ INDI
+1 NAME Logan /Douglas/
+1 SEX M
+1 BIRT
+2 DATE 03 SEP 1939
+2 SOUR @S1@
+1 DEAT
+2 PLAC Suffolk, Nansemond, Virginia, USA
+1 FAMS @F2@
+1 FAMC @F7@
+0 @I2@ INDI
+1 NAME Frankin /Douglas/
+1 SEX M
+1 FAMS @F1@
+1 FAMC @F2@
+0 @F5@ FAM
+1 HUSB @I13@
+1 WIFE @I14@
+1 CHIL @I12@
+2 _FREL Natural
+2 _MREL Natural
+0 @F1@ FAM
+1 HUSB @I2@
+1 WIFE @I3@
+1 CHIL @I1@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I9@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I10@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I11@
+2 _FREL Natural
+2 _MREL Natural
+1 MARR
+2 DATE 30 APR 2010
+0 @F6@ FAM
+1 HUSB @I15@
+1 WIFE @I16@
+1 CHIL @I5@
+2 _FREL Natural
+2 _MREL Natural
+0 @F2@ FAM
+1 HUSB @I4@
+1 WIFE @I5@
+1 CHIL @I2@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I6@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I8@
+2 _FREL Natural
+2 _MREL Natural
+1 MARR
+2 PLAC Walla Walla, Walla Walla, Washington, USA
+0 @F7@ FAM
+1 HUSB @I18@
+1 WIFE @I17@
+1 CHIL @I4@
+2 _FREL Natural
+2 _MREL Natural
+0 @F3@ FAM
+1 HUSB @I7@
+1 WIFE @I6@
+0 @F8@ FAM
+1 HUSB @I19@
+1 CHIL @I13@
+2 _FREL Natural
+0 @F4@ FAM
+1 HUSB @I12@
+1 CHIL @I3@
+2 _FREL Natural
+0 @S1@ SOUR
+1 TITL Personal email
+0 TRLR

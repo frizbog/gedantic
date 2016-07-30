@@ -28,6 +28,8 @@ package org.gedantic.web.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,6 +40,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.gedantic.web.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -76,7 +79,8 @@ public class FileUploadHandler extends HttpServlet {
                         }
                         if (item.getSize() > MAX_MB * 1024 * 1024) {
                             LOG.info("Upload file " + item.getName() + " exceeds " + MAX_MB + "MB limit - was " + item.getSize());
-                            throw new RuntimeException("Upload file " + item.getName() + " exceeds " + MAX_MB + "MB limit - was " + item.getSize());
+                            throw new RuntimeException("Upload file " + item.getName() + " exceeds " + MAX_MB + "MB limit - was "
+                                    + item.getSize());
                         }
                         String name = new File(item.getName()).getName();
                         String fullPathAndName = UPLOAD_DIRECTORY + File.separator + name;
@@ -96,8 +100,20 @@ public class FileUploadHandler extends HttpServlet {
                 response.setStatus(403);
             }
         } else {
-            LOG.info("User attempted something other than file upload");
-            response.setStatus(403);
+            if (request.getParameter("useSample") != null) {
+                URL resource = this.getClass().getClassLoader().getResource("gedantic sample.ged");
+                File file;
+                try {
+                    file = new File(resource.toURI());
+                } catch (URISyntaxException e) {
+                    throw new ServletException("Could not get resource URI: " + resource, e);
+                }
+                // Make sure to pass in false in last param to prevent deleting the file from classpath
+                new ParserAndLoader(request, response, file, false).parseAndLoadIntoSession();
+                request.getRequestDispatcher(Constants.URL_ANALYSIS_MENU).forward(request, response);
+            } else {
+                response.setStatus(403);
+            }
         }
         LOG.debug("<doPost");
     }
