@@ -26,6 +26,8 @@
  */
 package org.gedantic.analyzer;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 /**
  * Base class for an analysis result
  * 
@@ -54,9 +56,9 @@ public abstract class AResult {
      * @param problem
      */
     public AResult(String factType, String value, String problem) {
-        this.factType = factType;
-        this.value = value;
-        this.problem = problem;
+        this.factType = StringEscapeUtils.escapeHtml(factType);
+        this.value = StringEscapeUtils.escapeHtml(value);
+        this.problem = StringEscapeUtils.escapeHtml(problem);
     }
 
     /**

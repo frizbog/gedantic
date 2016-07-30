@@ -33,7 +33,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <div id="messages" class="container">
 	<c:if test="${not empty message}">
-		<p class="${messageType}">${message}</p>
+		<p class="${messageType}">${fn:escapeXml(message)}</p>
 	</c:if>
 	<c:if test="${not empty errors}">
 		<div id="errorsPanel" class="panel panel-danger">
@@ -47,7 +47,7 @@
 			<div id="errors" class="panel-collapse collapse">
 				<ul>
 					<c:forEach var="error" items="${errors}">
-						<li>${error}</li>
+						<li>${fn:escapeXml(error)}</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -66,7 +66,7 @@
 			<div id="warnings" class="panel-collapse collapse">
 				<ul>
 					<c:forEach var="warning" items="${warnings}">
-						<li>${warning}</li>
+						<li>${fn:escapeXml(warning)}</li>
 					</c:forEach>
 				</ul>
 			</div>

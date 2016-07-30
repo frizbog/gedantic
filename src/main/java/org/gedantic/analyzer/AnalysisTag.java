@@ -26,6 +26,8 @@
  */
 package org.gedantic.analyzer;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 /**
  * The types (categories) of analyses available. Any given analysis may have one or more of these tag values. Used to produce the
  * filter bar so users can filter based on these tags to find the analysis they want.
@@ -86,9 +88,9 @@ public enum AnalysisTag {
      *            The description of this tag - will be displayed on the site as well
      */
     private AnalysisTag(String id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
+        this.id = StringEscapeUtils.escapeHtml(id);
+        this.name = StringEscapeUtils.escapeHtml(name);
+        this.description = StringEscapeUtils.escapeHtml(description);
     }
 
     /**

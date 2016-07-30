@@ -60,9 +60,12 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
                 result.add(r);
             } else {
                 for (PersonalName pn : i.getNames()) {
-                    if ("//".equals(pn.getBasic()) && (notSpecified(pn.getPrefix()) && notSpecified(pn.getGivenName())
-                            && notSpecified(pn.getNickname()) && notSpecified(pn.getSurnamePrefix()) && notSpecified(pn
-                                    .getSurname()) && notSpecified(pn.getSuffix()))) {
+                    boolean componentsUnspecified = notSpecified(pn.getPrefix()) && notSpecified(pn.getGivenName()) && notSpecified(
+                            pn.getNickname()) && notSpecified(pn.getSurnamePrefix()) && notSpecified(pn.getSurname())
+                            && notSpecified(pn.getSuffix());
+                    boolean noNameIndicated = ("//".equals(pn.getBasic()) || pn.getBasic() == null || "".equals(pn.getBasic()
+                            .trim()) || "<No /name>/".equals(pn.getBasic()));
+                    if (noNameIndicated && componentsUnspecified) {
                         AResult r = new IndividualRelatedResult(i, null, null, "One of this individual's names is blank");
                         result.add(r);
                     }

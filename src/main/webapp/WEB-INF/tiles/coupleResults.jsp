@@ -28,13 +28,14 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<li class="list-group-item"><span class="list-group-item-heading">${result.family.husband.formattedName} 
+<li class="list-group-item"><span class="list-group-item-heading">${fn:escapeXml(result.family.husband.formattedName)} 
 
-	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.husband}"></span> 
-	and ${result.family.wife.formattedName} 
-	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.wife}"</span>
+	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.husband)}"></span> 
+	and ${fn:escapeXml(result.family.wife.formattedName)} 
+	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife)}"</span>
 	
 	<tiles:insertAttribute name="factsValuesProblems" />
 

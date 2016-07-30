@@ -27,18 +27,20 @@
 
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 
 <dl class="dl-horizontal">
 	<c:if test="${not empty result.factType}">
 		<dt>Fact type</dt>
-		<dd>${result.factType}</dd>
+		<dd>${fn:escapeXml(result.factType)}</dd>
 	</c:if>
 	<c:if test="${not empty result.value}">
 		<dt>Value</dt>
-		<dd>${result.value}</dd>
+		<dd>${fn:escapeXml(result.value)}</dd>
 	</c:if>
 	<c:if test="${not empty result.problem}">
 		<dt>Problem</dt>
-		<dd>${result.problem}</dd>
+		<dd>${fn:escapeXml(result.problem)}</dd>
 	</c:if>
 </dl>

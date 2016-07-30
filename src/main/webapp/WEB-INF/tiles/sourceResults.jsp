@@ -28,10 +28,11 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <li class="list-group-item"><span class="list-group-item-heading">
 	<c:choose>
-		<c:when test="${not empty result.source.title}">${result.source.title[0]}</c:when>
+		<c:when test="${not empty result.source.title}">${fn:escapeXml(result.source.title[0])}</c:when>
 		<c:otherwise>Untitled</c:otherwise>
 	</c:choose>
 

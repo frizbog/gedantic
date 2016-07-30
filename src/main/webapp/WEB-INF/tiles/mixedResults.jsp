@@ -36,24 +36,24 @@
 	<c:if test="${class:hasProperty(result, 'individual')}">
 		<%-- individual result --%>
 		Individual: ${result.individual.formattedName} 
-		<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.individual}" ></span> 
+		<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.individual)}" ></span> 
 	</c:if> 
 	<c:if test="${class:hasProperty(result, 'family')}">
 		<%-- family result --%>
 		Family: 
 		<c:choose>
-			<c:when test="${not empty result.family.husband}">${result.family.husband.formattedName} 
-				<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.husband}" ></span> 
+			<c:when test="${not empty result.family.husband}">${fn:escapeXml(result.family.husband.formattedName)} 
+				<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.husband)}" ></span> 
 				and
 				<c:choose>
-					<c:when test="${not empty result.family.wife}">${result.family.wife.formattedName} 
-						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.wife}" ></span>
+					<c:when test="${not empty result.family.wife}">${fn:escapeXml(result.family.wife.formattedName)} 
+						<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife)}" ></span>
 					</c:when>
 					<c:otherwise>unknown wife</c:otherwise>
 				</c:choose>
 			</c:when>
-			<c:otherwise>${result.family.wife.formattedName} 
-				<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${result.family.wife}" ></span> and unknown husband
+			<c:otherwise>${fn:escapeXml(result.family.wife.formattedName)} 
+				<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife)}" ></span> and unknown husband
 			</c:otherwise>
 		</c:choose>
 

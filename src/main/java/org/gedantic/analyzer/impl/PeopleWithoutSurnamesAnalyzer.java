@@ -60,7 +60,8 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
                 continue;
             }
             Set<String> personSurnames = getSurnamesFromIndividual(i);
-            if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains(""))) {
+            if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains("")) || (personSurnames
+                    .size() == 1 && personSurnames.contains("//"))) {
                 // Found a problem
                 AResult r = new IndividualRelatedResult(i, null, null, "Individual has no surnames");
                 result.add(r);
@@ -111,6 +112,11 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
         TreeSet<String> result = new TreeSet<String>();
         Pattern pattern = Pattern.compile(".*\\/(.*)\\/.*");
         for (PersonalName pn : i.getNames()) {
+            if ("<No /name>/".equals(pn.getBasic())) {
+                result.add("");
+                continue;
+            }
+            ;
             if (pn.getSurname() != null) {
                 result.add(pn.getSurname().getValue());
             }
