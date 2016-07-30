@@ -37,7 +37,7 @@
 	<p>
 		Source is available at <a href="http://github.com/frizbog/gedantic">http://github.com/frizbog/gedantic</a>.
 	</p>
-	<h1>Technologies used:</h1>
+	<h1>Notable Technologies Used</h1>
 	<dl class="dl-horizontal">
 		<dt>JSP 2.3.1 / Servlet 3.1</dt>
 		<dd>Makes for easy consumption of the gedcom4j library - since it's a java library, makes sense to use java server-side technologies</dd>
