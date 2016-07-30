@@ -27,8 +27,6 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -38,7 +36,6 @@ import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
-import org.gedcom4j.model.PersonalName;
 
 /**
  * Analysis to find people with a name of some kind but no surname
@@ -99,35 +96,6 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
     @Override
     public AnalysisTag[] getTags() {
         return new AnalysisTag[] { AnalysisTag.MISSING_DATA, AnalysisTag.INDIVIDUALS };
-    }
-
-    /**
-     * Get all the surnames for an individual
-     * 
-     * @param i
-     *            the individual
-     * @return a Set of all the surnames (as Strings)
-     */
-    private Set<String> getSurnamesFromIndividual(Individual i) {
-        TreeSet<String> result = new TreeSet<String>();
-        Pattern pattern = Pattern.compile(".*\\/(.*)\\/.*");
-        for (PersonalName pn : i.getNames()) {
-            if ("<No /name>/".equals(pn.getBasic())) {
-                result.add("");
-                continue;
-            }
-            ;
-            if (pn.getSurname() != null) {
-                result.add(pn.getSurname().getValue());
-            }
-            if (pn.getBasic() != null) {
-                Matcher matcher = pattern.matcher(pn.getBasic());
-                while (matcher.find()) {
-                    result.add(matcher.group(1));
-                }
-            }
-        }
-        return result;
     }
 
 }

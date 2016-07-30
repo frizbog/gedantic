@@ -26,6 +26,15 @@
  */
 package org.gedantic.analyzer;
 
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.PersonalName;
+import org.gedcom4j.model.StringWithCustomTags;
+
 /**
  * Base class for all {@link IAnalyzer} implementations
  * 
@@ -53,5 +62,72 @@ public abstract class AAnalyzer implements IAnalyzer {
             result.append(tags[i].getId());
         }
         return result.toString();
+    }
+
+    /**
+     * Get all the surnames for an individual
+     * 
+     * @param i
+     *            the individual
+     * @return a Set of all the surnames (as Strings)
+     */
+    protected Set<String> getSurnamesFromIndividual(Individual i) {
+        TreeSet<String> result = new TreeSet<String>();
+        Pattern pattern = Pattern.compile(".*\\/(.*)\\/.*");
+        for (PersonalName pn : i.getNames()) {
+            if ("<No /name>/".equals(pn.getBasic())) {
+                result.add("");
+                continue;
+            }
+            ;
+            if (pn.getSurname() != null) {
+                result.add(pn.getSurname().getValue());
+            }
+            if (pn.getBasic() != null) {
+                Matcher matcher = pattern.matcher(pn.getBasic());
+                while (matcher.find()) {
+                    result.add(matcher.group(1));
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Is the string supplied non-null, and has something other than whitespace in it?
+     * 
+     * @param s
+     *            the strings
+     * @return true if the string supplied non-null, and has something other than whitespace in it
+     */
+    protected boolean isSpecified(String s) {
+        if (s == null || s.isEmpty()) {
+            return false;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isWhitespace(s.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Is the supplied string with custom tags non-null, and has something other than whitespace in its value field?
+     * 
+     * @param swct
+     *            the string with custom tags
+     * @return true if the string supplied non-null, and has something other than whitespace in it
+     */
+    protected boolean isSpecified(StringWithCustomTags swct) {
+        if (swct == null || swct.getValue() == null || swct.getValue().isEmpty()) {
+            return false;
+        }
+        for (int i = 0; i < swct.getValue().length(); i++) {
+            if (!Character.isWhitespace(swct.getValue().charAt(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 }

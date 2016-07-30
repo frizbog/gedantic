@@ -26,7 +26,9 @@
  */
 package org.gedantic.analyzer.impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -34,14 +36,16 @@ import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
-import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.PersonalName;
 
 /**
+ * Analysis to find people with only a surname (no given name)
+ * 
  * @author frizbog
  */
-public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
+public class PeopleWithOnlySurnamesAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}
@@ -52,31 +56,35 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
         List<AResult> result = new ArrayList<>();
 
         for (Individual i : g.getIndividuals().values()) {
-            if (i.getFamiliesWhereChild() == null || i.getFamiliesWhereChild().isEmpty()) {
+            if (i.getNames() == null || i.getNames().isEmpty()) {
                 continue;
             }
-            Set<String> personSurnames = getSurnamesFromIndividual(i);
-            Set<String> allParentSurnames = new TreeSet<String>();
-            for (FamilyChild fc : i.getFamiliesWhereChild()) {
-                if (fc.getFamily().getHusband() != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.getFamily().getHusband()));
+            boolean hadSurname = false;
+            boolean somethingOtherThanSurname = false;
+            for (PersonalName pn : i.getNames()) {
+                if ((isSpecified(pn.getBasic()) && !"//".equals(pn.getBasic())) || isSpecified(pn.getSurname())) {
+                    // Don't count empty surnames
+                    hadSurname = true;
                 }
-                if (fc.getFamily().getWife() != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.getFamily().getWife()));
-                }
-            }
-            if (allParentSurnames.isEmpty()) {
-                continue;
-            }
 
-            Set<String> commonSurnames = new TreeSet<>(allParentSurnames);
-            commonSurnames.retainAll(personSurnames);
-            if (commonSurnames.isEmpty()) {
-                // Found a problem
-                AResult r = new IndividualRelatedResult(i, null, null, "Individual has surnames " + personSurnames
-                        + " and parents have surnames " + allParentSurnames);
-                result.add(r);
+                // Characters before a slash would be something other than a surname
+                int firstSlash = pn.getBasic().indexOf('/');
+                if (firstSlash > 0) {
+                    somethingOtherThanSurname = true;
+                    break; // Don't need to check any more names
+                }
+
+                // Check the name components too
+                if (isSpecified(pn.getGivenName()) || isSpecified(pn.getNickname())) {
+                    somethingOtherThanSurname = true;
+                    break; // Don't need to check any more names
+                }
             }
+            if (somethingOtherThanSurname || !hadSurname) {
+                // Next person
+                continue;
+            }
+            result.add(new IndividualRelatedResult(i, null, null, null));
         }
 
         Collections.sort(result, new IndividualResultSortComparator());
@@ -88,7 +96,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "Children who have no matching surnames with their parents";
+        return "People who have no given (first) names or nicknames, just surnames";
     }
 
     /**
@@ -96,7 +104,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getName() {
-        return "Children with different surnames";
+        return "People with only surnames";
     }
 
     /**
@@ -109,7 +117,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
 
     @Override
     public AnalysisTag[] getTags() {
-        return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.FAMILIES };
+        return new AnalysisTag[] { AnalysisTag.MISSING_DATA, AnalysisTag.INDIVIDUALS };
     }
 
 }
