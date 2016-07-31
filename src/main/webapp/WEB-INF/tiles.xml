@@ -105,6 +105,11 @@
 		<put-attribute name="whatsInResults" value="sources" cascade="true" />
 	</definition>
 
+	<definition name="relationshipResults" extends="results">
+		<put-attribute name="resultListItem" value="/WEB-INF/tiles/relationshipResults.jsp" cascade="true" />
+		<put-attribute name="whatsInResults" value="relationships" cascade="true" />
+	</definition>
+
 
 
 </tiles-definitions>

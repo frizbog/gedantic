@@ -87,6 +87,7 @@ public final class AnalyzerList {
         addAnalyzer(new FutureBirthDeathDatesAnalyzer());
         addAnalyzer(new PeopleWhoLivedPast100Analyzer());
         addAnalyzer(new PeopleWithOnlySurnamesAnalyzer());
+        addAnalyzer(new CircularAncestryAnalyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {

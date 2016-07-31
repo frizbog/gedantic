@@ -26,7 +26,10 @@
  */
 package org.gedantic.analyzer;
 
+import java.util.List;
+
 import org.apache.commons.lang.StringEscapeUtils;
+import org.gedcom4j.relationship.SimpleRelationship;
 
 /**
  * Base class for an analysis result
@@ -43,12 +46,23 @@ public abstract class AResult {
     /**
      * The value that caused the problem
      */
-    protected final String value;
+    protected final Object value;
 
     /**
      * The description of the problem
      */
     protected final String problem;
+
+    /**
+     * @param factType
+     * @param value
+     * @param problem
+     */
+    public AResult(String factType, List<List<SimpleRelationship>> value, String problem) {
+        this.factType = StringEscapeUtils.escapeHtml(factType);
+        this.value = value;
+        this.problem = StringEscapeUtils.escapeHtml(problem);
+    }
 
     /**
      * @param factType
@@ -84,7 +98,7 @@ public abstract class AResult {
      * 
      * @return the value that cause the problem
      */
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 }

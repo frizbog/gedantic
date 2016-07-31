@@ -126,4 +126,10 @@ public class Constants {
      * The page for displaying analysis results about sources.
      */
     public static final String URL_ANALYSIS_SOURCE_RESULTS = "/sourceResults.tiles";
+
+    /**
+     * The page for displaying analysis results about relationships
+     */
+    public static final String URL_ANALYSIS_RELATIONSHIP_RESULTS = "/relationshipResults.tiles";
+
 }
