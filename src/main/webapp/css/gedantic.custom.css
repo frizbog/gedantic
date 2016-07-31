@@ -35,6 +35,7 @@ body {
 	/* Margin bottom by footer height */
 	margin-bottom: 4em;
 	padding-top: 65px;
+	font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
 .footer {
@@ -203,7 +204,7 @@ dl {
 
 .filtr-item {
 	width: 30rem;
-	height: 10em;
+	height: 8em;
 	cursor: pointer;
 }
 
@@ -212,4 +213,8 @@ dl {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	max-height: 2rem;
+}
+
+.filtr-container .panel-primary .panel-body {
+	font-size: 90%;
 }

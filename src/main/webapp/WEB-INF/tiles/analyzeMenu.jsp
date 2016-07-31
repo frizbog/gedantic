@@ -34,9 +34,9 @@
 	</form>
 
 	<ul id="filterbar" class="nav nav-gallery">
-		<li data-multifltr="all" class="active">All</li>
+		<li data-filtr="all" class="active">All</li>
 		<c:forEach items="${analyzerTags}" var="tag">
-			<li data-multifltr="${tag.id}" data-toggle="tooltip"  title="${tag.description}">${tag.name}</li>
+			<li data-filtr="${tag.id}" data-toggle="tooltip"  title="${tag.description}">${tag.name}</li>
 		</c:forEach>
 	</ul>
 

@@ -43,7 +43,7 @@
 <meta name="author" content="Matthew R. Harrah">
 <meta http-equiv="content-language" content="en-us">
 <meta name="robots" content="index, follow">
-<c:forEach var="css" items="${cssfiles}"><link rel='stylesheet'href='<c:url value="${css}"/>'/></c:forEach>
+<c:forEach var="css" items="${cssfiles}"><link rel='stylesheet' href='<c:url value="${css}"/>'/></c:forEach>
 
 <title><tiles:getAsString name="title" /></title>
 <style>

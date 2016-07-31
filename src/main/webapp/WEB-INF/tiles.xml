@@ -40,6 +40,7 @@
 		<put-list-attribute name="cssfiles">
 			<add-attribute value="webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
 			<add-attribute value="css/gedantic.custom.css" />
+			<add-attribute value="https://fonts.googleapis.com/css?family=Roboto" />
 		</put-list-attribute>
 		<put-list-attribute name="javascripts">
 			<add-attribute value="webjars/jquery/2.2.4/jquery.min.js" />
