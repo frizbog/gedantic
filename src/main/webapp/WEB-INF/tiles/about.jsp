@@ -37,10 +37,14 @@
 	<p>
 		Source is available at <a href="http://github.com/frizbog/gedantic">http://github.com/frizbog/gedantic</a>.
 	</p>
+	<h1>Have an issue or a suggestion?</h1>
+	<p>
+		Please <a href="https://github.com/frizbog/gedantic/issues/new">create an issue at Github</a>.
+	</p>
 	<h1>Notable Technologies Used</h1>
 	<dl class="dl-horizontal">
 		<dt>JSP 2.3.1 / Servlet 3.1</dt>
-		<dd>Makes for easy consumption of the gedcom4j library - since it's a java library, makes sense to use java server-side technologies</dd>
+		<dd>Makes for easy consumption of the gedcom4j library - since it's a java library, it makes sense to use java server-side technology to demo it</dd>
 		<dt>
 			<a href="http://tiles.apache.org">Apache Tiles</a>
 		</dt>
@@ -60,8 +64,10 @@
 		<dt>
 			<a href="http://commons.apache.org">Apache Commons</a>
 		</dt>
-		<dd>File upload processing</dd>
-		<dt><a href="http://yiotis.net/filterizr">Filterizr</a></dt>
+		<dd>File upload processing, JavaBean processing, HTML escaping, and more</dd>
+		<dt>
+			<a href="http://yiotis.net/filterizr">Filterizr</a>
+		</dt>
 		<dd>jQuery-based filtering widget (used on analysis selection page)</dd>
 	</dl>
 	<h4>Licenses</h4>
