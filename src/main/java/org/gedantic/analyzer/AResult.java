@@ -29,6 +29,7 @@ package org.gedantic.analyzer;
 import java.util.List;
 
 import org.apache.commons.lang.StringEscapeUtils;
+import org.gedcom4j.model.Individual;
 import org.gedcom4j.relationship.SimpleRelationship;
 
 /**
@@ -52,6 +53,17 @@ public abstract class AResult {
      * The description of the problem
      */
     protected final String problem;
+
+    /**
+     * @param factType
+     * @param value
+     * @param problem
+     */
+    public AResult(String factType, Individual value, String problem) {
+        this.factType = StringEscapeUtils.escapeHtml(factType);
+        this.value = value;
+        this.problem = StringEscapeUtils.escapeHtml(problem);
+    }
 
     /**
      * @param factType

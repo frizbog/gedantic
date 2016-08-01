@@ -35,7 +35,7 @@
 
 	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.husband)}"></span> 
 	and ${fn:escapeXml(result.family.wife.formattedName)} 
-	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife)}"</span>
+	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife)}"></span>
 	
 	<tiles:insertAttribute name="factsValuesProblems" />
 

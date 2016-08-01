@@ -28,6 +28,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://classtagfunctions" prefix="class"%>
 
 
 <dl class="dl-horizontal">
@@ -37,7 +38,17 @@
 	</c:if>
 	<c:if test="${not empty result.value}">
 		<dt>Value</dt>
-		<dd>${fn:escapeXml(result.value)}</dd>
+		<c:choose>
+			<c:when test="${class:instanceOf(result.value, 'org.gedcom4j.model.Individual') }">
+				<dd>
+				${result.value.formattedName} 
+				<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.value)}"></span>
+				</dd>
+			</c:when>
+			<c:otherwise>
+				<dd>${fn:escapeXml(result.value)}</dd>
+			</c:otherwise>
+		</c:choose>
 	</c:if>
 	<c:if test="${not empty result.problem}">
 		<dt>Problem</dt>

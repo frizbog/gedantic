@@ -68,7 +68,7 @@ public class EventsWithoutPlacesOrDatesAnalyzer extends AAnalyzer {
                     continue;
                 }
                 if (e.getPlace() == null) {
-                    result.add(new FamilyRelatedResult(f, getFactTypeWithDescription(e), null, null));
+                    result.add(new FamilyRelatedResult(f, getFactTypeWithDescription(e), (String) null, null));
                 }
             }
         }

@@ -61,7 +61,7 @@ public class MarriagesWithoutDatesAnalyzer extends AAnalyzer {
                     }
                 }
                 if (!foundMarriageWithDate) {
-                    result.add(new FamilyRelatedResult(f, null, null, null));
+                    result.add(new FamilyRelatedResult(f, null, (String) null, null));
                 }
             }
         }

@@ -62,7 +62,7 @@ public class EventsWithoutDatesAnalyzer extends AAnalyzer {
         for (Family f : g.getFamilies().values()) {
             for (FamilyEvent e : f.getEvents()) {
                 if (e.getDate() == null || e.getDate().getValue() == null || e.getDate().getValue().trim().isEmpty()) {
-                    result.add(new FamilyRelatedResult(f, getFactTypeWithDescription(e), null, null));
+                    result.add(new FamilyRelatedResult(f, getFactTypeWithDescription(e), (String) null, null));
                 }
             }
         }

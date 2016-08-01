@@ -28,6 +28,7 @@ package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -36,20 +37,28 @@ import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
+import org.gedcom4j.model.Individual;
 
 /**
- * An analyzer that finds couples without children.
+ * An analyzer that finds couples with common ancestors (cousins marrying, etc)
  * 
  * @author frizbog
  */
-public class CouplesWithoutChildrenAnalyzer extends AAnalyzer {
+public class CouplesWithCommonAncestorsAnalyzer extends AAnalyzer {
 
     @Override
     public List<AResult> analyze(Gedcom g) {
         List<AResult> result = new ArrayList<>();
         for (Family f : g.getFamilies().values()) {
-            if (f.getWife() != null && f.getHusband() != null && (f.getChildren() == null || f.getChildren().isEmpty())) {
-                result.add(new FamilyRelatedResult(f, null, (String) null, null));
+            if (f.getWife() != null && f.getHusband() != null) {
+
+                Set<Individual> ancestors = f.getWife().getAncestors();
+                ancestors.retainAll(f.getHusband().getAncestors());
+
+                for (Individual commonAncestor : ancestors) {
+                    result.add(new FamilyRelatedResult(f, null, commonAncestor, null));
+                }
+
             }
         }
         return result;
@@ -57,12 +66,12 @@ public class CouplesWithoutChildrenAnalyzer extends AAnalyzer {
 
     @Override
     public String getDescription() {
-        return "Families where there are spouses but no children";
+        return "Couples that share a common ancestor (such as cousins marrying)";
     }
 
     @Override
     public String getName() {
-        return "Couples without children";
+        return "Couples with common ancestors";
     }
 
     @Override
@@ -72,7 +81,7 @@ public class CouplesWithoutChildrenAnalyzer extends AAnalyzer {
 
     @Override
     public AnalysisTag[] getTags() {
-        return new AnalysisTag[] { AnalysisTag.MISSING_DATA, AnalysisTag.FAMILIES };
+        return new AnalysisTag[] { AnalysisTag.FAMILIES };
     }
 
 }

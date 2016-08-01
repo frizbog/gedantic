@@ -28,6 +28,7 @@ package org.gedantic.analyzer.result;
 
 import org.gedantic.analyzer.AResult;
 import org.gedcom4j.model.Family;
+import org.gedcom4j.model.Individual;
 
 /**
  * An analysis result about a specific family. Immutable.
@@ -39,6 +40,23 @@ public class FamilyRelatedResult extends AResult {
      * The Family
      */
     private final Family family;
+
+    /**
+     * Constructor
+     * 
+     * @param family
+     *            the family with the finding
+     * @param factType
+     *            the fact that the finding relates to - optional
+     * @param value
+     *            the individual that was problematic - optional
+     * @param problem
+     *            a description of the problem - optional
+     */
+    public FamilyRelatedResult(Family family, String factType, Individual value, String problem) {
+        super(factType, value, problem);
+        this.family = family;
+    }
 
     /**
      * Constructor
