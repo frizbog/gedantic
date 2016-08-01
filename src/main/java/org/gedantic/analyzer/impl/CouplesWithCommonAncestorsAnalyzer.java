@@ -38,6 +38,7 @@ import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
+import org.gedcom4j.relationship.AncestryCalculator;
 
 /**
  * An analyzer that finds couples with common ancestors (cousins marrying, etc)
@@ -48,12 +49,12 @@ public class CouplesWithCommonAncestorsAnalyzer extends AAnalyzer {
 
     @Override
     public List<AResult> analyze(Gedcom g) {
+        AncestryCalculator ac = new AncestryCalculator();
         List<AResult> result = new ArrayList<>();
         for (Family f : g.getFamilies().values()) {
             if (f.getWife() != null && f.getHusband() != null) {
 
-                Set<Individual> ancestors = f.getWife().getAncestors();
-                ancestors.retainAll(f.getHusband().getAncestors());
+                Set<Individual> ancestors = ac.getLowestCommonAncestors(f.getWife(), f.getHusband());
 
                 for (Individual commonAncestor : ancestors) {
                     result.add(new FamilyRelatedResult(f, null, commonAncestor, null));
