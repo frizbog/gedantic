@@ -169,6 +169,7 @@
 1 SEX M
 1 FAMS @F6@
 0 @I21@ INDI
+1 FAMC @FBAD@
 1 NAME Thomas /Merriweather/
 1 SEX M
 1 BIRT
@@ -176,7 +177,7 @@
 1 FAMS @F9@
 1 FAMC @F6@
 0 @I27@ INDI
-1 FAMC @F9@
+1 FAMS @FBAD@
 1 NAME Brittany /Merriweather/
 1 SEX F
 1 BIRT
@@ -405,7 +406,6 @@
 0 @F9@ FAM
 1 HUSB @I21@
 1 WIFE @I22@
-1 CHIL @I27@
 1 CHIL @I25@
 2 _FREL Natural
 2 _MREL Natural
@@ -447,4 +447,7 @@
 2 _MREL Natural
 0 @S1@ SOUR
 1 TITL Personal email
+0 @FBAD@ FAM
+1 WIFE @I27@
+1 CHIL @I21@
 0 TRLR
