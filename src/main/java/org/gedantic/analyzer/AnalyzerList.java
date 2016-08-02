@@ -90,6 +90,7 @@ public final class AnalyzerList {
         addAnalyzer(new CircularAncestryAnalyzer());
         addAnalyzer(new CouplesWithCommonAncestorsAnalyzer());
         addAnalyzer(new CouplesWithSameBirthSurnames());
+        addAnalyzer(new AdultsWithoutSpousesAnalyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {

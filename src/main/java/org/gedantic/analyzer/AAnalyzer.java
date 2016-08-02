@@ -26,14 +26,15 @@
  */
 package org.gedantic.analyzer;
 
+import java.util.Date;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.gedcom4j.model.Individual;
-import org.gedcom4j.model.PersonalName;
-import org.gedcom4j.model.StringWithCustomTags;
+import org.gedcom4j.model.*;
+import org.gedcom4j.parser.DateParser;
+import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 
 /**
  * Base class for all {@link IAnalyzer} implementations
@@ -62,6 +63,52 @@ public abstract class AAnalyzer implements IAnalyzer {
             result.append(tags[i].getId());
         }
         return result.toString();
+    }
+
+    /**
+     * Get the birth date of preference from the supplied individual
+     * 
+     * @param i
+     *            the individual
+     * @param datePreference
+     *            the preference for imprecise dates
+     * @return the date found, if any - null if no parseable date could be found
+     */
+    protected Date getBirthDate(Individual i, ImpreciseDatePreference datePreference) {
+        DateParser dp = new DateParser();
+        Date result = null;
+        for (IndividualEvent e : i.getEventsOfType(IndividualEventType.BIRTH)) {
+            if (isSpecified(e.getDate())) {
+                Date d = dp.parse(e.getDate().getValue());
+                if (d != null && (result == null || d.before(result))) {
+                    result = d;
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Get the death date of preference from the supplied individual
+     * 
+     * @param i
+     *            the individual
+     * @param datePreference
+     *            the preference for imprecise dates
+     * @return the date found, if any - null if no parseable date could be found
+     */
+    protected Date getDeathDate(Individual i, ImpreciseDatePreference datePreference) {
+        DateParser dp = new DateParser();
+        Date result = null;
+        for (IndividualEvent e : i.getEventsOfType(IndividualEventType.DEATH)) {
+            if (isSpecified(e.getDate())) {
+                Date d = dp.parse(e.getDate().getValue());
+                if (d != null && (result == null || d.before(result))) {
+                    result = d;
+                }
+            }
+        }
+        return result;
     }
 
     /**
