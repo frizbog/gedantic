@@ -30,24 +30,22 @@
 <div class="container">
 	<form id="analysisForm" name="analysis" action="analyze" method="post">
 		<legend>Select an analysis to perform on the loaded GEDCOM file</legend>
-		<input name="analyzerId" type="hidden" id="analysisKey"/>
+		<input name="analyzerId" type="hidden" id="analysisKey" />
 	</form>
 
+	<span class="bs-example">Categories</span>
 	<ul id="filterbar" class="nav nav-gallery">
 		<li data-filtr="all" class="active">All</li>
 		<c:forEach items="${analyzerTags}" var="tag">
-			<li data-filtr="${tag.id}" data-toggle="tooltip"  title="${tag.description}">${tag.name}</li>
+			<li data-filtr="${tag.id}" data-toggle="tooltip" title="${tag.description}">${tag.name}</li>
 		</c:forEach>
 	</ul>
 
 	<div class="filtr-container row-fluid">
 		<c:forEach items="${analyzers}" var="analyzer" varStatus="counter">
-			<div class="filtr-item panel panel-primary" data-category="${analyzer.value.tagIds}" data-sort="value" data-analysiskey="${analyzer.key}">
-				<div class="panel-heading">
-					<h3 class="panel-title" data-toggle="tooltip" title="${analyzer.value.name}">${analyzer.value.name}</h3>
-				</div>
-				<div class="panel-body">${analyzer.value.description}</div>
-			</div>
+			<div class="filtr-item" data-category="${analyzer.value.tagIds}" data-sort="value" data-analysiskey="${analyzer.key}" data-toggle="tooltip"
+				title="${analyzer.value.description}">
+			${analyzer.value.name}</div>
 		</c:forEach>
 	</div>
 </div>

@@ -173,48 +173,45 @@ dl {
 	cursor: pointer;
 }
 
+.nav-gallery li:hover {
+	background: #e6e6e6;
+	border-color: #adadad;
+}
+
 .nav-gallery li.active {
 	color: white;
 	background-color: #337ab7;
 }
 
-.nav-gallery li:first-of-type {
-	border-top-left-radius: 0.5rem !important;
-	border-bottom-left-radius: 0.5rem !important;
-	border-top-right-radius: 0 !important;
-	border-bottom-right-radius: 0 !important;
+.nav-gallery li.active:hover {
+	color: white;
+	background-color: #286090;
+	border: 1px solid #204d74;
 }
 
-.nav-gallery li:last-of-type {
-	border-top-left-radius: 0 !important;
-	border-bottom-left-radius: 0 !important;
-	border-top-right-radius: 0.5rem !important;
-	border-bottom-right-radius: 0.5rem !important;
-}
-
-.filtr-container {
-	margin-top: 1rem;
-	margin-right: 1rem;
-	padding: 2rem;
-}
-
-.filtr-container row {
-	
-}
+.filtr-container.row-fluid {
+ 	margin-top: 1rem;
+	margin-right: 1rem; 
+ }
 
 .filtr-item {
-	width: 30rem;
-	height: 8em;
+
+	background-color: #337ab7;
+	color:white;
+	
+	width: 15rem;
+	height: 6em;
 	cursor: pointer;
-}
 
-.filtr-container .panel-primary .panel-heading .panel-title {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-height: 2rem;
+	border: 2px solid #337ab7;
+	border-top-left-radius: 1rem !important;
+	border-bottom-left-radius: 1rem !important;
+	border-top-right-radius: 1rem !important;
+	border-bottom-right-radius: 1rem !important;
+	
+	padding: 0.5rem;
 }
-
-.filtr-container .panel-primary .panel-body {
-	font-size: 90%;
+.filtr-item:hover {
+	background-color: #286090;
+	border-color:#204d74;
 }

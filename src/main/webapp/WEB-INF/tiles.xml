@@ -72,7 +72,7 @@
 	<definition name="analyzeMenu" extends="common">
 		<put-attribute name="body" value="/WEB-INF/tiles/analyzeMenu.jsp" />
 		<put-list-attribute name="javascripts" inherit="true">
-			<add-attribute value="js/jquery.filterizr.min.js" />
+			<add-attribute value="js/jquery.filterizr.js" />
 			<add-attribute value="js/analyzeMenu.js" />
 		</put-list-attribute>
 	</definition>
