@@ -92,6 +92,7 @@ public final class AnalyzerList {
         addAnalyzer(new CouplesWithSameBirthSurnames());
         addAnalyzer(new AdultsWithoutSpousesAnalyzer());
         addAnalyzer(new MaleWivesFemaleHusbandsAnalyzer());
+        addAnalyzer(new DescendantsBornBeforeAncestorsAnalyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {

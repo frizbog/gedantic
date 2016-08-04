@@ -54,14 +54,14 @@ public class PeopleWithoutParentsAnalyzer extends AAnalyzer {
 
         for (Individual i : g.getIndividuals().values()) {
             if (i.getFamiliesWhereChild() == null || i.getFamiliesWhereChild().isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, null, null));
+                result.add(new IndividualRelatedResult(i, null, (String) null, null));
             } else {
                 boolean foundParent = false;
                 for (FamilyChild fc : i.getFamiliesWhereChild()) {
                     foundParent = fc.getFamily().getWife() != null || fc.getFamily().getHusband() != null;
                 }
                 if (!foundParent) {
-                    result.add(new IndividualRelatedResult(i, null, null,
+                    result.add(new IndividualRelatedResult(i, null, (String) null,
                             "Child of at least one family record, but no family with designated parents"));
                 }
             }

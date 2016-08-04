@@ -27,53 +27,49 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.analyzer.result.DateAndString;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
-import org.gedcom4j.model.PersonalName;
-import org.gedcom4j.model.StringWithCustomTags;
+import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 
 /**
+ * An analyzer to find people who are ancestors of themselves due to illegal cyclical relationshops
+ * 
  * @author frizbog
  */
-public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
+public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
 
     /**
      * {@inheritDoc}
      */
     @Override
     public List<AResult> analyze(Gedcom g) {
-
-        List<AResult> result = new ArrayList<>();
-
+        List<AResult> result = new ArrayList<AResult>();
         for (Individual i : g.getIndividuals().values()) {
-            if (i.getNames() == null || i.getNames().isEmpty()) {
-                AResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has no names");
-                result.add(r);
-            } else {
-                for (PersonalName pn : i.getNames()) {
-                    boolean componentsUnspecified = notSpecified(pn.getPrefix()) && notSpecified(pn.getGivenName()) && notSpecified(
-                            pn.getNickname()) && notSpecified(pn.getSurnamePrefix()) && notSpecified(pn.getSurname())
-                            && notSpecified(pn.getSuffix());
-                    boolean noNameIndicated = ("//".equals(pn.getBasic()) || pn.getBasic() == null || "".equals(pn.getBasic()
-                            .trim()) || "<No /name>/".equals(pn.getBasic()));
-                    if (noNameIndicated && componentsUnspecified) {
-                        AResult r = new IndividualRelatedResult(i, null, (String) null, "One of this individual's names is blank");
-                        result.add(r);
-                    }
+            DateAndString ibd = getBirthDate(i, ImpreciseDatePreference.FAVOR_EARLIEST);
+            if (ibd == null || ibd.getDate() == null) {
+                continue;
+            }
+            for (Individual a : i.getAncestors()) {
+                DateAndString abd = getBirthDate(a, ImpreciseDatePreference.FAVOR_EARLIEST);
+                if (abd != null && abd.getDate() != null && abd.getDate().after(ibd.getDate())) {
+                    // Ancestor born after individual
+
+                    // long difference = abd.getDate().getTime() - ibd.getDate().getTime();
+                    // long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
+                    //
+                    result.add(new IndividualRelatedResult(i, null, a, "Individual born " + ibd.getDateString()
+                            + ", and ancestor born " + abd.getDateString()));
                 }
             }
         }
-
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 
@@ -82,7 +78,7 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getDescription() {
-        return "People who have no names (or only blank ones)";
+        return "People who have a birth date that precedes that of any of their ancestors";
     }
 
     /**
@@ -90,7 +86,7 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
      */
     @Override
     public String getName() {
-        return "People without names";
+        return "Born before ancestors";
     }
 
     /**
@@ -101,23 +97,16 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
         return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public AnalysisTag[] getTags() {
-        return new AnalysisTag[] { AnalysisTag.MISSING_DATA, AnalysisTag.INDIVIDUALS };
+        return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.INDIVIDUALS };
     }
 
-    /**
-     * Return true if the supplied string value is null or empty when trimmed
-     * 
-     * @param s
-     *            teh string
-     * @return true if the supplied string value is null or empty when trimmed
-     */
-    private boolean notSpecified(StringWithCustomTags s) {
-        if (s == null || s.getValue() == null || s.getValue().trim().isEmpty()) {
-            return true;
-        }
-        return false;
+    @Override
+    public boolean isNewish() {
+        return true;
     }
-
 }

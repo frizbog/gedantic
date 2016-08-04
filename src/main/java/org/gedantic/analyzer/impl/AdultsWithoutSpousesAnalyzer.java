@@ -35,6 +35,7 @@ import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
+import org.gedantic.analyzer.result.DateAndString;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
@@ -79,8 +80,8 @@ public class AdultsWithoutSpousesAnalyzer extends AAnalyzer {
                 continue;
             }
 
-            Date birthDate = getBirthDate(i, ImpreciseDatePreference.FAVOR_EARLIEST);
-            if (birthDate == null) {
+            DateAndString birthDate = getBirthDate(i, ImpreciseDatePreference.FAVOR_EARLIEST);
+            if (birthDate == null || birthDate.getDate() == null) {
                 // can't tell how old they are/were without a parseable birth date
                 continue;
             }
@@ -89,13 +90,13 @@ public class AdultsWithoutSpousesAnalyzer extends AAnalyzer {
              * Make sure they survived into adulthood by comparing their birth date to their latest death date (if they have one) or
              * the current date
              */
-            Date deathDate = getDeathDate(i, ImpreciseDatePreference.FAVOR_LATEST);
-            Date endDate = (deathDate == null ? new Date() : deathDate);
+            DateAndString deathDate = getDeathDate(i, ImpreciseDatePreference.FAVOR_LATEST);
+            Date endDate = (deathDate == null || deathDate.getDate() == null ? new Date() : deathDate.getDate());
 
-            long difference = endDate.getTime() - birthDate.getTime();
+            long difference = endDate.getTime() - birthDate.getDate().getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld >= 18) {
-                result.add(new IndividualRelatedResult(i, null, null, (deathDate == null ? "Born " + yearsOld
+                result.add(new IndividualRelatedResult(i, null, (String) null, (deathDate == null ? "Born " + yearsOld
                         + " years ago with no death date available" : "Lived to " + yearsOld) + ", but no spouses"));
             }
 

@@ -60,12 +60,12 @@ public class PeopleWithoutBirthDatesAnalyzer extends AAnalyzer {
             }
             List<IndividualEvent> births = i.getEventsOfType(IndividualEventType.BIRTH);
             if (births.isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, null, "No birth events."));
+                result.add(new IndividualRelatedResult(i, null, (String) null, "No birth events."));
             } else {
                 for (IndividualEvent b : births) {
                     if (b.getDate() == null || b.getDate().getValue() == null || b.getDate().getValue().isEmpty() || "UNKNOWN"
                             .equalsIgnoreCase(b.getDate().getValue())) {
-                        result.add(new IndividualRelatedResult(i, null, null, "Birth event with no date."));
+                        result.add(new IndividualRelatedResult(i, null, (String) null, "Birth event with no date."));
                     }
                 }
             }

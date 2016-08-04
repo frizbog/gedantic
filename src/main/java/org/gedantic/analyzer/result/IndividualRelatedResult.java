@@ -48,6 +48,23 @@ public class IndividualRelatedResult extends AResult {
      * @param factType
      *            the fact that the finding relates to - optional
      * @param value
+     *            the other individual that was problematic - optional
+     * @param problem
+     *            a description of the problem - optional
+     */
+    public IndividualRelatedResult(Individual individual, String factType, Individual value, String problem) {
+        super(factType, value, problem);
+        this.individual = individual;
+    }
+
+    /**
+     * Constructor
+     * 
+     * @param individual
+     *            the individual with the finding
+     * @param factType
+     *            the fact that the finding relates to - optional
+     * @param value
      *            the value that was problematic - optional
      * @param problem
      *            a description of the problem - optional

@@ -73,7 +73,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
             commonSurnames.retainAll(personSurnames);
             if (commonSurnames.isEmpty()) {
                 // Found a problem
-                AResult r = new IndividualRelatedResult(i, null, null, "Individual has surnames " + personSurnames
+                AResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has surnames " + personSurnames
                         + " and parents have surnames " + allParentSurnames);
                 result.add(r);
             }

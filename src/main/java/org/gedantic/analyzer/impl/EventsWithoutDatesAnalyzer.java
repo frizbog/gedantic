@@ -55,7 +55,7 @@ public class EventsWithoutDatesAnalyzer extends AAnalyzer {
         for (Individual i : g.getIndividuals().values()) {
             for (IndividualEvent e : i.getEvents()) {
                 if (e.getDate() == null || e.getDate().getValue() == null || e.getDate().getValue().trim().isEmpty()) {
-                    result.add(new IndividualRelatedResult(i, getFactTypeWithDescription(e), null, null));
+                    result.add(new IndividualRelatedResult(i, getFactTypeWithDescription(e), (String) null, null));
                 }
             }
         }

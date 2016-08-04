@@ -75,7 +75,7 @@ public class PeopleWithoutDeathEventsAnalyzer extends AAnalyzer {
 
             List<IndividualEvent> births = i.getEventsOfType(IndividualEventType.BIRTH);
             if (births.isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, null, "No death (or birth) events."));
+                result.add(new IndividualRelatedResult(i, null, (String) null, "No death (or birth) events."));
                 continue;
             }
             Date earliestBirthDate = null;
@@ -90,14 +90,14 @@ public class PeopleWithoutDeathEventsAnalyzer extends AAnalyzer {
                 }
             }
             if (earliestBirthDate == null) {
-                result.add(new IndividualRelatedResult(i, null, null,
+                result.add(new IndividualRelatedResult(i, null, (String) null,
                         "No death events. Unable to parse birth dates to determine age if alive today."));
                 continue;
             }
             long difference = new Date().getTime() - earliestBirthDate.getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld > 80) {
-                result.add(new IndividualRelatedResult(i, null, null, "No death events. Born about " + ((int) yearsOld)
+                result.add(new IndividualRelatedResult(i, null, (String) null, "No death events. Born about " + ((int) yearsOld)
                         + " years ago (" + earliestBirthDateString + ")."));
             }
         }

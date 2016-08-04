@@ -32,6 +32,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.gedantic.analyzer.result.DateAndString;
 import org.gedcom4j.model.*;
 import org.gedcom4j.parser.DateParser;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
@@ -79,14 +80,15 @@ public abstract class AAnalyzer implements IAnalyzer {
      *            the preference for imprecise dates
      * @return the date found, if any - null if no parseable date could be found
      */
-    protected Date getBirthDate(Individual i, ImpreciseDatePreference datePreference) {
+    protected DateAndString getBirthDate(Individual i, ImpreciseDatePreference datePreference) {
         DateParser dp = new DateParser();
-        Date result = null;
+        DateAndString result = new DateAndString();
         for (IndividualEvent e : i.getEventsOfType(IndividualEventType.BIRTH)) {
             if (isSpecified(e.getDate())) {
                 Date d = dp.parse(e.getDate().getValue());
-                if (d != null && (result == null || d.before(result))) {
-                    result = d;
+                if (d != null && (result.getDate() == null || d.before(result.getDate()))) {
+                    result.setDate(d);
+                    result.setDateString(e.getDate().getValue());
                 }
             }
         }
@@ -102,14 +104,15 @@ public abstract class AAnalyzer implements IAnalyzer {
      *            the preference for imprecise dates
      * @return the date found, if any - null if no parseable date could be found
      */
-    protected Date getDeathDate(Individual i, ImpreciseDatePreference datePreference) {
+    protected DateAndString getDeathDate(Individual i, ImpreciseDatePreference datePreference) {
         DateParser dp = new DateParser();
-        Date result = null;
+        DateAndString result = new DateAndString();
         for (IndividualEvent e : i.getEventsOfType(IndividualEventType.DEATH)) {
             if (isSpecified(e.getDate())) {
                 Date d = dp.parse(e.getDate().getValue());
-                if (d != null && (result == null || d.before(result))) {
-                    result = d;
+                if (d != null && (result.getDate() == null || d.after(result.getDate()))) {
+                    result.setDate(d);
+                    result.setDateString(e.getDate().getValue());
                 }
             }
         }

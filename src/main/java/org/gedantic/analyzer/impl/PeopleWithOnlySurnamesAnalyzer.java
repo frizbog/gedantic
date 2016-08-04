@@ -84,7 +84,7 @@ public class PeopleWithOnlySurnamesAnalyzer extends AAnalyzer {
                 // Next person
                 continue;
             }
-            result.add(new IndividualRelatedResult(i, null, null, null));
+            result.add(new IndividualRelatedResult(i, null, (String) null, null));
         }
 
         Collections.sort(result, new IndividualResultSortComparator());

@@ -63,12 +63,12 @@ public class PeopleWithoutOccupationsAnalysis extends AAnalyzer {
 
             List<IndividualAttribute> occupations = i.getAttributesOfType(IndividualAttributeType.OCCUPATION);
             if (occupations.isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, null, null));
+                result.add(new IndividualRelatedResult(i, null, (String) null, null));
             } else {
                 for (IndividualAttribute b : occupations) {
                     if (b.getDescription() == null || b.getDescription().getValue() == null || b.getDescription().getValue().trim()
                             .isEmpty()) {
-                        result.add(new IndividualRelatedResult(i, null, null, "Occupation recorded with no description"));
+                        result.add(new IndividualRelatedResult(i, null, (String) null, "Occupation recorded with no description"));
                     }
                 }
             }

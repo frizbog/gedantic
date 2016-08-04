@@ -26,7 +26,10 @@
  */
 package org.gedantic.analyzer.impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -60,7 +63,7 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
             if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains("")) || (personSurnames
                     .size() == 1 && personSurnames.contains("//"))) {
                 // Found a problem
-                AResult r = new IndividualRelatedResult(i, null, null, "Individual has no surnames");
+                AResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has no surnames");
                 result.add(r);
             }
         }

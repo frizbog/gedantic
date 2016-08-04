@@ -60,9 +60,11 @@ public class PeopleWithOneMissingParentAnalyzer extends AAnalyzer {
                 for (FamilyChild fc : i.getFamiliesWhereChild()) {
                     Family f = fc.getFamily();
                     if (f.getWife() == null && f.getHusband() != null) {
-                        result.add(new IndividualRelatedResult(i, null, null, "Mother is missing - father is " + f.getHusband()));
+                        result.add(new IndividualRelatedResult(i, null, (String) null, "Mother is missing - father is " + f
+                                .getHusband()));
                     } else if (f.getWife() != null && f.getHusband() == null) {
-                        result.add(new IndividualRelatedResult(i, null, null, "Father is missing - mother is " + f.getWife()));
+                        result.add(new IndividualRelatedResult(i, null, (String) null, "Father is missing - mother is " + f
+                                .getWife()));
                     }
                 }
             }

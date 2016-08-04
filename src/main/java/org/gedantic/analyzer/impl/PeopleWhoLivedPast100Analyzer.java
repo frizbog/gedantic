@@ -107,10 +107,10 @@ public class PeopleWhoLivedPast100Analyzer extends AAnalyzer {
             long difference = latestDeathDate.getTime() - earliestBirthDate.getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld >= 130) {
-                result.add(new IndividualRelatedResult(i, null, null, "Lived to about " + yearsOld + " (b."
+                result.add(new IndividualRelatedResult(i, null, (String) null, "Lived to about " + yearsOld + " (b."
                         + earliestBirthDateString + ", d." + latestDeathDateString + ").  Probably incorrect dates."));
             } else if (yearsOld >= 100) {
-                result.add(new IndividualRelatedResult(i, null, null, "Lived to about " + yearsOld + " (b."
+                result.add(new IndividualRelatedResult(i, null, (String) null, "Lived to about " + yearsOld + " (b."
                         + earliestBirthDateString + ", d." + latestDeathDateString + ") - should verify."));
             }
         }
