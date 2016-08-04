@@ -45,7 +45,9 @@
 		<c:forEach items="${analyzers}" var="analyzer" varStatus="counter">
 			<div class="filtr-item" data-category="${analyzer.value.tagIds}" data-sort="value" data-analysiskey="${analyzer.key}" data-toggle="tooltip"
 				title="${analyzer.value.description}">
-			${analyzer.value.name}</div>
+			${analyzer.value.name}
+				<c:if test="${analyzer.value.newish}"><div class="label label-new" >New!</div></c:if>
+			</div>
 		</c:forEach>
 	</div>
 </div>

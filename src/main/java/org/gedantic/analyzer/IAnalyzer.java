@@ -80,4 +80,13 @@ public interface IAnalyzer {
      * @return an array of tags/categories for this analyzer
      */
     AnalysisTag[] getTags();
+
+    /**
+     * Should this analysis be considered "new" and possibly decorated as such in the UI? If so, override this method and return
+     * true instead.
+     * 
+     * @return true if this analysis is "new"?
+     */
+    boolean isNewish();
+
 }

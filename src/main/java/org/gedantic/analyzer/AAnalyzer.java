@@ -65,6 +65,11 @@ public abstract class AAnalyzer implements IAnalyzer {
         return result.toString();
     }
 
+    @Override
+    public boolean isNewish() {
+        return false;
+    }
+
     /**
      * Get the birth date of preference from the supplied individual
      * 

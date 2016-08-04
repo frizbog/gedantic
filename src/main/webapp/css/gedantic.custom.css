@@ -35,7 +35,7 @@ body {
 	/* Margin bottom by footer height */
 	margin-bottom: 4em;
 	padding-top: 65px;
-	font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif
+	font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
 .footer {
@@ -64,8 +64,8 @@ body {
 	font-weight: bolder;
 }
 
-#navbar div.popover  {
-	min-width: 10em;	
+#navbar div.popover {
+	min-width: 10em;
 }
 
 .popover-title {
@@ -190,28 +190,33 @@ dl {
 }
 
 .filtr-container.row-fluid {
- 	margin-top: 1rem;
-	margin-right: 1rem; 
- }
+	margin-top: 1rem;
+	margin-right: 1rem;
+}
 
 .filtr-item {
-
 	background-color: #337ab7;
-	color:white;
-	
+	color: white;
 	width: 15rem;
 	height: 6em;
 	cursor: pointer;
-
 	border: 2px solid #337ab7;
 	border-top-left-radius: 1rem !important;
 	border-bottom-left-radius: 1rem !important;
 	border-top-right-radius: 1rem !important;
 	border-bottom-right-radius: 1rem !important;
-	
 	padding: 0.5rem;
 }
+
 .filtr-item:hover {
 	background-color: #286090;
-	border-color:#204d74;
+	border-color: #204d74;
+}
+
+.label-new {
+	border-radius: 3px;
+	position: absolute;
+	right: 2px;
+	bottom: 2px;
+	background-color: #f0ad4e;
 }

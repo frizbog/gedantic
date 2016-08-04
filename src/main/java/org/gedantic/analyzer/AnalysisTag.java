@@ -119,5 +119,4 @@ public enum AnalysisTag {
     public String getName() {
         return name;
     }
-
 }
