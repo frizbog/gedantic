@@ -7,7 +7,7 @@
 4 CONT Provo, UT 84604
 3 PHON (801) 705-7000
 1 DEST GED55
-1 DATE 01 AUG 2016
+1 DATE 04 AUG 2016
 1 CHAR UTF-8
 1 FILE /Users/frizbog/Downloads/gedantic_2016-08-01.ged
 1 SUBM @SUBM@
@@ -63,6 +63,10 @@
 1 BIRT
 2 DATE 1900
 1 FAMS @F18@
+0 @I48@ INDI
+1 NAME Gillian /Powers/
+1 SEX F
+1 FAMS @F21@
 0 @I7@ INDI
 1 NAME John /Taylor/
 1 SEX M
@@ -108,6 +112,10 @@
 1 BIRT
 2 DATE 1900
 1 FAMS @F18@
+0 @I49@ INDI
+1 NAME Frederick /Spitz/
+1 SEX M
+1 FAMS @F21@
 0 @I2@ INDI
 1 NAME Frankin /Douglas/
 1 SEX M
@@ -268,9 +276,10 @@
 2 DATE 28 FEB 2050
 1 FAMC @F1@
 0 @I17@ INDI
-1 NAME Nancy //
+1 NAME Nancy /Spitz/
 1 SEX F
 1 FAMS @F7@
+1 FAMC @F21@
 0 @I23@ INDI
 1 NAME Harold /Daniels/
 1 SEX M
@@ -346,6 +355,12 @@
 2 _MREL Natural
 1 MARR
 2 PLAC Walla Walla, Walla Walla, Washington, USA
+0 @F21@ FAM
+1 WIFE @I49@
+1 HUSB @I48@
+1 CHIL @I17@
+2 _FREL Natural
+2 _MREL Natural
 0 @F10@ FAM
 1 HUSB @I23@
 1 WIFE @I24@
