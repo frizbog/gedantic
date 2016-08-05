@@ -38,7 +38,7 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width" />
-<meta name="description" content="Analyze your GEDCOM file. Find inconsistencies, missing data to go look for, things to clean up, etc. by uploading your genealogy data and performing an analysis." />
+<meta name="description" content="Online GEDCOM consistency checker. Find anomalies, missing data to go look for, things to clean up, etc. by uploading your genealogy data and performing an analysis." />
 <meta name="keywords" content="gedcom, genealogy, analysis, analyze, gedcom4j" />
 <meta name="author" content="Matthew R. Harrah">
 <meta http-equiv="content-language" content="en-us">
