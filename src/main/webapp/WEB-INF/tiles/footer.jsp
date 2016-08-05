@@ -27,9 +27,14 @@
 
 --%>
 <footer class="footer">
-	<div class="container">
-		<div class="text-muted col-md-6">&copy; 2016 Matthew R. Harrah <a href="about.tiles" class="glyphicon glyphicon-info-sign"></a></div>
-		<div class="text-muted col-md-6 text-right">Powered by <a href="http://gedcom4j.org">gedcom4j</a></div>
+	<div class="container-fluid">
+		<div id="credits" class="text-muted">&copy; 2016 Matthew R. Harrah <a href="about.tiles" class="glyphicon glyphicon-info-sign"></a></div>
+		<div id="gedcom4j" class="text-muted text-right">Powered by <a href="http://gedcom4j.org">gedcom4j</a></div>
+ 		<div id="social" class="text-muted">Share: 
+ 		<a target="_blank" href="https://twitter.com/intent/tweet?text=I%27m%20checking%20my%20genealogy%20file%20for%20inconsistencies%20and%20areas%20for%20further%20research%20using%20gedantic%21%20http%3A%2F%2Fgedantic.org&source=clicktotweet&related=clicktotweet" class="btn btn-primary btn-xs"><i class="fa fa-twitter-square"></i> Twitter</a>
+ 		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//gedantic.org" class="btn btn-primary btn-xs"><i class="fa fa-facebook-square"></i> Facebook</a>
+ 		<a target="_blank" href="https://plus.google.com/share?url=http%3A//gedantic.org" class="btn btn-primary btn-xs"><i class="fa fa-google-plus-square"></i> Google+</a>
+ 		</div>
 	</div>
 </footer>
 <script>

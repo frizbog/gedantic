@@ -62,7 +62,7 @@
 					<input type="submit" class="btn btn-default" name="useSample" value="Use our sample file"/>
 				</form>
 			</div>
-			<p/>
+			<p></p>
 		</div>
 	</div>
 	<div id="progressection" class="container hidden">
