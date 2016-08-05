@@ -668,7 +668,7 @@
                     	left += self.options.gutterPixels;
                     }
                 }
-                containerHeight = rows * array[0].outerHeight();
+                containerHeight = rows * (array[0].outerHeight() + self.options.gutterPixels);
             }
             //Layout for items of same width and varying height
             else if (self.options.layout === 'sameWidth') {
@@ -725,7 +725,7 @@
                     }
                 }
                 rows = Math.ceil(array.length / cols);
-                containerHeight = rows * array[0].outerHeight();
+                containerHeight = rows * (array[0].outerHeight() + self.options.gutterPixels);
             }
             //Update the height of .filtr-container based on new positions
             self.css('height', containerHeight);
