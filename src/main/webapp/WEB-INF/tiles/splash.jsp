@@ -35,15 +35,13 @@
 	</div>
 </div>
 <div class="container">&nbsp;
-<%--
 	<div class="bs-callout bs-callout-success">
 		<h4>News</h4>
 		<dl class="dl-horizontal">
-			<dt>7/29/2016</dt>
+			<dt>8/5/2016</dt>
 			<dd>
-				Many new analyses added recently, and a filtering mechanism for helping find the one you want. 
+				Many new analyses added recently, and you can now download your results as Excel spreadsheets. 
 			</dd>
 		</dl>
 	</div>
- --%>
 </div>

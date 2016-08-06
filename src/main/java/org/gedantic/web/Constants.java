@@ -48,6 +48,11 @@ public class Constants {
     public static final String ANALYSIS_DESCRIPTION = "analysisDescription";
 
     /**
+     * Form field name for the analyzer ID
+     */
+    public static final String ANALYSIS_ID = "analyzerId";
+
+    /**
      * Request attribute name for the name of the analysis name
      */
     public static final String ANALYSIS_NAME = "analysisName";
@@ -118,9 +123,9 @@ public class Constants {
     public static final String URL_ANALYSIS_MIXED_RESULTS = "/mixedResults.tiles";
 
     /**
-     * The page for doing an upload of a GEDCOM file
+     * The page for displaying analysis results about relationships
      */
-    public static final String URL_UPLOAD_PAGE = "/upload.tiles";
+    public static final String URL_ANALYSIS_RELATIONSHIP_RESULTS = "/relationshipResults.tiles";
 
     /**
      * The page for displaying analysis results about sources.
@@ -128,8 +133,8 @@ public class Constants {
     public static final String URL_ANALYSIS_SOURCE_RESULTS = "/sourceResults.tiles";
 
     /**
-     * The page for displaying analysis results about relationships
+     * The page for doing an upload of a GEDCOM file
      */
-    public static final String URL_ANALYSIS_RELATIONSHIP_RESULTS = "/relationshipResults.tiles";
+    public static final String URL_UPLOAD_PAGE = "/upload.tiles";
 
 }

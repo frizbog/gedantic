@@ -35,7 +35,11 @@
 	<h1>${analysisName}<br /> <small>${analysisDescription}</small>
 	</h1>
 	<c:if test="${empty results}">
-		<div id="resultsPanel" class="alert alert-success">No <tiles:getAsString name="whatsInResults" /> match the analysis criteria.</div>
+		<div id="resultsPanel" class="alert alert-success">
+			No
+			<tiles:getAsString name="whatsInResults" />
+			match the analysis criteria.
+		</div>
 	</c:if>
 	<c:if test="${not empty results}">
 		<nav class="navbar">
@@ -45,7 +49,18 @@
 		</nav>
 
 		<div id="resultsPanel" class="panel panel-primary">
-			<div class="panel-heading">${fn:length(results)} finding(s).</div>
+			<div class="panel-heading">${fn:length(results)}
+				finding(s).
+				<div class="pull-right">
+					<form id="analysisForm" name="analysis" action="analyze" method="post">
+					<input name="analyzerId" type="hidden" id="analysisKey" value="${analyzerId}"/>
+					<input type="hidden" name="excel" value="true"/>
+					<button class="btn btn-default btn-xs" type="submit">
+						<i class="fa fa-file-excel-o"></i> Download as Excel
+					</button>
+					</form>
+				</div>
+			</div>
 			<div class="panel-body">
 				<ol class="list-group">
 					<c:forEach items="${results}" var="r">

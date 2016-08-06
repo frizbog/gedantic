@@ -35,6 +35,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.gedantic.analyzer.AResult;
 import org.gedantic.analyzer.AnalyzerList;
 import org.gedantic.analyzer.IAnalyzer;
@@ -89,10 +91,23 @@ public class AnalyzerServlet extends HttpServlet {
         IAnalyzer a = AnalyzerList.getInstance().getAnalyzers().get(analyzerId);
 
         List<? extends AResult> results = a.analyze(g);
-
+        req.setAttribute(Constants.ANALYSIS_ID, a.getId());
         req.setAttribute(Constants.ANALYSIS_NAME, a.getName());
         req.setAttribute(Constants.ANALYSIS_DESCRIPTION, a.getDescription());
-        req.setAttribute(Constants.RESULTS, results);
-        req.getRequestDispatcher(a.getResultsTileName()).forward(req, resp);
+
+        if ("true".equals(req.getParameter("excel"))) {
+            Workbook wb = new WorkbookCreator(a, results).create();
+
+            resp.setContentType("text/gedcom");
+            resp.setHeader("Content-disposition", "attachment; filename=" + StringEscapeUtils.escapeHtml(a.getName() + ".xlsx"));
+
+            wb.write(resp.getOutputStream());
+            resp.getOutputStream().flush();
+
+        } else {
+            req.setAttribute(Constants.RESULTS, results);
+            req.getRequestDispatcher(a.getResultsTileName()).forward(req, resp);
+        }
     }
+
 }
