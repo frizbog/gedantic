@@ -66,6 +66,14 @@
 		</dt>
 		<dd>File upload processing, JavaBean processing, HTML escaping, and more</dd>
 		<dt>
+			<a href="http://poi.apache.org">Apache POI</a>
+		</dt>
+		<dd>Excel file creation</dd>
+		<dt>
+			<a href="http://fontawesome.io/">Font Awesome</a>
+		</dt>
+		<dd>Nice looking icon font/css</dd>
+		<dt>
 			<a href="http://yiotis.net/filterizr">Filterizr</a>
 		</dt>
 		<dd>jQuery-based filtering widget (used on analysis selection page)</dd>
