@@ -27,6 +27,7 @@
 package org.gedantic.web.servlet;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -269,8 +270,6 @@ public class WorkbookCreator {
                     }
                 }
 
-                nextCol();
-                cell.setCellValue(irr.getProblem());
             } else if (r instanceof FamilyRelatedResult) {
                 FamilyRelatedResult frr = (FamilyRelatedResult) r;
                 Individual husband = frr.getFamily().getHusband();
@@ -294,6 +293,26 @@ public class WorkbookCreator {
                         Individual i = (Individual) frr.getValue();
                         cell.setCellValue(i.getFormattedName());
                         sheet.getRow((short) 3).getCell((short) 3).setCellValue("Other Person");
+                    } else if (frr.getValue() instanceof Set<?>) {
+                        @SuppressWarnings("unchecked")
+                        Set<Individual> others = (Set<Individual>) frr.getValue();
+                        short c = colNum;
+                        int j = 0;
+                        for (Individual i : others) {
+                            cell.setCellValue(i.getFormattedName());
+                            sheet.getRow((short) 3).getCell((short) 3).setCellValue("Other People");
+                            if (j == 0) {
+                                nextCol();
+                                cell.setCellValue(frr.getProblem());
+                            }
+                            j++;
+                            if (j < others.size()) {
+                                nextRow();
+                                for (int k = 0; k < c; k++) {
+                                    nextCol();
+                                }
+                            }
+                        }
                     } else {
                         cell.setCellValue(StringEscapeUtils.unescapeHtml(frr.getValue().toString()));
                     }
