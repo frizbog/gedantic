@@ -7,7 +7,7 @@
 4 CONT Provo, UT 84604
 3 PHON (801) 705-7000
 1 DEST GED55
-1 DATE 04 AUG 2016
+1 DATE 06 AUG 2016
 1 CHAR UTF-8
 1 FILE /Users/frizbog/Downloads/gedantic_2016-08-01.ged
 1 SUBM @SUBM@
@@ -21,48 +21,118 @@
 1 BIRT
 2 DATE 01 APR 2015
 1 FAMC @F1@
-0 @I6@ INDI
-1 NAME Belinda /Douglas/
+0 @I63@ INDI
+1 NAME Oliver /Spitz/
+1 SEX M
+1 BIRT
+2 DATE 01 MAY 1960
+2 PLAC Orlando, Orange, Florida, USA
+1 FAMC @F25@
+0 @I62@ INDI
+1 NAME Yancey /Spitz/
+1 SEX M
+1 BIRT
+2 DATE 01 MAY 1960
+2 PLAC Ann Arbor, Washtenaw, Michigan, USA
+1 FAMC @F25@
+0 @I61@ INDI
+1 NAME Kelly /Norvath/
 1 SEX F
 1 BIRT
-2 DATE 15 OCT 1960
-1 FAMS @F3@
-1 FAMC @F2@
-0 @I12@ INDI
-1 NAME Daniel /Fitzgibbon/
-1 SEX M
-1 FAMS @F4@
-1 FAMC @F5@
-0 @I18@ INDI
-1 NAME /Douglas/
+2 DATE 1927
+1 FAMS @F25@
+0 @I60@ INDI
+1 NAME Sylvester /Spitz/
 1 SEX M
 1 BIRT
-2 DATE 02 MAR
+2 DATE 1925
+1 FAMS @F25@
+1 FAMC @F21@
+0 @I59@ INDI
+1 NAME Tobias /Spitz/
+1 SEX M
+1 BIRT
+2 DATE 1913
+1 FAMC @F21@
+0 @I58@ INDI
+1 NAME Gilda /Golddigger/
+1 SEX F
+1 BIRT
+2 DATE APR 1980
+1 FAMS @F24@
+0 @I57@ INDI
+1 NAME James /Turner/
+1 SEX M
+1 BIRT
+2 DATE 1920
+2 PLAC Nashville, Davidson, Tennessee, USA
 1 DEAT
-2 DATE 19928
-1 FAMS @F7@
-0 @I24@ INDI
-1 NAME Karen /Phillips/
+2 DATE 2015
+2 PLAC Nashville, Davidson, Tennessee, USA
+1 FAMS @F23@
+1 FAMS @F24@
+0 @I56@ INDI
+1 NAME Hannah /Spitz/
 1 SEX F
-1 FAMS @F10@
-0 @I30@ INDI
-1 NAME Harold /Unger/
+1 BIRT
+2 DATE 1922
+2 PLAC Nashville, Davidson, Tennessee, USA
+1 DEAT
+2 DATE 1948
+2 PLAC Nashville, Davidson, Tennessee, USA
+1 FAMS @F23@
+1 FAMC @F21@
+0 @I55@ INDI
+1 NAME Darlene /Spitz/
+1 SEX F
+1 BIRT
+2 DATE 05 MAY 1935
+2 PLAC Reno, Washoe, Nevada, USA
+1 FAMC @F22@
+0 @I54@ INDI
+1 NAME Corinne /Spitz/
+1 SEX F
+1 BIRT
+2 DATE 05 MAY 1935
+2 PLAC Reno, Washoe, Nevada, USA
+1 FAMC @F22@
+0 @I53@ INDI
+1 NAME Bradley /Spitz/
 1 SEX M
 1 BIRT
-2 DATE 1941
-1 FAMS @F13@
-1 FAMC @F17@
-0 @I36@ INDI
-1 NAME Brandon /Bennett/
+2 DATE 05 MAY 1935
+2 PLAC Reno, Washoe, Nevada, USA
+1 FAMC @F22@
+0 @I52@ INDI
+1 NAME Andrea /Spitz/
+1 SEX F
 1 BIRT
-2 DATE 1981
-1 FAMS @F15@
-0 @I42@ INDI
-1 NAME Lawrence /Jackson/
+2 DATE 05 MAY 1935
+2 PLAC Reno, Washoe, Nevada, USA
+1 FAMC @F22@
+0 @I51@ INDI
+1 NAME Quin /Dallas/
+1 SEX F
+1 FAMS @F22@
+0 @I50@ INDI
+1 NAME Quentin /Spitz/
 1 SEX M
 1 BIRT
-2 DATE 1900
-1 FAMS @F18@
+2 DATE 1915
+1 DEAT
+2 DATE 1985
+1 FAMS @F22@
+1 FAMC @F21@
+0 @I49@ INDI
+1 NAME Frederick /Spitz/
+1 SEX M
+1 BIRT
+2 DATE 1889
+1 BIRT
+2 DATE 1890
+1 BIRT
+2 DATE 1888
+1 FAMS @F21@
 0 @I48@ INDI
 1 NAME Gillian /Powers/
 1 SEX F
@@ -75,103 +145,23 @@
 1 DEAT
 2 DATE 1965
 1 FAMS @F21@
-0 @I7@ INDI
-1 NAME John /Taylor/
-1 SEX M
-1 DEAT
-2 DATE 29 DEC 1998
-1 FAMS @F3@
-0 @I13@ INDI
-1 NAME Methusela /Fitzgibbon/
-1 SEX M
-1 BIRT
-2 DATE 04 JUL 1878
-1 DEAT
-2 DATE 25 SEP 1980
-1 FAMS @F5@
-1 FAMC @F8@
-0 @I19@ INDI
-1 NAME Harold /Fitzgibbon/
-1 SEX M
-1 FAMS @F8@
-0 @I25@ INDI
-1 NAME Justin /Merriweather/
-1 SEX M
-1 BIRT
-2 DATE 18 FEB 1963
-1 FAMS @F11@
-1 FAMC @F9@
-0 @I31@ INDI
-1 NAME James /Unger/
-1 SEX M
-1 BIRT
-2 DATE 1960
-1 FAMS @F14@
-1 FAMC @F13@
-0 @I37@ INDI
-1 NAME Phillip /Bennett/
-1 SEX M
-1 BIRT
-2 DATE 2000
-1 FAMC @F15@
-0 @I43@ INDI
-1 NAME Irene /Jacobs/
+0 @I47@ INDI
+1 NAME Marlene /Ballmer/
 1 SEX F
-1 BIRT
-2 DATE 1900
-1 FAMS @F18@
-0 @I49@ INDI
-1 NAME Frederick /Spitz/
+1 FAMS @F20@
+0 @I46@ INDI
+1 NAME Garrett /Ballmer/
 1 SEX M
 1 BIRT
-2 DATE 1889
-1 BIRT
-2 DATE 1888
-1 BIRT
-2 DATE 1890
-1 FAMS @F21@
-0 @I2@ INDI
-1 NAME Frankin /Douglas/
-1 SEX M
-1 BURI
-2 DATE 05 MAY 2010
-1 BURI
-2 DATE 05 MAY 2011
-1 FAMS @F1@
-1 FAMC @F2@
-0 @I8@ INDI
-1 NAME Nora /Douglas/
-1 SEX F
-1 BAPM
-2 PLAC Richmond, Virginia, USA
-1 FAMC @F2@
-0 @I14@ INDI
-1 NAME //
-1 SEX F
-1 FAMS @F5@
-0 @I20@ INDI
-1 NAME <No /name>/
-1 SEX F
-1 FAMS @F8@
-0 @I26@ INDI
-1 NAME Madelyn /Bradley/
-1 SEX F
-1 BIRT
-2 DATE 1965
-1 FAMS @F11@
-0 @I32@ INDI
-1 NAME Theresa /Ballmer/
-1 SEX F
-1 BIRT
-2 DATE 1961
-1 FAMS @F14@
+2 DATE 1959
+1 FAMS @F20@
 1 FAMC @F16@
-0 @I38@ INDI
-1 NAME James /Ballmer/
-1 SEX M
+0 @I45@ INDI
+1 NAME Sylvia /Tonks/
+1 SEX F
 1 BIRT
-2 DATE 1939
-1 FAMS @F16@
+2 DATE 1923
+1 FAMS @F19@
 0 @I44@ INDI
 1 NAME Beckett /Jackson/
 1 SEX M
@@ -179,29 +169,108 @@
 2 DATE 1922
 1 FAMS @F19@
 1 FAMC @F18@
-0 @I3@ INDI
-1 NAME Theresa /Fitzgibbon/
+0 @I43@ INDI
+1 NAME Irene /Jacobs/
 1 SEX F
-1 FAMS @F1@
-1 FAMC @F4@
-0 @I9@ INDI
-1 NAME Kenneth /Douglas/
+1 BIRT
+2 DATE 1900
+1 FAMS @F18@
+0 @I42@ INDI
+1 NAME Lawrence /Jackson/
 1 SEX M
 1 BIRT
-1 ORDN
-1 FAMC @F1@
-0 @I15@ INDI
-1 NAME Richard /Merriweather/
-1 SEX M
-1 FAMS @F6@
-0 @I21@ INDI
-1 FAMC @FBAD@
-1 NAME Thomas /Merriweather/
+2 DATE 1900
+1 FAMS @F18@
+0 @I41@ INDI
+1 NAME Jane /Jackson/
+1 SEX F
+1 BIRT
+2 DATE 1920
+1 FAMS @F17@
+1 FAMC @F18@
+0 @I40@ INDI
+1 NAME Kenneth /Unger/
 1 SEX M
 1 BIRT
-2 DATE 15 APR 1945
-1 FAMS @F9@
-1 FAMC @F6@
+2 DATE 1920
+1 FAMS @F17@
+0 @I39@ INDI
+1 NAME Anne /Jackson/
+1 SEX F
+1 BIRT
+2 DATE 1940
+1 FAMS @F16@
+1 FAMC @F19@
+0 @I38@ INDI
+1 NAME James /Ballmer/
+1 SEX M
+1 BIRT
+2 DATE 1939
+1 FAMS @F16@
+0 @I37@ INDI
+1 NAME Phillip /Bennett/
+1 SEX M
+1 BIRT
+2 DATE 2000
+1 FAMC @F15@
+0 @I36@ INDI
+1 NAME Brandon /Bennett/
+1 BIRT
+2 DATE 1981
+1 FAMS @F15@
+0 @I35@ INDI
+1 NAME Taylor /Unger/
+1 SEX F
+1 BIRT
+2 DATE 1983
+1 FAMC @F14@
+0 @I34@ INDI
+1 NAME Nancy /Unger/
+1 SEX F
+1 BIRT
+2 DATE 1981
+1 FAMC @F14@
+0 @I33@ INDI
+1 NAME Nancy /Unger/
+1 SEX F
+1 BIRT
+2 DATE 1980
+1 FAMS @F15@
+1 FAMC @F14@
+0 @I32@ INDI
+1 NAME Theresa /Ballmer/
+1 SEX F
+1 BIRT
+2 DATE 1961
+1 FAMS @F14@
+1 FAMC @F16@
+0 @I31@ INDI
+1 NAME James /Unger/
+1 SEX M
+1 BIRT
+2 DATE 1960
+1 FAMS @F14@
+1 FAMC @F13@
+0 @I30@ INDI
+1 NAME Harold /Unger/
+1 SEX M
+1 BIRT
+2 DATE 1941
+1 FAMS @F13@
+1 FAMC @F17@
+0 @I29@ INDI
+1 NAME Kathryn /Douglas/
+1 SEX F
+1 BIRT
+2 DATE 1940
+1 FAMS @F13@
+1 FAMC @F7@
+0 @I28@ INDI
+1 NAME Charles /Vincent/
+1 SEX M
+1 BIRT
+2 DATE 09 AUG 1992
+1 FAMS @F12@
 0 @I27@ INDI
 1 FAMS @FBAD@
 1 NAME Brittany /Merriweather/
@@ -210,89 +279,56 @@
 2 DATE DEC 1994
 1 FAMS @F12@
 1 FAMC @F11@
-0 @I33@ INDI
-1 NAME Nancy /Unger/
+0 @I26@ INDI
+1 NAME Madelyn /Bradley/
 1 SEX F
 1 BIRT
-2 DATE 1980
-1 FAMS @F15@
-1 FAMC @F14@
-0 @I39@ INDI
-1 NAME Anne /Jackson/
-1 SEX F
-1 BIRT
-2 DATE 1940
-1 FAMS @F16@
-1 FAMC @F19@
-0 @I45@ INDI
-1 NAME Sylvia /Tonks/
-1 SEX F
-1 BIRT
-2 DATE 1923
-1 FAMS @F19@
-0 @I4@ INDI
-1 NAME Logan /Douglas/
+2 DATE 1965
+1 FAMS @F11@
+0 @I25@ INDI
+1 NAME Justin /Merriweather/
 1 SEX M
 1 BIRT
-2 DATE 03 SEP 1939
-2 SOUR @S1@
-1 DEAT
-2 PLAC Suffolk, Nansemond, Virginia, USA
-1 FAMS @F2@
-1 FAMC @F7@
-0 @I10@ INDI
-1 NAME Jennifer /Douglas/
+2 DATE 18 FEB 1963
+1 FAMS @F11@
+1 FAMC @F9@
+0 @I24@ INDI
+1 NAME Karen /Phillips/
 1 SEX F
-1 BIRT
-2 DATE 01 JAN 2042
-1 FAMC @F1@
-0 @I16@ INDI
-1 NAME Linda //
-1 SEX F
-1 FAMS @F6@
+1 FAMS @F10@
+0 @I23@ INDI
+1 NAME Harold /Daniels/
+1 SEX M
+1 FAMS @F10@
 0 @I22@ INDI
 1 NAME Beverly /Daniels/
 1 SEX F
 1 FAMS @F9@
 1 FAMC @F10@
-0 @I28@ INDI
-1 NAME Charles /Vincent/
+0 @I21@ INDI
+1 FAMC @FBAD@
+1 NAME Thomas /Merriweather/
 1 SEX M
 1 BIRT
-2 DATE 09 AUG 1992
-1 FAMS @F12@
-0 @I34@ INDI
-1 NAME Nancy /Unger/
-1 SEX F
-1 BIRT
-2 DATE 1981
-1 FAMC @F14@
-0 @I40@ INDI
-1 NAME Kenneth /Unger/
-1 SEX M
-1 BIRT
-2 DATE 1920
-1 FAMS @F17@
-0 @I46@ INDI
-1 NAME Garrett /Ballmer/
-1 SEX M
-1 BIRT
-2 DATE 1959
-1 FAMS @F20@
-1 FAMC @F16@
-0 @I5@ INDI
-1 NAME Janice /Merriweather/
-1 SEX F
-1 BIRT
-2 DATE 05 SEP 1942
-1 FAMS @F2@
+2 DATE 15 APR 1945
+1 FAMS @F9@
 1 FAMC @F6@
-0 @I11@ INDI
-1 NAME Vincent /Douglas/
+0 @I20@ INDI
+1 NAME <No /name>/
+1 SEX F
+1 FAMS @F8@
+0 @I19@ INDI
+1 NAME Harold /Fitzgibbon/
 1 SEX M
+1 FAMS @F8@
+0 @I18@ INDI
+1 NAME /Douglas/
+1 SEX M
+1 BIRT
+2 DATE 02 MAR
 1 DEAT
-2 DATE 28 FEB 2050
-1 FAMC @F1@
+2 DATE 19928
+1 FAMS @F7@
 0 @I17@ INDI
 1 NAME Nancy /Spitz/
 1 SEX F
@@ -304,34 +340,100 @@
 2 DATE OCT 1985
 1 FAMS @F7@
 1 FAMC @F21@
-0 @I23@ INDI
-1 NAME Harold /Daniels/
+0 @I16@ INDI
+1 NAME Linda //
+1 SEX F
+1 FAMS @F6@
+0 @I15@ INDI
+1 NAME Richard /Merriweather/
 1 SEX M
-1 FAMS @F10@
-0 @I29@ INDI
-1 NAME Kathryn /Douglas/
+1 FAMS @F6@
+0 @I14@ INDI
+1 NAME //
+1 SEX F
+1 FAMS @F5@
+0 @I13@ INDI
+1 NAME Methusela /Fitzgibbon/
+1 SEX M
+1 BIRT
+2 DATE 04 JUL 1878
+1 DEAT
+2 DATE 25 SEP 1980
+1 FAMS @F5@
+1 FAMC @F8@
+0 @I12@ INDI
+1 NAME Daniel /Fitzgibbon/
+1 SEX M
+1 FAMS @F4@
+1 FAMC @F5@
+0 @I11@ INDI
+1 NAME Vincent /Douglas/
+1 SEX M
+1 DEAT
+2 DATE 28 FEB 2050
+1 FAMC @F1@
+0 @I10@ INDI
+1 NAME Jennifer /Douglas/
 1 SEX F
 1 BIRT
-2 DATE 1940
-1 FAMS @F13@
+2 DATE 01 JAN 2042
+1 FAMC @F1@
+0 @I9@ INDI
+1 NAME Kenneth /Douglas/
+1 SEX M
+1 BIRT
+1 ORDN
+1 FAMC @F1@
+0 @I8@ INDI
+1 NAME Nora /Douglas/
+1 SEX F
+1 BAPM
+2 PLAC Richmond, Virginia, USA
+1 FAMC @F2@
+0 @I7@ INDI
+1 NAME John /Taylor/
+1 SEX M
+1 DEAT
+2 DATE 29 DEC 1998
+1 FAMS @F3@
+0 @I6@ INDI
+1 NAME Belinda /Douglas/
+1 SEX F
+1 BIRT
+2 DATE 15 OCT 1960
+1 FAMS @F3@
+1 FAMC @F2@
+0 @I5@ INDI
+1 NAME Janice /Merriweather/
+1 SEX F
+1 BIRT
+2 DATE 05 SEP 1942
+1 FAMS @F2@
+1 FAMC @F6@
+0 @I4@ INDI
+1 NAME Logan /Douglas/
+1 SEX M
+1 BIRT
+2 DATE 03 SEP 1939
+2 SOUR @S1@
+1 DEAT
+2 PLAC Suffolk, Nansemond, Virginia, USA
+1 FAMS @F2@
 1 FAMC @F7@
-0 @I35@ INDI
-1 NAME Taylor /Unger/
+0 @I3@ INDI
+1 NAME Theresa /Fitzgibbon/
 1 SEX F
-1 BIRT
-2 DATE 1983
-1 FAMC @F14@
-0 @I41@ INDI
-1 NAME Jane /Jackson/
-1 SEX F
-1 BIRT
-2 DATE 1920
-1 FAMS @F17@
-1 FAMC @F18@
-0 @I47@ INDI
-1 NAME Marlene /Ballmer/
-1 SEX F
-1 FAMS @F20@
+1 FAMS @F1@
+1 FAMC @F4@
+0 @I2@ INDI
+1 NAME Frankin /Douglas/
+1 SEX M
+1 BURI
+2 DATE 05 MAY 2010
+1 BURI
+2 DATE 05 MAY 2011
+1 FAMS @F1@
+1 FAMC @F2@
 0 @F19@ FAM
 1 HUSB @I44@
 1 WIFE @I45@
@@ -359,6 +461,12 @@
 1 CHIL @I12@
 2 _FREL Natural
 2 _MREL Natural
+0 @F24@ FAM
+1 HUSB @I57@
+1 WIFE @I58@
+1 MARR
+2 DATE 14 FEB 2014
+2 PLAC Nashville, Davidson, Tennessee, USA
 0 @F13@ FAM
 1 HUSB @I30@
 1 WIFE @I29@
@@ -383,6 +491,18 @@
 1 WIFE @I49@
 1 HUSB @I48@
 1 CHIL @I17@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I50@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I56@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I59@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I60@
 2 _FREL Natural
 2 _MREL Natural
 0 @F10@ FAM
@@ -419,6 +539,12 @@
 1 HUSB @I12@
 1 CHIL @I3@
 2 _FREL Natural
+0 @F23@ FAM
+1 HUSB @I57@
+1 WIFE @I56@
+1 MARR
+2 DATE 1940
+2 PLAC Nashville, Davidson, Tennessee, USA
 0 @F12@ FAM
 1 HUSB @I28@
 1 WIFE @I27@
@@ -465,6 +591,17 @@
 1 CHIL @I21@
 2 _FREL Natural
 2 _MREL Natural
+0 @F25@ FAM
+1 HUSB @I60@
+1 WIFE @I61@
+1 CHIL @I62@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I63@
+2 _FREL Natural
+2 _MREL Natural
+1 MARR
+2 DATE 1940
 0 @F14@ FAM
 1 HUSB @I31@
 1 WIFE @I32@
@@ -480,6 +617,24 @@
 0 @F3@ FAM
 1 HUSB @I7@
 1 WIFE @I6@
+0 @F22@ FAM
+1 HUSB @I50@
+1 WIFE @I51@
+1 CHIL @I52@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I53@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I54@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I55@
+2 _FREL Natural
+2 _MREL Natural
+1 MARR
+2 DATE 1935
+2 PLAC Kansas City, Clay, Missouri, USA
 0 @F11@ FAM
 1 HUSB @I25@
 1 WIFE @I26@

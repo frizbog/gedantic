@@ -27,6 +27,7 @@
 package org.gedantic.analyzer;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.gedcom4j.model.Individual;
@@ -55,9 +56,14 @@ public abstract class AResult {
     protected final String problem;
 
     /**
+     * Instantiates a new a result.
+     *
      * @param factType
+     *            the fact type
      * @param value
+     *            the value
      * @param problem
+     *            the problem
      */
     public AResult(String factType, Individual value, String problem) {
         this.factType = StringEscapeUtils.escapeHtml(factType);
@@ -66,9 +72,14 @@ public abstract class AResult {
     }
 
     /**
+     * Instantiates a new a result.
+     *
      * @param factType
+     *            the fact type
      * @param value
+     *            the value
      * @param problem
+     *            the problem
      */
     public AResult(String factType, List<List<SimpleRelationship>> value, String problem) {
         this.factType = StringEscapeUtils.escapeHtml(factType);
@@ -77,9 +88,30 @@ public abstract class AResult {
     }
 
     /**
+     * Instantiates a new a result.
+     *
      * @param factType
+     *            the fact type
      * @param value
+     *            the value
      * @param problem
+     *            the problem
+     */
+    public AResult(String factType, Set<Individual> value, String problem) {
+        this.factType = StringEscapeUtils.escapeHtml(factType);
+        this.value = value;
+        this.problem = StringEscapeUtils.escapeHtml(problem);
+    }
+
+    /**
+     * Instantiates a new a result.
+     *
+     * @param factType
+     *            the fact type
+     * @param value
+     *            the value
+     * @param problem
+     *            the problem
      */
     public AResult(String factType, String value, String problem) {
         this.factType = StringEscapeUtils.escapeHtml(factType);

@@ -26,6 +26,8 @@
  */
 package org.gedantic.analyzer.result;
 
+import java.util.Set;
+
 import org.gedantic.analyzer.AResult;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Individual;
@@ -54,6 +56,23 @@ public class FamilyRelatedResult extends AResult {
      *            a description of the problem - optional
      */
     public FamilyRelatedResult(Family family, String factType, Individual value, String problem) {
+        super(factType, value, problem);
+        this.family = family;
+    }
+
+    /**
+     * Constructor
+     * 
+     * @param family
+     *            the family with the finding
+     * @param factType
+     *            the fact that the finding relates to - optional
+     * @param value
+     *            the individuals that were problematic - optional, usually a list of children
+     * @param problem
+     *            a description of the problem - optional
+     */
+    public FamilyRelatedResult(Family family, String factType, Set<Individual> value, String problem) {
         super(factType, value, problem);
         this.family = family;
     }

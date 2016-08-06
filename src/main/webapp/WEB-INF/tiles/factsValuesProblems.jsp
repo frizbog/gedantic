@@ -45,6 +45,15 @@
 				<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.value)}"></span>
 				</dd>
 			</c:when>
+			<c:when test="${class:instanceOf(result.value, 'java.util.HashSet') }">
+				<dt>Others</dt>
+				<c:forEach items="${result.value}" var="other">
+					<dd>
+					${other.formattedName} 
+					<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(other)}"></span>
+					</dd>
+				</c:forEach>
+			</c:when>
 			<c:otherwise>
 				<dt>Value</dt>
 				<dd>${fn:escapeXml(result.value)}</dd>

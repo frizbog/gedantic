@@ -33,13 +33,60 @@ import java.util.Date;
  *
  * @author frizbog
  */
-public class DateAndString {
+public class DateAndString implements Comparable<DateAndString> {
 
     /** The date string. */
     private String dateString;
 
     /** The date. */
     private Date date;
+
+    @Override
+    public int compareTo(DateAndString o) {
+        if (o == null) {
+            return 1;
+        }
+        if (o.getDate() == null) {
+            return 1;
+        }
+        if (getDate() == null) {
+            return -1;
+        }
+
+        return (int) Math.signum(getDate().getTime() - o.getDate().getTime());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        DateAndString other = (DateAndString) obj;
+        if (date == null) {
+            if (other.date != null) {
+                return false;
+            }
+        } else if (!date.equals(other.date)) {
+            return false;
+        }
+        if (dateString == null) {
+            if (other.dateString != null) {
+                return false;
+            }
+        } else if (!dateString.equals(other.dateString)) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Get the date.
@@ -57,6 +104,18 @@ public class DateAndString {
      */
     public String getDateString() {
         return dateString;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((date == null) ? 0 : date.hashCode());
+        result = prime * result + ((dateString == null) ? 0 : dateString.hashCode());
+        return result;
     }
 
     /**
