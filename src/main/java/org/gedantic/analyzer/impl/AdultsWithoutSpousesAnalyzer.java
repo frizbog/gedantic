@@ -96,8 +96,9 @@ public class AdultsWithoutSpousesAnalyzer extends AAnalyzer {
             long difference = endDate.getTime() - birthDate.getDate().getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld >= 18) {
-                result.add(new IndividualRelatedResult(i, null, (String) null, (deathDate == null ? "Born " + yearsOld
-                        + " years ago with no death date available" : "Lived to " + yearsOld) + ", but no spouses"));
+                result.add(new IndividualRelatedResult(i, null, (String) null, (deathDate == null || deathDate.getDate() == null
+                        ? "Born " + yearsOld + " years ago with no death date available" : "Lived to " + yearsOld)
+                        + ", but no spouses"));
             }
 
         }
