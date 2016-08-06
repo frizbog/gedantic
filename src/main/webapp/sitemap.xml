@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+	<url>
+		<loc>http://gedantic.org/</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/analyzeMenu.tiles</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/individualResults.tiles</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/about.tiles</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/upload.tiles</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/mixedResults.tiles</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/sourceResults.tiles</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/relationshipResults.tiles</loc>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://gedantic.org/licenses.html</loc>
+		<lastmod>2016-07-14T15:46:50+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+</urlset>
