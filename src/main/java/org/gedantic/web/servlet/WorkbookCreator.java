@@ -270,6 +270,9 @@ public class WorkbookCreator {
                     }
                 }
 
+                nextCol();
+                cell.setCellValue(irr.getProblem());
+
             } else if (r instanceof FamilyRelatedResult) {
                 FamilyRelatedResult frr = (FamilyRelatedResult) r;
                 Individual husband = frr.getFamily().getHusband();
