@@ -163,10 +163,12 @@
 					</includes>
 					<excludes>
 						<exclude>src/main/webapp/licenses.html</exclude>
+						<exclude>src/main/webapp/robots.txt</exclude>
 						<exclude>src/main/webapp/WEB-INF/web.xml</exclude>
 						<exclude>src/main/webapp/sitemap.xml</exclude>
 						<exclude>src/main/webapp/BingSiteAuth.xml</exclude>
 						<exclude>src/main/webapp/js/jquery.filterizr.min.js</exclude>
+						<exclude>src/main/webapp/js/jquery.filterizr.js</exclude>
 					</excludes>
 					<mapping>
 						<java>SLASHSTAR_STYLE</java>
