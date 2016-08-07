@@ -32,7 +32,8 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="common" template="/WEB-INF/layouts/common.jsp">
-		<put-attribute name="title" value="gedantic | analyze your GEDCOM file" />
+		<put-attribute name="title" value="Analyze your GEDCOM file" />
+		<put-attribute name="robots" value="index, follow" cascade="true"/>
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="splash" value="/WEB-INF/tiles/blank.jsp" />
 		<put-attribute name="messages" value="/WEB-INF/tiles/messages.jsp" />
@@ -53,7 +54,7 @@
 	</definition>
 
 	<definition name="upload" extends="common">
-		<put-attribute name="title" value="gedantic | Upload and analyze your GEDCOM file" />
+		<put-attribute name="title" value="Upload and analyze your GEDCOM file for anomalies, inconsistencies, and areas for further research" />
 		<put-attribute name="splash" value="/WEB-INF/tiles/splash.jsp" />
 		<put-attribute name="body" value="/WEB-INF/tiles/uploadForm.jsp" />
 		<put-list-attribute name="cssfiles" inherit="true">
@@ -71,7 +72,7 @@
 	</definition>
 
 	<definition name="analyzeMenu" extends="common">
-		<put-attribute name="title" value="gedantic | Choose an analysis to run" />
+		<put-attribute name="title" value="Choose an analysis to run" />
 		<put-attribute name="body" value="/WEB-INF/tiles/analyzeMenu.jsp" />
 		<put-list-attribute name="javascripts" inherit="true">
 			<add-attribute value="js/jquery.filterizr.js" />
@@ -80,42 +81,43 @@
 	</definition>
 
 	<definition name="results" extends="common">
-		<put-attribute name="title" value="gedantic | Analysis results" />
+		<put-attribute name="title" value="Analysis results" cascade="true"/>
+		<put-attribute name="robots" value="index, nofollow" cascade="true"/>
 		<put-attribute name="body" value="/WEB-INF/tiles/results.jsp" cascade="true" />
 		<put-attribute name="factsValuesProblems" value="/WEB-INF/tiles/factsValuesProblems.jsp" cascade="true" />
 	</definition>
 
 	<definition name="about" extends="common">
-		<put-attribute name="title" value="gedantic | About gedantic" />
+		<put-attribute name="title" value="About gedantic" />
 		<put-attribute name="body" value="/WEB-INF/tiles/about.jsp" />
 	</definition>
 
 	<definition name="individualResults" extends="results">
-		<put-attribute name="title" value="gedantic | Analysis results" />
+		<put-attribute name="title" value="Analysis results" />
 		<put-attribute name="resultListItem" value="/WEB-INF/tiles/individualResults.jsp" cascade="true" />
 		<put-attribute name="whatsInResults" value="individuals" cascade="true" />
 	</definition>
 
 	<definition name="mixedResults" extends="results">
-		<put-attribute name="title" value="gedantic | Analysis results" />
+		<put-attribute name="title" value="Analysis results" />
 		<put-attribute name="resultListItem" value="/WEB-INF/tiles/mixedResults.jsp" cascade="true" />
 		<put-attribute name="whatsInResults" value="individuals or families" cascade="true" />
 	</definition>
 
 	<definition name="coupleResults" extends="results">
-		<put-attribute name="title" value="gedantic | Analysis results" />
+		<put-attribute name="title" value="Analysis results" />
 		<put-attribute name="resultListItem" value="/WEB-INF/tiles/coupleResults.jsp" cascade="true" />
 		<put-attribute name="whatsInResults" value="couples" cascade="true" />
 	</definition>
 
 	<definition name="sourceResults" extends="results">
-		<put-attribute name="title" value="gedantic | Analysis results" />
+		<put-attribute name="title" value="Analysis results" />
 		<put-attribute name="resultListItem" value="/WEB-INF/tiles/sourceResults.jsp" cascade="true" />
 		<put-attribute name="whatsInResults" value="sources" cascade="true" />
 	</definition>
 
 	<definition name="relationshipResults" extends="results">
-		<put-attribute name="title" value="gedantic | Analysis results" />
+		<put-attribute name="title" value="Analysis results" />
 		<put-attribute name="resultListItem" value="/WEB-INF/tiles/relationshipResults.jsp" cascade="true" />
 		<put-attribute name="whatsInResults" value="relationships" cascade="true" />
 	</definition>

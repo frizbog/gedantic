@@ -38,15 +38,6 @@ import org.gedcom4j.model.Gedcom;
 public interface IAnalyzer {
 
     /**
-     * Analyze a {@link Gedcom}, and return some results
-     * 
-     * @param g
-     *            the {@link Gedcom} to analyze
-     * @return a {@link List} of results
-     */
-    List<AResult> analyze(Gedcom g);
-
-    /**
      * Get a description for this analyzer.
      * 
      * @return the description of this analyzer.
@@ -88,5 +79,14 @@ public interface IAnalyzer {
      * @return true if this analysis is "new"?
      */
     boolean isNewish();
+
+    /**
+     * Analyze a {@link Gedcom}, and return some results
+     * 
+     * @param g
+     *            the {@link Gedcom} to analyze
+     * @return a {@link List} of results
+     */
+    List<AResult> analyze(Gedcom g);
 
 }

@@ -46,7 +46,7 @@ public abstract class AAnalyzer implements IAnalyzer {
 
     @Override
     public String getId() {
-        return this.getClass().getName();
+        return this.getClass().getSimpleName();
     }
 
     /**
@@ -185,4 +185,5 @@ public abstract class AAnalyzer implements IAnalyzer {
         }
         return false;
     }
+
 }

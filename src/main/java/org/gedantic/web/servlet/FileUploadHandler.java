@@ -63,6 +63,24 @@ public class FileUploadHandler extends HttpServlet {
     private static final long serialVersionUID = 6317204513997696239L;
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getParameter("useSample") != null) {
+            URL resource = this.getClass().getClassLoader().getResource("gedantic sample.ged");
+            File file;
+            try {
+                file = new File(resource.toURI());
+            } catch (URISyntaxException e) {
+                throw new ServletException("Could not get resource URI: " + resource, e);
+            }
+            // Make sure to pass in false in last param to prevent deleting the file from classpath
+            new ParserAndLoader(request, response, file, false).parseAndLoadIntoSession();
+            request.getRequestDispatcher(Constants.URL_ANALYSIS_MENU).forward(request, response);
+        } else {
+            response.setStatus(403);
+        }
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOG.debug(">doPost");
 
@@ -99,23 +117,7 @@ public class FileUploadHandler extends HttpServlet {
                 LOG.error("Unable to upload file: ", ex);
                 response.setStatus(403);
             }
-        } else {
-            if (request.getParameter("useSample") != null) {
-                URL resource = this.getClass().getClassLoader().getResource("gedantic sample.ged");
-                File file;
-                try {
-                    file = new File(resource.toURI());
-                } catch (URISyntaxException e) {
-                    throw new ServletException("Could not get resource URI: " + resource, e);
-                }
-                // Make sure to pass in false in last param to prevent deleting the file from classpath
-                new ParserAndLoader(request, response, file, false).parseAndLoadIntoSession();
-                request.getRequestDispatcher(Constants.URL_ANALYSIS_MENU).forward(request, response);
-            } else {
-                response.setStatus(403);
-            }
         }
         LOG.debug("<doPost");
     }
-
 }

@@ -38,15 +38,29 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width" />
-<meta name="description" content="Online GEDCOM consistency checker. Find anomalies, missing data to go look for, things to clean up, etc. by uploading your genealogy data and performing an analysis." />
+<c:if test="${not empty analysisName}">
+<meta name="description" content="${analysisName} - ${analysisDescription}" />
+</c:if>
+<c:if test="${empty analysisName}">
+<c:set var="tileTitle" scope="request"><tiles:getAsString name="title" /></c:set>
+<meta name="description" content="${tileTitle}" />
+</c:if>
 <meta name="keywords" content="gedcom, genealogy, analysis, analyze, gedcom4j" />
 <meta name="author" content="Matthew R. Harrah">
 <meta http-equiv="content-language" content="en-us">
-<meta name="robots" content="index, follow">
+<c:set var="robots" scope="request"><tiles:getAsString name="robots"/></c:set>
+<meta name="robots" content="${robots}">
 <script src="https://use.fontawesome.com/1a053046c8.js"></script>
 <c:forEach var="css" items="${cssfiles}"><link rel='stylesheet' href='<c:url value="${css}"/>'/></c:forEach>
 
-<title><tiles:getAsString name="title" /></title>
+<title>gedantic | 
+	<c:if test="${not empty analysisName}">
+		${analysisName}
+	</c:if>
+	<c:if test="${empty analysisName}">
+		<tiles:getAsString name="title" />
+	</c:if>
+</title>
 <style>
 /* Icon when the collapsible content is shown */
 .btn-collapse:after {

@@ -38,11 +38,11 @@ $(document).ready(function() {
 		filterizd.filterizr('filter', targetFilter);
 		$(this).toggleClass('active');
 	});
-
+/*
 	$('.filtr-item').click(function() {
 		var ak = $(this).data('analysiskey');
 		$('#analysisKey').attr('value', ak);
 		$('#analysisForm').submit();
 	});
-
+*/
 });

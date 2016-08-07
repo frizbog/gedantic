@@ -200,7 +200,7 @@ dl {
 	width: 15rem;
 	height: 6em;
 	cursor: pointer;
-	border: 2px solid #337ab7;
+	border: 2px solid #286090;
 	border-top-left-radius: 1rem !important;
 	border-bottom-left-radius: 1rem !important;
 	border-top-right-radius: 1rem !important;
@@ -211,6 +211,13 @@ dl {
 .filtr-item:hover {
 	background-color: #286090;
 	border-color: #204d74;
+	text-decoration: none;
+}
+.filtr-item:visited {
+	color:white;
+}
+.filtr-item:link {
+	color:white;
 }
 
 .label-new {

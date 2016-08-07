@@ -62,43 +62,57 @@ public class AnalyzerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        Gedcom g = (Gedcom) session.getAttribute(Constants.GEDCOM);
-
-        if (g == null) {
-            LOG.info("Redirecting from " + req.getRequestURI() + " to upload page because there is no gedcom in session");
-            req.setAttribute(Constants.ALERT_MESSAGE, "Please upload a GEDCOM to analyze");
-            req.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-warning");
-            req.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(req, resp);
-        } else {
-            req.getRequestDispatcher(Constants.URL_ANALYSIS_MENU).forward(req, resp);
-        }
+        process(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        process(req, resp);
+    }
+
+    /**
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Gedcom g = (Gedcom) session.getAttribute(Constants.GEDCOM);
+        IAnalyzer a = null;
+
+        String analyzerId = req.getParameter("analyzerId");
+        if (analyzerId != null) {
+            a = AnalyzerList.getInstance().getAnalyzers().get(analyzerId);
+            req.setAttribute(Constants.ANALYSIS_ID, a.getId());
+            req.setAttribute(Constants.ANALYSIS_NAME, a.getName());
+            req.setAttribute(Constants.ANALYSIS_DESCRIPTION, a.getDescription());
+        }
 
         if (g == null) {
             LOG.info("Redirecting from " + req.getRequestURI() + " to upload page because there is no gedcom in session");
             req.setAttribute(Constants.ALERT_MESSAGE, "Please upload a GEDCOM to analyze");
             req.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-warning");
             req.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(req, resp);
+            return;
         }
 
-        String analyzerId = req.getParameter("analyzerId");
-        IAnalyzer a = AnalyzerList.getInstance().getAnalyzers().get(analyzerId);
+        if (a == null) {
+            LOG.info("Redirecting from " + req.getRequestURI()
+                    + " to upload page because the analysis ID could not be interpreted");
+            req.setAttribute(Constants.ALERT_MESSAGE, "Unknown analysis type");
+            req.setAttribute(Constants.ALERT_MESSAGE_TYPE, "alert alert-danger");
+            req.getRequestDispatcher(Constants.URL_UPLOAD_PAGE).forward(req, resp);
+            return;
 
+        }
         List<? extends AResult> results = a.analyze(g);
-        req.setAttribute(Constants.ANALYSIS_ID, a.getId());
-        req.setAttribute(Constants.ANALYSIS_NAME, a.getName());
-        req.setAttribute(Constants.ANALYSIS_DESCRIPTION, a.getDescription());
 
         if ("true".equals(req.getParameter("excel"))) {
+            @SuppressWarnings("resource")
             Workbook wb = new WorkbookCreator(a, results).create();
 
-            resp.setContentType("text/gedcom");
+            resp.setContentType("application/vnd.ms-excel");
             resp.setHeader("Content-disposition", "attachment; filename=" + StringEscapeUtils.escapeHtml(a.getName() + ".xlsx"));
 
             wb.write(resp.getOutputStream());

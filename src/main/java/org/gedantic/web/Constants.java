@@ -100,41 +100,41 @@ public class Constants {
     /**
      * Portion of URL for the "about" page
      */
-    public static final CharSequence URL_ABOUT_PAGE = "/about.tiles";
+    public static final CharSequence URL_ABOUT_PAGE = "about.tiles";
 
     /**
      * The page for displaying analysis results about couples
      */
-    public static final String URL_ANALYSIS_COUPLE_RESULTS = "/coupleResults.tiles";
+    public static final String URL_ANALYSIS_COUPLE_RESULTS = "coupleResults.tiles";
 
     /**
      * The page for displaying analysis results about individuals
      */
-    public static final String URL_ANALYSIS_INDIVIDUAL_RESULTS = "/individualResults.tiles";
+    public static final String URL_ANALYSIS_INDIVIDUAL_RESULTS = "individualResults.tiles";
 
     /**
      * The page for picking an analysis to perform on the loaded file
      */
-    public static final String URL_ANALYSIS_MENU = "/analyzeMenu.tiles";
+    public static final String URL_ANALYSIS_MENU = "analyzeMenu.tiles";
 
     /**
      * The page for displaying analysis results about individuals and families mixed together
      */
-    public static final String URL_ANALYSIS_MIXED_RESULTS = "/mixedResults.tiles";
+    public static final String URL_ANALYSIS_MIXED_RESULTS = "mixedResults.tiles";
 
     /**
      * The page for displaying analysis results about relationships
      */
-    public static final String URL_ANALYSIS_RELATIONSHIP_RESULTS = "/relationshipResults.tiles";
+    public static final String URL_ANALYSIS_RELATIONSHIP_RESULTS = "relationshipResults.tiles";
 
     /**
      * The page for displaying analysis results about sources.
      */
-    public static final String URL_ANALYSIS_SOURCE_RESULTS = "/sourceResults.tiles";
+    public static final String URL_ANALYSIS_SOURCE_RESULTS = "sourceResults.tiles";
 
     /**
      * The page for doing an upload of a GEDCOM file
      */
-    public static final String URL_UPLOAD_PAGE = "/upload.tiles";
+    public static final String URL_UPLOAD_PAGE = "upload.tiles";
 
 }
