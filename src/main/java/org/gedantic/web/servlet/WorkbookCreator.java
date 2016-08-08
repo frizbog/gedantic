@@ -320,9 +320,6 @@ public class WorkbookCreator {
                         cell.setCellValue(StringEscapeUtils.unescapeHtml(frr.getValue().toString()));
                     }
                 }
-
-                nextCol();
-                cell.setCellValue(frr.getProblem());
             } else if (r instanceof RelationshipRelatedResult) {
                 RelationshipRelatedResult rrr = (RelationshipRelatedResult) r;
                 cell.setCellValue(rrr.getIndividual().getFormattedName());
@@ -331,6 +328,7 @@ public class WorkbookCreator {
                 cell.setCellValue(rrr.getFactType());
 
                 nextCol();
+                @SuppressWarnings("unchecked")
                 List<List<SimpleRelationship>> path = (List<List<SimpleRelationship>>) rrr.getValue();
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < path.size(); i++) {
