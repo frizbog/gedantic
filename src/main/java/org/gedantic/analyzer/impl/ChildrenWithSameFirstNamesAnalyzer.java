@@ -70,6 +70,8 @@ public class ChildrenWithSameFirstNamesAnalyzer extends AAnalyzer {
                         int firstSlash = gn.indexOf('/');
                         if (firstSlash > 0) {
                             gn = gn.substring(0, firstSlash).trim();
+                        } else {
+                            gn = null;
                         }
                     }
                     if (isSpecified(gn)) {
@@ -85,7 +87,7 @@ public class ChildrenWithSameFirstNamesAnalyzer extends AAnalyzer {
 
             // Check the map for any names with more than one kid in the family who has it
             for (Entry<String, Set<Individual>> e : kidsByFirstName.entrySet()) {
-                if (e.getValue().size() > 1) {
+                if (e.getValue().size() > 1 && isSpecified(e.getKey())) {
                     result.add(new FamilyRelatedResult(f, null, e.getValue(), null));
                 }
             }
