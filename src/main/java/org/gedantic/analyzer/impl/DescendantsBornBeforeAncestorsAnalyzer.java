@@ -104,9 +104,4 @@ public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
     public AnalysisTag[] getTags() {
         return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.INDIVIDUALS };
     }
-
-    @Override
-    public boolean isNewish() {
-        return true;
-    }
 }

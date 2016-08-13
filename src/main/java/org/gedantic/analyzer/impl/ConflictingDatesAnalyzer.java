@@ -100,11 +100,6 @@ public class ConflictingDatesAnalyzer extends AAnalyzer {
         return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.FAMILIES, AnalysisTag.INDIVIDUALS };
     }
 
-    @Override
-    public boolean isNewish() {
-        return true;
-    }
-
     /**
      * Check the family events
      */

@@ -96,6 +96,7 @@ public final class AnalyzerList {
         addAnalyzer(new ConflictingDatesAnalyzer());
         addAnalyzer(new QuadrupletsAndMoreAnalyzer());
         addAnalyzer(new SimultaneousBirthsInMultipleLocationsAnalyzer());
+        addAnalyzer(new ChildrenWithSameFirstNamesAnalyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {
