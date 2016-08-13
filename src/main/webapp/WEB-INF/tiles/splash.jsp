@@ -34,6 +34,7 @@
 		<p>Find inconsistencies, missing data to go look for, things to clean up, etc.</p>
 	</div>
 </div>
+<%--
 <div class="container">&nbsp;
 	<div class="bs-callout bs-callout-success">
 		<h4>News</h4>
@@ -45,3 +46,4 @@
 		</dl>
 	</div>
 </div>
+ --%>
