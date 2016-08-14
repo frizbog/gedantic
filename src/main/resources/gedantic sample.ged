@@ -393,12 +393,26 @@
 1 BAPM
 2 PLAC Richmond, Virginia, USA
 1 FAMC @F2@
+0 @I71@ INDI
+1 NAME Richard /King/
+1 SEX M
+1 BIRT
+2 DATE 2004
+1 FAMC @F27@
 0 @I7@ INDI
 1 NAME John /Taylor/
 1 SEX M
 1 DEAT
 2 DATE 29 DEC 1998
 1 FAMS @F3@
+0 @I70@ INDI
+1 NAME William /King/
+1 SEX M
+1 BIRT
+2 DATE 1919
+1 DEAT
+2 DATE 2015
+1 FAMS @F27@
 0 @I6@ INDI
 1 NAME Belinda /Douglas/
 1 SEX F
@@ -406,6 +420,15 @@
 2 DATE 15 OCT 1960
 1 FAMS @F3@
 1 FAMC @F2@
+0 @I69@ INDI
+1 NAME Margaret /Jackson/
+1 SEX F
+1 BIRT
+2 DATE JAN 1921
+1 DEAT
+2 DATE OCT 2013
+1 FAMS @F27@
+1 FAMC @F18@
 0 @I5@ INDI
 1 NAME Janice /Merriweather/
 1 SEX F
@@ -487,6 +510,14 @@
 1 CHIL @I13@
 2 _FREL Natural
 2 _MREL Natural
+0 @F27@ FAM
+1 HUSB @I70@
+1 WIFE @I69@
+1 CHIL @I71@
+2 _FREL Natural
+2 _MREL Natural
+1 MARR
+2 DATE DEC 1940
 0 @F16@ FAM
 1 HUSB @I38@
 1 WIFE @I39@
@@ -562,6 +593,9 @@
 2 _FREL Natural
 2 _MREL Natural
 1 CHIL @I44@
+2 _FREL Natural
+2 _MREL Natural
+1 CHIL @I69@
 2 _FREL Natural
 2 _MREL Natural
 0 @F7@ FAM

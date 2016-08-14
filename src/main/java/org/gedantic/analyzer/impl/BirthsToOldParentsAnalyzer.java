@@ -41,16 +41,16 @@ import org.gedcom4j.model.Individual;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 
 /**
- * An analyzer that finds couples that had kids while one of the parents was 16 or under
+ * An analyzer that finds couples that had kids while one of the parents was 60 or older
  * 
  * @author frizbog
  */
-public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
+public class BirthsToOldParentsAnalyzer extends AAnalyzer {
 
     /**
-     * Number of milliseconds in sixteen years
+     * Number of milliseconds in sixty years
      */
-    private static final long MILLIS_IN_SIXTEEN_YEARS = (long) (16 * 365.25 * 24 * 60 * 60 * 1000);
+    private static final long MILLIS_IN_SIXTY_YEARS = (long) (60 * 365.25 * 24 * 60 * 60 * 1000);
 
     /**
      * Number of milliseconds in a year
@@ -69,9 +69,11 @@ public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
 
             Individual husband = f.getHusband();
             DateAndString husbandLatestBirthDate = getBirthDate(husband, ImpreciseDatePreference.FAVOR_LATEST);
+            DateAndString husbandEarliestDeathDate = getDeathDate(husband, ImpreciseDatePreference.FAVOR_EARLIEST);
 
             Individual wife = f.getWife();
             DateAndString wifeLatestBirthDate = getBirthDate(wife, ImpreciseDatePreference.FAVOR_LATEST);
+            DateAndString wifeEarliestDeathDate = getDeathDate(wife, ImpreciseDatePreference.FAVOR_EARLIEST);
 
             // Neither parent has a birth date? Can't calculate, so skip
             if ((husbandLatestBirthDate == null || husbandLatestBirthDate.getDate() == null) && (wifeLatestBirthDate == null
@@ -89,9 +91,10 @@ public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
 
                 if (wifeLatestBirthDate != null && wifeLatestBirthDate.getDate() != null) {
                     long momMillisDiff = kidEarliestBirthDate.getDate().getTime() - wifeLatestBirthDate.getDate().getTime();
-                    if (momMillisDiff <= MILLIS_IN_SIXTEEN_YEARS) {
-                        if (wifeLatestBirthDate.getDate().after(kidEarliestBirthDate.getDate())) {
-                            problem.append("Mother may not have been born yet");
+                    if (momMillisDiff >= MILLIS_IN_SIXTY_YEARS) {
+                        if (wifeEarliestDeathDate != null && wifeEarliestDeathDate.getDate() != null && wifeEarliestDeathDate
+                                .getDate().before(kidEarliestBirthDate.getDate())) {
+                            problem.append("Mother may have been deceased");
                         } else {
                             long yearsOld = momMillisDiff / MILLIS_IN_YEAR;
                             problem.append("Mother was " + yearsOld + " years old when child was born");
@@ -100,12 +103,13 @@ public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
                 }
                 if (husbandLatestBirthDate != null && husbandLatestBirthDate.getDate() != null) {
                     long dadMillisDiff = kidEarliestBirthDate.getDate().getTime() - husbandLatestBirthDate.getDate().getTime();
-                    if (dadMillisDiff <= MILLIS_IN_SIXTEEN_YEARS) {
-                        if (husbandLatestBirthDate.getDate().after(kidEarliestBirthDate.getDate())) {
+                    if (dadMillisDiff >= MILLIS_IN_SIXTY_YEARS) {
+                        if (husbandEarliestDeathDate != null && husbandEarliestDeathDate.getDate() != null
+                                && husbandEarliestDeathDate.getDate().before(kidEarliestBirthDate.getDate())) {
                             if (problem.length() > 0) {
                                 problem.append("; ");
                             }
-                            problem.append("Father may not have been born yet");
+                            problem.append("Father may have been deceased");
                         } else {
                             long yearsOld = dadMillisDiff / MILLIS_IN_YEAR;
                             if (problem.length() > 0) {
@@ -127,12 +131,12 @@ public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
 
     @Override
     public String getDescription() {
-        return "Children born to parents who were under the age of 16";
+        return "Children born to parents who were over the age of 60";
     }
 
     @Override
     public String getName() {
-        return "Children of young parents";
+        return "Children of elderly parents";
     }
 
     @Override

@@ -81,16 +81,17 @@ public abstract class AAnalyzer implements IAnalyzer {
      * @return the date found, if any - null if no parseable date could be found
      */
     protected DateAndString getBirthDate(Individual i, ImpreciseDatePreference datePreference) {
+        if (i == null) {
+            return null;
+        }
         DateParser dp = new DateParser();
         DateAndString result = new DateAndString();
-        if (i != null) {
-            for (IndividualEvent e : i.getEventsOfType(IndividualEventType.BIRTH)) {
-                if (isSpecified(e.getDate())) {
-                    Date d = dp.parse(e.getDate().getValue());
-                    if (d != null && (result.getDate() == null || d.before(result.getDate()))) {
-                        result.setDate(d);
-                        result.setDateString(e.getDate().getValue());
-                    }
+        for (IndividualEvent e : i.getEventsOfType(IndividualEventType.BIRTH)) {
+            if (isSpecified(e.getDate())) {
+                Date d = dp.parse(e.getDate().getValue());
+                if (d != null && (result.getDate() == null || d.before(result.getDate()))) {
+                    result.setDate(d);
+                    result.setDateString(e.getDate().getValue());
                 }
             }
         }
@@ -107,6 +108,9 @@ public abstract class AAnalyzer implements IAnalyzer {
      * @return the date found, if any - null if no parseable date could be found
      */
     protected DateAndString getDeathDate(Individual i, ImpreciseDatePreference datePreference) {
+        if (i == null) {
+            return null;
+        }
         DateParser dp = new DateParser();
         DateAndString result = new DateAndString();
         for (IndividualEvent e : i.getEventsOfType(IndividualEventType.DEATH)) {
