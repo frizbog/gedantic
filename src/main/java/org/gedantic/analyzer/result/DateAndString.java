@@ -138,4 +138,24 @@ public class DateAndString implements Comparable<DateAndString> {
         this.dateString = dateString;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("DateAndString [");
+        if (dateString != null) {
+            builder.append("dateString=");
+            builder.append(dateString);
+            builder.append(", ");
+        }
+        if (date != null) {
+            builder.append("date=");
+            builder.append(date);
+        }
+        builder.append("]");
+        return builder.toString();
+    }
+
 }

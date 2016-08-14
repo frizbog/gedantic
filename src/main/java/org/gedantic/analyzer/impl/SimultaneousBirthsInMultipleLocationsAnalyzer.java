@@ -44,9 +44,15 @@ import org.gedcom4j.parser.DateParser;
  */
 public class SimultaneousBirthsInMultipleLocationsAnalyzer extends AAnalyzer {
 
+    /**
+     * A birth of a specific person
+     */
     private class Birth {
+
+        /** The person. */
         Individual person;
 
+        /** The birth. */
         IndividualEvent birth;
     }
 

@@ -53,6 +53,9 @@
 		</put-list-attribute>
 	</definition>
 
+	<definition name="uploadGedcom" extends="upload">
+	</definition>
+	
 	<definition name="upload" extends="common">
 		<put-attribute name="title" value="Upload and analyze your GEDCOM file for anomalies, inconsistencies, and areas for further research" />
 		<put-attribute name="splash" value="/WEB-INF/tiles/splash.jsp" />

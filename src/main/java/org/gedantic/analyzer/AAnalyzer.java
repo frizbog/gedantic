@@ -83,12 +83,14 @@ public abstract class AAnalyzer implements IAnalyzer {
     protected DateAndString getBirthDate(Individual i, ImpreciseDatePreference datePreference) {
         DateParser dp = new DateParser();
         DateAndString result = new DateAndString();
-        for (IndividualEvent e : i.getEventsOfType(IndividualEventType.BIRTH)) {
-            if (isSpecified(e.getDate())) {
-                Date d = dp.parse(e.getDate().getValue());
-                if (d != null && (result.getDate() == null || d.before(result.getDate()))) {
-                    result.setDate(d);
-                    result.setDateString(e.getDate().getValue());
+        if (i != null) {
+            for (IndividualEvent e : i.getEventsOfType(IndividualEventType.BIRTH)) {
+                if (isSpecified(e.getDate())) {
+                    Date d = dp.parse(e.getDate().getValue());
+                    if (d != null && (result.getDate() == null || d.before(result.getDate()))) {
+                        result.setDate(d);
+                        result.setDateString(e.getDate().getValue());
+                    }
                 }
             }
         }

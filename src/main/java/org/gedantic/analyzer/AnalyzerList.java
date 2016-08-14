@@ -97,6 +97,7 @@ public final class AnalyzerList {
         addAnalyzer(new QuadrupletsAndMoreAnalyzer());
         addAnalyzer(new SimultaneousBirthsInMultipleLocationsAnalyzer());
         addAnalyzer(new ChildrenWithSameFirstNamesAnalyzer());
+        addAnalyzer(new BirthsToYoungParentsAnalyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {

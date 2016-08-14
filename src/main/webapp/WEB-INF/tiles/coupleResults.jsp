@@ -31,11 +31,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<li class="list-group-item"><span class="list-group-item-heading">${fn:escapeXml(result.family.husband.formattedName)} 
-
-	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.husband)}"></span> 
-	and ${fn:escapeXml(result.family.wife.formattedName)} 
+<li class="list-group-item"><span class="list-group-item-heading">
+<c:choose>
+	<c:when test="${not empty result.family.husband}">
+		${fn:escapeXml(result.family.husband.formattedName)} 
+		<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.husband)}"></span>
+	</c:when>
+	<c:otherwise>Unknown</c:otherwise>
+</c:choose>
+	and
+<c:choose>
+	<c:when test="${not empty result.family.wife}">
+	${fn:escapeXml(result.family.wife.formattedName)} 
 	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife)}"></span>
+	</c:when>
+	<c:otherwise>Unknown</c:otherwise>
+</c:choose>
 	
 	<tiles:insertAttribute name="factsValuesProblems" />
 
