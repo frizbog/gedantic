@@ -41,7 +41,7 @@ import org.gedcom4j.parser.DateParser;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 
 /**
- * An analyzer that finds couples that had kids while one of the parents was 16 or under
+ * An analyzer that finds couples where one of the spouses was 16 or younger at time of marriage
  * 
  * @author frizbog
  */
