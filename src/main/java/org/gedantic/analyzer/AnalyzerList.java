@@ -100,6 +100,7 @@ public final class AnalyzerList {
         addAnalyzer(new BirthsToYoungParentsAnalyzer());
         addAnalyzer(new BirthsToOldParentsAnalyzer());
         addAnalyzer(new CouplesWithLargeAgeDifferenceAnalyzer());
+        addAnalyzer(new MarriedAtYoungAgeAnalyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {
