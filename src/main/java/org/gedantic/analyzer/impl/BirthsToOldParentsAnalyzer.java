@@ -149,9 +149,4 @@ public class BirthsToOldParentsAnalyzer extends AAnalyzer {
         return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.FAMILIES };
     }
 
-    @Override
-    public boolean isNewish() {
-        return true;
-    }
-
 }

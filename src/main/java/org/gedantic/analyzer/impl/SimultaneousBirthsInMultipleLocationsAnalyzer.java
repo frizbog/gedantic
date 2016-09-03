@@ -26,15 +26,26 @@
  */
 package org.gedantic.analyzer.impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
-import org.gedcom4j.model.*;
+import org.gedcom4j.model.Family;
+import org.gedcom4j.model.Gedcom;
+import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualEvent;
+import org.gedcom4j.model.IndividualEventType;
+import org.gedcom4j.model.Place;
 import org.gedcom4j.parser.DateParser;
 
 /**
@@ -160,11 +171,6 @@ public class SimultaneousBirthsInMultipleLocationsAnalyzer extends AAnalyzer {
     @Override
     public AnalysisTag[] getTags() {
         return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.FAMILIES };
-    }
-
-    @Override
-    public boolean isNewish() {
-        return true;
     }
 
 }

@@ -26,8 +26,13 @@
  */
 package org.gedantic.analyzer.impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -112,11 +117,6 @@ public class QuadrupletsAndMoreAnalyzer extends AAnalyzer {
     @Override
     public AnalysisTag[] getTags() {
         return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.FAMILIES };
-    }
-
-    @Override
-    public boolean isNewish() {
-        return true;
     }
 
 }
