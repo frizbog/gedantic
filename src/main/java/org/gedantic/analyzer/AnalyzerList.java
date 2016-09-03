@@ -26,9 +26,51 @@
  */
 package org.gedantic.analyzer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
-import org.gedantic.analyzer.impl.*;
+import org.gedantic.analyzer.impl.AdultsWithoutSpousesAnalyzer;
+import org.gedantic.analyzer.impl.BadEmailAnalyzer;
+import org.gedantic.analyzer.impl.BirthsToOldParentsAnalyzer;
+import org.gedantic.analyzer.impl.BirthsToYoungParentsAnalyzer;
+import org.gedantic.analyzer.impl.ChildrenWithDifferentSurnamesAnalyzer;
+import org.gedantic.analyzer.impl.ChildrenWithSameFirstNamesAnalyzer;
+import org.gedantic.analyzer.impl.CircularAncestryAnalyzer;
+import org.gedantic.analyzer.impl.ConflictingDatesAnalyzer;
+import org.gedantic.analyzer.impl.CouplesWithCommonAncestorsAnalyzer;
+import org.gedantic.analyzer.impl.CouplesWithLargeAgeDifferenceAnalyzer;
+import org.gedantic.analyzer.impl.CouplesWithSameBirthSurnames;
+import org.gedantic.analyzer.impl.CouplesWithoutChildrenAnalyzer;
+import org.gedantic.analyzer.impl.DatesButNoPlacesAnalyzer;
+import org.gedantic.analyzer.impl.DescendantsBornBeforeAncestorsAnalyzer;
+import org.gedantic.analyzer.impl.EventsWithoutDatesAnalyzer;
+import org.gedantic.analyzer.impl.EventsWithoutPlacesOrDatesAnalyzer;
+import org.gedantic.analyzer.impl.FactsWithoutSourcesAnalyzer;
+import org.gedantic.analyzer.impl.FutureBirthDeathDatesAnalyzer;
+import org.gedantic.analyzer.impl.MaleWivesFemaleHusbandsAnalyzer;
+import org.gedantic.analyzer.impl.MarriagesWithoutDatesAnalyzer;
+import org.gedantic.analyzer.impl.MarriedAtYoungAgeAnalyzer;
+import org.gedantic.analyzer.impl.OnlyChildrenAnalyzer;
+import org.gedantic.analyzer.impl.PeopleWhoLivedPast100Analyzer;
+import org.gedantic.analyzer.impl.PeopleWithOneMissingParentAnalyzer;
+import org.gedantic.analyzer.impl.PeopleWithOnlySurnamesAnalyzer;
+import org.gedantic.analyzer.impl.PeopleWithoutBirthDatesAnalyzer;
+import org.gedantic.analyzer.impl.PeopleWithoutDeathEventsAnalyzer;
+import org.gedantic.analyzer.impl.PeopleWithoutNamesAnalyzer;
+import org.gedantic.analyzer.impl.PeopleWithoutOccupationsAnalysis;
+import org.gedantic.analyzer.impl.PeopleWithoutParentsAnalyzer;
+import org.gedantic.analyzer.impl.PeopleWithoutSurnamesAnalyzer;
+import org.gedantic.analyzer.impl.PlacesButNoDatesAnalyzer;
+import org.gedantic.analyzer.impl.QuadrupletsAndMoreAnalyzer;
+import org.gedantic.analyzer.impl.SimultaneousBirthsInMultipleLocationsAnalyzer;
+import org.gedantic.analyzer.impl.SourcesWithoutRepositoryCitationsOrMediaAnalyzer;
+import org.gedantic.analyzer.impl.UnparsableDatesAnalyzer;
+import org.gedantic.analyzer.impl.UnspecifiedSexAnalyzer;
 
 /**
  * List of available Analyzers.
@@ -101,6 +143,7 @@ public final class AnalyzerList {
         addAnalyzer(new BirthsToOldParentsAnalyzer());
         addAnalyzer(new CouplesWithLargeAgeDifferenceAnalyzer());
         addAnalyzer(new MarriedAtYoungAgeAnalyzer());
+        addAnalyzer(new BadEmailAnalyzer());
 
         Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
         for (IAnalyzer a : analyzers.values()) {

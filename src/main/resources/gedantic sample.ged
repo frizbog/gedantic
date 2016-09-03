@@ -3,11 +3,12 @@
 2 VERS Family Tree Maker (22.2.5)
 2 NAME Family Tree Maker for Mac OS X
 2 CORP Ancestry.com
+3 EMAIL ancestry.com
 3 ADDR 360 W 4800 N
 4 CONT Provo, UT 84604
 3 PHON (801) 705-7000
 1 DEST GED55
-1 DATE 13 AUG 2016
+1 DATE 02 SEP 2016
 1 CHAR UTF-8
 1 FILE /Users/frizbog/Downloads/gedantic_2016-08-01.ged
 1 SUBM @SUBM@
@@ -181,8 +182,21 @@
 0 @I42@ INDI
 1 NAME Lawrence /Jackson/
 1 SEX M
+1 IMMI
+2 EMAIL acceptable.email@foo.com
+2 EMAIL unacceptable email@nospacesallowed.com
+1 RESI
+2 EMAIL good.email@foo.com
+2 EMAIL bad email@nospacesallowed.com
+1 EMAIL missingdotcom@gmail
 1 BIRT
 2 DATE 1900
+1 EDUC
+2 DATE 1916
+2 PLAC Philadelphia, Pennsylvania, USA
+1 BAPM
+2 DATE 06 JAN 1901
+2 PLAC Terre Haute, Vigo, Indiana, USA
 1 FAMS @F18@
 0 @I41@ INDI
 1 NAME Jane /Jackson/
@@ -598,6 +612,9 @@
 1 CHIL @I69@
 2 _FREL Natural
 2 _MREL Natural
+1 MARR
+2 DATE 1918
+2 PLAC Pensacola, Escambia, Florida, USA
 0 @F7@ FAM
 1 HUSB @I18@
 1 WIFE @I17@
@@ -733,7 +750,45 @@
 2 _MREL Natural
 0 @S1@ SOUR
 1 TITL Personal email
+0 @R1@ REPO
+1 NAME Bob's Genealogy Hut
+1 ADDR 123 Main St Suffolk VA 23435
+1 EMAIL good@bobsgenealogyhut.net
+1 PHON 757-555-1212
+0 @R2@ REPO
+1 NAME Landmark Genealogy Records
+1 ADDR 123 Pinner St Suffolk VA 23434
+1 EMAIL bademailaddress@nowhere
+1 PHON 757-555-1212
 0 @FBAD@ FAM
 1 WIFE @I27@
 1 CHIL @I21@
+0 @SUBBAD@ SUBM
+1 NAME Thomas /Coburn/
+1 ADDR 12 Green Flower St, Hoboken, NJ
+1 EMAIL this.is.ok@gmail.com
+1 EMAIL this is bad@gmail.com
+1 LANG English
+0 @RBAD@ REPO
+1 NAME Family Trees R' Us
+1 ADDR 1 Elm St New Haven CT
+1 EMAIL this.is.ok@familytreesrus.com
+1 EMAIL this is bad@familytreesrus.com
+1 PHON 800-555-1212
+0 @IEMAIL1@ INDI
+1 NAME James /Killian/
+1 SEX M
+1 FAMS @FEMAIL1@
+0 @IEMAIL2@ INDI
+1 NAME Laura /Pinto/
+1 SEX F
+1 FAMS @FEMAIL1@
+0 @FEMAIL1@ FAM
+1 HUSB @IEMAIL1@
+1 WIFE @IEMAIL2@
+1 MARR
+2 PLAC Shotgun Wedding Chapel
+2 ADDR 125 N 18th St, Kalamazoo, MI
+2 EMAIL this.is.ok@msn.com
+2 EMAIL this@is@not@ok@gmail.com
 0 TRLR

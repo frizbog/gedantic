@@ -62,10 +62,7 @@ public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
                 if (abd != null && abd.getDate() != null && abd.getDate().after(ibd.getDate())) {
                     // Ancestor born after individual
 
-                    // long difference = abd.getDate().getTime() - ibd.getDate().getTime();
-                    // long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
-                    //
-                    result.add(new IndividualRelatedResult(i, null, a, "Individual born " + ibd.getDateString()
+                    result.add(new IndividualRelatedResult(i, "Ancestor", a, "Individual born " + ibd.getDateString()
                             + ", and ancestor born " + abd.getDateString()));
                 }
             }
