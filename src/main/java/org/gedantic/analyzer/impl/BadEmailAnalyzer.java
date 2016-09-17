@@ -94,11 +94,6 @@ public class BadEmailAnalyzer extends AAnalyzer {
         return new AnalysisTag[] { AnalysisTag.PROBLEM, AnalysisTag.FAMILIES, AnalysisTag.INDIVIDUALS, AnalysisTag.SOURCES };
     }
 
-    @Override
-    public boolean isNewish() {
-        return true;
-    }
-
     /**
      * Check the family events
      * 
