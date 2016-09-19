@@ -145,13 +145,13 @@ public final class AnalyzerList {
         addAnalyzer(new MarriedAtYoungAgeAnalyzer());
         addAnalyzer(new BadEmailAnalyzer());
 
-        Set<AnalysisTag> unique = new TreeSet<AnalysisTag>();
+        Set<AnalysisTag> unique = new TreeSet<>();
         for (IAnalyzer a : analyzers.values()) {
             for (AnalysisTag t : a.getTags()) {
                 unique.add(t);
             }
         }
-        tags = new ArrayList<AnalysisTag>(unique);
+        tags = new ArrayList<>(unique);
     }
 
     /**

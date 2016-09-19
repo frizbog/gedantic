@@ -37,7 +37,13 @@ import org.gedantic.analyzer.comparator.MixedResultSortComparator;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
-import org.gedcom4j.model.*;
+import org.gedcom4j.model.AbstractEvent;
+import org.gedcom4j.model.Family;
+import org.gedcom4j.model.FamilyEvent;
+import org.gedcom4j.model.Gedcom;
+import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualEvent;
+import org.gedcom4j.model.PersonalName;
 
 /**
  * Analyzer that finds facts without any source citations. Currently limited to names and events.

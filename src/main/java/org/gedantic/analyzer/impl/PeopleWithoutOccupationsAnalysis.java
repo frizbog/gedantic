@@ -39,7 +39,7 @@ import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualAttribute;
-import org.gedcom4j.model.IndividualAttributeType;
+import org.gedcom4j.model.enumerations.IndividualAttributeType;
 
 /**
  * Analysis to find people with no data about their occupation

@@ -51,7 +51,7 @@ public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
      */
     @Override
     public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<AResult>();
+        List<AResult> result = new ArrayList<>();
         for (Individual i : g.getIndividuals().values()) {
             DateAndString ibd = getBirthDate(i, ImpreciseDatePreference.FAVOR_EARLIEST);
             if (ibd == null || ibd.getDate() == null) {

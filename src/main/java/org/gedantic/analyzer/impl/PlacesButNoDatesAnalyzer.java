@@ -37,7 +37,11 @@ import org.gedantic.analyzer.comparator.MixedResultSortComparator;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
-import org.gedcom4j.model.*;
+import org.gedcom4j.model.Family;
+import org.gedcom4j.model.FamilyEvent;
+import org.gedcom4j.model.Gedcom;
+import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualEvent;
 
 /**
  * Analyzer that finds Events with places, but no dates

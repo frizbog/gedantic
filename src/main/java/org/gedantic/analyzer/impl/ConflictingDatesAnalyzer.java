@@ -26,8 +26,13 @@
  */
 package org.gedantic.analyzer.impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -36,7 +41,14 @@ import org.gedantic.analyzer.comparator.MixedResultSortComparator;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
-import org.gedcom4j.model.*;
+import org.gedcom4j.model.AbstractEvent;
+import org.gedcom4j.model.Family;
+import org.gedcom4j.model.FamilyEvent;
+import org.gedcom4j.model.Gedcom;
+import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualEvent;
+import org.gedcom4j.model.enumerations.FamilyEventType;
+import org.gedcom4j.model.enumerations.IndividualEventType;
 import org.gedcom4j.parser.DateParser;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 

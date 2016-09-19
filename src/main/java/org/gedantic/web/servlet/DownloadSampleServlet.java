@@ -50,13 +50,13 @@ public class DownloadSampleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/gedcom");
         resp.setHeader("Content-disposition", "attachment; filename=gedantic%20sample.ged");
-        InputStream in = this.getClass().getClassLoader().getResourceAsStream("gedantic sample.ged");
-        byte[] buffer = new byte[4096];
-        int length;
-        while ((length = in.read(buffer)) > 0) {
-            resp.getOutputStream().write(buffer, 0, length);
+        try (InputStream in = this.getClass().getClassLoader().getResourceAsStream("gedantic sample.ged")) {
+            byte[] buffer = new byte[4096];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                resp.getOutputStream().write(buffer, 0, length);
+            }
+            resp.getOutputStream().flush();
         }
-        in.close();
-        resp.getOutputStream().flush();
     }
 }

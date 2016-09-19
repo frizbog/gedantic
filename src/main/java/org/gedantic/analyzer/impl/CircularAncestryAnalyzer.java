@@ -54,7 +54,7 @@ public class CircularAncestryAnalyzer extends AAnalyzer {
      */
     @Override
     public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<AResult>();
+        List<AResult> result = new ArrayList<>();
         for (Individual i : g.getIndividuals().values()) {
             List<Individual> ancestors = new ArrayList<>(i.getAncestors());
             if (ancestors.contains(i)) {

@@ -36,8 +36,8 @@ import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyEvent;
-import org.gedcom4j.model.FamilyEventType;
 import org.gedcom4j.model.Gedcom;
+import org.gedcom4j.model.enumerations.FamilyEventType;
 
 /**
  * An analyzer that finds couples without any date information about their marriage.

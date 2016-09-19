@@ -26,7 +26,11 @@
  */
 package org.gedantic.analyzer.impl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
@@ -56,7 +60,7 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
                 continue;
             }
             Set<String> personSurnames = getSurnamesFromIndividual(i);
-            Set<String> allParentSurnames = new TreeSet<String>();
+            Set<String> allParentSurnames = new TreeSet<>();
             for (FamilyChild fc : i.getFamiliesWhereChild()) {
                 if (fc.getFamily().getHusband() != null) {
                     allParentSurnames.addAll(getSurnamesFromIndividual(fc.getFamily().getHusband()));

@@ -71,10 +71,16 @@ public class AnalyzerServlet extends HttpServlet {
     }
 
     /**
+     * Servlet for handling all analysis requests
+     * 
      * @param req
+     *            the http request
      * @param resp
+     *            the http response
      * @throws ServletException
+     *             if there is a code-related problem
      * @throws IOException
+     *             if there is a network or storage-related problem
      */
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
