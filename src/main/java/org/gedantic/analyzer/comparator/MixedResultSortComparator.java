@@ -144,9 +144,9 @@ public class MixedResultSortComparator implements Serializable, Comparator<AResu
             return null;
         }
         if (f.getHusband() != null) {
-            return f.getHusband();
+            return f.getHusband().getIndividual();
         }
-        return f.getWife();
+        return f.getWife() == null ? null : f.getWife().getIndividual();
 
     }
 

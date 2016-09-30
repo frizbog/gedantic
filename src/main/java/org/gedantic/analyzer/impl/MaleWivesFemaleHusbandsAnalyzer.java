@@ -51,8 +51,8 @@ public class MaleWivesFemaleHusbandsAnalyzer extends AAnalyzer {
         for (Family f : g.getFamilies().values()) {
             boolean wifeMale = false;
             boolean husbandFemale = false;
-            Individual w = f.getWife();
-            Individual h = f.getHusband();
+            Individual w = f.getWife() == null ? null : f.getWife().getIndividual();
+            Individual h = f.getHusband() == null ? null : f.getHusband().getIndividual();
             if (w != null && w.getSex() != null && "M".equals(w.getSex().getValue())) {
                 wifeMale = true;
             }

@@ -38,6 +38,7 @@ import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualReference;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 
 /**
@@ -67,10 +68,10 @@ public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
                 continue;
             }
 
-            Individual husband = f.getHusband();
+            Individual husband = f.getHusband() == null ? null : f.getHusband().getIndividual();
             DateAndString husbandLatestBirthDate = getBirthDate(husband, ImpreciseDatePreference.FAVOR_LATEST);
 
-            Individual wife = f.getWife();
+            Individual wife = f.getWife() == null ? null : f.getWife().getIndividual();
             DateAndString wifeLatestBirthDate = getBirthDate(wife, ImpreciseDatePreference.FAVOR_LATEST);
 
             // Neither parent has a birth date? Can't calculate, so skip
@@ -79,7 +80,8 @@ public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
                 continue;
             }
 
-            for (Individual kid : f.getChildren()) {
+            for (IndividualReference iRef : f.getChildren()) {
+                Individual kid = iRef.getIndividual();
                 DateAndString kidEarliestBirthDate = getBirthDate(kid, ImpreciseDatePreference.FAVOR_EARLIEST);
                 if (kidEarliestBirthDate == null || kidEarliestBirthDate.getDate() == null) {
                     continue;

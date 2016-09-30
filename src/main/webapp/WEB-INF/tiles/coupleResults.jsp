@@ -33,17 +33,17 @@
 
 <li class="list-group-item"><span class="list-group-item-heading">
 <c:choose>
-	<c:when test="${not empty result.family.husband}">
-		${fn:escapeXml(result.family.husband.formattedName)} 
-		<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.husband)}"></span>
+	<c:when test="${not empty result.family.husband.individual}">
+		${fn:escapeXml(result.family.husband.individual.formattedName)} 
+		<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.husband.individual)}"></span>
 	</c:when>
 	<c:otherwise>Unknown</c:otherwise>
 </c:choose>
 	and
 <c:choose>
-	<c:when test="${not empty result.family.wife}">
-	${fn:escapeXml(result.family.wife.formattedName)} 
-	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife)}"></span>
+	<c:when test="${not empty result.family.wife.individual}">
+	${fn:escapeXml(result.family.wife.individual.formattedName)} 
+	<span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="${fn:escapeXml(result.family.wife.individual)}"></span>
 	</c:when>
 	<c:otherwise>Unknown</c:otherwise>
 </c:choose>

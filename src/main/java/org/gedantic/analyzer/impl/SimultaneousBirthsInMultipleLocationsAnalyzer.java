@@ -44,6 +44,7 @@ import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualEvent;
+import org.gedcom4j.model.IndividualReference;
 import org.gedcom4j.model.Place;
 import org.gedcom4j.model.enumerations.IndividualEventType;
 import org.gedcom4j.parser.DateParser;
@@ -84,7 +85,8 @@ public class SimultaneousBirthsInMultipleLocationsAnalyzer extends AAnalyzer {
              */
             Map<Date, Set<Birth>> birthsByDate = new HashMap<>();
 
-            for (Individual i : f.getChildren()) {
+            for (IndividualReference iRef : f.getChildren()) {
+                Individual i = iRef.getIndividual();
                 List<IndividualEvent> birthEvents = i.getEventsOfType(IndividualEventType.BIRTH);
                 for (IndividualEvent birthEvent : birthEvents) {
                     if (birthEvent.getDate() == null) {

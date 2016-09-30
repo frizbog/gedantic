@@ -43,6 +43,7 @@ import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualReference;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 
 /**
@@ -67,7 +68,8 @@ public class QuadrupletsAndMoreAnalyzer extends AAnalyzer {
              * other as on the same date (multiple births)
              */
             Map<DateAndString, Set<Individual>> births = new HashMap<>();
-            for (Individual i : f.getChildren()) {
+            for (IndividualReference iRef : f.getChildren()) {
+                Individual i = iRef.getIndividual();
                 DateAndString birthDate = getBirthDate(i, ImpreciseDatePreference.PRECISE);
                 if (birthDate == null || birthDate.getDate() == null) {
                     continue;

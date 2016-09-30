@@ -39,7 +39,7 @@ import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.PersonalName;
-import org.gedcom4j.model.StringWithCustomTags;
+import org.gedcom4j.model.StringWithCustomFacts;
 
 /**
  * @author frizbog
@@ -113,7 +113,7 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
      *            teh string
      * @return true if the supplied string value is null or empty when trimmed
      */
-    private boolean notSpecified(StringWithCustomTags s) {
+    private boolean notSpecified(StringWithCustomFacts s) {
         if (s == null || s.getValue() == null || s.getValue().trim().isEmpty()) {
             return true;
         }

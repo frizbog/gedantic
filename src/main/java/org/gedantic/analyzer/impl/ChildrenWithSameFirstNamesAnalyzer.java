@@ -44,6 +44,7 @@ import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
+import org.gedcom4j.model.IndividualReference;
 import org.gedcom4j.model.PersonalName;
 
 /**
@@ -66,7 +67,8 @@ public class ChildrenWithSameFirstNamesAnalyzer extends AAnalyzer {
 
             // Build a map of each first name and all the kids who have that first name
             Map<String, Set<Individual>> kidsByFirstName = new HashMap<>();
-            for (Individual kid : f.getChildren()) {
+            for (IndividualReference iRef : f.getChildren()) {
+                Individual kid = iRef.getIndividual();
                 for (PersonalName pn : kid.getNames(true)) {
                     String gn = null;
                     if (pn.getGivenName() != null && isSpecified(pn.getGivenName().getValue())) {

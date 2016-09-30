@@ -36,7 +36,7 @@ import org.gedantic.analyzer.result.DateAndString;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualEvent;
 import org.gedcom4j.model.PersonalName;
-import org.gedcom4j.model.StringWithCustomTags;
+import org.gedcom4j.model.StringWithCustomFacts;
 import org.gedcom4j.model.enumerations.IndividualEventType;
 import org.gedcom4j.parser.DateParser;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
@@ -184,7 +184,7 @@ public abstract class AAnalyzer implements IAnalyzer {
      *            the string with custom tags
      * @return true if the string supplied non-null, and has something other than whitespace in it
      */
-    protected boolean isSpecified(StringWithCustomTags swct) {
+    protected boolean isSpecified(StringWithCustomFacts swct) {
         if (swct == null || swct.getValue() == null || swct.getValue().isEmpty()) {
             return false;
         }

@@ -38,6 +38,7 @@ import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
+import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -62,11 +63,14 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
             Set<String> personSurnames = getSurnamesFromIndividual(i);
             Set<String> allParentSurnames = new TreeSet<>();
             for (FamilyChild fc : i.getFamiliesWhereChild()) {
-                if (fc.getFamily().getHusband() != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.getFamily().getHusband()));
+                Family family = fc.getFamily();
+                if (family.getHusband() != null) {
+                    allParentSurnames.addAll(getSurnamesFromIndividual(family.getHusband() == null ? null
+                            : family.getHusband().getIndividual()));
                 }
-                if (fc.getFamily().getWife() != null) {
-                    allParentSurnames.addAll(getSurnamesFromIndividual(fc.getFamily().getWife()));
+                if (family.getWife() != null) {
+                    allParentSurnames.addAll(getSurnamesFromIndividual(family.getWife() == null ? null
+                            : family.getWife().getIndividual()));
                 }
             }
             if (allParentSurnames.isEmpty()) {

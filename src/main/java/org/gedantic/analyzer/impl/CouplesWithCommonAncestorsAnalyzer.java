@@ -54,7 +54,8 @@ public class CouplesWithCommonAncestorsAnalyzer extends AAnalyzer {
         for (Family f : g.getFamilies().values()) {
             if (f.getWife() != null && f.getHusband() != null) {
 
-                Set<Individual> lowestCommonAncestors = ac.getLowestCommonAncestors(f.getWife(), f.getHusband());
+                Set<Individual> lowestCommonAncestors = ac.getLowestCommonAncestors(f.getWife().getIndividual(), f.getHusband()
+                        .getIndividual());
 
                 for (Individual commonAncestor : lowestCommonAncestors) {
                     result.add(new FamilyRelatedResult(f, null, commonAncestor, null));

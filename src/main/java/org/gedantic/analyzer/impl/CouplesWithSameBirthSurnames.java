@@ -51,8 +51,8 @@ public class CouplesWithSameBirthSurnames extends AAnalyzer {
         for (Family f : g.getFamilies().values()) {
             if (f.getWife() != null && f.getHusband() != null) {
 
-                Set<String> wifeSurnames = getSurnamesFromIndividual(f.getWife());
-                Set<String> husbandSurnames = getSurnamesFromIndividual(f.getHusband());
+                Set<String> wifeSurnames = getSurnamesFromIndividual(f.getWife().getIndividual());
+                Set<String> husbandSurnames = getSurnamesFromIndividual(f.getHusband().getIndividual());
                 if (wifeSurnames.isEmpty() || husbandSurnames.isEmpty()) {
                     continue;
                 }

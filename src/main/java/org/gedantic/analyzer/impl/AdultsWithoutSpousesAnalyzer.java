@@ -66,8 +66,8 @@ public class AdultsWithoutSpousesAnalyzer extends AAnalyzer {
                 // marry" or something like that
                 for (FamilySpouse fs : i.getFamiliesWhereSpouse()) {
                     Family f = fs.getFamily();
-                    Individual w = f.getWife();
-                    Individual h = f.getHusband();
+                    Individual w = f.getWife() == null ? null : f.getWife().getIndividual();
+                    Individual h = f.getHusband() == null ? null : f.getHusband().getIndividual();
                     boolean someoneElseIsTheWife = w != null && !i.equals(w);
                     boolean someoneElseIsTheHusband = h != null && !i.equals(h);
                     if (someoneElseIsTheWife || someoneElseIsTheHusband) {

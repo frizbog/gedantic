@@ -46,7 +46,7 @@ import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualAttribute;
 import org.gedcom4j.model.IndividualEvent;
 import org.gedcom4j.model.Repository;
-import org.gedcom4j.model.StringWithCustomTags;
+import org.gedcom4j.model.StringWithCustomFacts;
 import org.gedcom4j.model.Submitter;
 
 /**
@@ -107,7 +107,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
             if (f.getEvents() != null) {
                 for (FamilyEvent fe : f.getEvents()) {
                     if (fe.getEmails() != null) {
-                        for (StringWithCustomTags e : fe.getEmails()) {
+                        for (StringWithCustomFacts e : fe.getEmails()) {
                             if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
                                 result.add(new FamilyRelatedResult(f, "Email for " + fe.getType().getDisplay() + " event", e
                                         .getValue(), null));
@@ -130,7 +130,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
     protected void checkHeaderCorporation(Gedcom g, List<AResult> result) {
         if (g.getHeader().getSourceSystem() != null && g.getHeader().getSourceSystem().getCorporation() != null && g.getHeader()
                 .getSourceSystem().getCorporation().getEmails() != null) {
-            for (StringWithCustomTags e : g.getHeader().getSourceSystem().getCorporation().getEmails()) {
+            for (StringWithCustomFacts e : g.getHeader().getSourceSystem().getCorporation().getEmails()) {
                 if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
                     result.add(new UnrelatedResult("Header - Source System", "Email for Corporation", e.getValue(), null));
                 }
@@ -151,7 +151,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
             if (i.getAttributes() != null) {
                 for (IndividualAttribute ia : i.getAttributes()) {
                     if (ia.getEmails() != null) {
-                        for (StringWithCustomTags e : ia.getEmails()) {
+                        for (StringWithCustomFacts e : ia.getEmails()) {
                             if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
                                 result.add(new IndividualRelatedResult(i, "Email for " + ia.getType().getDisplay() + " attribute", e
                                         .getValue(), null));
@@ -163,7 +163,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
             if (i.getEvents() != null) {
                 for (IndividualEvent ie : i.getEvents()) {
                     if (ie.getEmails() != null) {
-                        for (StringWithCustomTags e : ie.getEmails()) {
+                        for (StringWithCustomFacts e : ie.getEmails()) {
                             if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
                                 result.add(new IndividualRelatedResult(i, "Email for " + ie.getType().getDisplay() + " event", e
                                         .getValue(), null));
@@ -186,7 +186,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
     protected void checkRepositories(Gedcom g, List<AResult> result) {
         for (Repository r : g.getRepositories().values()) {
             if (r.getEmails() != null) {
-                for (StringWithCustomTags e : r.getEmails()) {
+                for (StringWithCustomFacts e : r.getEmails()) {
                     if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
                         result.add(new RepositoryRelatedResult(r, "Email for Repository", e.getValue(), null));
                     }
@@ -206,7 +206,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
     protected void checkSubmitters(Gedcom g, List<AResult> result) {
         for (Submitter s : g.getSubmitters().values()) {
             if (s.getEmails() != null) {
-                for (StringWithCustomTags e : s.getEmails()) {
+                for (StringWithCustomFacts e : s.getEmails()) {
                     if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
                         result.add(new SubmitterRelatedResult(s, "Email for Submitter", e.getValue(), null));
                     }

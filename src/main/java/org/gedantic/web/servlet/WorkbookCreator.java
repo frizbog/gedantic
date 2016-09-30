@@ -150,26 +150,24 @@ public class WorkbookCreator {
      */
     private void addFamilyRow(FamilyRelatedResult frr) {
         cell.setCellValue("Family");
-        Individual husband = frr.getFamily().getHusband();
-        Individual wife = frr.getFamily().getWife();
+        Individual husband = frr.getFamily().getHusband() == null ? null : frr.getFamily().getHusband().getIndividual();
+        Individual wife = frr.getFamily().getWife() == null ? null : frr.getFamily().getWife().getIndividual();
 
-        {
-            StringBuilder sb = new StringBuilder();
-            if (husband != null) {
-                sb.append(husband.getFormattedName());
-            } else {
-                sb.append("Unknown");
-            }
-            sb.append(" and ");
-            if (wife != null) {
-                sb.append(wife.getFormattedName());
-            } else {
-                sb.append("Unknown");
-            }
-
-            nextCol();
-            cell.setCellValue(sb.toString());
+        StringBuilder sb = new StringBuilder();
+        if (husband != null) {
+            sb.append(husband.getFormattedName());
+        } else {
+            sb.append("Unknown");
         }
+        sb.append(" and ");
+        if (wife != null) {
+            sb.append(wife.getFormattedName());
+        } else {
+            sb.append("Unknown");
+        }
+
+        nextCol();
+        cell.setCellValue(sb.toString());
 
         nextCol();
         cell.setCellValue(frr.getFactType());

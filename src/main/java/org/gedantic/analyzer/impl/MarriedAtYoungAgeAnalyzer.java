@@ -93,10 +93,10 @@ public class MarriedAtYoungAgeAnalyzer extends AAnalyzer {
                 continue;
             }
 
-            Individual husband = f.getHusband();
+            Individual husband = f.getHusband().getIndividual();
             DateAndString husbandLatestBirthDate = getBirthDate(husband, ImpreciseDatePreference.FAVOR_LATEST);
 
-            Individual wife = f.getWife();
+            Individual wife = f.getWife().getIndividual();
             DateAndString wifeLatestBirthDate = getBirthDate(wife, ImpreciseDatePreference.FAVOR_LATEST);
 
             // Both spouses need a birth date to proceed
