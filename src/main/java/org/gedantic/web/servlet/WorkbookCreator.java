@@ -381,7 +381,7 @@ public class WorkbookCreator {
         cell.setCellValue("Source");
 
         nextCol();
-        cell.setCellValue(srr.getSource().getTitle().get(0));
+        cell.setCellValue(srr.getSource().getTitle().getLines().get(0));
 
         nextCol();
         cell.setCellValue(srr.getFactType());

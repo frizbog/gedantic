@@ -32,7 +32,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <li class="list-group-item"><span class="list-group-item-heading">
 	<c:choose>
-		<c:when test="${not empty result.source.title}">${fn:escapeXml(result.source.title[0])}</c:when>
+		<c:when test="${not empty result.source.title.lines}">${fn:escapeXml(result.source.title.lines[0])}</c:when>
 		<c:otherwise>Untitled</c:otherwise>
 	</c:choose>
 
