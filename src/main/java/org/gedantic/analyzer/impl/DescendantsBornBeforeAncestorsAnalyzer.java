@@ -27,11 +27,13 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AResult;
 import org.gedantic.analyzer.AnalysisTag;
+import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
 import org.gedantic.analyzer.result.DateAndString;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
@@ -67,6 +69,7 @@ public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
                 }
             }
         }
+        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 
@@ -83,7 +86,7 @@ public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
      */
     @Override
     public String getName() {
-        return "Born before ancestors";
+        return "Descendants born before ancestors";
     }
 
     /**
