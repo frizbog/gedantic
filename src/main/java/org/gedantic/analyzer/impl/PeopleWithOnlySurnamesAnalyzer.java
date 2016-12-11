@@ -62,12 +62,17 @@ public class PeopleWithOnlySurnamesAnalyzer extends AAnalyzer {
             boolean hadSurname = false;
             boolean somethingOtherThanSurname = false;
             for (PersonalName pn : i.getNames()) {
-                if ((isSpecified(pn.getBasic()) && !"//".equals(pn.getBasic())) || isSpecified(pn.getSurname())) {
+                if (isSpecified(pn.getSurname())) {
                     // Don't count empty surnames
                     hadSurname = true;
                 }
 
                 if (pn.getBasic() != null) {
+
+                    if (pn.getBasic().contains("/") && !pn.getBasic().contains("//")) {
+                        hadSurname = true;
+                    }
+
                     // Characters before a slash would be something other than a surname
                     int firstSlash = pn.getBasic().indexOf('/');
                     if (firstSlash > 0) {
