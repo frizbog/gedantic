@@ -132,9 +132,11 @@ public class SimultaneousBirthsInMultipleLocationsAnalyzer extends AAnalyzer {
                 Set<Individual> kids = new HashSet<>();
                 String birthDateString = null;
                 for (Birth b : birthsOnDate) {
-                    places.add(b.birth.getPlace());
-                    kids.add(b.person);
-                    birthDateString = b.birth.getDate().getValue();
+                    if (b.birth.getPlace() != null) {
+                        places.add(b.birth.getPlace());
+                        kids.add(b.person);
+                        birthDateString = b.birth.getDate().getValue();
+                    }
                 }
                 if (places.size() > 1) {
                     // Found multiple places on this date

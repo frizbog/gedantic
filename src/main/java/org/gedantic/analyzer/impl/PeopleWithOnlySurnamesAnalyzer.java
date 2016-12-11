@@ -67,11 +67,13 @@ public class PeopleWithOnlySurnamesAnalyzer extends AAnalyzer {
                     hadSurname = true;
                 }
 
-                // Characters before a slash would be something other than a surname
-                int firstSlash = pn.getBasic().indexOf('/');
-                if (firstSlash > 0) {
-                    somethingOtherThanSurname = true;
-                    break; // Don't need to check any more names
+                if (pn.getBasic() != null) {
+                    // Characters before a slash would be something other than a surname
+                    int firstSlash = pn.getBasic().indexOf('/');
+                    if (firstSlash > 0) {
+                        somethingOtherThanSurname = true;
+                        break; // Don't need to check any more names
+                    }
                 }
 
                 // Check the name components too
