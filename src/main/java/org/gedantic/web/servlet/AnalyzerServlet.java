@@ -112,7 +112,19 @@ public class AnalyzerServlet extends HttpServlet {
             return;
 
         }
+
+        Runtime rt = Runtime.getRuntime();
+        long maxMemory = rt.maxMemory();
+        long freeMemory = rt.freeMemory();
+        LOG.info("before analysis " + a.getId() + " - freeMemory:" + Double.toString(freeMemory / (1024 * 1024)) + " maxMemory:"
+                + Double.toString(maxMemory / (1024 * 1024)));
+
         List<? extends AResult> results = a.analyze(g);
+
+        maxMemory = rt.maxMemory();
+        freeMemory = rt.freeMemory();
+        LOG.info("after analysis " + a.getId() + " - freeMemory:" + Double.toString(freeMemory / (1024 * 1024)) + " maxMemory:"
+                + Double.toString(maxMemory / (1024 * 1024)));
 
         if ("true".equals(req.getParameter("excel"))) {
             @SuppressWarnings("resource")

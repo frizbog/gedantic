@@ -53,18 +53,14 @@ public class FutureBirthDeathDatesAnalyzer extends AAnalyzer {
     /**
      * Date parser
      */
-    private final DateParser dp = new DateParser();
-
-    /**
-     * Right now
-     */
-    private final Date now = new Date();
+    private static final DateParser DP = new DateParser();
 
     /**
      * {@inheritDoc}
      */
     @Override
     public List<AResult> analyze(Gedcom g) {
+        Date now = new Date();
 
         List<AResult> result = new ArrayList<>();
 
@@ -73,7 +69,7 @@ public class FutureBirthDeathDatesAnalyzer extends AAnalyzer {
             for (IndividualEvent b : births) {
                 if (b.getDate() != null && b.getDate().getValue() != null && !b.getDate().getValue().isEmpty()) {
                     String dateString = b.getDate().getValue();
-                    Date bd = dp.parse(dateString);
+                    Date bd = DP.parse(dateString);
                     if (bd != null && now.before(bd)) {
                         result.add(new IndividualRelatedResult(i, IndividualEventType.BIRTH.getDisplay(), dateString, null));
                     }
@@ -83,7 +79,7 @@ public class FutureBirthDeathDatesAnalyzer extends AAnalyzer {
             for (IndividualEvent d : deaths) {
                 if (d.getDate() != null && d.getDate().getValue() != null && !d.getDate().getValue().isEmpty()) {
                     String dateString = d.getDate().getValue();
-                    Date dd = dp.parse(dateString);
+                    Date dd = DP.parse(dateString);
                     if (dd != null && now.before(dd)) {
                         result.add(new IndividualRelatedResult(i, IndividualEventType.DEATH.getDisplay(), dateString, null));
                     }

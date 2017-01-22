@@ -64,7 +64,7 @@ public class MarriedAtYoungAgeAnalyzer extends AAnalyzer {
     /**
      * Date parser
      */
-    DateParser dp = new DateParser();
+    private static final DateParser DP = new DateParser();
 
     @Override
     public List<AResult> analyze(Gedcom g) {
@@ -81,7 +81,7 @@ public class MarriedAtYoungAgeAnalyzer extends AAnalyzer {
             for (FamilyEvent e : f.getEvents()) {
                 if (e.getType() == FamilyEventType.MARRIAGE) {
                     if (e.getDate() != null && e.getDate().getValue() != null) {
-                        Date d = dp.parse(e.getDate().getValue());
+                        Date d = DP.parse(e.getDate().getValue());
                         if (d != null && d.before(earliestMarriageDate)) {
                             earliestMarriage = e;
                             earliestMarriageDate = d;

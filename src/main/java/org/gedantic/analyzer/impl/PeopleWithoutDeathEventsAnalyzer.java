@@ -54,7 +54,7 @@ public class PeopleWithoutDeathEventsAnalyzer extends AAnalyzer {
     /**
      * Date parser
      */
-    private final DateParser dateParser = new DateParser();
+    private static final DateParser DP = new DateParser();
 
     /**
      * {@inheritDoc}
@@ -82,7 +82,7 @@ public class PeopleWithoutDeathEventsAnalyzer extends AAnalyzer {
             String earliestBirthDateString = null;
             for (IndividualEvent b : births) {
                 if (b.getDate() != null && b.getDate().getValue() != null) {
-                    Date bd = dateParser.parse(b.getDate().getValue(), ImpreciseDatePreference.FAVOR_EARLIEST);
+                    Date bd = DP.parse(b.getDate().getValue(), ImpreciseDatePreference.FAVOR_EARLIEST);
                     if (bd != null && (earliestBirthDate == null || bd.before(earliestBirthDate))) {
                         earliestBirthDate = bd;
                         earliestBirthDateString = b.getDate().getValue();

@@ -54,7 +54,7 @@ public class PeopleWhoLivedPast100Analyzer extends AAnalyzer {
     /**
      * Date parser
      */
-    private final DateParser dateParser = new DateParser();
+    private static final DateParser DP = new DateParser();
 
     /**
      * {@inheritDoc}
@@ -78,7 +78,7 @@ public class PeopleWhoLivedPast100Analyzer extends AAnalyzer {
             String earliestBirthDateString = null;
             for (IndividualEvent b : births) {
                 if (b.getDate() != null && b.getDate().getValue() != null) {
-                    Date bd = dateParser.parse(b.getDate().getValue(), ImpreciseDatePreference.FAVOR_EARLIEST);
+                    Date bd = DP.parse(b.getDate().getValue(), ImpreciseDatePreference.FAVOR_EARLIEST);
                     if (bd != null && (earliestBirthDate == null || bd.before(earliestBirthDate))) {
                         earliestBirthDate = bd;
                         earliestBirthDateString = b.getDate().getValue();
@@ -93,7 +93,7 @@ public class PeopleWhoLivedPast100Analyzer extends AAnalyzer {
             String latestDeathDateString = null;
             for (IndividualEvent d : deaths) {
                 if (d.getDate() != null && d.getDate().getValue() != null) {
-                    Date dd = dateParser.parse(d.getDate().getValue(), ImpreciseDatePreference.FAVOR_LATEST);
+                    Date dd = DP.parse(d.getDate().getValue(), ImpreciseDatePreference.FAVOR_LATEST);
                     if (dd != null && (latestDeathDate == null || dd.after(latestDeathDate))) {
                         latestDeathDate = dd;
                         latestDeathDateString = d.getDate().getValue();

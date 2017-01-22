@@ -118,6 +118,13 @@ public class FileUploadHandler extends HttpServlet {
                 response.setStatus(403);
             }
         }
+
+        Runtime rt = Runtime.getRuntime();
+        long maxMemory = rt.maxMemory();
+        long freeMemory = rt.freeMemory();
+        LOG.info("fileUploaded - freeMemory:" + Double.toString(freeMemory / (1024 * 1024)) + " maxMemory:" + Double.toString(
+                maxMemory / (1024 * 1024)));
+
         LOG.debug("<doPost");
     }
 }

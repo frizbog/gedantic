@@ -60,24 +60,14 @@ import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
 public class ConflictingDatesAnalyzer extends AAnalyzer {
 
     /**
-     * The gedcom being analyzed
-     */
-    private Gedcom gedcom;
-
-    /**
-     * The results we will return
-     */
-    private final List<AResult> result = new ArrayList<>();
-
-    /**
      * {@inheritDoc}
      */
     @Override
     public List<AResult> analyze(Gedcom g) {
-        gedcom = g;
+        List<AResult> result = new ArrayList<>();
 
-        checkIndividualEvents();
-        checkFamilyEvents();
+        checkIndividualEvents(g, result);
+        checkFamilyEvents(g, result);
 
         Collections.sort(result, new MixedResultSortComparator());
         return result;
@@ -114,8 +104,13 @@ public class ConflictingDatesAnalyzer extends AAnalyzer {
 
     /**
      * Check the family events
+     * 
+     * @param gedcom
+     *            the gedcom
+     * @param result
+     *            the results
      */
-    private void checkFamilyEvents() {
+    private void checkFamilyEvents(Gedcom gedcom, List<AResult> result) {
         DateParser dp = new DateParser();
         for (Family i : gedcom.getFamilies().values()) {
             Map<FamilyEventType, List<AbstractEvent>> indEventsByType = new TreeMap<>();
@@ -171,8 +166,13 @@ public class ConflictingDatesAnalyzer extends AAnalyzer {
 
     /**
      * Check individual events for conflicts
+     * 
+     * @param gedcom
+     *            the gedcom
+     * @param result
+     *            the results
      */
-    private void checkIndividualEvents() {
+    private void checkIndividualEvents(Gedcom gedcom, List<AResult> result) {
         DateParser dp = new DateParser();
         for (Individual i : gedcom.getIndividuals().values()) {
             Map<IndividualEventType, List<AbstractEvent>> indEventsByType = new TreeMap<>();
