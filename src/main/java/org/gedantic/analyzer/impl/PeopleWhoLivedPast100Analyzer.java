@@ -27,15 +27,12 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -107,15 +104,14 @@ public class PeopleWhoLivedPast100Analyzer extends AAnalyzer {
             long difference = latestDeathDate.getTime() - earliestBirthDate.getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld >= 130) {
-                result.add(new IndividualRelatedResult(i, null, (String) null, "Lived to about " + yearsOld + " (b."
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null, "Lived to about " + yearsOld + " (b."
                         + earliestBirthDateString + ", d." + latestDeathDateString + ").  Probably incorrect dates."));
             } else if (yearsOld >= 100) {
-                result.add(new IndividualRelatedResult(i, null, (String) null, "Lived to about " + yearsOld + " (b."
+                result.add(new AnalysisResult("Individua;", i.getFormattedName(), null, null, "Lived to about " + yearsOld + " (b."
                         + earliestBirthDateString + ", d." + latestDeathDateString + ") - should verify."));
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

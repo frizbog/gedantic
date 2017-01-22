@@ -33,7 +33,6 @@ import java.util.Set;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -59,7 +58,8 @@ public class CouplesWithSameBirthSurnames extends AAnalyzer {
 
                 if (wifeSurnames.containsAll(husbandSurnames) || husbandSurnames.containsAll(wifeSurnames)) {
                     wifeSurnames.addAll(husbandSurnames);
-                    result.add(new FamilyRelatedResult(f, "NAME", wifeSurnames.toString(), null));
+                    result.add(new AnalysisResult("Family", getFamilyDescriptor(f), "Name", wifeSurnames.toString(),
+                            "Same birth surnames"));
                 }
 
             }

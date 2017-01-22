@@ -104,8 +104,8 @@ public class BadEmailAnalyzer extends AAnalyzer {
                     if (fe.getEmails() != null) {
                         for (StringWithCustomFacts e : fe.getEmails()) {
                             if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
-                                result.add(new AnalysisResult("Email", fe.getType().getDisplay() + " event for family "
-                                        + getFamilyDescriptor(f), e.getValue(), null));
+                                result.add(new AnalysisResult("Family", getFamilyDescriptor(f), "Email for " + fe.getType()
+                                        .getDisplay(), e.getValue(), null));
                             }
                         }
                     }
@@ -127,7 +127,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
                 .getSourceSystem().getCorporation().getEmails() != null) {
             for (StringWithCustomFacts e : g.getHeader().getSourceSystem().getCorporation().getEmails()) {
                 if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
-                    result.add(new AnalysisResult("Email", "Header - Source System", e.getValue(), null));
+                    result.add(new AnalysisResult("Header - Source System", null, "Email for Corporation", e.getValue(), null));
                 }
             }
         }
@@ -148,8 +148,8 @@ public class BadEmailAnalyzer extends AAnalyzer {
                     if (ia.getEmails() != null) {
                         for (StringWithCustomFacts e : ia.getEmails()) {
                             if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
-                                result.add(new AnalysisResult("Email", ia.getType().getDisplay() + " attribute for " + i
-                                        .getFormattedName(), e.getValue(), null));
+                                result.add(new AnalysisResult("Individual", i.getFormattedName(), "Email for " + ia.getType()
+                                        .getDisplay() + " attribute", e.getValue(), null));
                             }
                         }
                     }
@@ -160,8 +160,8 @@ public class BadEmailAnalyzer extends AAnalyzer {
                     if (ie.getEmails() != null) {
                         for (StringWithCustomFacts e : ie.getEmails()) {
                             if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
-                                result.add(new AnalysisResult("Email", ie.getType().getDisplay() + " event for " + i
-                                        .getFormattedName(), e.getValue(), null));
+                                result.add(new AnalysisResult("Individual", i.getFormattedName(), "Email for " + ie.getType()
+                                        .getDisplay() + " event", e.getValue(), null));
                             }
                         }
                     }
@@ -183,7 +183,7 @@ public class BadEmailAnalyzer extends AAnalyzer {
             if (r.getEmails() != null) {
                 for (StringWithCustomFacts e : r.getEmails()) {
                     if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
-                        result.add(new AnalysisResult("Email", "Repository " + r.getName(), e.getValue(), null));
+                        result.add(new AnalysisResult("Repository", "" + r.getName(), "Email", e.getValue(), null));
                     }
                 }
             }
@@ -203,39 +203,10 @@ public class BadEmailAnalyzer extends AAnalyzer {
             if (s.getEmails() != null) {
                 for (StringWithCustomFacts e : s.getEmails()) {
                     if (e.getValue() != null && !EMAIL_PATTERN.matcher(e.getValue()).matches()) {
-                        result.add(new AnalysisResult("Email", "Submitter " + s.getName(), e.getValue(), null));
+                        result.add(new AnalysisResult("Submitter", "" + s.getName(), "Email", e.getValue(), null));
                     }
                 }
             }
         }
-    }
-
-    /**
-     * Get a textual description of the family (the names of the spouses)
-     * 
-     * @param f
-     *            the family
-     * @return a textual description of the family
-     */
-    protected String getFamilyDescriptor(Family f) {
-        StringBuilder sb = new StringBuilder();
-        if (f.getHusband() == null || f.getHusband().getIndividual() == null) {
-            // Unknown husband
-            if (f.getWife() == null || f.getWife().getIndividual() == null) {
-                // Unknown wife too
-                sb.append("Unknown couple");
-            } else {
-                sb.append(f.getWife().getIndividual().getFormattedName()).append(" and unknown husband");
-            }
-        } else {
-            sb.append(f.getHusband().getIndividual().getFormattedName()).append(" and ");
-            if (f.getWife() == null || f.getWife().getIndividual() == null) {
-                // Unknown wife too
-                sb.append("unknown wife");
-            } else {
-                sb.append(f.getWife().getIndividual().getFormattedName());
-            }
-        }
-        return sb.toString();
     }
 }

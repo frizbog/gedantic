@@ -27,15 +27,12 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -71,7 +68,8 @@ public class FutureBirthDeathDatesAnalyzer extends AAnalyzer {
                     String dateString = b.getDate().getValue();
                     Date bd = DP.parse(dateString);
                     if (bd != null && now.before(bd)) {
-                        result.add(new IndividualRelatedResult(i, IndividualEventType.BIRTH.getDisplay(), dateString, null));
+                        result.add(new AnalysisResult("Individual", i.getFormattedName(), IndividualEventType.BIRTH.getDisplay(),
+                                dateString, "Date is in future"));
                     }
                 }
             }
@@ -81,13 +79,13 @@ public class FutureBirthDeathDatesAnalyzer extends AAnalyzer {
                     String dateString = d.getDate().getValue();
                     Date dd = DP.parse(dateString);
                     if (dd != null && now.before(dd)) {
-                        result.add(new IndividualRelatedResult(i, IndividualEventType.DEATH.getDisplay(), dateString, null));
+                        result.add(new AnalysisResult("Individual", i.getFormattedName(), IndividualEventType.DEATH.getDisplay(),
+                                dateString, "Date is in future"));
                     }
                 }
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

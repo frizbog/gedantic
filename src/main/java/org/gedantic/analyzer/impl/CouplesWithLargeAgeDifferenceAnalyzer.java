@@ -33,7 +33,6 @@ import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.DateAndString;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -73,8 +72,8 @@ public class CouplesWithLargeAgeDifferenceAnalyzer extends AAnalyzer {
             DateAndString wifeLatestBirthDate = getBirthDate(wife, ImpreciseDatePreference.FAVOR_LATEST);
 
             // Both spouses need a birth date to proceed
-            if ((husbandLatestBirthDate == null || husbandLatestBirthDate.getDate() == null || wifeLatestBirthDate == null
-                    || wifeLatestBirthDate.getDate() == null)) {
+            if (husbandLatestBirthDate == null || husbandLatestBirthDate.getDate() == null || wifeLatestBirthDate == null
+                    || wifeLatestBirthDate.getDate() == null) {
                 continue;
             }
 
@@ -82,7 +81,7 @@ public class CouplesWithLargeAgeDifferenceAnalyzer extends AAnalyzer {
 
             if (diff >= MILLIS_IN_FIFTEEN_YEARS) {
                 int yearsApart = (int) (diff / MILLIS_IN_YEAR);
-                result.add(new FamilyRelatedResult(f, (String) null, (String) null, "Husband born " + husbandLatestBirthDate
+                result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, null, "Husband born " + husbandLatestBirthDate
                         .getDateString() + ", wife born " + wifeLatestBirthDate.getDateString() + ", about " + yearsApart
                         + " years apart."));
             }

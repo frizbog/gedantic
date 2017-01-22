@@ -27,7 +27,6 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -38,8 +37,6 @@ import java.util.Set;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.MixedResultSortComparator;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -96,12 +93,12 @@ public class ChildrenWithSameFirstNamesAnalyzer extends AAnalyzer {
             // Check the map for any names with more than one kid in the family who has it
             for (Entry<String, Set<Individual>> e : kidsByFirstName.entrySet()) {
                 if (e.getValue().size() > 1 && isSpecified(e.getKey())) {
-                    result.add(new FamilyRelatedResult(f, null, e.getValue(), null));
+                    result.add(new AnalysisResult("Family", getFamilyDescriptor(f), "Children", e.getKey(), e.getValue().size()
+                            + " children with same name"));
                 }
             }
         }
 
-        Collections.sort(result, new MixedResultSortComparator());
         return result;
     }
 

@@ -27,6 +27,7 @@
 package org.gedantic.web.servlet;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,6 +41,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalyzerList;
 import org.gedantic.analyzer.IAnalyzer;
+import org.gedantic.analyzer.comparator.AnalysisResultComparator;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.slf4j.Logger;
@@ -120,6 +122,7 @@ public class AnalyzerServlet extends HttpServlet {
                 + Double.toString(maxMemory / (1024 * 1024)));
 
         List<AnalysisResult> results = a.analyze(g);
+        Collections.sort(results, new AnalysisResultComparator());
 
         maxMemory = rt.maxMemory();
         freeMemory = rt.freeMemory();

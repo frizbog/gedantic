@@ -38,7 +38,7 @@ public enum AnalysisTag {
     /**
      * A likely problemDescription with the data
      */
-    PROBLEM("1", "Problem", "A likely problemDescription, inconsistency, or item to be verified/corrected"),
+    PROBLEM("1", "Problem", "A likely problemDescription, inconsistency, or problematicValue to be verified/corrected"),
 
     /**
      * Analysis about or includes families

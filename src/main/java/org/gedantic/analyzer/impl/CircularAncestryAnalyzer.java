@@ -27,12 +27,12 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.RelationshipRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyChild;
@@ -59,7 +59,21 @@ public class CircularAncestryAnalyzer extends AAnalyzer {
             List<Individual> ancestors = new ArrayList<>(i.getAncestors());
             if (ancestors.contains(i)) {
                 List<List<SimpleRelationship>> path = getCycle(i);
-                result.add(new RelationshipRelatedResult(i, null, path, null));
+                StringBuilder sb = new StringBuilder();
+                for (List<SimpleRelationship> list : path) {
+                    for (Iterator<SimpleRelationship> itr = list.iterator(); itr.hasNext();) {
+                        SimpleRelationship simpleRelationship = itr.next();
+                        sb.append(simpleRelationship.getIndividual1().getFormattedName());
+                        sb.append(" is ");
+                        sb.append(simpleRelationship.getName());
+                        sb.append(" of ");
+                        sb.append(simpleRelationship.getIndividual2().getFormattedName());
+                        if (itr.hasNext()) {
+                            sb.append("; ");
+                        }
+                    }
+                }
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null, sb.toString()));
             }
         }
         return result;

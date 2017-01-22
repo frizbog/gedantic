@@ -38,7 +38,6 @@ import java.util.Set;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -149,7 +148,7 @@ public class SimultaneousBirthsInMultipleLocationsAnalyzer extends AAnalyzer {
                         first = false;
                         problem.append(p.getPlaceName());
                     }
-                    result.add(new FamilyRelatedResult(f, null, kids, problem.toString()));
+                    result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, kids.toString(), problem.toString()));
                 }
             }
 

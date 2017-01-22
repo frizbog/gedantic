@@ -27,15 +27,11 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.MixedResultSortComparator;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyEvent;
@@ -64,7 +60,8 @@ public class EventsWithoutPlacesOrDatesAnalyzer extends AAnalyzer {
                     continue;
                 }
                 if (e.getPlace() == null) {
-                    result.add(new IndividualRelatedResult(i, getFactTypeWithDescription(e), (String) null, null));
+                    result.add(new AnalysisResult("Individual", i.getFormattedName(), getFactTypeWithDescription(e), null,
+                            "No place or date information"));
                 }
             }
         }
@@ -74,11 +71,11 @@ public class EventsWithoutPlacesOrDatesAnalyzer extends AAnalyzer {
                     continue;
                 }
                 if (e.getPlace() == null) {
-                    result.add(new FamilyRelatedResult(f, getFactTypeWithDescription(e), (String) null, null));
+                    result.add(new AnalysisResult("Family", getFamilyDescriptor(f), getFactTypeWithDescription(e), null,
+                            "No place or date information"));
                 }
             }
         }
-        Collections.sort(result, new MixedResultSortComparator());
         return result;
     }
 

@@ -33,7 +33,6 @@ import java.util.Set;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -58,7 +57,7 @@ public class CouplesWithCommonAncestorsAnalyzer extends AAnalyzer {
                         .getIndividual());
 
                 for (Individual commonAncestor : lowestCommonAncestors) {
-                    result.add(new FamilyRelatedResult(f, null, commonAncestor, null));
+                    result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, commonAncestor.getFormattedName(), null));
                 }
 
             }

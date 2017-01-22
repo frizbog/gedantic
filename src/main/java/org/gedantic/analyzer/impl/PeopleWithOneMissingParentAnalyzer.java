@@ -27,14 +27,11 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyChild;
@@ -60,17 +57,16 @@ public class PeopleWithOneMissingParentAnalyzer extends AAnalyzer {
                 for (FamilyChild fc : i.getFamiliesWhereChild()) {
                     Family f = fc.getFamily();
                     if (f.getWife() == null && f.getHusband() != null) {
-                        result.add(new IndividualRelatedResult(i, null, (String) null, "Mother is missing - father is " + f
-                                .getHusband()));
+                        result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null,
+                                "Mother is missing - father is " + f.getHusband()));
                     } else if (f.getWife() != null && f.getHusband() == null) {
-                        result.add(new IndividualRelatedResult(i, null, (String) null, "Father is missing - mother is " + f
-                                .getWife()));
+                        result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null,
+                                "Father is missing - mother is " + f.getWife()));
                     }
                 }
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

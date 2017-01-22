@@ -27,7 +27,6 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -35,8 +34,6 @@ import java.util.TreeSet;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyChild;
@@ -81,13 +78,12 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
             commonSurnames.retainAll(personSurnames);
             if (commonSurnames.isEmpty()) {
                 // Found a problemDescription
-                AnalysisResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has surnames " + personSurnames
-                        + " and parents have surnames " + allParentSurnames);
+                AnalysisResult r = new AnalysisResult("Individual", i.getFormattedName(), "Name", null, "Individual has surnames "
+                        + personSurnames + " and parents have surnames " + allParentSurnames);
                 result.add(r);
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

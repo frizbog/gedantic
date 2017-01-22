@@ -27,14 +27,11 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -53,16 +50,16 @@ public class UnspecifiedSexAnalyzer extends AAnalyzer {
 
         for (Individual i : g.getIndividuals().values()) {
             if (i.getSex() == null || i.getSex().getValue().trim().isEmpty()) {
-                result.add(new IndividualRelatedResult(i, "SEX", "unspecified", null));
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), "Sex", null, "Sex unspecified."));
             } else {
                 if (!"U".equals(i.getSex().getValue()) && !"M".equals(i.getSex().getValue()) && !"F".equals(i.getSex()
                         .getValue())) {
-                    result.add(new IndividualRelatedResult(i, "SEX", i.getSex().getValue(), "Only M, F, or U are allowed"));
+                    result.add(new AnalysisResult("Individual", i.getFormattedName(), "Sex", i.getSex().getValue(),
+                            "Only M, F, or U are allowed"));
                 }
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

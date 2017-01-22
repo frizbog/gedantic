@@ -27,15 +27,12 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -75,7 +72,7 @@ public class PeopleWithoutDeathEventsAnalyzer extends AAnalyzer {
 
             List<IndividualEvent> births = i.getEventsOfType(IndividualEventType.BIRTH);
             if (births.isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, (String) null, "No death (or birth) events."));
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null, "No death (or birth) events."));
                 continue;
             }
             Date earliestBirthDate = null;
@@ -90,19 +87,18 @@ public class PeopleWithoutDeathEventsAnalyzer extends AAnalyzer {
                 }
             }
             if (earliestBirthDate == null) {
-                result.add(new IndividualRelatedResult(i, null, (String) null,
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null,
                         "No death events. Unable to parse birth dates to determine age if alive today."));
                 continue;
             }
             long difference = new Date().getTime() - earliestBirthDate.getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld > 80) {
-                result.add(new IndividualRelatedResult(i, null, (String) null, "No death events. Born about " + ((int) yearsOld)
-                        + " years ago (" + earliestBirthDateString + ")."));
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null, "No death events. Born about "
+                        + ((int) yearsOld) + " years ago (" + earliestBirthDateString + ")."));
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

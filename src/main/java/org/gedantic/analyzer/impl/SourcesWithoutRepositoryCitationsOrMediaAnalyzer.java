@@ -32,7 +32,6 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.SourceRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Multimedia;
@@ -58,7 +57,8 @@ public class SourcesWithoutRepositoryCitationsOrMediaAnalyzer extends AAnalyzer 
         }
         for (Source s : g.getSources().values()) {
             if (s != null && (s.getMultimedia() == null || s.getMultimedia().isEmpty()) && (s.getRepositoryCitation() == null)) {
-                result.add(new SourceRelatedResult(s, null, null, null));
+                result.add(new AnalysisResult("Source", s.getTitle().toString(), null, null,
+                        "No Repository Citations or Multimedia records attached."));
             }
         }
         return result;

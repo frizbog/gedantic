@@ -32,6 +32,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualEvent;
 import org.gedcom4j.model.PersonalName;
@@ -177,7 +178,7 @@ public abstract class AAnalyzer implements IAnalyzer {
     }
 
     /**
-     * Is the supplied string with custom tags non-null, and has something other than whitespace in its item field?
+     * Is the supplied string with custom tags non-null, and has something other than whitespace in its problematicValue field?
      * 
      * @param swct
      *            the string with custom tags
@@ -193,6 +194,35 @@ public abstract class AAnalyzer implements IAnalyzer {
             }
         }
         return false;
+    }
+
+    /**
+     * Get a textual description of the family (the names of the spouses)
+     * 
+     * @param f
+     *            the family
+     * @return a textual description of the family
+     */
+    protected String getFamilyDescriptor(Family f) {
+        StringBuilder sb = new StringBuilder();
+        if (f.getHusband() == null || f.getHusband().getIndividual() == null) {
+            // Unknown husband
+            if (f.getWife() == null || f.getWife().getIndividual() == null) {
+                // Unknown wife too
+                sb.append("Unknown couple");
+            } else {
+                sb.append(f.getWife().getIndividual().getFormattedName()).append(" and unknown husband");
+            }
+        } else {
+            sb.append(f.getHusband().getIndividual().getFormattedName()).append(" and ");
+            if (f.getWife() == null || f.getWife().getIndividual() == null) {
+                // Unknown wife too
+                sb.append("unknown wife");
+            } else {
+                sb.append(f.getWife().getIndividual().getFormattedName());
+            }
+        }
+        return sb.toString();
     }
 
 }

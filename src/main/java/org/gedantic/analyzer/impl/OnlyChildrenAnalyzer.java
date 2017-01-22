@@ -27,7 +27,6 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,8 +34,6 @@ import java.util.Set;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
@@ -77,12 +74,12 @@ public class OnlyChildrenAnalyzer extends AAnalyzer {
                     } else {
                         parents.append(fc.getFamily().getHusband().getIndividual().getFormattedName());
                     }
-                    result.add(new IndividualRelatedResult(i, "Parents", parents.toString(), null));
+                    result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null, "Only child of " + parents
+                            .toString()));
                 }
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

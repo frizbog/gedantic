@@ -29,48 +29,57 @@ package org.gedantic.analyzer;
 import org.apache.commons.lang.StringEscapeUtils;
 
 /**
- * Base class for an analysis result
+ * An analysis result
  * 
  * @author frizbog
  */
 public class AnalysisResult {
 
     /**
-     * The type of fact having an issue
+     * The thing *about* the object that had an issue (Attribute, Source, etc)
      */
-    protected final String factType;
+    protected final String aspectOfItemWithIssue;
 
     /**
-     * The type of item having an issue
+     * The type of object that had an issue (Individual, Family, etc)
      */
-    protected final String itemType;
+    protected final String typeOfItemWithIssue;
 
     /**
-     * The thing that had the problemDescription
+     * The value that was problematic
      */
-    protected final String item;
+    protected final String problematicValue;
 
     /**
-     * The description of the problemDescription
+     * The description of the problem
      */
     protected final String problemDescription;
 
     /**
+     * Which item had the problem - some identifying information
+     */
+    protected final String whichItem;
+
+    /**
      * Instantiates a new a result.
      *
-     * @param factType
-     *            the fact type
-     * @param itemType
-     *            the type of item with the problem
-     * @param item
-     *            the item
+     * @param typeOfItemWithIssue
+     *            The type of object that had an issue (Individual, Family, etc)
+     * @param whichItem
+     *            Which item had the problem - some identifying information
+     * @param aspectOfItemWithIssue
+     *            The thing *about* the object that had an issue (Attribute, Source, etc)
+     * @param problematicValue
+     *            The value that was problematic
      * @param problemDescription
-     *            the problemDescription
+     *            The description of the problem
      */
-    public AnalysisResult(String factType, String itemType, String item, String problemDescription) {
-        this.factType = StringEscapeUtils.escapeHtml(factType);
-        this.itemType = StringEscapeUtils.escapeHtml(itemType);
-        this.item = StringEscapeUtils.escapeHtml(item);
+    public AnalysisResult(String typeOfItemWithIssue, String whichItem, String aspectOfItemWithIssue, String problematicValue,
+            String problemDescription) {
+        this.typeOfItemWithIssue = StringEscapeUtils.escapeHtml(typeOfItemWithIssue);
+        this.whichItem = StringEscapeUtils.escapeHtml(whichItem);
+        this.aspectOfItemWithIssue = StringEscapeUtils.escapeHtml(aspectOfItemWithIssue);
+        this.problematicValue = StringEscapeUtils.escapeHtml(problematicValue);
         this.problemDescription = StringEscapeUtils.escapeHtml(problemDescription);
     }
 
@@ -89,25 +98,25 @@ public class AnalysisResult {
             return false;
         }
         AnalysisResult other = (AnalysisResult) obj;
-        if (factType == null) {
-            if (other.factType != null) {
+        if (aspectOfItemWithIssue == null) {
+            if (other.aspectOfItemWithIssue != null) {
                 return false;
             }
-        } else if (!factType.equals(other.factType)) {
+        } else if (!aspectOfItemWithIssue.equals(other.aspectOfItemWithIssue)) {
             return false;
         }
-        if (item == null) {
-            if (other.item != null) {
+        if (problematicValue == null) {
+            if (other.problematicValue != null) {
                 return false;
             }
-        } else if (!item.equals(other.item)) {
+        } else if (!problematicValue.equals(other.problematicValue)) {
             return false;
         }
-        if (itemType == null) {
-            if (other.itemType != null) {
+        if (typeOfItemWithIssue == null) {
+            if (other.typeOfItemWithIssue != null) {
                 return false;
             }
-        } else if (!itemType.equals(other.itemType)) {
+        } else if (!typeOfItemWithIssue.equals(other.typeOfItemWithIssue)) {
             return false;
         }
         if (problemDescription == null) {
@@ -125,26 +134,17 @@ public class AnalysisResult {
      * 
      * @return the fact type
      */
-    public String getFactType() {
-        return factType;
+    public String getAspectOfItemWithIssue() {
+        return aspectOfItemWithIssue;
     }
 
     /**
-     * Get the problematic item
+     * Get the problematic problematicValue
      * 
-     * @return the item that cause the problemDescription
+     * @return the problematicValue that cause the problemDescription
      */
-    public String getItem() {
-        return item;
-    }
-
-    /**
-     * Get the itemType
-     * 
-     * @return the itemType
-     */
-    public String getItemType() {
-        return itemType;
+    public String getProblematicValue() {
+        return problematicValue;
     }
 
     /**
@@ -157,15 +157,24 @@ public class AnalysisResult {
     }
 
     /**
+     * Get the typeOfItemWithIssue
+     * 
+     * @return the typeOfItemWithIssue
+     */
+    public String getTypeOfItemWithIssue() {
+        return typeOfItemWithIssue;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((factType == null) ? 0 : factType.hashCode());
-        result = prime * result + ((item == null) ? 0 : item.hashCode());
-        result = prime * result + ((itemType == null) ? 0 : itemType.hashCode());
+        result = prime * result + ((aspectOfItemWithIssue == null) ? 0 : aspectOfItemWithIssue.hashCode());
+        result = prime * result + ((problematicValue == null) ? 0 : problematicValue.hashCode());
+        result = prime * result + ((typeOfItemWithIssue == null) ? 0 : typeOfItemWithIssue.hashCode());
         result = prime * result + ((problemDescription == null) ? 0 : problemDescription.hashCode());
         return result;
     }

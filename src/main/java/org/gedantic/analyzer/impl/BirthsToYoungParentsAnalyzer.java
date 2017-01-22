@@ -33,7 +33,6 @@ import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.DateAndString;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -118,7 +117,8 @@ public class BirthsToYoungParentsAnalyzer extends AAnalyzer {
                     }
                 }
                 if (problem.length() > 0) {
-                    result.add(new FamilyRelatedResult(f, null, kid, problem.toString()));
+                    result.add(new AnalysisResult("Individual", kid.getFormattedName(), "Birth", kidEarliestBirthDate
+                            .getDateString(), problem.toString()));
                 }
             }
 

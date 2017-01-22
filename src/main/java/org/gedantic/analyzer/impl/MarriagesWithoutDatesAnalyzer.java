@@ -32,7 +32,6 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyEvent;
@@ -61,7 +60,8 @@ public class MarriagesWithoutDatesAnalyzer extends AAnalyzer {
                     }
                 }
                 if (!foundMarriageWithDate) {
-                    result.add(new FamilyRelatedResult(f, null, (String) null, null));
+                    result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, null,
+                            "No marriage event with date found"));
                 }
             }
         }

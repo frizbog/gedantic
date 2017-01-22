@@ -27,15 +27,12 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.DateAndString;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -64,12 +61,11 @@ public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
                 if (abd != null && abd.getDate() != null && abd.getDate().after(ibd.getDate())) {
                     // Ancestor born after individual
 
-                    result.add(new IndividualRelatedResult(i, "Ancestor", a, "Individual born " + ibd.getDateString()
-                            + ", and ancestor born " + abd.getDateString()));
+                    result.add(new AnalysisResult("Individual", i.getFormattedName(), "Birth", ibd.getDateString(), "Ancestor " + a
+                            .getFormattedName() + " born " + abd.getDateString()));
                 }
             }
         }
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

@@ -27,15 +27,12 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -63,12 +60,11 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
             if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains("")) || (personSurnames
                     .size() == 1 && personSurnames.contains("//"))) {
                 // Found a problemDescription
-                AnalysisResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has no surnames");
+                AnalysisResult r = new AnalysisResult("Individual", i.getFormattedName(), null, null, "Individual has no surnames");
                 result.add(r);
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

@@ -27,7 +27,6 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +34,6 @@ import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.DateAndString;
-import org.gedantic.analyzer.comparator.AnalysisResultComparator;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilySpouse;
@@ -95,16 +93,13 @@ public class AdultsWithoutSpousesAnalyzer extends AAnalyzer {
             long difference = endDate.getTime() - birthDate.getDate().getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld >= 18) {
-                String itemType = "Individual";
-                String item = i.getFormattedName();
                 String problemDescription = (deathDate == null || deathDate.getDate() == null ? "Born " + yearsOld
                         + " years ago with no death date available" : "Lived to " + yearsOld) + ", but no spouses";
-                result.add(new AnalysisResult(null, itemType, item, problemDescription));
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null, problemDescription));
             }
 
         }
 
-        Collections.sort(result, new AnalysisResultComparator());
         return result;
     }
 

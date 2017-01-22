@@ -27,14 +27,11 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -56,7 +53,7 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
 
         for (Individual i : g.getIndividuals().values()) {
             if (i.getNames() == null || i.getNames().isEmpty()) {
-                AnalysisResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has no names");
+                AnalysisResult r = new AnalysisResult("Individual", i.toString(), null, (String) null, "Individual has no names");
                 result.add(r);
             } else {
                 for (PersonalName pn : i.getNames()) {
@@ -66,14 +63,14 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
                     boolean noNameIndicated = ("//".equals(pn.getBasic()) || pn.getBasic() == null || "".equals(pn.getBasic()
                             .trim()) || "<No /name>/".equals(pn.getBasic()));
                     if (noNameIndicated && componentsUnspecified) {
-                        AnalysisResult r = new IndividualRelatedResult(i, null, (String) null, "One of this individual's names is blank");
+                        AnalysisResult r = new AnalysisResult("Individual", i.toString(), null, (String) null,
+                                "One of this individual's names is blank");
                         result.add(r);
                     }
                 }
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 
@@ -107,11 +104,11 @@ public class PeopleWithoutNamesAnalyzer extends AAnalyzer {
     }
 
     /**
-     * Return true if the supplied string item is null or empty when trimmed
+     * Return true if the supplied string problematicValue is null or empty when trimmed
      * 
      * @param s
      *            teh string
-     * @return true if the supplied string item is null or empty when trimmed
+     * @return true if the supplied string problematicValue is null or empty when trimmed
      */
     private boolean notSpecified(StringWithCustomFacts s) {
         if (s == null || s.getValue() == null || s.getValue().trim().isEmpty()) {

@@ -179,13 +179,13 @@ public class WorkbookCreator {
     private void addRowsOfData() {
         for (AnalysisResult r : results) {
             nextRow();
-            cell.setCellValue(r.getItemType());
+            cell.setCellValue(r.getTypeOfItemWithIssue());
 
             nextCol();
-            cell.setCellValue(r.getItem());
+            cell.setCellValue(r.getProblematicValue());
 
             nextCol();
-            cell.setCellValue(r.getFactType());
+            cell.setCellValue(r.getAspectOfItemWithIssue());
 
             nextCol();
             cell.setCellValue(r.getProblemDescription());

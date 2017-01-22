@@ -38,7 +38,6 @@ import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.DateAndString;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -91,9 +90,10 @@ public class QuadrupletsAndMoreAnalyzer extends AAnalyzer {
 
             /* Look through the birth dates and see if any have 4 or more individuals born on those dates */
             for (Entry<DateAndString, Set<Individual>> e : births.entrySet()) {
-                if (e.getItem().size() >= 4) {
+                if (e.getValue().size() >= 4) {
                     // We got a hit, add to results
-                    result.add(new FamilyRelatedResult(f, null, e.getItem(), null));
+                    result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, e.getKey().getDateString(), e.getValue()
+                            .size() + " children born on this date"));
                 }
             }
 

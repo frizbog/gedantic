@@ -50,34 +50,34 @@ public class AnalysisResultComparator implements Comparator<AnalysisResult> {
             return -1;
         }
 
-        if (o1.getItemType() == null) {
-            if (o2.getItemType() != null) {
+        if (o1.getTypeOfItemWithIssue() == null) {
+            if (o2.getTypeOfItemWithIssue() != null) {
                 return 1;
             }
         } else {
-            result = o1.getItemType().compareTo(o2.getItemType());
+            result = o1.getTypeOfItemWithIssue().compareTo(o2.getTypeOfItemWithIssue());
             if (result != 0) {
                 return result;
             }
         }
 
-        if (o1.getItem() == null) {
-            if (o2.getItem() != null) {
+        if (o1.getProblematicValue() == null) {
+            if (o2.getProblematicValue() != null) {
                 return 1;
             }
         } else {
-            result = o1.getItem().compareTo(o2.getItem());
+            result = o1.getProblematicValue().compareTo(o2.getProblematicValue());
             if (result != 0) {
                 return result;
             }
         }
 
-        if (o1.getFactType() == null) {
-            if (o2.getFactType() != null) {
+        if (o1.getAspectOfItemWithIssue() == null) {
+            if (o2.getAspectOfItemWithIssue() != null) {
                 return 1;
             }
         } else {
-            result = o1.getFactType().compareTo(o2.getFactType());
+            result = o1.getAspectOfItemWithIssue().compareTo(o2.getAspectOfItemWithIssue());
             if (result != 0) {
                 return result;
             }

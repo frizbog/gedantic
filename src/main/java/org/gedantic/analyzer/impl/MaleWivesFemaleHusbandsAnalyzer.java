@@ -32,14 +32,14 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 
 /**
- * An analyzer that finds couples with common ancestors (cousins marrying, etc)
+ * An analyzer that finds families with a male individual in the wife slot and/or a female individual in the husband slot. Not being
+ * judgmental, but the GEDCOM spec doesn't support anything other than traditional husband/wife marriage.
  * 
  * @author frizbog
  */
@@ -60,13 +60,14 @@ public class MaleWivesFemaleHusbandsAnalyzer extends AAnalyzer {
                 husbandFemale = true;
             }
             if (husbandFemale && wifeMale) {
-                result.add(new FamilyRelatedResult(f, null, (String) null, "Husband and wife positions are transposed"));
+                result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, null,
+                        "Husband and wife positions are transposed"));
             } else if (wifeMale) {
-                result.add(new FamilyRelatedResult(f, null, (String) null, "Person in wife position " + (w == null ? ""
-                        : "(" + w.getFormattedName() + ") ") + "is male"));
+                result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, null, "Person in wife position " + (w == null
+                        ? "" : "(" + w.getFormattedName() + ") ") + "is male"));
             } else if (husbandFemale) {
-                result.add(new FamilyRelatedResult(f, null, (String) null, "Person in husband position " + (h == null ? ""
-                        : "(" + h.getFormattedName() + ") ") + "is female"));
+                result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, null, "Person in husband position "
+                        + (h == null ? "" : "(" + h.getFormattedName() + ") ") + "is female"));
             }
         }
         return result;

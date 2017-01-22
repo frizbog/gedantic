@@ -27,14 +27,11 @@
 package org.gedantic.analyzer.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
@@ -54,20 +51,19 @@ public class PeopleWithoutParentsAnalyzer extends AAnalyzer {
 
         for (Individual i : g.getIndividuals().values()) {
             if (i.getFamiliesWhereChild() == null || i.getFamiliesWhereChild().isEmpty()) {
-                result.add(new IndividualRelatedResult(i, null, (String) null, null));
+                result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null, null));
             } else {
                 boolean foundParent = false;
                 for (FamilyChild fc : i.getFamiliesWhereChild()) {
                     foundParent = fc.getFamily().getWife() != null || fc.getFamily().getHusband() != null;
                 }
                 if (!foundParent) {
-                    result.add(new IndividualRelatedResult(i, null, (String) null,
+                    result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null,
                             "Child of at least one family record, but no family with designated parents"));
                 }
             }
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
         return result;
     }
 

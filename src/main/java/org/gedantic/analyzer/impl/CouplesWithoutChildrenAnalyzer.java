@@ -32,7 +32,6 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
@@ -49,7 +48,7 @@ public class CouplesWithoutChildrenAnalyzer extends AAnalyzer {
         List<AnalysisResult> result = new ArrayList<>();
         for (Family f : g.getFamilies().values()) {
             if (f.getWife() != null && f.getHusband() != null && (f.getChildren() == null || f.getChildren().isEmpty())) {
-                result.add(new FamilyRelatedResult(f, null, (String) null, null));
+                result.add(new AnalysisResult("Family", getFamilyDescriptor(f), null, null, null));
             }
         }
         return result;
