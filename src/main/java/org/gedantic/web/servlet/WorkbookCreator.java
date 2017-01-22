@@ -27,9 +27,7 @@
 package org.gedantic.web.servlet;
 
 import java.util.List;
-import java.util.Set;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -43,17 +41,8 @@ import org.apache.poi.ss.util.WorkbookUtil;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.IAnalyzer;
-import org.gedantic.analyzer.result.FamilyRelatedResult;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
-import org.gedantic.analyzer.result.RelationshipRelatedResult;
-import org.gedantic.analyzer.result.RepositoryRelatedResult;
-import org.gedantic.analyzer.result.SourceRelatedResult;
-import org.gedantic.analyzer.result.SubmitterRelatedResult;
-import org.gedantic.analyzer.result.UnrelatedResult;
-import org.gedcom4j.model.Individual;
-import org.gedcom4j.relationship.SimpleRelationship;
 
 /**
  * Class for creating an Excel workbook from the results.
@@ -63,7 +52,7 @@ import org.gedcom4j.relationship.SimpleRelationship;
 public class WorkbookCreator {
 
     /** The results. */
-    private final List<? extends AResult> results;
+    private final List<AnalysisResult> results;
 
     /** The analyzer. */
     private final IAnalyzer analyzer;
@@ -112,7 +101,7 @@ public class WorkbookCreator {
      * @param results
      *            the results
      */
-    public WorkbookCreator(IAnalyzer analyzer, List<? extends AResult> results) {
+    public WorkbookCreator(IAnalyzer analyzer, List<AnalysisResult> results) {
         this.analyzer = analyzer;
         this.results = results;
     }
@@ -140,71 +129,6 @@ public class WorkbookCreator {
         autofitColumns();
 
         return wb;
-    }
-
-    /**
-     * Adds the family row.
-     *
-     * @param frr
-     *            the family related result
-     */
-    private void addFamilyRow(FamilyRelatedResult frr) {
-        cell.setCellValue("Family");
-        Individual husband = frr.getFamily().getHusband() == null ? null : frr.getFamily().getHusband().getIndividual();
-        Individual wife = frr.getFamily().getWife() == null ? null : frr.getFamily().getWife().getIndividual();
-
-        StringBuilder sb = new StringBuilder();
-        if (husband != null) {
-            sb.append(husband.getFormattedName());
-        } else {
-            sb.append("Unknown");
-        }
-        sb.append(" and ");
-        if (wife != null) {
-            sb.append(wife.getFormattedName());
-        } else {
-            sb.append("Unknown");
-        }
-
-        nextCol();
-        cell.setCellValue(sb.toString());
-
-        nextCol();
-        cell.setCellValue(frr.getFactType());
-
-        nextCol();
-        if (frr.getValue() != null) {
-            if (frr.getValue() instanceof Individual) {
-                Individual i = (Individual) frr.getValue();
-                cell.setCellValue(i.getFormattedName());
-            } else if (frr.getValue() instanceof Set<?>) {
-                @SuppressWarnings("unchecked")
-                Set<Individual> others = (Set<Individual>) frr.getValue();
-
-                short c = colNum;
-                boolean first = true;
-                for (Individual i : others) {
-                    if (!first) {
-                        nextRow();
-                        colNum = (short) (c - 1);
-                        nextCol();
-                    } else {
-                        first = false;
-                        nextCol();
-                        cell.setCellValue(frr.getProblem());
-                        colNum = (short) (c - 1);
-                        nextCol();
-                    }
-                    cell.setCellValue(i.getFormattedName());
-                }
-            } else {
-                cell.setCellValue(StringEscapeUtils.unescapeHtml(frr.getValue().toString()));
-            }
-        }
-
-        nextCol();
-        cell.setCellValue(frr.getProblem());
-
     }
 
     /**
@@ -250,175 +174,23 @@ public class WorkbookCreator {
     }
 
     /**
-     * Adds the individual row.
-     *
-     * @param irr
-     *            the individual related result
-     */
-    private void addIndividualRow(IndividualRelatedResult irr) {
-        cell.setCellValue("Individual");
-
-        nextCol();
-        cell.setCellValue(irr.getIndividual().getFormattedName());
-
-        nextCol();
-        cell.setCellValue(irr.getFactType());
-
-        nextCol();
-        if (irr.getValue() instanceof Individual) {
-            Individual i = (Individual) irr.getValue();
-            cell.setCellValue(i.getFormattedName());
-        } else {
-            if (irr.getValue() != null) {
-                cell.setCellValue(StringEscapeUtils.unescapeHtml(irr.getValue().toString()));
-            }
-        }
-
-        nextCol();
-        cell.setCellValue(irr.getProblem());
-    }
-
-    /**
-     * Adds the relationship row.
-     *
-     * @param rrr
-     *            the relationship-related result
-     */
-    private void addRelationshipRow(RelationshipRelatedResult rrr) {
-        cell.setCellValue(rrr.getIndividual().getFormattedName());
-
-        nextCol();
-        cell.setCellValue(rrr.getFactType());
-
-        nextCol();
-        @SuppressWarnings("unchecked")
-        List<List<SimpleRelationship>> path = (List<List<SimpleRelationship>>) rrr.getValue();
-
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < path.size(); i++) {
-            List<SimpleRelationship> chain = path.get(i);
-            for (int j = 0; j < chain.size(); j++) {
-                if (j > 0) {
-                    sb.append("\n");
-                }
-                SimpleRelationship sr = chain.get(j);
-
-                sb.append(sr.getIndividual1().getFormattedName());
-                if (sr.getName() == null) {
-                    sb.append(" > UNKNOWN RELATIONSHIP TYPE > ");
-                } else {
-                    sb.append(" > " + sr.getName().toString() + " > ");
-                }
-                sb.append(sr.getIndividual2().getFormattedName());
-
-            }
-            nextCol();
-            cell.setCellValue(sb.toString());
-        }
-        nextCol();
-        cell.setCellValue(rrr.getProblem());
-    }
-
-    /**
-     * Adds the repository row.
-     *
-     * @param rrr
-     *            the repository-related result
-     */
-    private void addRepositoryRow(RepositoryRelatedResult rrr) {
-        cell.setCellValue("Repository");
-
-        nextCol();
-        cell.setCellValue(rrr.getRepository().getName().getValue());
-
-        nextCol();
-        cell.setCellValue(rrr.getFactType());
-
-        nextCol();
-        if (rrr.getValue() != null) {
-            cell.setCellValue(StringEscapeUtils.unescapeHtml(rrr.getValue().toString()));
-        }
-
-        nextCol();
-        cell.setCellValue(rrr.getProblem());
-    }
-
-    /**
      * Adds the rows of data.
      */
     private void addRowsOfData() {
-        for (AResult r : results) {
+        for (AnalysisResult r : results) {
             nextRow();
-            if (r instanceof IndividualRelatedResult) {
-                addIndividualRow((IndividualRelatedResult) r);
-            } else if (r instanceof FamilyRelatedResult) {
-                addFamilyRow((FamilyRelatedResult) r);
-            } else if (r instanceof RelationshipRelatedResult) {
-                addRelationshipRow((RelationshipRelatedResult) r);
-            } else if (r instanceof SourceRelatedResult) {
-                addSourceRow((SourceRelatedResult) r);
-            } else if (r instanceof RepositoryRelatedResult) {
-                addRepositoryRow((RepositoryRelatedResult) r);
-            } else if (r instanceof SubmitterRelatedResult) {
-                addSubmitterRow((SubmitterRelatedResult) r);
-            } else if (r instanceof UnrelatedResult) {
-                addUnrelatedRow((UnrelatedResult) r);
-            } else {
-                cell.setCellValue("Unknown row type - " + r.getClass().getName());
-                nextRow();
-            }
+            cell.setCellValue(r.getItemType());
+
+            nextCol();
+            cell.setCellValue(r.getItem());
+
+            nextCol();
+            cell.setCellValue(r.getFactType());
+
+            nextCol();
+            cell.setCellValue(r.getProblemDescription());
         }
 
-    }
-
-    /**
-     * Adds the source row.
-     *
-     * @param srr
-     *            the source-related result
-     */
-    private void addSourceRow(SourceRelatedResult srr) {
-        cell.setCellValue("Source");
-
-        nextCol();
-        cell.setCellValue(srr.getSource().getTitle().getLines().get(0));
-
-        nextCol();
-        cell.setCellValue(srr.getFactType());
-
-        nextCol();
-        if (srr.getValue() != null) {
-            cell.setCellValue(StringEscapeUtils.unescapeHtml(srr.getValue().toString()));
-        }
-
-        nextCol();
-        cell.setCellValue(srr.getProblem());
-    }
-
-    /**
-     * Adds the submitter row.
-     *
-     * @param sr
-     *            the submitter-related result
-     */
-    private void addSubmitterRow(SubmitterRelatedResult sr) {
-        cell.setCellValue("Miscellaneous");
-
-        nextCol();
-        if (sr.getSubmitter() != null && sr.getSubmitter().getName() != null) {
-            cell.setCellValue(sr.getSubmitter().getName().getValue());
-        }
-
-        nextCol();
-        cell.setCellValue(sr.getFactType());
-
-        nextCol();
-        if (sr.getValue() != null) {
-            cell.setCellValue(StringEscapeUtils.unescapeHtml(sr.getValue().toString()));
-        }
-
-        nextCol();
-        cell.setCellValue(sr.getProblem());
     }
 
     /**
@@ -434,30 +206,6 @@ public class WorkbookCreator {
         cell.setCellStyle(styleSubtitle);
 
         nextRow();
-    }
-
-    /**
-     * Adds the unrelated row.
-     *
-     * @param ur
-     *            the ur
-     */
-    private void addUnrelatedRow(UnrelatedResult ur) {
-        cell.setCellValue("Miscellaneous");
-
-        nextCol();
-        cell.setCellValue(ur.getItem());
-
-        nextCol();
-        cell.setCellValue(ur.getFactType());
-
-        nextCol();
-        if (ur.getValue() != null) {
-            cell.setCellValue(StringEscapeUtils.unescapeHtml(ur.getValue().toString()));
-        }
-
-        nextCol();
-        cell.setCellValue(ur.getProblem());
     }
 
     /**

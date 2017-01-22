@@ -32,7 +32,6 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.gedantic.analyzer.result.DateAndString;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.model.IndividualEvent;
 import org.gedcom4j.model.PersonalName;
@@ -178,7 +177,7 @@ public abstract class AAnalyzer implements IAnalyzer {
     }
 
     /**
-     * Is the supplied string with custom tags non-null, and has something other than whitespace in its value field?
+     * Is the supplied string with custom tags non-null, and has something other than whitespace in its item field?
      * 
      * @param swct
      *            the string with custom tags

@@ -36,7 +36,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.MixedResultSortComparator;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
@@ -56,9 +56,9 @@ public class ChildrenWithSameFirstNamesAnalyzer extends AAnalyzer {
      * {@inheritDoc}
      */
     @Override
-    public List<AResult> analyze(Gedcom g) {
+    public List<AnalysisResult> analyze(Gedcom g) {
 
-        List<AResult> result = new ArrayList<>();
+        List<AnalysisResult> result = new ArrayList<>();
 
         for (Family f : g.getFamilies().values()) {
             if (f.getChildren() == null) {

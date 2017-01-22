@@ -33,7 +33,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
@@ -52,9 +52,9 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
      * {@inheritDoc}
      */
     @Override
-    public List<AResult> analyze(Gedcom g) {
+    public List<AnalysisResult> analyze(Gedcom g) {
 
-        List<AResult> result = new ArrayList<>();
+        List<AnalysisResult> result = new ArrayList<>();
 
         for (Individual i : g.getIndividuals().values()) {
             if (i.getFamiliesWhereChild() == null || i.getFamiliesWhereChild().isEmpty()) {
@@ -80,8 +80,8 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
             Set<String> commonSurnames = new TreeSet<>(allParentSurnames);
             commonSurnames.retainAll(personSurnames);
             if (commonSurnames.isEmpty()) {
-                // Found a problem
-                AResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has surnames " + personSurnames
+                // Found a problemDescription
+                AnalysisResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has surnames " + personSurnames
                         + " and parents have surnames " + allParentSurnames);
                 result.add(r);
             }

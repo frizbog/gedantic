@@ -30,9 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.DateAndString;
+import org.gedantic.analyzer.DateAndString;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
@@ -59,8 +59,8 @@ public class BirthsToOldParentsAnalyzer extends AAnalyzer {
     private static final long MILLIS_IN_YEAR = (long) (365.25 * 24 * 60 * 60 * 1000);
 
     @Override
-    public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<>();
+    public List<AnalysisResult> analyze(Gedcom g) {
+        List<AnalysisResult> result = new ArrayList<>();
 
         for (Family f : g.getFamilies().values()) {
             // No kids? Not interested

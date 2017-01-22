@@ -31,9 +31,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.result.DateAndString;
+import org.gedantic.analyzer.DateAndString;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
@@ -67,8 +67,8 @@ public class MarriedAtYoungAgeAnalyzer extends AAnalyzer {
     private static final DateParser DP = new DateParser();
 
     @Override
-    public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<>();
+    public List<AnalysisResult> analyze(Gedcom g) {
+        List<AnalysisResult> result = new ArrayList<>();
 
         for (Family f : g.getFamilies().values()) {
             if (f.getHusband() == null || f.getWife() == null || f.getEvents() == null || f.getEvents().isEmpty()) {

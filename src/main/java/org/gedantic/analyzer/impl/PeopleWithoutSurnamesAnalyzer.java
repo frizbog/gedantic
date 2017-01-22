@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
 import org.gedantic.analyzer.result.IndividualRelatedResult;
@@ -51,9 +51,9 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
      * {@inheritDoc}
      */
     @Override
-    public List<AResult> analyze(Gedcom g) {
+    public List<AnalysisResult> analyze(Gedcom g) {
 
-        List<AResult> result = new ArrayList<>();
+        List<AnalysisResult> result = new ArrayList<>();
 
         for (Individual i : g.getIndividuals().values()) {
             if (i.getNames() == null || i.getNames().isEmpty()) {
@@ -62,8 +62,8 @@ public class PeopleWithoutSurnamesAnalyzer extends AAnalyzer {
             Set<String> personSurnames = getSurnamesFromIndividual(i);
             if (personSurnames.isEmpty() || (personSurnames.size() == 1 && personSurnames.contains("")) || (personSurnames
                     .size() == 1 && personSurnames.contains("//"))) {
-                // Found a problem
-                AResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has no surnames");
+                // Found a problemDescription
+                AnalysisResult r = new IndividualRelatedResult(i, null, (String) null, "Individual has no surnames");
                 result.add(r);
             }
         }

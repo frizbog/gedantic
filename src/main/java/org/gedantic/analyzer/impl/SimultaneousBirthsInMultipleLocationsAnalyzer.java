@@ -36,7 +36,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
@@ -69,8 +69,8 @@ public class SimultaneousBirthsInMultipleLocationsAnalyzer extends AAnalyzer {
     }
 
     @Override
-    public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<>();
+    public List<AnalysisResult> analyze(Gedcom g) {
+        List<AnalysisResult> result = new ArrayList<>();
         DateParser dp = new DateParser();
         for (Family f : g.getFamilies().values()) {
 

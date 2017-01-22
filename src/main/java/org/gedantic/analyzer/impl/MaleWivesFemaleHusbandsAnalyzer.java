@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
 import org.gedantic.web.Constants;
@@ -46,8 +46,8 @@ import org.gedcom4j.model.Individual;
 public class MaleWivesFemaleHusbandsAnalyzer extends AAnalyzer {
 
     @Override
-    public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<>();
+    public List<AnalysisResult> analyze(Gedcom g) {
+        List<AnalysisResult> result = new ArrayList<>();
         for (Family f : g.getFamilies().values()) {
             boolean wifeMale = false;
             boolean husbandFemale = false;

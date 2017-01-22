@@ -31,7 +31,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.MixedResultSortComparator;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
@@ -56,8 +56,8 @@ public class EventsWithoutDatesAnalyzer extends AAnalyzer {
      * {@inheritDoc}
      */
     @Override
-    public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<>();
+    public List<AnalysisResult> analyze(Gedcom g) {
+        List<AnalysisResult> result = new ArrayList<>();
         for (Individual i : g.getIndividuals().values()) {
             for (IndividualEvent e : i.getEvents()) {
                 if (e.getDate() == null || e.getDate().getValue() == null || e.getDate().getValue().trim().isEmpty()) {

@@ -35,7 +35,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.comparator.MixedResultSortComparator;
 import org.gedantic.analyzer.result.FamilyRelatedResult;
@@ -63,8 +63,8 @@ public class ConflictingDatesAnalyzer extends AAnalyzer {
      * {@inheritDoc}
      */
     @Override
-    public List<AResult> analyze(Gedcom g) {
-        List<AResult> result = new ArrayList<>();
+    public List<AnalysisResult> analyze(Gedcom g) {
+        List<AnalysisResult> result = new ArrayList<>();
 
         checkIndividualEvents(g, result);
         checkFamilyEvents(g, result);
@@ -110,7 +110,7 @@ public class ConflictingDatesAnalyzer extends AAnalyzer {
      * @param result
      *            the results
      */
-    private void checkFamilyEvents(Gedcom gedcom, List<AResult> result) {
+    private void checkFamilyEvents(Gedcom gedcom, List<AnalysisResult> result) {
         DateParser dp = new DateParser();
         for (Family i : gedcom.getFamilies().values()) {
             Map<FamilyEventType, List<AbstractEvent>> indEventsByType = new TreeMap<>();
@@ -172,7 +172,7 @@ public class ConflictingDatesAnalyzer extends AAnalyzer {
      * @param result
      *            the results
      */
-    private void checkIndividualEvents(Gedcom gedcom, List<AResult> result) {
+    private void checkIndividualEvents(Gedcom gedcom, List<AnalysisResult> result) {
         DateParser dp = new DateParser();
         for (Individual i : gedcom.getIndividuals().values()) {
             Map<IndividualEventType, List<AbstractEvent>> indEventsByType = new TreeMap<>();

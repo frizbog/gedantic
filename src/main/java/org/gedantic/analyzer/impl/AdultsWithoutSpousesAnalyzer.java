@@ -32,11 +32,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.gedantic.analyzer.AAnalyzer;
-import org.gedantic.analyzer.AResult;
+import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.analyzer.comparator.IndividualResultSortComparator;
-import org.gedantic.analyzer.result.DateAndString;
-import org.gedantic.analyzer.result.IndividualRelatedResult;
+import org.gedantic.analyzer.DateAndString;
+import org.gedantic.analyzer.comparator.AnalysisResultComparator;
 import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilySpouse;
@@ -55,9 +54,9 @@ public class AdultsWithoutSpousesAnalyzer extends AAnalyzer {
      * {@inheritDoc}
      */
     @Override
-    public List<AResult> analyze(Gedcom g) {
+    public List<AnalysisResult> analyze(Gedcom g) {
 
-        List<AResult> result = new ArrayList<>();
+        List<AnalysisResult> result = new ArrayList<>();
 
         for (Individual i : g.getIndividuals().values()) {
             boolean foundSpouse = false;
@@ -96,14 +95,16 @@ public class AdultsWithoutSpousesAnalyzer extends AAnalyzer {
             long difference = endDate.getTime() - birthDate.getDate().getTime();
             long yearsOld = difference / (365L * 24 * 60 * 60 * 1000); // approximate
             if (yearsOld >= 18) {
-                result.add(new IndividualRelatedResult(i, null, (String) null, (deathDate == null || deathDate.getDate() == null
-                        ? "Born " + yearsOld + " years ago with no death date available" : "Lived to " + yearsOld)
-                        + ", but no spouses"));
+                String itemType = "Individual";
+                String item = i.getFormattedName();
+                String problemDescription = (deathDate == null || deathDate.getDate() == null ? "Born " + yearsOld
+                        + " years ago with no death date available" : "Lived to " + yearsOld) + ", but no spouses";
+                result.add(new AnalysisResult(null, itemType, item, problemDescription));
             }
 
         }
 
-        Collections.sort(result, new IndividualResultSortComparator());
+        Collections.sort(result, new AnalysisResultComparator());
         return result;
     }
 
