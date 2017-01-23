@@ -182,10 +182,13 @@ public class WorkbookCreator {
             cell.setCellValue(r.getTypeOfItemWithIssue());
 
             nextCol();
-            cell.setCellValue(r.getProblematicValue());
+            cell.setCellValue(r.getWhichItem());
 
             nextCol();
             cell.setCellValue(r.getAspectOfItemWithIssue());
+
+            nextCol();
+            cell.setCellValue(r.getProblematicValue());
 
             nextCol();
             cell.setCellValue(r.getProblemDescription());

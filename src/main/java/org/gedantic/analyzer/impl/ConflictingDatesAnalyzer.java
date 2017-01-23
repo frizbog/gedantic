@@ -36,7 +36,6 @@ import java.util.TreeMap;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.AbstractEvent;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyEvent;
@@ -82,14 +81,6 @@ public class ConflictingDatesAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Conflicting dates";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_MIXED_RESULTS;
     }
 
     @Override

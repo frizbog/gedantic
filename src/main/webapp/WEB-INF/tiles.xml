@@ -95,35 +95,4 @@
 		<put-attribute name="body" value="/WEB-INF/tiles/about.jsp" />
 	</definition>
 
-	<definition name="individualResults" extends="results">
-		<put-attribute name="title" value="Analysis results" />
-		<put-attribute name="resultListItem" value="/WEB-INF/tiles/individualResults.jsp" cascade="true" />
-		<put-attribute name="whatsInResults" value="individuals" cascade="true" />
-	</definition>
-
-	<definition name="mixedResults" extends="results">
-		<put-attribute name="title" value="Analysis results" />
-		<put-attribute name="resultListItem" value="/WEB-INF/tiles/mixedResults.jsp" cascade="true" />
-		<put-attribute name="whatsInResults" value="individuals or families" cascade="true" />
-	</definition>
-
-	<definition name="coupleResults" extends="results">
-		<put-attribute name="title" value="Analysis results" />
-		<put-attribute name="resultListItem" value="/WEB-INF/tiles/coupleResults.jsp" cascade="true" />
-		<put-attribute name="whatsInResults" value="couples" cascade="true" />
-	</definition>
-
-	<definition name="sourceResults" extends="results">
-		<put-attribute name="title" value="Analysis results" />
-		<put-attribute name="resultListItem" value="/WEB-INF/tiles/sourceResults.jsp" cascade="true" />
-		<put-attribute name="whatsInResults" value="sources" cascade="true" />
-	</definition>
-
-	<definition name="relationshipResults" extends="results">
-		<put-attribute name="title" value="Analysis results" />
-		<put-attribute name="resultListItem" value="/WEB-INF/tiles/relationshipResults.jsp" cascade="true" />
-		<put-attribute name="whatsInResults" value="relationships" cascade="true" />
-	</definition>
-
-
 </tiles-definitions>

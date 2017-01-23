@@ -32,12 +32,20 @@ import javax.servlet.http.HttpSessionEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * A listener for creation and destruction of sessions
+ * 
+ * @author frizbog
+ */
 @WebListener
 public class MyHttpSessionListener implements javax.servlet.http.HttpSessionListener {
 
     /** Logger */
     private static final Logger LOG = LoggerFactory.getLogger(MyHttpSessionListener.class.getName());
 
+    /**
+     * Counter for sessions
+     */
     private int sessionCount = 0;
 
     @Override

@@ -34,7 +34,6 @@ import java.util.TreeSet;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
@@ -101,14 +100,6 @@ public class ChildrenWithDifferentSurnamesAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Children with different surnames";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
     }
 
     @Override

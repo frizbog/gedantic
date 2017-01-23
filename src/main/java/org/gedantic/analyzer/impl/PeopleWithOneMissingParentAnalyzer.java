@@ -32,7 +32,6 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
@@ -58,10 +57,10 @@ public class PeopleWithOneMissingParentAnalyzer extends AAnalyzer {
                     Family f = fc.getFamily();
                     if (f.getWife() == null && f.getHusband() != null) {
                         result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null,
-                                "Mother is missing - father is " + f.getHusband()));
+                                "Mother is missing - father is " + f.getHusband().getIndividual()));
                     } else if (f.getWife() != null && f.getHusband() == null) {
                         result.add(new AnalysisResult("Individual", i.getFormattedName(), null, null,
-                                "Father is missing - mother is " + f.getWife()));
+                                "Father is missing - mother is " + f.getWife().getIndividual()));
                     }
                 }
             }
@@ -84,14 +83,6 @@ public class PeopleWithOneMissingParentAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "People with one missing parent";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
     }
 
     @Override

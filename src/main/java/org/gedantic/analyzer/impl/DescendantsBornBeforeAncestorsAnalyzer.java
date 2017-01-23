@@ -33,7 +33,6 @@ import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
 import org.gedantic.analyzer.DateAndString;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
 import org.gedcom4j.parser.DateParser.ImpreciseDatePreference;
@@ -83,14 +82,6 @@ public class DescendantsBornBeforeAncestorsAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Descendants born before ancestors";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_INDIVIDUAL_RESULTS;
     }
 
     /**

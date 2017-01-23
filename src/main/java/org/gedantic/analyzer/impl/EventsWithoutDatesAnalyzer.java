@@ -32,7 +32,6 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyEvent;
 import org.gedcom4j.model.Gedcom;
@@ -87,14 +86,6 @@ public class EventsWithoutDatesAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Events without dates";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_MIXED_RESULTS;
     }
 
     @Override

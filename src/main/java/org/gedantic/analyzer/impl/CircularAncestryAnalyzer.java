@@ -33,7 +33,6 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.FamilyChild;
 import org.gedcom4j.model.Gedcom;
@@ -63,11 +62,9 @@ public class CircularAncestryAnalyzer extends AAnalyzer {
                 for (List<SimpleRelationship> list : path) {
                     for (Iterator<SimpleRelationship> itr = list.iterator(); itr.hasNext();) {
                         SimpleRelationship simpleRelationship = itr.next();
-                        sb.append(simpleRelationship.getIndividual1().getFormattedName());
-                        sb.append(" is ");
-                        sb.append(simpleRelationship.getName());
-                        sb.append(" of ");
                         sb.append(simpleRelationship.getIndividual2().getFormattedName());
+                        sb.append(" is ancestor of ");
+                        sb.append(simpleRelationship.getIndividual1().getFormattedName());
                         if (itr.hasNext()) {
                             sb.append("; ");
                         }
@@ -93,14 +90,6 @@ public class CircularAncestryAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Cyclical Ancestral Relationships";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_RELATIONSHIP_RESULTS;
     }
 
     /**

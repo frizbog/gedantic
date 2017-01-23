@@ -68,13 +68,6 @@ public interface IAnalyzer {
     String getName();
 
     /**
-     * Get the name of the tile to use for displaying the results
-     * 
-     * @return the name of the tile to use for displaying the results
-     */
-    String getResultsTileName();
-
-    /**
      * Get an array of tags/categories for this analyzer
      * 
      * @return an array of tags/categories for this analyzer

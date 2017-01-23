@@ -33,7 +33,6 @@ import java.util.Set;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 
@@ -75,11 +74,6 @@ public class CouplesWithSameBirthSurnames extends AAnalyzer {
     @Override
     public String getName() {
         return "Couples with same birth surnames";
-    }
-
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_COUPLE_RESULTS;
     }
 
     @Override

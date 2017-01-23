@@ -105,6 +105,13 @@ public class AnalysisResult {
         } else if (!aspectOfItemWithIssue.equals(other.aspectOfItemWithIssue)) {
             return false;
         }
+        if (problemDescription == null) {
+            if (other.problemDescription != null) {
+                return false;
+            }
+        } else if (!problemDescription.equals(other.problemDescription)) {
+            return false;
+        }
         if (problematicValue == null) {
             if (other.problematicValue != null) {
                 return false;
@@ -119,11 +126,11 @@ public class AnalysisResult {
         } else if (!typeOfItemWithIssue.equals(other.typeOfItemWithIssue)) {
             return false;
         }
-        if (problemDescription == null) {
-            if (other.problemDescription != null) {
+        if (whichItem == null) {
+            if (other.whichItem != null) {
                 return false;
             }
-        } else if (!problemDescription.equals(other.problemDescription)) {
+        } else if (!whichItem.equals(other.whichItem)) {
             return false;
         }
         return true;
@@ -166,6 +173,15 @@ public class AnalysisResult {
     }
 
     /**
+     * Get the whichItem
+     * 
+     * @return the whichItem
+     */
+    public String getWhichItem() {
+        return whichItem;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -173,9 +189,10 @@ public class AnalysisResult {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((aspectOfItemWithIssue == null) ? 0 : aspectOfItemWithIssue.hashCode());
+        result = prime * result + ((problemDescription == null) ? 0 : problemDescription.hashCode());
         result = prime * result + ((problematicValue == null) ? 0 : problematicValue.hashCode());
         result = prime * result + ((typeOfItemWithIssue == null) ? 0 : typeOfItemWithIssue.hashCode());
-        result = prime * result + ((problemDescription == null) ? 0 : problemDescription.hashCode());
+        result = prime * result + ((whichItem == null) ? 0 : whichItem.hashCode());
         return result;
     }
 }

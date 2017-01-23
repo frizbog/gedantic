@@ -53,19 +53,35 @@
 				finding(s).
 				<div class="pull-right">
 					<form id="analysisForm" name="analysis" action="analyze" method="post">
-					<input name="analyzerId" type="hidden" id="analysisKey" value="${analyzerId}"/>
-					<input type="hidden" name="excel" value="true"/>
-					<button class="btn btn-default btn-xs" type="submit">
-						<i class="fa fa-file-excel-o"></i> Download as Excel
-					</button>
+						<input name="analyzerId" type="hidden" id="analysisKey" value="${analyzerId}" /> <input type="hidden" name="excel" value="true" />
+						<button class="btn btn-default btn-xs" type="submit">
+							<i class="fa fa-file-excel-o"></i> Download as Excel
+						</button>
 					</form>
 				</div>
 			</div>
 			<div class="panel-body">
 				<ol class="list-group">
 					<c:forEach items="${results}" var="r">
-						<c:set var="result" value="${r}" scope="request" />
-						<tiles:insertAttribute name="resultListItem" />
+						<li class="list-group-item"><c:set var="result" value="${r}" scope="request" />
+						${result.typeOfItemWithIssue}: ${result.whichItem} 
+							<dl class="dl-horizontal">
+								<c:if test="${not empty result.aspectOfItemWithIssue}">
+									<dt>Fact</dt>
+									<dd>${result.aspectOfItemWithIssue}</dd>
+								</c:if>
+
+								<c:if test="${not empty result.problematicValue}">
+									<dt>Value</dt>
+									<dd>${result.problematicValue}</dd>
+								</c:if>
+
+								<c:if test="${not empty result.problemDescription}">
+									<dt>Description</dt>
+									<dd>${result.problemDescription}</dd>
+								</c:if>
+							</dl>
+						</li>
 					</c:forEach>
 				</ol>
 			</div>

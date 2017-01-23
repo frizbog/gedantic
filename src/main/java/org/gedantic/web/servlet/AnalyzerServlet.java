@@ -141,7 +141,7 @@ public class AnalyzerServlet extends HttpServlet {
 
         } else {
             req.setAttribute(Constants.RESULTS, results);
-            req.getRequestDispatcher(a.getResultsTileName()).forward(req, resp);
+            req.getRequestDispatcher("results.tiles").forward(req, resp);
         }
     }
 

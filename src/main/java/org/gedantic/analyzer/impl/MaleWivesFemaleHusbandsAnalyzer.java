@@ -32,7 +32,6 @@ import java.util.List;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -81,11 +80,6 @@ public class MaleWivesFemaleHusbandsAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Male Wives and Female Husbands";
-    }
-
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_COUPLE_RESULTS;
     }
 
     @Override

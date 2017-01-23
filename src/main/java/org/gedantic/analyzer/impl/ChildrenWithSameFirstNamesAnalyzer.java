@@ -37,7 +37,6 @@ import java.util.Set;
 import org.gedantic.analyzer.AAnalyzer;
 import org.gedantic.analyzer.AnalysisResult;
 import org.gedantic.analyzer.AnalysisTag;
-import org.gedantic.web.Constants;
 import org.gedcom4j.model.Family;
 import org.gedcom4j.model.Gedcom;
 import org.gedcom4j.model.Individual;
@@ -116,14 +115,6 @@ public class ChildrenWithSameFirstNamesAnalyzer extends AAnalyzer {
     @Override
     public String getName() {
         return "Children with same first names";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getResultsTileName() {
-        return Constants.URL_ANALYSIS_MIXED_RESULTS;
     }
 
     @Override
