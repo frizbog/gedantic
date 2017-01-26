@@ -56,7 +56,7 @@ public class SourcesWithoutRepositoryCitationsOrMediaAnalyzer extends AAnalyzer 
         }
         for (Source s : g.getSources().values()) {
             if (s != null && (s.getMultimedia() == null || s.getMultimedia().isEmpty()) && (s.getRepositoryCitation() == null)) {
-                result.add(new AnalysisResult("Source", s.getTitle().toString(), null, null,
+                result.add(new AnalysisResult("Source", "" + s.getTitle(), null, null,
                         "No Repository Citations or Multimedia records attached."));
             }
         }
